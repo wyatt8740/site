@@ -19,6 +19,17 @@ h1 {
   padding: 6px;
 }
 
+h2 {
+  text-align: center;
+  clear: both;
+  background-color: #DFDFDF;
+  width: 95vw;
+  margin: 0 auto;
+  padding: 6px;
+  margin-top:       24px;
+}
+
+
 .postarea {
   clear: both;
   padding:          6px;
