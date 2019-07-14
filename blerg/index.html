@@ -2,26 +2,229 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <!-- text encoding UTF-8 -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Force reload each time page is visited (don't cache; the page is tiny anyway) -->
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
     <title>Wyatt's Blerg</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
   </head>
   <body>
-    <div class="navbar">
-      <a href="../">Home</a>
-      <a class="active" href="../blerg/">Blerg</a>
-      <a href="../about/">About</a>
-    </div>
+    <div class="navbar"> <a href="../index.html">Home</a> <a
+        class="active" href="../blerg/index.html">Blerg</a> <a
+        href="../about/index.html">About</a> </div>
     <h1>Blerg</h1>
-    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>
-    <div class="postarea">Name inspired by the following <a href="https://xkcd.com/181/">comic</a>:
-      <img src="https://imgs.xkcd.com/comics/interblag.png"/>
+    <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
+    <div class="postarea" id="posixshell">
+      <h3>The POSIX Shell and You<br>
+        Or<br>
+        Why You're Likely Misusing #!/bin/sh</h3>
+      <p><i>14 July 2019</i><br>
+        Hello. My first blog post is a bit of a rant, but hopefully you
+        feel like you learned something from it. I mainly write this for
+        my peers – CS students who possibly don't know much about the
+        history of Unix, or what a POSIX shell means. The kind of people
+        who have only surface level knowledge of Unix/Linux, but spend
+        most of their time in Windows.<br>
+      </p>
+      <p>So, first off. Your shell on your Ubuntu or other generic
+        GNU/Linux system is almost certainly <a
+          href="https://www.gnu.org/software/bash/">bash</a>. There's
+        absolutely nothing wrong with this in and of itself; bash is
+        great, and for interactive use, probably a good way to get used
+        to bourne-like shells. Maybe 'bourne shell' doesn't ring a bell
+        to some of you. I'll do my best to explain it.<br>
+      </p>
+      <p><font color="#990000"><b>TL;DR: Use #!/usr/bin/env bash if you
+            want to write a bash script; it's not the same as #!/bin/sh.</b></font><br>
+      </p>
+      <h4>A History Lesson</h4>
+      <p>Caveat – I was born in 1996, after most of the dust from the
+        events I am about describe had already settled or was quickly
+        settling. By the time I was old enough to have any sort of
+        experience with these events, they were already very old. But I
+        love learning about history of basically everything, and
+        especially about fields that interest me.<br>
+        –OK, now that that's out of the way…<br>
+      </p>
+      <p>Essentially, the earlier widely used versions of Unix were in
+        two camps: <i>commercial</i> Unix, such as <a
+          href="https://en.wikipedia.org/wiki/UNIX_System_V">System V</a>
+        ("System Five"), and <i>research</i> Unix, such as "Version 7".
+        Don't worry about the numbers in the names too much – if it
+        helps, know that the commercial unix releases made by AT&amp;T
+        all used roman numerals, and were derived from research Unix
+        with some nice toys and tools added in. Most notably, for this
+        discussion, those tools included an early version of the <a
+          href="https://en.wikipedia.org/wiki/KornShell">Korn Shell</a>
+        (or ksh, so named because of its initial author, David G. Korn).<br>
+      </p>
+      <p>None of these Unix systems were free of cost - AT&amp;T
+        required a licensing payment, which gave the purchaser a copy of
+        the source code for the operating system to do whatever he or
+        she wanted with. AT&amp;T was, if I understand correctly,
+        required in the late 70's and early 80's, required to license
+        its software like this because of the way it was regulated by
+        the government prior to the 1984 break-up of the Bell System,
+        which was up until that time a government regulated
+        (near-)monopoly. The <a
+          href="https://en.wikipedia.org/wiki/Computer_Systems_Research_Group">UC
+
+
+          Berkeley Computer Systems Research Group</a> was a licensee,
+        and some academics (students and faculty) began modifying and
+        adding to their installation, sharing their software with other
+        paid Unix licensees (other academic institutions, for instance).
+        By the early 90's, AT&amp;T had raised licensing costs for
+        commercial unices to the extent that the CSRG decided to
+        re-write all of the remaining AT&amp;T code in their version of
+        the OS. This became the source of modern FreeBSD, NetBSD,
+        OpenBSD, MirBSD, and others (to an extent, Mac OS X is also a
+        descendant of the last CSRG BSD release).<br>
+      </p>
+      <h4>Legal Issues</h4>
+      <p>I bring all of this up because due to its ownership, the Korn
+        shell was not available to users that did not have a valid
+        license from AT&amp;T. Korn shell was and is vastly powerful,
+        and also is compliant with a standard known as POSIX (or
+        Portable Operating System Interface). This is a standard that,
+        if followed, aimed to allow scripts and programs written for one
+        compliant operating system to run on any other compliant system.
+        POSIX is largely modelled on System V commercial Unix, with some
+        later additions and removals. Un-encumbered BSD's at first had
+        to use 'csh', a non-compatible alternative shell, and later on
+        largely or entirely POSIX compatible shells such as the <a
+href="https://www.freebsd.org/cgi/man.cgi?query=sh&amp;sektion=1&amp;manpath=freebsd-release-ports">Almquist
+
+
+
+
+
+          Shell</a>. These are less powerful than modern ksh (ksh93) in
+        many respects, but performed their functions, especially the
+        almquist shell ([t]csh has lots of problems I won't get into
+        here). But Ksh's absence before it became 'free software' was
+        felt in the form of incompatible scripts.<br>
+      </p>
+      <h4>Enter the POSIX Shell</h4>
+      <p>In the world of shells, POSIX was originally important because
+        if a script was written for the theoretical "<a
+          href="http://pubs.opengroup.org/onlinepubs/9699919799/">POSIX
+          Shell</a>," using only software that follows the POSIX
+        standard, it should be able to run the same on an IBM AIX system
+        as it would on a Sun Solaris or SGI IRIX workstation.<br>
+        Today, it is slightly less vitally important to follow it to the
+        letter, but I argue that it still should be a concern. The
+        reasons for this are varied:<br>
+      </p>
+      <ol>
+        <li>Having a particular shell does not necessarily mean that all
+          of the other programs called by the shell will be the same on
+          other platforms.<br>
+          (Mac OS X has bash, but its version of tools like 'sed' are
+          derived from the BSD's, and are often missing some options
+          compared to the heavily-expanded GNU versions found in <a
+            href="https://www.gnu.org/software/coreutils/">coreutils</a>).</li>
+        <li>The same CLI option flag might serve a different purpose
+          entirely in other operating systems or distributions.</li>
+      </ol>
+      <p>So, if you want your script to run on a Mac at some point, it
+        makes sense to limit yourself to the features that are
+        guaranteed to be on the Mac (which is currently a certified
+        POSIX-compliant platform). The same goes for the other BSD's,
+        except that they aren't <i>officially</i> certified as
+        compliant (they are at least 99% compliant, though).<br>
+      </p>
+      <p>A benefit of following this approach was that I was able to
+        transfer nearly all of my shell-based tools in my ~/bin
+        directory (where I keep local programs I want to be able to
+        execute from anywhere at any time) directly to a mac and to a
+        FreeBSD installation, and have them work flawlessly. By
+        initially avoiding things like 'sed -i,' I was able to save
+        myself time later.<br>
+      </p>
+      <ol>
+      </ol>
+      <p>Now for the fun part, and where the title of this post came
+        from:</p>
+      <p> '#! /bin/sh' is often found at the top of shell scripts. Any
+        POSIX compliant shell will see this as a comment, but an <i>extension</i>
+        that many follow, which comes from early versions of research
+        Unix, is that if a file starts with '#!', the remainder of that
+        line is to be seen as the program to pass the file as an
+        argument to.</p>
+      <p> While a POSIX shell is not necessarily going to execute your
+        file that has '#! /bin/env python' by running '/bin/sh
+        /path/to/script.sh', it may do so, and otherwise will simply
+        execute in the same type of shell as the one that called it.</p>
+      <p> '/bin/sh' usually refers to the Bourne shell – for all intents
+        and purposes, the shell that the POSIX shell (and Korn
+        Shell/Bash) grew out of and are based upon. By specifying it,
+        you are saying that your program will run correctly in <i>what
+          is likely (<a
+            href="https://pubs.opengroup.org/onlinepubs/009695399/utilities/sh.html">but
+
+
+
+
+
+            not guaranteed</a>) to be the default shell of the entire
+          system</i>. This is almost always a POSIX shell.</p>
+      <p>FreeBSD <i><a
+href="https://www.freebsd.org/doc/en_US.ISO8859-1/articles/linux-users/shells.html">does
+
+
+
+
+
+            not</a> even include Bash in a default installation</i>.
+        Even if it is installed, it will be in /usr/local/bin, if
+        installed via ports or the binary package manager, so your
+        #!/bin/bash shebang <i>still</i> won't do the job! By using
+        '#!/bin/sh', you are (in my mind) essentially saying one of
+        three things:<br>
+      </p>
+      <ol>
+        <li>You are pretty sure your script will run on anything with a
+          minimally compliant bourne-like shell with possibly POSIX
+          extensions. If there's a problem, it's likely a minor
+          oversight that can be fixed pretty easily in a text editor in
+          a few minutes.<br>
+        </li>
+        <li>You don't care about anyone who isn't using a GNU/Linux
+          system, or your particular installation of your other
+          operating system.</li>
+        <li>Your script is only for your own personal use, and you don't
+          intend on sharing it, but it does what you want on your
+          system, so that's okay.</li>
+      </ol>
+      <h4>Conclusions</h4>
+      <p>Basically, I'd urge you to <i>look up the tools you see
+          recommended in Stack Overflow answers</i>– Think to yourself,
+        "Huh, I wonder if this program has this flag in its POSIX
+        definition, or if this is an extension." Maybe your tool isn't
+        in POSIX at all! Then, I'd like you to decide – does that
+        matter, in this particular case? Are you trying to maximize the
+        utility of your script for others on multiple platforms? Do you
+        only have to worry about a single known target? Are you just
+        trying do something fast and get it over with so you can move on
+        with your life? I do all of these sometimes, but if your intent
+        is to share, please consider sticking to the basics!<br>
+      </p>
+      <p>I hope this didn't come across as too negative, and was
+        somewhat informative. Sorry it turned out so big. I'll probably
+        edit it over the next couple days for size and coherence, since
+        I am sure I lost my train of thought in a couple of places.
+        Thanks for reading.<br>
+      </p>
+      <ol>
+      </ol>
     </div>
+    <div class="postarea">Page title inspired by the following <a
+        href="https://xkcd.com/181/">comic</a>: <img
+        src="https://imgs.xkcd.com/comics/interblag.png"> </div>
   </body>
 </html>

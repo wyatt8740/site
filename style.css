@@ -29,6 +29,9 @@ h2 {
   margin-top:       24px;
 }
 
+h3 {
+  text-align: center;
+}
 
 .postarea {
   clear: both;
@@ -37,7 +40,7 @@ h2 {
   margin-top:       24px;
   background-color: #DFDFDF;
   width:            95vw;
-  white-space: pre-line;
+/*  white-space: pre-line;*/
 }
 
 .postarea img {
