@@ -38,8 +38,9 @@
         to bourne-like shells. Maybe 'bourne shell' doesn't ring a bell
         to some of you. I'll do my best to explain it.<br>
       </p>
-      <p><font color="#990000"><b>TL;DR: Use #!/usr/bin/env bash if you
-            want to write a bash script; it's not the same as #!/bin/sh.</b></font><br>
+      <p><font color="#990000"><b>TL;DR: Please use '#!/usr/bin/env
+            bash' if you want to write a bash script; bash is not always
+            the same as /bin/sh.</b></font><br>
       </p>
       <h4>A History Lesson</h4>
       <p>Caveat – I was born in 1996, after most of the dust from the
@@ -74,6 +75,7 @@
           href="https://en.wikipedia.org/wiki/Computer_Systems_Research_Group">UC
 
 
+
           Berkeley Computer Systems Research Group</a> was a licensee,
         and some academics (students and faculty) began modifying and
         adding to their installation, sharing their software with other
@@ -98,6 +100,7 @@
         to use 'csh', a non-compatible alternative shell, and later on
         largely or entirely POSIX compatible shells such as the <a
 href="https://www.freebsd.org/cgi/man.cgi?query=sh&amp;sektion=1&amp;manpath=freebsd-release-ports">Almquist
+
 
 
 
@@ -171,10 +174,12 @@ href="https://www.freebsd.org/cgi/man.cgi?query=sh&amp;sektion=1&amp;manpath=fre
 
 
 
+
             not guaranteed</a>) to be the default shell of the entire
           system</i>. This is almost always a POSIX shell.</p>
       <p>FreeBSD <i><a
 href="https://www.freebsd.org/doc/en_US.ISO8859-1/articles/linux-users/shells.html">does
+
 
 
 
