@@ -18,11 +18,90 @@
         href="../about/index.html">About</a> </div>
     <h1>Blerg</h1>
     <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
+    <div class="postarea" id="cdemu">
+      <h3>CDemu: A Brief Tour<br/>
+        (How I played Quake with the music CD on a computer without a CD Drive)
+      </h3>
+      <p><i>03 Feb 2020</i><br/>
+        (This isn't really anything too tricky, but since it took me a few
+        minutes to figure out and I had to do some grepping in the source code
+        I figured I should mention it.)
+      </p>
+      <p>
+        <a href="https://en.wikipedia.org/wiki/Quake_%28video_game%29">
+          Quake</a> (1996) is a great game. I know it, and if you didn't
+        already, now you do, too. Better still, the engine source code is
+        freely available under a nice license, so if you have an original CD
+        you can port it to whatever machine you want and use the CD's assets to
+        play the game on that system. I know there are nicer forks around, but
+        I chose to build an engine as close as possible to the original source
+        code as dropped by Id/John Carmack (I'm too young to remember the
+        initial code drop, so I don't know how exactly that's attributed).
+      </p>
+      <p>
+        I got it to build with just a few minor tweaks (like having to force
+        gcc to build it for i386 (32-bit) with `-m32`) after installing
+        the 32 bit versions of the libraries it depends on) and changing a
+        couple hardcoded paths in a makefile.
+      </p>
+      <p>
+        The problem is, though, that most (all?) modern-ish optical drives
+        don't have an audio output that can be mixed into a sound card like
+        old-school CD drives usually did. Quake would play music tracks off the
+        disc just like an audio CD player (CDDA player) would, from 'red book'
+        audio stored as tracks on the game disc. My laptop's most certainly
+        doesn't, and neither do the drives in my desktop, which are both
+        rather new since I lack IDE on my motherboard and my PCI IDE controller
+        only supports hard disks.
+      </p>
+      <p>
+        It turns out that (for Linux kernels at least)
+        <a href="https://cdemu.sourceforge.io/">CDemu</a> is capable of
+        handling cue/bin or toc/bin CD images as if they were physical discs
+        in a virtual physical drive. That includes red book audio playback.
+        So I ripped my Quake CD with `cdrdao` (since I use debian; other
+        distros may use different tools) to make a .toc/.cue pair (TOC is
+        cdrdao's preferred format, but it can be converted to .cue as needed).
+      </p>
+      <p>
+        After building and installing CDemu (it is not packaged in Debian,
+        although they do provide .deb packages I could probably have used
+        instead. Since I run a custom kernel I didn't want to have to deal with
+        any incompatibilities, so I just did a source build), as well as
+        GCDemu (a GUI for it), I was nearly there, but audio still wouldn't
+        play.
+      </p>
+      <p>
+        I figured out after inspecting the man pages and source code that
+        cdemu-daemon uses `libao` to play back audio, and that it defaulted
+        to pulseaudio, which I do not use and never want to have to deal with
+        ever again (long story for another time, it goes back nearly as far
+        as my starting to use Linux distros when I was around 13… about ten
+        years ago now). Turns out they let you change the audio driver being
+        used with a configuration file at `~/.cdemu-daemon`. I just made the
+        file and put the following line in it, and then restarted
+        `cdemu-daemon`:
+      </p>
+      <p>
+        <pre class="block">AUDIO_DRIVER=alsa</pre>
+      </p>
+      <p>
+        Since I already had a nicely configured ALSA setup (another story for
+        another time) that allows more than one program to play sound at once,
+        this was all it took. According to the man page, some other options are
+        `oss`, `pulse`, and `null`. There may be more, but I don't know what
+        all libao supports. The documentation also says it defaults to `null`,
+        but never says where to change it; I figured out that the file is
+        `~/.cdemu-daemon` while grepping through the sources to find out how
+        the daemon started when `gcdemu` is run. Now however, I can play X11
+        Quake with music as it was intended!
+      </p>
+    </div>
     <div class="postarea" id="posixshell">
-      <h3>The POSIX Shell and You<br>
-        Or<br>
+      <h3>The POSIX Shell and You<br/>
+        Or<br/>
         Why You're Likely Misusing #!/bin/sh</h3>
-      <p><i>14 July 2019</i><br>
+      <p><i>14 July 2019</i><br/>
         Hello. My first blog post is a bit of a rant, but hopefully you
         feel like you learned something from it. I mainly write this for
         my peers – CS students who possibly don't know much about the

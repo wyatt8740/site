@@ -6,8 +6,18 @@ body {
  */
   font-family: "Times New Roman", FreeSerif, "Liberation Serif", Times, serif;
   font-style: serif;
-  font-size: 16px;
+  font-size: 12pt;
   background-color: #525252;
+}
+
+pre {
+  font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
+  font-size: 12pt;
+}
+
+.block {
+  padding-left: 12pt;
+  background-color: #C0C0C0;
 }
 
 h1 {
