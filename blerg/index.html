@@ -18,6 +18,280 @@
         href="../about/index.html">About</a> </div>
     <h1>Blerg</h1>
     <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
+    <div class="postarea" id="powerbook-linux-1">
+      <h3>The Powerbook G4 Story<br/>
+        Or:<br/>
+        Squeezing Every Last Drop of Life out of Abandoned Hardware
+        Platforms<br/>
+      </h3>
+      <p><i>28 Apr 2021</i><br/>
+        A while ago now (November 2017, at latest), I got a 1.33GHz
+        aluminum PowerBook G4 (model A1095) from a HAM radio convention. I
+        pretty much instantly regretted my impulsive buy (since I saw something
+        else that I also wanted and didn't have the cash on-hand anymore), but
+        no refunds. So I brought it home.</p>
+      <p>The following is a partial story of my journey with this machine.
+        I've since discovered what it can do, as well as its limitations, and
+        I'm not quite so regretful of my purchase anymore. This laptop has
+        yielded some great learning experiences for me with respect to
+        hardware and software, and also made me more mindful of good software
+        design principles.</p>
+      <p>Note also that much of the stuff I am writing about was done a year or
+        more ago, and is therefore likely to have accidental omissions, and
+        possibly actual inaccuracies as well. I just think it's been a kind of
+        fun project to get this thing and that maybe other people could benefit
+        or possibly even be entertained by the story.</p>
+      <h4>First Impressions/Hardware Summary: </h4>
+      <p>I have a dislike for most Apple hardware, and am still ambivalent
+        about this 'book (having had to open it up), but I am convinced that
+        at the very least the Apple of ~2004 was a different company than
+        it is now. There are several examples of this, but most prevalent are:
+        <br/>
+      </p>
+      <ul>
+        <li>Standard computer I/O ports:</li>
+        <ul>
+          <li>3x USB 2.0 ports</li>
+          <li>1x full-size gigabit ethernet port</li>
+          <li>1x TV-Out connector (7-pin Mini-DIN or variant, also found on
+            other computers of the period)</li>
+          <li>2x IEEE 1394 "firewire" ports (FW400 and FW800)</li>
+          <li>1x modem connector</li>
+          <li>2x 3.5mm TRS jacks, for audio output and a microphone</li>
+          <li>1x <i>dual-link</i> DVI-I connector</li>
+          <li>1x cardbus expansion slot(!)</li>
+        </ul>
+        <li>A <i>fantastic feeling</i> keyboard (though there are still some
+          issues):</li>
+        <ul>
+          <li>Missing navigational keys, insert key, print screen key (not
+          a huge issue in OS X, but convenient in other OSes)</li>
+          <li>the F* keys are not spaced out into quads, so blindly reaching
+            for them isn't as easy as it is on a classic Thinkpad</li>
+          <li>No way to distinguish between left and right 'command' keys.
+            They both send the same keycode. I think this might be a legacy of
+            the Apple Desktop Bus (ADB) which they use, since my Apple Extended
+            Keyboard (1987) also does this.</li>
+        </ul>
+      </ul>
+      <p>Note that the dual-link DVI connector is superior to Apple's later
+        proprietary Mini-DVI in that it supplies far higher video resolutions.
+        Apple took a step back and downgraded to 1920x1200 @ 60hz maximum when
+        they moved to mini-DVI. The only dongle I can imagine needing on this
+        machine would be a passive DVI-I to VGA adapter, if connecting the
+        laptop to a CRT or similar. These are widely available and not
+        Apple-exclusive; I have at least three. Apple sure doesn't build them
+        like they used to.</p>
+      <p>Some other specs of this machine include a 1280x854 TFT LCD (of pretty
+        good quality and a nice aspect ratio), a Motorola/Freescale PowerPC
+        7447a CPU (7450 derivative) with the Altivec SIMD instruction set,
+        an ATI Mobility Radeon 9700 GPU (connected via AGP; there's a hardware
+        bug with this that I'll try to get to later in the post), and initially
+        (I believe) 512MB of DDR SDRAM. One of the first things I did was
+        upgrading it to 2GB of RAM (its maximum amount).</p>
+      <p>I also replaced the battery pack with an aftermarket one almost
+        immediately, since the original Apple one was toast and my charger plug
+        is slightly bent/messed up. If the plug comes out or twists too much,
+        the machine will lose power, and since the battery was totally
+        ineffective that meant instantly and abruptly turning off. My
+        particular aftermarket battery didn't quite sit flush with the bottom
+        of the laptop's chassis, so I put a strip of silver duct tape around
+        the edge of it to stop the thin aluminum plate on the bottom from
+        scraping against surfaces.</p>
+      <p>Probably the single most major issue with the Powerbook (especially
+        if not running OS X on it) is its single-button touchpad. This can be
+        worked around; I'll try to remember to mention it when I get to writing
+        about running Debian Linux on it.</p>
+      <p>There's also an intermittent problem I've had with the real-time clock
+        (and PRAM) battery, which makes me think it probably needs replacing;
+        I'll get to that eventually, but it's not a very big deal since I can
+        synchronize its clock with my other machines pretty easily. It uses a
+        rechargeable Panasonic CGL3032 Li-ion coin cell soldered to a
+        small daughterboard with tabs.</p>
+      <p>Since the original board assembly (part # 820-1686 or 820-1686-A) is
+        apparently hard to find and often unavailable on ebay, etc., and the
+        Panasonic coin cell in question is no longer in production, I'll
+        probably end up ordering a similar cell I found on Digikey. Since
+        that battery doesn't have solder tabs and I don't have equipment
+        to weld them (risky), I'll either have to try taping it down, finding a
+        battery clip that fits in the gap in the board, or throwing caution
+        to the wind, sanding down the coin cell's sides (to create a rough
+        texture), and soldering the tabs from the old battery onto it.</p>
+      <p>I've done that before with alkaline cells, although I don't like doing
+        it at all, and I'm always afraid I'll injure myself some day doing it.
+        I'm not sure I want to risk it with an Li-ion cell, so for now I've
+        just resigned myself to keeping the existing battery in here until
+        I stop being able to ignore it.</p>
+      </p>
+      <h4>Software: Getting Rolling</h4>
+      <p>At the time I bought the machine, I think it was running
+        OS X 10.4 (Tiger) or 10.5 (Leopard), but I only booted it into OS X
+        once or twice on it before diving deeper. To me, at least, there's
+        almost zero reason to run such an outdate OS X version on these
+        macs, since the Apple ecosystem makes finding software that is still
+        compatible with it difficult at best, and even building source code
+        for it sounds painful due to the age of the official Apple toolchain.
+      </p>
+      <p>Thus, I quickly decided to put Debian on it. I chose Debian primarily
+        because it's my distro of choice on my x86 desktop and laptop, but
+        also because it actually had
+        <a href="https://www.debian.org/releases/jessie/powerpc/release-notes/">
+          an official, current 32-bit PowerPC release</a> (Jessie) at the time
+        that I installed it. This is no longer the case (it's not what they
+        dub a "release architecture" due to some problems), but it's still
+        a part of the Debian "Ports" project, so a Sid-equivalent distro
+        installer can be found <a href="https://cdimage.debian.org/cdimage/ports/current/">here</a>,
+        along with several other less-popular architectures, and a Debian 10
+        CD image was also apparently created for PowerPC (in an unofficial
+        capacity) <a href="https://cdimage.debian.org/cdimage/ports/10.0/powerpc/iso-cd/">here</a>.
+      </p>
+    <p>Anyway, I burned a Debian installer CD-R, after unsuccessfully
+      attempting to get it to boot off a USB. Apparently, it can be done, but I
+      was quick to lose patience with Open Firmware and went for the install
+      medium which I was more certain could actually work.</p>
+    <figure>
+      <img src="./powerbook_1/g4_debian_install.jpg"
+           alt="Debian installer, running for the first time on the Powerbook"/>
+      <figcaption>Debian installer, running for the first time on the Powerbook.
+        I removed Systemd after the installation, but that was just a matter
+        of personal preference.
+      </figcaption>
+    </figure>
+    <p>
+      After the installation (successful, btw), I copied over the firmware
+      files for the Broadcom wireless chipset (for the Linux b43 driver).
+      The chip in my machine is a BCM4306, and the airport card is a
+      non-standard pinout so I can't just put a better card (such as
+      one with an atheros chip that uses the ath9k driver) in, unfortunately.
+      This is something I could use the Cardbus slot for in the future, though.
+    </p>
+    <p>
+      I've done this what feels like a dozen times or more on
+      Intel machines, and it worked exactly the same here, so if you try this
+      and have difficulties please note that you can just look at instructions
+      from x86 users with older wireless chipsets. I happen to know
+      that the process is quite similar on Dell Latitude D610 laptops, for
+      instance, and I think the D630's as well. Many, many devices used
+      Broadcom's BCM43xx chips for wireless LAN in the mid-to-late 2000's,
+      so there's plenty of information out there.
+    </p>
+    <p>
+      I think the next thing I did (after installing an X server, since I
+      had done a minimal offline install initially) was to make the touchpad
+      less annoying (disable 'tap-to-click') and to make the "F*" keys send
+      the "F*" keycodes instead of their "brightness/volume adjustment/etc."
+      ones when pressed without holding the 'Fn' key. I found a package called
+      '<a href="https://snapshot.debian.org/package/pmac-utils/1.1.3-27%2Bports/">pmac-utils</a>'
+      which contained the tools I was looking for. After it was installed, I
+      added the following to the end of my '/etc/rc.local' file:
+    </p>
+    <p>
+      <pre class="block">if [ -e /sbin/trackpad ]; then
+  /sbin/trackpad notap || /bin/true
+fi
+
+if [ -e /sbin/fnset ]; then
+  /sbin/fnset -u || /bin/true
+fi</pre>
+    </p>
+    <p>
+      Note that if you are using systemd as your init system, you can't run
+      stuff at boot from 'rc.local' like I did. You'll have to find your
+      own way to run stuff at boot; I'm using 'sysvinit' (System V Init)
+      for my init system. A quick search suggests that
+      <a href="https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/">
+        this might not be too hard to do</a>, but I have not tried it myself.
+    </p>
+    <p>
+      I also installed a program called
+      '<a href="https://snapshot.debian.org/package/mouseemu/0.15-10/">mouseemu</a>,'
+      which basically can intercept keystrokes and mouse/touchpad inputs,
+      listening for keyboard modifiers when clicking to simulate pressing other
+      mouse buttons. I decided to configure it so that holding a 'command' key
+      while clicking would send a right click keystroke.
+    </p>
+    <p>
+      This program has a side-effect of preventing buttons beyond the standard
+      left click, right click, and middle click/scroll from working when using
+      an external USB mouse, so I also made
+      <a href="https://github.com/wyatt8740/mouseemu">a modified version of it</a>
+      that can pass through two additional mouse buttons (BTN_SIDE and BTN_EXTRA).
+      These are the other buttons on a Microsoft Trackball Optical and are used
+      in many mouses for navigating forward and backward in a web browser
+      (they are mouse button ID's 8 and 9 in X).
+      <a href="https://github.com/wyatt8740/mouseemu/commit/97433b536fea43ba22e5feaee803c931b196fe01">My patch is here</a>,
+      by the way, in case you want to add even more buttons yourself.
+    </p>
+    <p>
+      Mouseemu is configured on my system via /etc/default/mouseemu, which is
+      sourced by init scripts in /etc/init.d/. I am pretty sure that the
+      configuration is sourced the same way on a Systemd-as-init machine. To
+      find the keycodes you need to pass to it, either find the key ID's in
+      'include/linux/input.h' or run 'showkey' outside of X (in a TTY;
+      ctrl-alt-f1 for instance). Here's my personal configuration
+      (note: pretty sure 272 is the mouse button event):
+    </p>
+    <p>
+      <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
+MID_CLICK="-middle 100 272"   # fn+alt+click
+SCROLL="-scroll 0"            # disable scroll key for now pending investigation (no idea how it works...)
+TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it interferes with playing Quake!</pre>
+    </p>
+    <p>
+      I have end-of-semester homework due really, really soon, now, so I'm
+      going to end this post here to slave away on it for a bit.
+    </p>
+    <p>
+      I'll try to come back to it and expand on it later, though! There's
+      tons more stuff that I've also done. Here's a sample
+      (a teaser, of sorts):
+    </p>
+    <ul>
+      <li>Fixing a hang when X starts on ATI GPU's</li>
+      <ul>
+        <li>I actually meant to write about this today, but I forgot</li>
+        <li>Short, short version (to be expounded upon): boot with
+          'radeon.agpmode=-1' kernel argument</li>
+        <li>In Yaboot prompt, type 'Linux radeon.agpmode=-1' and hit enter</li>
+        <li>This can be made permanent, but I'll talk about that next time</li>
+        <li>There is a performance penalty, which I'll discuss</li>
+      </ul>
+      <li>Fixing Firefox 52/Seamonkey 2.49 on PowerPC:</li>
+      <ul>
+        <li>Official Debian package was really buggy/crash-prone</li>
+        <li>Performance went way up by comparison; crashes pretty much never</li>
+        <li>Re-introduces ALSA support (no pulseaudio requirement for sound anymore)</li>
+        <li>various post-installation tweaks to its configuration to improve
+          compatibility with modern websites</li>
+        <li>Newer versions of FF appear to be a showstopper, due to vast
+          architectural changes and general apathy on Mozilla's part, but I
+          will discuss possible solutions/workarounds.</li>
+      </ul>
+      <li>Getting GIMP 2.10</li>
+      <ul>
+        <li>Basically, a library Gimp 2.10 uses (gegl, I think) builds fine,
+          but one of the post-build tests times out due to poor performance on
+          PowerPC (and MIPS)</li>
+        <li>Due to this, Debian's build bots think the package failed to build</li>
+        <li>Since it depends on this library, GIMP 2.10 doesn't exist in the
+          Debian repositories for PowerPC</li>
+        <li>However, you can tweak the build configuration, rebuild it yourself,
+          and then (after a very slow/long build process) GIMP 2.10 actually
+          works fine. I'll detail how to do this</li>
+      </ul>
+      <li>Porting software-rendered and GL Quake (Quake 1)</li>
+      <ul>
+        <li>I prefer software-rendered quake over any of the "modern" engines;
+        after a lot of confusion I figured out how to get this version working
+        on PowerPC (avoiding x86-specific assembly code)</li>
+      </ul>
+      <li>Porting various emulators</li>
+      <li>Porting miscellaneous programs, fixing big/little-endian mixups</li>
+    </ul>
+    <p>
+      Stay tuned!
+    </p>
+    </div>
     <div class="postarea" id="psx-rgb-1">
       <h3>Coercing RGB from Retro Video Game Consoles on the Cheap<br/>
         Or:<br/>
