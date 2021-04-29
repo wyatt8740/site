@@ -142,7 +142,7 @@
         At the time I bought the machine, I think it was running
         OS X 10.4 (Tiger) or 10.5 (Leopard), but I only booted it into OS X
         once or twice on it before diving deeper. To me, at least, there's
-        almost zero reason to run such an outdate OS X version on these
+        almost zero reason to run such an outdated OS X version on these
         macs, since the Apple ecosystem makes finding software that is still
         compatible with it difficult at best, and even building source code
         for it sounds painful due to the age of the official Apple toolchain.
@@ -171,6 +171,7 @@
         I removed Systemd after the installation, but that was just a matter
         of personal preference.
       </imgcentercaption>
+      <h4>Wireless</h4>
       <p>
         After the installation (successful, btw), I copied over the firmware
         files for the Broadcom wireless chipset (for the Linux b43 driver).
@@ -189,6 +190,96 @@
         Broadcom's BCM43xx chips for wireless LAN in the mid-to-late 2000's,
         so there's plenty of information out there.
       </p>
+      <h4>Fixing X.org (X server hang at startup; Radeon bug)</h4>
+      <p>
+        Since I used a 'netinstall' cd without a network connection, my Debian
+        install was extremely compact. It didn't even have an X server, so I
+        installed one from a shell after getting a network connection.
+        Unfortunately, I hit a problem when attempting to use it: it'd hang
+        pretty quickly after starting up.
+      </p>
+      <p>
+        It appears that Powerbooks with ATI GPU's have had issues ever since
+        Kernel Mode-Setting (KMS) was introduced; additionally, recent kernels
+        no longer contained the old User Mode-Setting (UMS) code. The issue
+        stems from a bug with the AGP implementation on the Powerbook (I think
+        maybe it was from a bridge chip, or something). Basically, a DMA
+        controller (Direct Memory Access controller) would misbehave and
+        corrupt something, if I remember correctly.
+      </p>
+      <p>
+        There are three solutions for this problem:
+      </p>
+      <ol>
+        <li>Downgrade my kernel and Mesa versions to ones that use UMS</li>
+        <li>Force the GPU to run in "PCI Mode," basically foregoing the AGP
+          expansions. AGP is based on the PCI bus, but from what I can tell
+          can have additional bandwidth by more use of DMA. Running in PCI mode
+          side-steps the issue.</li>
+        <li>Fix the terrible AGP code in the kernel which no one uses or wants
+          to touch (even x86 systems apparently have problems).</li>
+      </ol>
+      <p>
+        Since I'm not a fan of running ancient kernels (I'd just use OS X
+        10.4 if I were), and I don't think I'm that much of a wizard,
+        I opted to force the GPU to run in PCI mode.
+      </p>
+      <p>
+        This has to be done at boot-time. When the machine starts, there will
+        be a Yaboot prompt, where it waits for a few seconds for you to type
+        something and then boots up. Yaboot is basically the Open
+        Firmware-based bootloader that Debian uses instead of GRUB by
+        default on PowerPC. If you don't type anything (or just hit "return"),
+        you'll see the word 'Linux' appear on the screen, followed by a couple
+        more lines before the kernel starts showing its information.
+      </p>
+      <p>
+        This prompt is a place that we can add new temporary parameters,
+        though! When prompted, type (case-sensitive, I think):
+      </p>
+      <pre class="block">Linux radeon.agpmode=-1</pre>
+      <p>
+        …and press "return."
+      </p>
+      <p>
+        X should now work fine. I am not sure if you can ever reach the same
+        speeds as you would if AGP actually worked, but honestly it runs well
+        enough for me to use a composited window manager (compton) and to
+        emulate a Sega Mega Drive/Genesis (using Genesis Plus GX), so that's
+        all I really need.
+      </p>
+      <p>
+        To make the change more permanent, there are multiple ways to proceed.
+        One way that I see recommended is to add the argument to
+        '/etc/yaboot.conf' (as an 'append=' line).
+      </p>
+      <p>
+        This works, but if you start throwing a bunch of arguments onto the
+        kernel, or if you have more than one kernel you want to choose between,
+        this becomes a bit of a hassle. So I chose a different approach:
+      </p>
+      <p>
+        I created a file called '/etc/modprobe.d/radeon.conf', containing
+        these lines:
+      </p>
+      <pre class="block">options radeon agpmode=-1
+options radeonfb agpmode=-1</pre>
+      <p>
+        I think the 'radeonfb' thing is a non-sequitur (frame-buffer with
+        AGP DMA?) but better safe than sorry, since radeonfb is basically
+        supposed to be a failsafe mode.
+      </p>
+      <p>
+        I then ran these commands to make sure the changes stuck for my next
+        boot (note that I think the 'ybin -v' was unnecessary, but it
+        updates the yaboot configuration):
+      </p>
+      <pre class="block">$ sudo update-initramfs -u
+$ sudo ybin -v</pre>
+      <p>
+        After doing that, my system has never hung in X.
+      </p>
+      <h4>Changing keyboard/mouse behaviors</h4>
       <p>
         I think the next thing I did (after installing an X server, since I
         had done a minimal offline install initially) was to make the touchpad
@@ -201,12 +292,11 @@
       </p>
       <p>
         <pre class="block">if [ -e /sbin/trackpad ]; then
-          /sbin/trackpad notap || /bin/true
-          fi
-
-          if [ -e /sbin/fnset ]; then
-          /sbin/fnset -u || /bin/true
-          fi</pre>
+  /sbin/trackpad notap || /bin/true
+fi
+if [ -e /sbin/fnset ]; then
+  /sbin/fnset -u || /bin/true
+fi</pre>
       </p>
       <p>
         Note that if you are using systemd as your init system, you can't run
@@ -216,6 +306,7 @@
         <a href="https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/">
           this might not be too hard to do</a>, but I have not tried it myself.
       </p>
+      <h4>Right-click with touchpad using Mouseemu</h4>
       <p>
         I also installed a program called
         '<a href="https://snapshot.debian.org/package/mouseemu/0.15-10/">mouseemu</a>,'
@@ -248,9 +339,9 @@
       </p>
       <p>
         <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
-          MID_CLICK="-middle 100 272"    # fn+alt+click
-          SCROLL="-scroll 0"             # disable scroll key for now pending investigation (no idea how it works...)
-          TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it interferes with playing Quake!</pre>
+MID_CLICK="-middle 100 272"    # fn+alt+click
+SCROLL="-scroll 0"             # disable scroll key for now pending investigation (no idea how it works...)
+TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it interferes with playing Quake!</pre>
       </p>
       <p>
         If you don't like the sensitivity or other things with the
@@ -260,24 +351,11 @@
         a middle-man between your keyboard/mouse and X.
       </p>
       <p>
-        …I have end-of-semester homework due really, really soon, now, so I'm
-        going to have to end this post here to slave away on it for a bit.
-      </p>
-      <p>
-        I'll try to come back to this and expand on it later, though! There's
+        I'll try to come back to this and expand on it later. There's
         tons more stuff that I've also done. Here's a sample
         (a teaser, of sorts):
       </p>
       <ul>
-        <li>Fixing a hang when X starts on ATI GPU's</li>
-        <ul>
-          <li>I actually meant to write about this today, but I forgot</li>
-          <li>Short, short version (to be expounded upon): boot with
-            'radeon.agpmode=-1' kernel argument</li>
-          <li>In Yaboot prompt, type 'Linux radeon.agpmode=-1' and hit enter</li>
-          <li>This can be made permanent, but I'll talk about that next time</li>
-          <li>There is a performance penalty, which I'll discuss</li>
-        </ul>
         <li>Fixing Firefox 52/Seamonkey 2.49 on PowerPC:</li>
         <ul>
           <li>Official Debian package was really buggy/crash-prone</li>
