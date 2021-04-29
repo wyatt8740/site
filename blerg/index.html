@@ -249,11 +249,11 @@
       <pre class="block">Section "Device"
     Identifier "Radeon"
     Driver "radeon"
-	Option "AccelMethod" "EXA"
-	Option "DRI" "2" # DRI3 tends to be unstable on everything I try it on, even modern-ish Intel machines.
-	Option "EXAPixmaps" "on" # actually boosts performance when on, might cause instability on some machines but not mine.
-	Option "TearFree" "on" # I just hate tearing, so I threw this in there.
-	Option "EXAVsync" "on" # known to cause instability on some machines, see radeon man page. Mine seems fine.
+    Option "AccelMethod" "EXA"
+    Option "DRI" "2" # DRI3 tends to be unstable on everything I try it on, even modern-ish Intel machines.
+    Option "EXAPixmaps" "on" # actually boosts performance when on, might cause instability on some machines but not mine.
+    Option "TearFree" "on" # I just hate tearing, so I threw this in there.
+    Option "EXAVsync" "on" # known to cause instability on some machines, see radeon man page. Mine seems fine.
 EndSection</pre>
       <p>
         I am not sure if you can ever reach the same
