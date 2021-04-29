@@ -242,7 +242,21 @@
         …and press "return."
       </p>
       <p>
-        X should now work fine. I am not sure if you can ever reach the same
+        X should now work mostly fine, but if I remember correctly, I still
+        suffered from occasional hanging. I was able to fix this with some
+        more options stuffed into '/etc/xorg.conf':
+      </p>
+      <pre class="block">Section "Device"
+    Identifier "Radeon"
+    Driver "radeon"
+	Option "AccelMethod" "EXA"
+	Option "DRI" "2" # DRI3 tends to be unstable on everything I try it on, even modern-ish Intel machines.
+	Option "EXAPixmaps" "on" # actually boosts performance when on, might cause instability on some machines but not mine.
+	Option "TearFree" "on" # I just hate tearing, so I threw this in there.
+	Option "EXAVsync" "on" # known to cause instability on some machines, see radeon man page. Mine seems fine.
+EndSection</pre>
+      <p>
+        I am not sure if you can ever reach the same
         speeds as you would if AGP actually worked, but honestly it runs well
         enough for me to use a composited window manager (compton) and to
         emulate a Sega Mega Drive/Genesis (using Genesis Plus GX), so that's
