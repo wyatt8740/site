@@ -366,6 +366,8 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
           <li>Newer versions of FF appear to be a showstopper, due to vast
             architectural changes and general apathy on Mozilla's part, but I
             will discuss possible solutions/workarounds.</li>
+          <li>In the meantime, see the <a href="https://old.reddit.com/r/PowerPC/comments/myjrl5/seamonkey_249firefox_52_successful_build_for/">
+              Reddit post</a> that I already made for a decent write-up.</li>
         </ul>
         <li>NetSurf, for simpler websites</li>
         <li>Getting GIMP 2.10</li>
@@ -390,13 +392,18 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         <li>Porting miscellaneous programs, fixing big/little-endian mixups</li>
         <li>Java: What works and what doesn't</li>
         <ul>
-          <li>OpenJDK is horribly slow</li>
-          <li>IBM's J9 VM for Java version 6 can be made to work, performs
+          <li>
+            OpenJDK is horribly slow
+          </li>
+          <li>
+            IBM's J9 VM for Java version 6 can be made to work, performs
             great (set 'JITC_PROCESSOR_TYPE' environment variable to 6).
             Unfortunately it's hard to find a link to (though it IS publicly
             available, still) and is rather out of date. J9 for Java 7+ does
-            NOT work.</li>
-          <li>Since IBM recently released J9 as open-source, some efforts have
+            NOT work.
+          </li>
+          <li>
+            Since IBM recently released J9 as open-source, some efforts have
             been made to add 32-bit PowerPC support back (it got dropped at
             some point prior to the open-source release); it appears this can
             mostly work, but I have no idea how to cross-compile it, and am not
