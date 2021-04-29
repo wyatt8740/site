@@ -12,7 +12,7 @@ body {
 
 pre {
   font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
-  font-size: 12pt;
+  font-size: 11pt;
 }
 
 .block {
@@ -86,8 +86,16 @@ imgcentercaption {
   font-size: 11pt;
 }
 
-.navbar {
+.navbar, .blerg_navleft {
   float: left;
+  background-color: #525252;
+  border-color:     #0A0A0A;
+  border-width:     2px;
+  border-style:     solid;
+}
+
+.blerg_navright {
+  float: right;
   background-color: #525252;
   border-color:     #0A0A0A;
   border-width:     2px;
@@ -102,7 +110,7 @@ a:visited {
   color: #0000EE;
 }
 
-.navbar a {
+.navbar a, .blerg_navleft a, .blerg_navright a {
 /*  background-color: #DFDFDF;*/
   padding-left:     2px;
   padding-right:    2px;
