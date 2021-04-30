@@ -35,18 +35,21 @@
         aluminum PowerBook G4 (model A1095) from a HAM radio convention. I
         pretty much instantly regretted my impulsive buy (since I saw something
         else that I also wanted and didn't have the cash on-hand anymore), but
-        no refunds. So I brought it home.</p>
+        no refunds. So I brought it home.
+      </p>
       <p>The following is a partial story of my journey with this machine.
         I've since discovered what it can do, as well as its limitations, and
         I'm not quite so regretful of my purchase anymore. This laptop has
         yielded some great learning experiences for me with respect to
         hardware and software, and also made me more mindful of good software
-        design principles.</p>
+        design principles.
+      </p>
       <p>Note also that much of the stuff I am writing about was done a year or
         more ago, and is therefore likely to have accidental omissions, and
         possibly actual inaccuracies as well. I just think it's been a kind of
-        fun project to get this thing and that maybe other people could benefit
-        or possibly even be entertained by the story.</p>
+        fun project to get this thing on its feet, and that maybe other people
+        could benefit or possibly even be entertained by the story.
+      </p>
       <h4>First Impressions/Hardware Summary: </h4>
       <p>I have a dislike for most Apple hardware, and am still ambivalent
         about this 'book (having had to open it up), but I am convinced that
@@ -80,21 +83,25 @@
             Keyboard (1987) also does this.</li>
         </ul>
       </ul>
-      <p>Note that the dual-link DVI connector is superior to Apple's later
+      <p>
+        Note that the dual-link DVI connector is superior to Apple's later
         proprietary Mini-DVI in that it supplies far higher video resolutions.
         Apple took a step back and downgraded to 1920x1200 @ 60hz maximum when
         they moved to mini-DVI. The only dongle I can imagine needing on this
         machine would be a passive DVI-I to VGA adapter, if connecting the
         laptop to a CRT or similar. These are widely available and not
         Apple-exclusive; I have at least three. Apple sure doesn't build them
-        like they used to.</p>
-      <p>Some other specs of this machine include a 1280x854 TFT LCD (of pretty
+        like they used to.
+      </p>
+      <p>
+        Some other specs of this machine include a 1280x854 TFT LCD (of pretty
         good quality and a nice aspect ratio), a Motorola/Freescale PowerPC
         7447a CPU (7450 derivative) with the Altivec SIMD instruction set,
         an ATI Mobility Radeon 9700 GPU (connected via AGP; there's a hardware
         bug with this that I'll try to get to later in the post), and initially
         (I believe) 512MB of DDR SDRAM. One of the first things I did was
-        upgrading it to 2GB of RAM (its maximum amount).</p>
+        upgrading it to 2GB of RAM (its maximum amount).
+      </p>
       <p>I also replaced the battery pack with an aftermarket one almost
         immediately, since the original Apple one was toast and my charger plug
         is slightly bent/messed up. If the plug comes out or twists too much,
@@ -103,11 +110,13 @@
         particular aftermarket battery didn't quite sit flush with the bottom
         of the laptop's chassis, so I put a strip of silver duct tape around
         the edge of it to stop the thin aluminum plate on the bottom from
-        scraping against surfaces.</p>
+        scraping against surfaces.
+      </p>
       <p>Probably the single most major issue with the Powerbook (especially
         if not running OS X on it) is its single-button touchpad. This can be
         worked around; I'll try to remember to mention it when I get to writing
-        about running Debian Linux on it.</p>
+        about running Debian Linux on it.
+      </p>
       <p>There's also an intermittent problem I've had with the real-time clock
         (and PRAM) battery, which makes me think it probably needs replacing;
         I'll get to that eventually, but it's not a very big deal since I can
@@ -121,7 +130,8 @@
         <a href="https://www.ifixit.com/Guide/PowerBook+G4+PRAM+Battery+Replacement/3662">
           ifixit</a> (thus the pointless red circles).
       </imgcentercaption>
-      <p>Since the original board assembly (part # 820-1686 or 820-1686-A) is
+      <p>
+        Since the original board assembly (part # 820-1686 or 820-1686-A) is
         apparently hard to find and often unavailable on ebay, etc., and the
         Panasonic coin cell in question is no longer in production, I'll
         probably end up ordering a similar cell I found on Digikey. Since
@@ -165,7 +175,8 @@
         Anyway, I burned a Debian installer CD-R, after unsuccessfully
         attempting to get it to boot off a USB. Apparently, it can be done, but I
         was quick to lose patience with Open Firmware and went for the install
-        medium which I was more certain could actually work.</p>
+        medium which I was more certain could actually work.
+      </p>
       <a href="./powerbook_1/full/g4_debian_install.jpg"><img src="./powerbook_1/g4_debian_install.jpg" alt="Debian installer, running for the first time on the Powerbook"/></a>
       <imgcentercaption>Debian installer, running for the first time on the Powerbook.
         I removed Systemd after the installation, but that was just a matter
@@ -371,15 +382,16 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         that I think I can cover (consider it an informative teaser, of sorts):
       </p>
       <ul>
-        <li>Curbing overly-aggressive fans</li>
+        <li>Curbing overly-aggressive (and loud) fans</li>
         <ul>
           <li>The 7447a is rated for 105°C max. die junction temperature</li>
-          <li>The onboard sensor is wildly inaccurate, but still only ±20°C, I think</li>
-          <li>fans kick on at 50°C, which is basically the temerature it reaches when
-            starting a web browser</li>
+          <li>The onboard sensor is wildly inaccurate, but still within ±20°C,
+            I think</li>
+          <li>Kernel makes the fans kick on at 50°C, by default, which is
+            basically the temperature it reaches when starting a web browser
+            or otherwise not being idle</li>
           <li>Powerbook fans are LOUD</li>
-          <li>
-            My solution: bump threshold for activation up by 5-8°C or so,
+          <li>My solution: bump threshold for activation up by 5-8°C or so,
             resulting in a far quieter system while still well within the safe
             temperature range
           </li>
