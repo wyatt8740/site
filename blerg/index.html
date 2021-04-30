@@ -371,6 +371,19 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         that I think I can cover (consider it an informative teaser, of sorts):
       </p>
       <ul>
+        <li>Curbing overly-aggressive fans</li>
+        <ul>
+          <li>The 7447a is rated for 105°C max. die junction temperature</li>
+          <li>The onboard sensor is wildly inaccurate, but still only ±20°C, I think</li>
+          <li>fans kick on at 50°C, which is basically the temerature it reaches when
+            starting a web browser</li>
+          <li>Powerbook fans are LOUD</li>
+          <li>
+            My solution: bump threshold for activation up by 5-8°C or so,
+            resulting in a far quieter system while still well within the safe
+            temperature range
+          </li>
+        </ul>
         <li>Fixing Firefox 52/Seamonkey 2.49 on PowerPC:</li>
         <ul>
           <li>Official Debian package was really buggy/crash-prone</li>
