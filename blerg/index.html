@@ -394,11 +394,18 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
           <li>Nominally uses the Duktape Javascript engine (can be seen with canvas elements)</li> 
           <li>Almost no support for other dynamic web content as of now</li>
         </ul>
+        <li>Porting miscellaneous programs, fixing big/little-endian mixups</li>
+        <ul>
+          <li>Music/audio programs (e.g., a playstation chiptune player)</li>
+          <li>Various emulators</li>
+        </ul>
         <li>Getting GIMP 2.10</li>
         <ul>
           <li>Basically, a library Gimp 2.10 uses (gegl, I think) builds fine,
             but one of the post-build tests times out due to poor performance on
-            PowerPC (and MIPS)</li>
+            PowerPC (and MIPS).</li>
+          <li>I blame Meson, because I generally find myself
+            annoyed with it for other reasons, too, and it's a good scapegoat</li>
           <li>Due to this, Debian's build bots think the package failed to build</li>
           <li>Since it depends on this library, GIMP 2.10 doesn't exist in the
             Debian repositories for PowerPC</li>
@@ -412,8 +419,6 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
             after a lot of confusion I figured out how to get this version working
             on PowerPC (avoiding x86-specific assembly code)</li>
         </ul>
-        <li>Porting various emulators</li>
-        <li>Porting miscellaneous programs, fixing big/little-endian mixups</li>
         <li>Java: What works and what doesn't</li>
         <ul>
           <li>
