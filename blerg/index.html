@@ -678,9 +678,11 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         math correctly.
       </p>
       <p>
-        Sets requiring this resistor will also likely need a 220µF capacitor
-        somewhere on the line to remove the DC bias and turn it into a roughly
-        one volt peak-to-peak (±0.5V) signal.
+        Sets requiring this resistor might also want a 220µF capacitor
+        somewhere on the line to remove the DC bias (coupling) and turn it
+        into a roughly one volt peak-to-peak (±0.5V) signal.  The capacitor
+        is likely not strictly necessary, but does make the signal more
+        "standard compliant," nominally, and probably won't be a bad thing.
         None of my displays need either the resistor nor the capacitor, but
         I've heard that some scalers might. I did put the capacitor on,
         regardless. Since these caps are typically polarized, put it with
