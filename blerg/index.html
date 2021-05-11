@@ -662,7 +662,9 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         work is needed if you want to use the CSync connection on the back.
         Without this work, the load on the CSync line will make the video
         outputs from the VDP chip black due to the CSync line being connected
-        straight to the VDP instead of coming out of the encoder chip.
+        straight to the VDP (on an open-collector transistor output) instead of
+        coming out of the encoder chip. Any direct load on the VDP like this
+        will basically mean it is unable to produce a picture.
       </p>
       <a href="./rgb_stuff/full/genesis_md_rgb.png"><img src="./rgb_stuff/genesis_md_rgb.png" alt="Diagram showing Model 1 Mega Drive and Genesis pinouts, plus notes on making composite sync (CSync) work."/></a>
       <imgcentercaption>My personal notes on the model 1 Mega Drive/Genesis
