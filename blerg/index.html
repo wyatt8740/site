@@ -657,13 +657,35 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
       <p>
         Most of my other consoles I drilled holes in to add RCA jacks to carry
         Red, Green, and Blue signals, as well as a composite sync signal. In a
-        couple cases, I added S-Video jacks as well. However, on the original
-        PlayStation, this is harder to do since there's a thick metal RF
-        shielding plate which doubles as a support structure for the CD pickup
-        mechanism. This means I can't just remove it. It comes up really close
-        to the plastic on the back of the console. Additionally, for all the
-        times that I've done it, I don't actually like cutting holes in my
-        systems if I can easily avoid it. With the PSX, I have managed to
+        couple cases, I added S-Video jacks as well. Do note that for sync
+        on Mega Drive/Genesis systems (and Master Systems, I believe), a little
+        work is needed if you want to use the CSync connection on the back.
+      </p>
+      <a href="./rgb_stuff/full/genesis_md_rgb.png"><img src="./rgb_stuff/genesis_md_rgb.png" alt="Diagram showing Model 1 Mega Drive and Genesis pinouts, plus notes on making composite sync (CSync) work."/></a>
+      <imgcentercaption>My personal notes on the model 1 Mega Drive/Genesis
+        video out pinouts, plus how I got a working composite sync (CSync)
+        signal from it.
+      </imgcentercaption>
+      <p>
+        Note that CSync obtained like this will be +5V; most screens are fine
+        with this, but a handful of picky ones will need a resistor to bring
+        it down to 1 volt (remember that this resistor will form a voltage
+        divider with the monitor's 75-ohm resistive load when connected!).
+      </p>
+      <p>
+        Sets requiring this resistor will also likely need a 220µF capacitor
+        somewhere on the line to remove the DC bias and turn it into a roughly
+        one volt peak-to-peak (±0.5V) signal.
+        None of my displays need this, but I've heard that some scalers might.
+      </p>
+      <p>
+        On the original PlayStation, RGB out is harder to do since
+        there's a thick metal RF shielding plate which doubles as a support
+        structure for the CD pickup mechanism. This means I can't just remove
+        it. It comes up really close to the plastic on the back of the
+        console, which means I don't have space for jacks. Additionally, for
+        all the times that I've done it, I don't actually like cutting holes in
+        my systems if I can easily avoid it. With the PSX, I have managed to
         avoid doing so while staying economical.
       </p>
       <p>
