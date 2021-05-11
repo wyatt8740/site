@@ -669,14 +669,22 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
       <p>
         Note that CSync obtained like this will be +5V; most screens are fine
         with this, but a handful of picky ones will need a resistor to bring
-        it down to 1 volt (remember that this resistor will form a voltage
-        divider with the monitor's 75-ohm resistive load when connected!).
+        it down to 1 volt. Remember: this resistor will form a voltage
+        divider with the monitor's 75-ohm resistive load when connected; you
+        can think of it as being a 75 ohm resistor on the monitor's sync plug
+        that connects between the signal pin and ground. To get a one volt
+        output with 75 ohms already running between the output and ground, the
+        resistor in series on the sync line should be 300 ohms, if I did the
+        math correctly.
       </p>
       <p>
         Sets requiring this resistor will also likely need a 220µF capacitor
         somewhere on the line to remove the DC bias and turn it into a roughly
         one volt peak-to-peak (±0.5V) signal.
-        None of my displays need this, but I've heard that some scalers might.
+        None of my displays need either the resistor nor the capacitor, but
+        I've heard that some scalers might. I did put the capacitor on,
+        regardless. Since these caps are typically polarized, put it with
+        the 'negative' (–) leg facing towards the monitor.
       </p>
       <p>
         On the original PlayStation, RGB out is harder to do since
