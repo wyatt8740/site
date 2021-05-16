@@ -315,14 +315,12 @@ $ sudo ybin -v</pre>
         which contained the tools I was looking for. After it was installed, I
         added the following to the end of my '/etc/rc.local' file:
       </p>
-      <p>
-        <pre class="block">if [ -e /sbin/trackpad ]; then
+      <pre class="block">if [ -e /sbin/trackpad ]; then
   /sbin/trackpad notap || /bin/true
 fi
 if [ -e /sbin/fnset ]; then
   /sbin/fnset -u || /bin/true
 fi</pre>
-      </p>
       <p>
         Note that if you are using systemd as your init system, you can't run
         stuff at boot from 'rc.local' like I did. I'm using 'sysvinit' (System V
@@ -362,12 +360,10 @@ fi</pre>
         ctrl-alt-f1 for instance). Here's my personal configuration
         (note: pretty sure 272 is the mouse button event):
       </p>
-      <p>
-        <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
+      <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
 MID_CLICK="-middle 100 272"    # fn+alt+click
 SCROLL="-scroll 0"             # disable scroll key for now pending investigation (no idea how it works...)
 TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it interferes with playing Quake!</pre>
-      </p>
       <p>
         If you don't like the sensitivity or other things with the
         touchpad, and you are using mouseemu, note that any configuration changes
@@ -480,13 +476,13 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
             sure I have the motivation, either.
           </li>
         </ul>
-      </ul>
-      <li>Go, Node.JS, .NET, and other "problem spot" languages/frameworks</li>
-      <ul>
-        <li>
-          Prior to Microsoft contributing to Mono, it actually worked
-          fine on PPC32. So MS ruins everything, as usual.
-        </li>
+        <li>Go, Node.JS, .NET, and other "problem spot" languages/frameworks</li>
+        <ul>
+          <li>
+            Prior to Microsoft contributing to Mono, it actually worked
+            fine on PPC32. So MS ruins everything, as usual.
+          </li>
+        </ul>
       </ul>
       <p>
         Stay tuned!
@@ -587,11 +583,9 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
       <p>
         …Let me just convert that to Freedom Units really fast.
       </p>
-      <p>
-        <figure>
-          <img src="./rgb_stuff/freedom_units.png" alt="Picture of a unit conversion widget. GBP 125.95 is USD 152.45."/>
-        </figure>
-      </p>
+      <figure>
+        <img src="./rgb_stuff/freedom_units.png" alt="Picture of a unit conversion widget. GBP 125.95 is USD 152.45."/>
+      </figure>
       <p>
         …Uh, that's <b>$152.45</b>.
         <i>Before shipping from the UK to the US.</i>
