@@ -31,6 +31,8 @@
         Platforms<br/>
       </h3>
       <p><i>28 April 2021</i> [<a class="permalink" href="./003_004.html#powerbook-linux-1">Permanent link</a>]<br/>
+        <b>Last updated:</b> <i>19 May 2021</i> (CardBus 802.11n wireless LAN
+        upgrade notes added)<br/>
         A while ago now (November 2017, at latest), I got a 1.33GHz
         aluminum PowerBook G4 (model A1095) from a HAM radio convention. I
         pretty much instantly regretted my impulsive buy (since I saw something
@@ -200,6 +202,52 @@
         instance, and I think the D630's as well. Many, many devices used
         Broadcom's BCM43xx chips for wireless LAN in the mid-to-late 2000's,
         so there's plenty of information out there.
+      </p>
+      <h4>Wireless: upgrade to 802.11n via the CardBus slot</h4>
+      <p><b>Update:</b>Well, it's been about a month since I wrote the above,
+        and I got a suitable card for dual-band 802.11n (draft) on the
+        powerbook at a good price new old stock on eBay.</p>
+      <p>Do note that I don't believe this card has any drivers for PPC OS X,
+        so don't get one of these if that matters to you. I think one or two
+        manufacturers <i>did</i> make CardBus cards for 802.11n on Powerbooks,
+        but I don't think those used Atheros chipsets so I didn't bother
+        investigating further.
+      </p>
+      <p>
+        I specifically searched online for cards with Atheros chipsets because
+        the "ath9k" Linux kernel driver can work with many of these chips
+        without requiring a single binary firmware blob (so they are completely
+        plug-n'-play under Linux, and I believe this is true under the BSD's as
+        well). It had to not only be an Atheros card, it also had to be
+        dual-band (not all 802.11n adapters are) and it had to be a CardBus
+        card. I eventually settled on a card that reportedly contained an
+        AR5416 chip – a D-Link DWA-645 rev. A2. I spent around $12 on it.
+      </p>
+      <a href="./powerbook_1/full/wlan.jpg"><img src="./powerbook_1/wlan.jpg" alt="The new wireless LAN card, installed."/></a>
+      <imgcentercaption>
+        The new wireless LAN card, a D-Link DWA-645, plugged in. In my opinion,
+        it doesn't look too bad!<br/>
+        Also visible: this page, being edited in emacs.
+      </imgcentercaption>
+      <p>
+        I plugged in the card, and lo and behold it "just worked" using the
+        ath9k module. My wireless transfers to and from my other machines are
+        now significantly faster than they were over 802.11g. My router
+        is set up to broadcast on both 2.4GHz and ~5GHz bands in 802.11n, and
+        I have a similar atheros upgrade done internally in my Thinkpad X201
+        Tablet, which also yielded quite a nice reliability improvement over
+        the original Intel 6200/6300 802.11n card it shipped with. While I'm
+        not quite as big of a fan of newer 802.11ac ath10k cards from them
+        (which require firmware blobs and are from after the Qualcomm buyout),
+        I have nothing but praise for the ath9k cards and highly recommend them
+        for any system.
+      </p>
+      <p>
+        So far, the card jutting out of the side of the machine hasn't gotten
+        in my way much; I'm quite happy with the results. Theoretically,
+        since the drivers are totally open-source with no binary blobs, I think
+        it'd be possible to backport the Linux kernel driver to OS X PPC, but
+        I feel no particular motivation to do so.
       </p>
       <h4>Fixing X.org (X server hang at startup; Radeon bug)</h4>
       <p>
@@ -411,8 +459,11 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
           <li>Low RAM usage</li>
           <li>Highly portable (written in C; has BeOS, RiscOS, and Amiga ports)</li>
           <li>pretty solid HTML 4 and CSS 1/2 implementation</li>
+          <ul>
+            <li>Displays my webpage fine, at least ;)</li>
+          </ul>
           <li>Marginal HTML5/CSS3 support</li>
-          <li>Nominally uses the Duktape Javascript engine (can be seen with canvas elements)</li> 
+          <li>Nominally uses the Duktape Javascript engine (can be seen with pretty much only canvas elements)</li> 
           <li>Almost no support for other dynamic web content as of now</li>
         </ul>
         <li>Lighter-weight alternatives for desktop environments</li>
