@@ -194,7 +194,7 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
       <p>
         Just for my own amusement, I tried to find the same information on my
         only bare-metal Windows installation on a USB-compatible machine:
-        a Dell Latitude D610 running Windows XP SP3.
+        a Dell Latitude D610 running XP SP3.
       </p>
       <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
       <imgcentercaption>Hopefully, this will still be relevant to those of you
@@ -288,17 +288,75 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
         got those spots I'm going to make one of them a compose key and
         another one legendless.
       </p>
+      <h3>Remapping the Right Windows/Right Alt Keys (Linux-Specific)</h3>
       <p>
-        
+        The first method I tried to remap the right alt and windows keys works,
+        but only in X11, and while it is keyboard-specific (does not mess up
+        the mappings on other keyboards, such as the built-in laptop keyboard)
+        it is hard to replicate easily so I'm just going to mention it briefly.
       </p>
       <p>
-        --------PLACEHOLDER--------<br/>
-<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PUT ARTICLE HERE<br/>
-<br/>
-        --------PLACEHOLDER--------<br/>
+        It uses 'xkbcomp' to compile new keyboard definitions on a per-keyboard
+        basis to remap the keys. You basically have to find the keyboard's
+        ID according to x (using xinput) and then add 'swap_ralt_rwin' to
+        the 'xkb_symbols' list.
       </p>
-      <h3>Common Complaints about Unicomp &amp; Buckling Spring keyboards</h3>
+      <p>
+        The second, <b>better</b> method works inside of X and in consoles,
+        and so is preferable. It also works on a per-keyboard basis by using
+        udev hwdb rules.
+      </p>
+      <p>
+        Long story short, you can create a file called
+        '/etc/udev/hwdb.d/99-unicomp.hwdb' containing the following code.
+        Create directories as necessary to create the file.
+      </p>
+      <pre class="block">evdev:input:b0003v17F6p1862*
+ KEYBOARD_KEY_700e6=rightmeta
+ KEYBOARD_KEY_700e7=rightalt</pre>
+      <p>
+        then, as root, run:
+      </p>
+      <pre class="block"># udevadm hwdb --update</pre>
+      <p>
+        On systemd systems, I have read that 'udevadm hwdb' is deprecated, but
+        it still works on my Debian system which is using hwdb <i>without</i>
+        the rest of systemd active.
+      </p>
+      <p>
+        It was kind of tricky to figure out how to do write this file, but if
+        you are curious, try to look up 'hwdb keyboard remapping' or similar
+        in a search engine.
+      </p>
+      <h3>BLUE LED'S, AAARGH</h3>
+      <p>
+        It seems that some time in the last year, Unicomp started using blue
+        LED's in its keyboards. This is bad, because they're too bright,
+        because <a href="https://www.webmd.com/sleep-disorders/sleep-blue-light">
+          blue keeps you up at night</a>, and because it's utterly inauthentic
+        for a keyboard with a 1980's design to have blue LED's, when blue LED's
+        weren't even created until the late 90's or early 2000's. Green or
+        amber would both have been preferable choices.
+      </p>
+      <p>
+        To make things worse, normally I'd just desolder them, buuut this time
+        they're tiny surface mount things mounted directly on the keyboard
+        membrane. So that's not good.
+      </p>
+      <p>
+        I plan to do something like I did when I put a PS/2 model M controller
+        board inside a terminal M, where I soldered a header to the board's
+        pins that connected to the LED's on the matrix of the PS/2 keyboard
+        matrix and then ran a cable to a perfboard I slapped some LED's on.
+        I think that should work fine here, too. I'll probably update this page
+        when I finally do it.
+      </p>
+      <p>
+        I might write more here soon, mentioning another little issue I've
+        noticed where the controller board gets pretty warm, but I'll save it
+        for later. I've been writing this for entirely too long now.
+      </p>
+      <h3>Addressing Some Common Complaints People Make about Unicomp &amp; Buckling Spring keyboards</h3>
       <h4>(Not specifically the Mini M)</h4>
       <p>
         These are some common complaints I read about Unicomp keyboards, and
@@ -309,6 +367,28 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
         printing techniques). So if you spot anything wrong, You could make an
         issue on this site's issue tracker (currently on <a href="https://github.com/wyatt8740/site/issues">
           GitHub</a>).
+      </p>
+      <h4>Poorly Printed Key Legends</h4>
+      <p>
+        I can't say much here, except that the legends on my board look pretty
+        good to me. Sure, if I A/B it with an early 90's IBM M, I might say
+        that the positioning on the "pause" and "end" key printing is a bit
+        low, but that's only when comparing it directly to another keyboard.
+        In practice, I don't spend most of my time looking at my keyboard, so
+        I honestly don't notice or care.
+      </p>
+      <p>
+        All the rest of the keys on the board, however, look absolutely fine
+        to my eyes, and I only noticed 'Pause' and 'End' when I went looking
+        for them. I find it easy to forget about again since it really does
+        not impact my typing experience.
+      </p>
+      <p>
+        The other complaint I've seen lodged against Unicomp seems to be an
+        older one, but there were reports of what sounds like "overspray,"
+        basically blurry printing. I definitely do not see blurry printing
+        on this board, though. It looks thick and crisp and solid. So
+        either I got really lucky, or they've corrected this issue.
       </p>
       <h4>Noisy</h4>
       <p>
