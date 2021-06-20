@@ -154,14 +154,163 @@
         just want a "yes" or "no," though, then <i>yes</i>, I am happy that I
         bought it.
       </p>
-      <h3>Diving deeper</h3>
+      <h3>Diving Deeper into the Mini M</h3>
+      <h4>Initial Order and Delivery</h4>
+      <p>
+        I ordered the board around June sixth or seventh, and since I
+        was a pre-orderer, I think that they gave my order priority.
+        They claimed that on account of high demand, orderers should anticipate
+        a four to six week lead time normally, but my board arrived on the
+        ninth. It was only travelling from Kentucky to Indiana, but I was still
+        impressed!
+      </p>
+      <p>
+        The sticker on the bottom of the board says that it was built on the
+        seventh. I'm not sure if they build these things "to-order," or if
+        they really are just struggling to keep up with the orders.
+      </p>
+      <a href="./unicomp_1/full/UT40E7A_0001034_03.jpg"><img src="./unicomp_1/UT40E7A_0001034_03.jpg"/></a>
+      <p>
+        At any rate, I'm happy that I pre-ordered sometime last year. I am
+        equally happy that I waited until June to get the board, since there
+        are reports that boards produced before sometime in April or May have
+        a firmware issue where the 'Q' key (and possibly others) can stop
+        registering after several hours plugged in. While Unicomp is offering
+        to fix the boards of people who experience the issue, it's just
+        something I don't have to deal with.
+      </p>
+      <p>
+        If you want to check your keyboard's firmware version, it's relatively
+        simple to do it. On a Linux machine, you can do something like this:
+      </p>
+      <pre class="block">$ lsusb |grep Unicomp
+Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
+      <p>
+        The key information you're looking for is technically in what 'lsusb'
+        calls the 'iProduct' field. On non-Linux systems, or on Linux systems
+        without the 'lsusb' tool, you may have to find other means to get
+        that information.
+      </p>
+      <p>
+        Just for my own amusement, I tried to find the same information on my
+        only bare-metal Windows installation on a USB-compatible machine:
+        a Dell Latitude D610 running Windows XP SP3.
+      </p>
+      <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
+      <imgcentercaption>Hopefully, this will still be relevant to those of you
+      that are using Windows 11.</imgcentercaption>
+      <p>
+        The key here is the 'v7_56' part. From what I can gather, it seems
+        that the boards with the 'Q' key issue are on v7_52 or some older
+        version.
+      </p>
+      <p>
+        At the same time, though, I sort of wish that I'd been just a little
+        bit earlier so I could have gotten a sub-1000 serial number and
+        still dodged the issue. ;)
+      </p>
+      <p>
+        When I first pulled it out of the box, a couple keycaps were popped
+        off, but they keyboard was wrapped in plastic and the box included
+        instructions for replacing keys that come loose in shipping. Honestly,
+        I re-seated the two or three keys by just pushing down on them, prior
+        to even reading or looking at the papers (a friend of mine came over
+        just as I was picking up the box, and he snatched the papers to read
+        while I was looking at the board, so I didn't notice them for a good
+        ten minutes).
+      </p>
+      <p>
+        The box was a simple, no-frills brown cardboard one, nearly identical
+        to the one that Unicomp shipped me a full-size "classic" M case in
+        a few years back, but shorter to accomodate the lack of a numeric pad
+        on the product inside it. It had cardboard inserts to hold the
+        keyboard steady during shipment, and it did a fine job.
+      </p>
+      <p>
+        Also in the box was a Monoprice six-foot USB A-to-A cable. It's funny
+        to see a Monoprice branded cable in there, but it makes me think that
+        either their prices are just that good, or maybe other industrial
+        suppliers don't usually stock USB A-to-A cables, which are technically
+        non-standard equipment with undefined behavior in the USB
+        specification.
+      </p>
+      <p>
+        As an aside, I actually already had a USB A-to-A cable, funnily enough.
+        I had gotten one for $1 from a bargain bin in a local computer store
+        and used it to write third party firmware (<a href="https://github.com/keirf/FlashFloppy">
+          FlashFloppy</a>) to a
+        <a href="http://www.gotekemulator.com/">Gotek</a> floppy drive emulator
+        for use in my Amiga 500. So that's handy, since I have a backup if
+        anything happens to this one. I sort of wish the cable was coiled,
+        but obviously there's very little real world demand for that,
+        especially in A-to-A form factor. It's just a "nice-to-have."
+      </p>
+      <p>
+        The last item in the box was a long length spacebar in the "bright
+        white" color. I do not like the shortened spacebar and awkward alt
+        key on this board (nor indeed do I like Windows keys at all, since
+        they advertise a product I do not want to use outside of work), so
+        while I still need to order a couple more keycaps to get everything
+        matching, the spacebar was enough to get me most of the way there.
+        I had to bend the stabilizer bar out a tiny bit to get it to swivel
+        freely, since it was rubbing on the clips of the key itself. No big
+        deal.
+      </p>
+      <a href="./unicomp_1/full/UT40E7A_0001034_02.jpg"><img src="./unicomp_1/UT40E7A_0001034_02.jpg" alt="My Unicomp Mini M, with shell removed, showing the keys I replaced."/></a>
+      <imgcentercaption>
+        My Unicomp Mini M, naked. Also shows the keycaps I replaced. I'll
+        get the right colors soon!
+      </imgcentercaption>
+      <p>
+        Notice how the alt keys have green legends, akin to the PS/2 enhanced
+        keyboards of old. That's a nice touch; I just wish they'd have kept
+        the right windows key <a href="https://www.pckeyboard.com/page/product/NEW_M">where it is on their Classic 104 and even their
+          "New Model M"</a> (slightly better picture <a href="https://www.pckeyboard.com/mm5/graphics/00000001/Update%20and%20Announcement%20v_1.4.htm">
+          here</a> [<a href="https://www.pckeyboard.com/mm5/graphics/00000001/Update%20and%20Announcement%20v_1.4.pdf">PDF</a>]),
+        so I could cover
+        it up without having to remap the right alt key in software and buy
+        another full-width one with green legend to match the left alt key.
+        I opened a support ticket, though, and Unicomp gave me instructions on
+        how to order the exact caps I needed. So good on them, overall.
+      </p>
+      <p>
+        I didn't ask about remapping, since I think they probably won't just
+        give me source code and instructions on how to reprogram their
+        microcontroller, but as I plan to mention later in this write-up it
+        appears that the controller does use flash memory and should therefore
+        be reprogrammable, at least in theory. The trouble might be that I
+        don't know if it'll be possible to read the old firmware off of it.
+      </p>
+      <p>
+        I know people complained about the other keyboard layout, too, so I
+        guess Unicomp just can't win no matter what they do. Ideally I'd have
+        no Windows keys there at all, mimicing the original SSK, but since I've
+        got those spots I'm going to make one of them a compose key and
+        another one legendless.
+      </p>
+      <p>
+        
+      </p>
+      <p>
+        --------PLACEHOLDER--------<br/>
+<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PUT ARTICLE HERE<br/>
+<br/>
+        --------PLACEHOLDER--------<br/>
+      </p>
       <h3>Common Complaints about Unicomp &amp; Buckling Spring keyboards</h3>
+      <h4>(Not specifically the Mini M)</h4>
       <p>
         These are some common complaints I read about Unicomp keyboards, and
         sometimes about buckling springs or mechanical keyboards as a whole.
-        I'm using this as a place to respond to things I see people complaining
-        about, and what I think of their complaints.
-      <h4>Noise</h4>
+        I'm using this as a place to address the complaints and give my two
+        cents on them. I'm not trying to defend any particular person or group
+        here, and I could definitely be wrong about some things (like legend
+        printing techniques). So if you spot anything wrong, You could make an
+        issue on this site's issue tracker (currently on <a href="https://github.com/wyatt8740/site/issues">
+          GitHub</a>).
+      </p>
+      <h4>Noisy</h4>
       <p>
         Unicomp's detractors tend to complain about the noise of the boards,
         but in my personal opinion, this is totally missing the point of a
@@ -203,14 +352,15 @@
           <li>You're new to typing and are in the dark a lot,</li>
           <li>You're on a strange keyboard layout and haven't adapted to
               it yet, or</li>
-          <li>You like the aesthetic.</li>
+          <li>You like the aesthetic to such an extent that you won't buy
+              a keyboard if it hasn't got it.</li>
         </ol>
         If your reason is liking the backlit aesthetic (which I will admit
         is neat), and that's your only reason for not wanting a buckling spring
         board, I'd like to ask why you're spending so much time looking at your
         keyboard rather than using it. Everyone likes things for different
         reasons, sure, but as a utilitarian I'd just see backlighting as a
-        bonus rather than an essential feature.
+        nice bonus rather than an essential feature.
       </p>
       <p>
         Additionally, it's worth noting that the buckling spring mechanism
@@ -250,8 +400,9 @@
       </p>
       <p>
         The way that black keyboards usually have legends added is
-        with either lasering, pad printing, double-shot injection moulding,
-        or possibly something like silk screening. Pad printing is
+        with either lasering (the ability to print white on black with a laser
+        is relatively new, though), pad printing, double-shot injection
+        moulding, or possibly something like silk screening. Pad printing is
         basically just stamping paint onto the black plastic. It works, but
         it will wear down with heavy use, and requires pad printing machinery,
         which can be expensive to purchase and maintain and is less permanent
