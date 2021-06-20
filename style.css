@@ -40,7 +40,8 @@ h2 {
 }
 
 h3 {
-  text-align: center;
+  text-align: left;
+  margin: 0 auto;
 }
 
 .postarea {
@@ -84,6 +85,7 @@ imgcentercaption {
   display: block;
   font-weight: bold;
   font-size: 11pt;
+  margin-bottom: 16px;
 }
 
 .navbar, .blerg_navleft {
