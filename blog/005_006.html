@@ -28,22 +28,21 @@
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
       <ul>
-        <li><a href="#unicomp-mini-1">Unicomp Returns to Form</a></li>
+        <li><a href="#unicomp-mini-1">Unicomp Returns to Form: My Thoughts on the Mini M</a></li>
       </ul>
     </div>
     <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
     <div class="postarea" id="unicomp-mini-1">
       <h2>Unicomp Returns to Form:<br/>
-        Thoughts on the Unicomp Mini M Keyboard<br/>
+        My Thoughts on the Unicomp Mini M Keyboard<br/>
       </h2>
-      <p><i>14-20 June 2021</i> [<a class="permalink" href="./005_006.html#unicomp-mini-1">Permanent link</a>]<br/>
+      <p><i>14-22 June 2021</i> [<a class="permalink" href="./005_006.html#unicomp-mini-1">Permanent link</a>]<br/>
       </p>
       <a href="./unicomp_1/full/UT40E7A_0001034_01.jpg"><img src="./unicomp_1/UT40E7A_0001034_01.jpg" alt="The Unicomp Mini M, a new keyboard. This is my own unit."/></a>
       <imgcentercaption>
         The Unicomp Mini M is, to my knowledge, the first entirely new keyboard
-        design Unicomp has produced since it started in around 1996 (the year
-        that I was born). This is my own unit, which has already been subject
-        to a couple small alterations (note the bottom key row).
+        design that Unicomp has ever produced. It's a pretty solid effort.
+        <br/>Unicomp started in around 1996 (the year that I was born).
       </imgcentercaption>
       <h3>First, Some History</h3>
       <p>
@@ -173,49 +172,10 @@
         they really are just struggling to keep up with the orders.
       </p>
       <a href="./unicomp_1/full/UT40E7A_0001034_03.jpg"><img src="./unicomp_1/UT40E7A_0001034_03.jpg"/></a>
-      <p>
-        At any rate, I'm happy that I pre-ordered sometime last year. I am
-        equally happy that I waited until June to get the board, since there
-        are reports that boards produced before sometime in April or May have
-        a firmware issue where the 'Q' key (and possibly others) can stop
-        registering after several hours plugged in. While Unicomp is offering
-        to fix the boards of people who experience the issue, it's just
-        something I don't have to deal with.
-      </p>
-      <p>
-        <b>21 June 2021</b>: I just encountered this problem today, immediately
-        after plugging in the board. So I guess this issue is <b>NOT</b> yet
-        fixed on this firmware. Or maybe it's a microcontroller hardware issue.
-        The one they've chosen to use is a decidedly strange beast…
-      </p>
-      <p>
-        I'm going to give Unicomp a chance to fix this for real before I
-        decide to talk/rant too much about it, because a quick unplug/replug
-        fixed it. But between that and how hot the controller IC gets when
-        running, it is slightly alarming. They also chose a weird chip
-        (Cypress PSoC 1, M8C architecture) for this board. It's a real shame
-        that they couldn't have just used TMK, or at least some conventional
-        keyboard controller IC instead of one with a weird CPLD-like interface
-        and an internal voltage regulator that runs hot to the touch.
-      </p>
-      <p>
-        My guess is that the current chip shortage impacting the industry
-        as a whole may play a part in these issues. I really hope that they
-        change controllers at some point. If I have trouble getting Unicomp
-        to fix their product, I'll likely try to design a new controller
-        board myself at some point. But I'm going to give Unicomp a chance
-        to pull through first. I hope they can figure this out, because I
-        really, really would like for them to succeed. I really don't want
-        them to start bleeding money because they took a risk designing a
-        new product for probably the first time ever and now have a whole
-        bunch of boards out there that they need to pay to repair.
-      </p>
-      <p>
-        I'll update this when I've made a ticket and heard back from them.
-        This issue just cropped up <i>right</i> before I was going to call
-        this article "finished" and post it, so I really don't want to
-        wait and forget to publish it for a month.
-      </p>
+      <imgcentercaption>
+        My Mini M's bottom label. The board got here within two days of its manufacture!
+      </imgcentercaption>
+
       <h3>Unpacking</h3>
       <p>
         When I first pulled it out of the box, a couple keycaps were popped
@@ -448,6 +408,8 @@
       <a href="./unicomp_1/full/board_baseplate_opening.jpg"><img src="./unicomp_1/board_baseplate_opening.jpg"/></a>
       <imgcentercaption>
         Time will tell if the exposed hammers will become an issue.
+        <br/>
+        Left to right: 1987 M 1386303, 2021 Mini M UT40E7A, 1993 M 59G7980.
       </imgcentercaption>
       <p>
         It also appears that Unicomp is just cutting down a full-size barrel
@@ -502,6 +464,64 @@
         I think that should work fine here, too. I'll probably update this page
         when I finally do it.
       </p>
+      <h3>Oddities</h3>
+      <p>
+        I am happy that I waited until June to get the board, since there
+        are reports that boards produced before sometime in April or May have
+        a firmware issue where the 'Q' key (and possibly others) can stop
+        registering after several hours plugged in. While Unicomp is offering
+        to fix the boards of people who experience the issue, it's just
+        something I don't have to deal with.
+      </p>
+      <p>
+        Note: <b>21 June 2021</b>: I just encountered this problem today,
+        immediately after plugging in the board. So I guess this issue is
+        <b>NOT</b> yet fixed on this firmware. Or maybe it's a microcontroller
+        hardware issue. The one they've chosen to use is a decidedly strange
+        beast of a device…
+      </p>
+      <p>
+        At the very least, it seems to have happened much less frequently than
+        people with older firmware versions have been reporting. So maybe
+        I'm still relatively well off.
+      </p>
+      <p>
+        I'm going to give Unicomp a chance to fix this for real before I
+        decide to talk/rant too much about it, because a quick unplug/replug
+        fixed it and it's happened once in two weeks. But between that and
+        how hot the controller IC gets when running, it is slightly alarming.
+      </p>
+      <p>
+        They also chose a weird chip (Cypress PSoC 1, M8C architecture) for
+        this board. It's a real shame that they couldn't have just used TMK
+        firmware, or at least some more conventional keyboard microcontroller
+        instead of one with a weird CPLD-like interface and an internal voltage
+        regulator that runs hot to the touch.
+      </p>
+      <p>
+        My guess is that the current chip shortage impacting the industry
+        as a whole may play a part in these issues. I really hope that they
+        can change controllers at some point. If I have trouble getting
+        Unicomp to help (I think they'll do fine; they typically do great
+        support), I'll likely try to design a new controller board myself at
+        some point.
+      </p>
+      <p>
+        I'm going to give Unicomp a chance to pull through first. I hope
+        they can figure this out, because I really, really would like for
+        them to succeed. I definitely don't want them to start bleeding
+        money because they took a risk designing a new product for probably
+        the first time ever and now have a whole bunch of boards out there
+        that they need to pay to repair. It'd be awesome if they can
+        iron this out and decide that it was good for their bottom line so
+        they can do more awesome stuff (new designs) like this in the future!
+      </p>
+      <p>
+        I'll update this when I've made a ticket and heard back from them.
+        This issue just cropped up <i>right</i> before I was going to call
+        this article "finished" and post it, so I really don't want to
+        wait and forget to publish it for a month.
+      </p>
       <h3>Firmware Version Checking</h3>
       <p>
         If you want to check your keyboard's firmware version, it's relatively
@@ -547,13 +567,17 @@
       <p>
         I might write more here soon, mentioning another little issue I've
         noticed where the controller board gets pretty warm, but I'll save it
-        for later. I've been writing this for entirely too long now.
+        for later. I've been writing this for entirely too long now
+        (<i>several days, multiple hours per day</i>).
       </p>
       <h3>The End/Afterword</h3>
       <p>
         That mostly concludes my thoughts on the Mini M. Despite all the things
-        I highlighted, I must stress that <i>I like this board a lot</i>. It's
-        basically an SSK that I didn't have to skip rent to pay for.
+        I highlighted, I must stress that <i>I like this board a lot.</i> It's
+        basically an SSK that I didn't have to skip rent to pay for! I'm
+        thankful, and I hope that Unicomp can iron out the relatively minor
+        remaining issues soon. Even as it is, I'm pretty pleased with this
+        board, and I'm glad I waited.
       </p>
       <p>
         I'm typing on it right now and will probably continue typing on it in
@@ -568,8 +592,9 @@
       <p>
         Everything that follows is responses to complaints I see others make
         about Unicomp boards and sometimes about Model M's/buckling springs
-        as a whole.
+        as a whole. Consider it bonus material.
       </p>
+      <hr/>
       <h3>Addressing Some Common Complaints People Make about Unicomp &amp; Buckling Spring keyboards</h3>
       <h4>(Not specifically the Mini M)</h4>
       <p>
