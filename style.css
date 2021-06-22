@@ -30,14 +30,17 @@ h1 {
 }
 
 h2 {
-/*  text-align: center;
-  clear: both;
-  padding: 6px;
-  margin-top:       24px;*/
   clear: both;
   text-align: center;
   margin: 0 auto;
-  margin-top: 24px;
+  padding: 6px;
+}
+
+h2.banner {
+  margin-top: 6px;
+  background-color: #DFDFDF;
+  width: 95vw;
+  margin: 24px auto;
   padding: 6px;
 }
 
