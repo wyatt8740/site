@@ -182,36 +182,39 @@
         to fix the boards of people who experience the issue, it's just
         something I don't have to deal with.
       </p>
-      <h3>Firmware Version Checking</h3>
       <p>
-        If you want to check your keyboard's firmware version, it's relatively
-        simple to do it. On a Linux machine, you can do something like this:
-      </p>
-      <pre class="block">$ lsusb |grep Unicomp
-        Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
-      <p>
-        The key information you're looking for is technically in what 'lsusb'
-        calls the 'iProduct' field. On non-Linux systems, or on Linux systems
-        without the 'lsusb' tool, you may have to find other means to get
-        that information.
+        <b>21 June 2021</b>: I just encountered this problem today, immediately
+        after plugging in the board. So I guess this issue is <b>NOT</b> yet
+        fixed on this firmware. Or maybe it's a microcontroller hardware issue.
+        The one they've chosen to use is a decidedly strange beast…
       </p>
       <p>
-        Just for my own amusement, I tried to find the same information on my
-        only bare-metal Windows installation on a USB-compatible machine:
-        a Dell Latitude D610 running XP SP3.
-      </p>
-      <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
-      <imgcentercaption>Hopefully, this will still be relevant to those of you
-        that are using Windows 11.</imgcentercaption>
-      <p>
-        The key here is the 'v7_56' part. From what I can gather, it seems
-        that the boards with the 'Q' key issue are on v7_52 or some older
-        version.
+        I'm going to give Unicomp a chance to fix this for real before I
+        decide to talk/rant too much about it, because a quick unplug/replug
+        fixed it. But between that and how hot the controller IC gets when
+        running, it is slightly alarming. They also chose a weird chip
+        (Cypress PSoC 1, M8C architecture) for this board. It's a real shame
+        that they couldn't have just used TMK, or at least some conventional
+        keyboard controller IC instead of one with a weird CPLD-like interface
+        and an internal voltage regulator that runs hot to the touch.
       </p>
       <p>
-        At the same time, though, I sort of wish that I'd been just a little
-        bit earlier so I could have gotten a sub-1000 serial number and
-        still dodged the issue. ;)
+        My guess is that the current chip shortage impacting the industry
+        as a whole may play a part in these issues. I really hope that they
+        change controllers at some point. If I have trouble getting Unicomp
+        to fix their product, I'll likely try to design a new controller
+        board myself at some point. But I'm going to give Unicomp a chance
+        to pull through first. I hope they can figure this out, because I
+        really, really would like for them to succeed. I really don't want
+        them to start bleeding money because they took a risk designing a
+        new product for probably the first time ever and now have a whole
+        bunch of boards out there that they need to pay to repair.
+      </p>
+      <p>
+        I'll update this when I've made a ticket and heard back from them.
+        This issue just cropped up <i>right</i> before I was going to call
+        this article "finished" and post it, so I really don't want to
+        wait and forget to publish it for a month.
       </p>
       <h3>Unpacking</h3>
       <p>
@@ -370,28 +373,53 @@
         tooling, because the stems are shaped slightly differently than the
         ones on my other boards are!
       </p>
-      <h2>=====PUT KEYCAP PICTURES HERE=====</h2>
+      <a href="./unicomp_1/full/keystems.jpg"><img src="./unicomp_1/keystems.jpg" alt="Comparison of Model F/Early Model M keystems, mid-to-late M keystems, and the new Unicomp ones."/></a>
+      <imgcentercaption>
+        Left to right: Early Model M (same as Model F keystems), Mid-to-late
+        IBM/Lexmark Model M, New keystem from Unicomp Mini M.
+      </imgcentercaption>
       <p>
         I noticed also that unlike my Lexmark M, which sounds a little
         "twangy," this board sounds a lot closer to my 1386303, which
         has mostly just the clicks and minimal harmonics. Again, not sure if
-        that's due to the keycaps, or something else.
+        that's due to the keycaps, or something else. Both my "middle-era"
+        M's have two-piece keys, but only the 'F,' 'J,' and numpad '5' keys
+        are two pieces on my 1386303. So maybe that impacts the feel, too?
+        According to the instruction manual for the IBM 3161 terminal that
+        my early board came with (I own the complete terminal), one of the
+        features of the 3163 that made it more versatile than the 3161 was
+        being able to define custom keys and create labels with clear-colored
+        tops for two-piece keycaps. I'd love to have some of those clear keys
+        :)
       </p>
+      <h3>Improving click consistency: re-seating some springs</h3>
       <p>
         This keyboard had a couple springs I needed to re-seat;
-        they <i>worked</i> but they just didn't please my fingers as much
+        they <i>worked</i>, but they just didn't please my fingers as much
         as the other keys did. So I had to pull the springs off of several
         of the hammers (I used a whittled down q-tip, akin to the "chopstick"
-        method of spring removal and insertion). Eventually, I got the three or
-        four keys that felt weird re-seated, after which point they felt and
-        sounded as good as the others when just re-seating the keycaps wasn't
-        enough. So if you have a key that feels "lame" compared to the
-        surrounding ones, don't be too afraid to try it. My only advice here
-        is to not exert too much pressure on the springs. A little is ok, but
-        when it starts resisting is when you might want to see if it's grabbed.
-        After typing on the key a few times, pull the cap back off
-        and see if the spring is still on its post. If it is, you're
-        ready to roll.
+        method of spring removal and insertion, which you can look up).
+      </p>
+      <p>
+        Eventually, I got the springs on the three or four keys that felt weird
+        re-seated, at which point they felt and sounded as good as the others.
+        So if just re-seating the keycaps isn't enough, you may find re-seating
+        the springs does!
+      </p>
+      <p>
+        If you have a key that feels "lame" compared to the surrounding ones,
+        don't be too afraid to try it. My only advice here is to not exert too
+        much pressure on the springs. A little is ok, but when it starts
+        resisting is when you might want to stop and see if it's grabbed the
+        peg. After typing on the key a few times, pull the cap back off and see
+        if the spring is still on its post. If it is, and you're satisfied with
+        the sound/feel, then you're ready to roll. Otherwise, try again. Just
+        don't overdo it when twisting!
+      </p>
+      <p>
+        If you <i>do</i> mess up, Model M springs can be purchased from
+        Unicomp. So not all is lost! That being said, I didn't mangle any this
+        time.
       </p>
       <h3>Interior Observations</h3>
       <p>
@@ -430,6 +458,11 @@
         wasteful, too. But that means even more tooling, if they don't already
         have a mould lurking around from the IBM/Lexmark days.
       </p>
+      <a href="./unicomp_1/full/UT40E7A_0001034_05.jpg"><img src="./unicomp_1/UT40E7A_0001034_05.jpg" alt="Unicomp looks to be cutting the numpads off of full-size M barrel plates."/></a>
+      <imgcentercaption>
+        Note the cutting marks. Unicomp looks to be cutting the numpads off of
+        full-size M barrel plates.
+      </imgcentercaption>
       <p>
         I think IBM Japan made a buckling spring keypad at some point, and
         Unicomp appears to have at least one IBM Japan mould (they use it for
@@ -468,6 +501,42 @@
         matrix and then ran a cable to a perfboard I slapped some LED's on.
         I think that should work fine here, too. I'll probably update this page
         when I finally do it.
+      </p>
+      <h3>Firmware Version Checking</h3>
+      <p>
+        If you want to check your keyboard's firmware version, it's relatively
+        simple to do it. On a Linux machine, you can do something like this:
+      </p>
+      <pre class="block">$ lsusb |grep Unicomp
+        Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
+      <p>
+        The key information you're looking for is technically in what 'lsusb'
+        calls the 'iProduct' field. On non-Linux systems, or on Linux systems
+        without the 'lsusb' tool, you may have to find other means to get
+        that information.
+      </p>
+      <p>
+        Just for my own amusement, I tried to find the same information on my
+        only bare-metal Windows installation on a USB-compatible machine:
+        a Dell Latitude D610 running XP SP3.
+      </p>
+      <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
+      <imgcentercaption>Hopefully, this will still be relevant to those of you
+        that are using Windows 11.</imgcentercaption>
+      <p>
+        The key here is the 'v7_56' part. From what I can gather, it seems
+        that the boards with the 'Q' key issue are on v7_52 or some older
+        version. Unicomp claimed to have fixed it in v7_56, but I managed
+        to make it happen once so far (see above). I'll update this post if
+        I learn more.
+      </p>
+      <p>
+        If it's really rare and only happens upon plugging in sometimes,
+        I can likely deal with it. We'll see how things go.
+      </p>
+      <p>
+        At the same time, though, I sort of wish that I'd been just a little
+        bit earlier so I could have gotten a sub-1000 serial number. ;)
       </p>
       <h3>Other miscellaneous observations</h3>
       <ul>
