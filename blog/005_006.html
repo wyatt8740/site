@@ -501,6 +501,69 @@
         I think that should work fine here, too. I'll probably update this page
         when I finally do it.
       </p>
+      <h4>Update:</h4>
+      <p>
+        Well, I did it.
+      </p>
+      <a href="./unicomp_1/full/UT40E7A_0001034_06.jpg"><img src="./unicomp_1/UT40E7A_0001034_06.jpg" alt="Unicomp Mini M, with amber/yellow indicator LED's."/></a>
+      <imgcentercaption>
+        I think this amber might actually look better than green; they are
+        definitely a step up from blue (an amateur hour choice, to my mind).
+      </imgcentercaption>
+      <p>
+        I had some green LED's out, then misplaced them. The only shop in town
+        that sells individual LED's which I know of was closed by the time that
+        I realized. So I used these amber/yellow ones instead. I'm very pleased
+        with how it turned out!
+      </p>
+      <p>
+        Since the primary point of this post is to <i>review</i> the keyboard
+        (despite how much I've strayed from there already), I'm going to just
+        cut to the chase and say that in order to do this, you'll want some
+        small LED's (not the "standard size" - I want to say standard is
+        around 6mm - since standard size ones requires cutting into the
+        membrane to fit properly unless you want "sun spots" where the surface
+        mount LED's sit on top of them.
+      </p>
+      <p>
+        If you use short height LED's you can perch your board on top of the
+        membrane and stick it down - I used some of that poster mounting
+        putty stuff. If your LED's are "full-height," though, you'll find
+        the case bumps into them when you attempt to close it unless you seat
+        it on the overhang meant for the USB port and cut away the membrane
+        where it obstructs them.
+      </p>
+      <p>
+        I used full-size ones, since I've already tinkered with this board a
+        lot and am in the process of designing and designing a new replacement
+        controller board for it - I know my warranty's almost certainly voided
+        now, but that just makes it like all my other hardware. I don't think I
+        own any electronics that are new enough to be covered by a warranty,
+        except for a wireless router and my phone. I think that's given me a
+        much more brazen mindset when it comes to messing with things, compared
+        to if I were used to having things like 'warranties.'
+      </p>
+      <p>
+        I cut away at the membrane and sat a small piece of perfboard beneath
+        it, running wires to the controller board, which I soldered to the
+        underside of on the membrane connector. If you don't cut off the blue
+        LED's, you should consider also cutting the 'fingertips' of the LED's
+        and their common Vcc line (four traces total). If you cut the LED's
+        off like I did, that'll cut the circuit, too, so that should be all
+        you need in that case.
+      </p>
+      <h4>LED Electrical Notes</h4>
+      <p>
+        The Unicomp controller board has tiny surface-mounted 1KΩ resistors on
+        the negative side of each LED. The resistors are not marked, but I
+        measured them on a multimeter. I did not check the voltage, but am
+        assuming five volts DC at most.
+      </p>
+      <p>
+        I'd expect a blue LED on 5V to need something under 100Ω at most, so
+        1KΩ is plenty good enough to drive lower-powered LED's like red,
+        yellow, and so forth.
+      </p>
       <h3>Oddities</h3>
       <p>
         I am happy that I waited until June to get the board, since there
