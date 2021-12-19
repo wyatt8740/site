@@ -31,10 +31,128 @@
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
       <ul>
+        <li><a href="#keyboard-remap-1">Global Per-Keyboard Remapping: Inside and Outside of X</a></li>
         <li><a href="#unicomp-mini-1">Unicomp Returns to Form: My Thoughts on the Mini M</a></li>
       </ul>
     </div>
     <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
+    <div class="postarea" id="keyboard-remap-1">
+      <h2>Global Per-Keyboard Remapping:<br/>
+        Inside and outside of X<br/>
+      </h2>
+      <p><i>19 Dec 2021</i> [<a class="permalink" href="./005_006.html#keyboard-remap-1">Permanent link</a>]<br/>
+        This is a short follow-up to my last post, where I briefly mentioned
+        rebinding keys with this method and advised searching for it. I decided
+        I'd actually alaborate here, after all.
+      </p>
+      <h3>The Problem</h3>
+      <p>
+        Caps lock and 'ctrl' have been in the wrong spots ever since IBM's
+        1985 "enhanced keyboard" layout was introduced (after the original
+        AT keyboard).
+      </p>
+      <p>
+        Under Linux (as well as other Unix systems), remapping a keyboard can
+        be somewhat inconsistent and troublesome. There are many methods to
+        accomplish it, and they all seem to have different caveats. I had been
+        using first <code>xmodmap</code> and later <code>xkb</code> to
+        accomplish this.
+      </p>
+      <ul>
+        <li><code>xmodmap</code> applies to all keyboards currently connected;
+          connecting a new board or certain actions like suspend tend to reset
+          the mappings.</li>
+        <li><code>xkb</code> <i>can</i> be made to work in a per-keyboard
+          manner, but setting that up at the user-level proved ridiculously
+          intricate and annoying. It was clearly not designed with this in
+          mind as a user-facing tool. Even though I got it to work, I didn't
+          like it, and every time I decided to change a binding I had to
+          re-learn everything.</li>
+      </ul>
+      <p>
+        The biggest shortcoming, though, is that neither of them impact the
+        keyboard mapping when <i>outside</i> of X (in a console or under a
+        Wayland graphical environment, for instance). This is one of the
+        things hwdb is great at handling. Note, however, that I have never
+        used Wayland, and am simply assuming this works based on how deep
+        into the system this change is being made.
+      </p>
+      <p>
+        With udev and hwdb, I have been able to uniquely map multiple keyboards
+        with easily repeatable steps. The one remaining downside is that I
+        can't find a way to make an hwdb rule that will match <i>all</i>
+        keyboards, so it has to be done for each keyboard I want to use.
+        Here's the steps:
+      </p>
+      <ol>
+        <li>Determine your keyboard's 'modalias.' This is a string that the
+          kernel uses to identify keyboards.</li>
+        <ul>
+          <li>For USB boards, which have vendor and product
+            ID's set by the vendor, you can do <code>find /sys/ -iname *modalias
+              | xargs grep -i &lt;vendor_id&gt;</code> instead and get the string
+            directly.</li>
+          <li>For PS/2 keyboards and others,
+            <code>find /sys/ -iname *modalias|grep input</code> should give a
+            good starting point. For PS/2 keyboards, you will probably have to
+            start looking through them. </li>
+          <ul>
+            <li>For every directory containing a 'modalias' file in that
+              list, there should also be a 'name' file.</li>
+            <li>Read those and you'll eventually see something like
+              <code>AT Translated Set 2 keyboard</code>. That's your PS/2
+              keyboard (or often an integrated laptop keyboard).</li>
+            <li>In my case, my PS/2 keyboard is under
+              <code>/sys/devices/platform/i8042/serio0/input/input0/</code>,
+              so I read the contents of
+              <code>/sys/devices/platform/i8042/serio0/input/input0/modalias</code>.
+            </li>
+          </ul>
+        </ul>
+        <li>With that modalias string ready, cut off everything after and including
+          the first hyphen (for example, mine for my PS/2 keyboard port becomes
+          <code>input:b0011v0001p0001eAB41</code>).</li>
+        <li>Now, find the ID of the key you want to change. For this, use
+          <code>evtest</code> (run as root). Select your board, Press your key,
+          and look at the 'value' field that gets printed.</li>
+        <ul>
+          <li>For PS/2 keyboards, this is usually a two-character hexadecimal
+            value; for USB keyboards it is usually more characters than that.
+          </li>
+        </ul>
+        <li>Make a file called <code>/etc/udev/hwdb.d/95-keyboard-remap.hwdb</code>.</li>
+        <ul>
+          <li>This name is not vital; you can actually call it pretty much
+            whatever you want.</li>
+          </ul>
+        <li>Inside that file, write something like this:</li>
+      </ol>
+      <pre class="block">evdev:input:b0011v0001p0001eAB41*
+ KEYBOARD_KEY_54=compose
+ KEYBOARD_KEY_7e=compose
+ KEYBOARD_KEY_3a=leftctrl
+ KEYBOARD_KEY_46=capslock</pre>
+      <p>
+        The names of keys are defined in the linux kernel header
+        <code>include/linux/input-event-codes.h</code>.</p>
+      <p>
+        To reload the key mappings without a reboot or unplug, do:
+      </p>
+      <pre class="block">udevadm hwdb --update</pre>
+      <p>
+        (or <code>systemd-hwdb update</code>, if you are boring)
+      </p>
+      <p>
+        Followed by:
+      </p>
+      <pre class="block">udevadm control --reload-rules
+        udevadm trigger</pre>
+      <p>
+        Enjoy your remapped keyboard. I put the steps in comments (which start
+        with <code>#</code>) in one of my 'hwdb' entries so that I'd remember
+        them better.
+      </p>
+    </div>
     <div class="postarea" id="unicomp-mini-1">
       <h2>Unicomp Returns to Form:<br/>
         My Thoughts on the Unicomp Mini M Keyboard<br/>

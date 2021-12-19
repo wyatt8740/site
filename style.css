@@ -11,9 +11,15 @@ body {
   background-color: #525252;
 }
 
-pre {
+pre, code {
   font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
   font-size: 11pt;
+}
+
+code, .codebg {
+  display: inline;
+  clear: both;
+  background-color: #C0C0C0;
 }
 
 .block {
@@ -148,7 +154,11 @@ li ul.x1 {
   display: inline;list-item;
   list-style-type: square;
 }
-ul {
+li {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+ul, ol {
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -160,10 +170,4 @@ hr {
   margin-right: auto;
   border-style: inset;
   border-width: 1px;
-}
-
-.codebg {
-  background-color: #d8d8d8; 
-  display: inline;
-  white-space:nowrap;
 }
