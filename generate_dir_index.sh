@@ -38,12 +38,40 @@ buildPage()
   htmlFoot
   cd "$STARTDIR"
 }
-
+CONFIRM=''
 while [ "$#" -gt 0 ]; do
   if [ -d "$1" ]; then
     if [ -f "$1"'/index.html' ]; then
-      1>&2 echo 'E: Please delete the index.html in the directory '"$1"' if you really want to replace it.'
-      exit 1
+      until (echo "$CONFIRM"|grep -q ^[YyNnAa]$); do
+        if [ "$CONFIRM" ]; then
+          echo "Invalid option selected, please use one of 'y', 'n', or 'a'."
+        fi
+        echo "Would you like to replace the existing index.html in directory (Y(es)/N(o)/A(ll)"
+        echo "$1" '?:'
+        read -r CONFIRM
+      done
+      case "$CONFIRM" in
+        'a'|'A')
+          echo 'Removing '"$1"'/index.html as '"'all'"' was selected.'
+          rm "$1"'/index.html'
+          # do not clear CONFIRM variable if 'all' was chosen.
+          ;;
+        'y'|'Y')
+          echo 'Removing '"$1"'/index.html.'
+          rm "$1"'/index.html'
+          CONFIRM=''
+          ;;
+        'n'|'N')
+          CONFIRM=''
+          ;;
+        *)
+          1>&2 echo 'this situation should never happen. What did you do!?'
+          1>&2 echo 'Exiting.'
+          exit 1
+          ;;
+      esac
+      #    1>&2 echo 'E: Please delete the index.html in the directory '"$1"' if you really want to replace it.'
+      #    exit 1
     fi
     buildPage "$1" > "$STARTDIR"'/'"$(basename "$1")"'.html'
     mv "$STARTDIR"'/'"$(basename "$1")"'.html' "$1"'/index.html'

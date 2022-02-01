@@ -27,6 +27,10 @@ code, .codebg {
   background-color: #C0C0C0;
 }
 
+strike, .strike {
+  text-decoration: line-through;
+}
+
 h1 {
   text-align: center;
   clear: both;
@@ -96,12 +100,19 @@ figure figcaption {
   margin: 0 auto;
 }
 
-imgcentercaption {
-  text-align: center;
+alert, .alert, .caption, imgcentercaption {
   display: block;
   font-weight: bold;
   font-size: 11pt;
+}
+
+imgcentercaption, .caption {
+  text-align: center;
   margin-bottom: 16px;
+}
+
+.caption_break {
+  margin-bottom: 0px;
 }
 
 .blerg_navright {
