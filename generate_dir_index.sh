@@ -29,12 +29,39 @@ sortz()
   cat | tr '\0' '\n' | sort | tr '\n' '\0'
 }
 
+istracked() {
+  # if this is not an empty string, it's probably untracked
+  # THIS IS NOT A PERFECT SOLUTION AND HAS MANY POTENTIAL ISSUES WITH EDGE
+  # CASES. It will also be weird with empty untracked directories.
+  if [ "$(git status --porcelain "$1" | grep -v '^A  ' | grep -v '^ M ' | grep "$1"'$')" ]; then
+    return 1 # false
+  else
+    return 0 # true
+  fi
+}
+
 buildPage()
 {
   htmlHead "$1"
   cd "$1"
-  find . -maxdepth 1 -type d ! -path . -print0 | sort -z | xargs -0 -i sh -c 'echo "[D] <a href="''\"'{}'\"''">"{}"</a><br/>"'
-  find . -maxdepth 1 -type f -print0 | sort -z | xargs -0 -i sh -c 'echo "[F] <a href="''\"'{}'\"''">"{}"</a><br/>"'
+  if [ "$1" != '.' ]; then
+    echo '[D] <a href="../index.html">../</a><br/>'
+  fi
+  find . -maxdepth 1 -type d ! -path . -print0 | sort -z | tr '\0' '\n' | while read -r line; do
+    procline="$(echo "$line" | sed 's!^\./!!')"
+ #   if istracked "$procline"; then
+ #     1>&2 echo 'tracked: '"$procline"
+      echo '[D] <a href="'"$line"'/index.html">'"$procline"'/</a><br/>'
+ #   fi
+  done
+
+  # xargs -0 -i sh -c 'echo "[D] <a href="''\"'{}'\"''">"{}"</a><br/>"'
+  find . -maxdepth 1 -type f -print0 | sort -z | tr '\0' '\n' | while read -r line; do
+    procline="$(echo "$line" | sed 's!^\./!!')"
+#    if istracked "$procline"; then
+      echo '[F] <a href="'"$line"'">'"$procline"'</a><br/>'
+#    fi
+  done
   htmlFoot
   cd "$STARTDIR"
 }
