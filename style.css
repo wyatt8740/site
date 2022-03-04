@@ -98,7 +98,7 @@ figure {
 figure figcaption {
   text-align: center;
   display: block;
-  margin: 0 auto;
+  margin: 5px 0 0 0;
 }
 
 alert, .alert, .caption, imgcentercaption {
