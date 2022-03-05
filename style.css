@@ -18,14 +18,17 @@ pre, code {
 
 /* codewrap and imgwrap classes are used to make it so images scroll
    horizontally in boxes if they would otherwise overflow. */
-.codewrap, .imgwrap {
+.prewrap .codewrap, .imgwrap, .captionwrap {
   overflow-x: auto;
   display: block;
-  text-align: center;
 /*  padding-left: 12pt; */
 }
 
-.codewrap .block {
+.imgwrap, .captionwrap {
+  text-align: center;
+}
+
+.prewrap .codewrap .block {
   display: inline;
 }
 
@@ -52,7 +55,7 @@ h1 {
   margin: 0 auto;
   padding: 6px;
 }
-
+3
 h2 {
   clear: both;
   text-align: center;
@@ -122,14 +125,24 @@ alert, .alert, .caption, imgcentercaption {
   font-size: 11pt;
 }
 
+.imgcontain {
+  padding-bottom: 10px;
+}
+
+/* We need to wrap imgcentercaption in a span with class caption for dillo to
+   render it properly. Setting class caption on imgcentercaption does nothing.
+   this is probably what I deserve for using non-standard tags, honestly. */
 imgcentercaption, .caption {
-  margin-top: 2px;
+  max-width: 100%;
   text-align: center;
-  margin-bottom: 16px;
 }
 
 .caption_break {
   margin-bottom: 0px;
+}
+
+.caption_link {
+  text-decoration: underline;
 }
 
 .blerg_navright {
