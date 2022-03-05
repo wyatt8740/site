@@ -128,26 +128,32 @@
           </ul>
         <li>Inside that file, write something like this:</li>
       </ol>
-      <pre class="block">evdev:input:b0011v0001p0001eAB41*
+      <span class="codewrap">
+        <pre class="block">evdev:input:b0011v0001p0001eAB41*
  KEYBOARD_KEY_54=compose
  KEYBOARD_KEY_7e=compose
  KEYBOARD_KEY_3a=leftctrl
  KEYBOARD_KEY_46=capslock</pre>
+      </span>
       <p>
         The names of keys are defined in the linux kernel header
         <code>include/linux/input-event-codes.h</code>.</p>
       <p>
         To reload the key mappings without a reboot or unplug, do:
       </p>
-      <pre class="block">udevadm hwdb --update</pre>
+      <span class="codewrap">
+        <pre class="block">udevadm hwdb --update</pre>
+      </span>
       <p>
         (or <code>systemd-hwdb update</code>, if you are boring)
       </p>
       <p>
         Followed by:
       </p>
-      <pre class="block">udevadm control --reload-rules
-        udevadm trigger</pre>
+      <span class="codewrap">
+        <pre class="block">udevadm control --reload-rules
+udevadm trigger</pre>
+      </span>
       <p>
         Enjoy your remapped keyboard. I put the steps in comments (which start
         with <code>#</code>) in one of my 'hwdb' entries so that I'd remember
@@ -439,13 +445,17 @@
         '/etc/udev/hwdb.d/99-unicomp.hwdb' containing the following code.
         Create directories as necessary to create the file.
       </p>
-      <pre class="block">evdev:input:b0003v17F6p1862*
-        KEYBOARD_KEY_700e6=rightmeta
-        KEYBOARD_KEY_700e7=rightalt</pre>
+      <span class="codewrap">
+        <pre class="block">evdev:input:b0003v17F6p1862*
+KEYBOARD_KEY_700e6=rightmeta
+KEYBOARD_KEY_700e7=rightalt</pre>
+      </span>
       <p>
         then, as root, run:
       </p>
-      <pre class="block"># udevadm hwdb --update</pre>
+      <span class="codewrap">
+        <pre class="block"># udevadm hwdb --update</pre>
+      </span>
       <p>
         On systemd systems, I have read that 'udevadm hwdb' is deprecated, but
         it still works on my Debian system which is using hwdb <i>without</i>
@@ -756,8 +766,10 @@
         If you want to check your keyboard's firmware version, it's relatively
         simple to do it. On a Linux machine, you can do something like this:
       </p>
-      <pre class="block">$ lsusb |grep Unicomp
-        Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
+      <span class="codewrap">
+        <pre class="block">$ lsusb |grep Unicomp
+Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
+      </span>
       <p>
         The key information you're looking for is technically in what 'lsusb'
         calls the 'iProduct' field. On non-Linux systems, or on Linux systems

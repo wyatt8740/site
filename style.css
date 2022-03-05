@@ -16,14 +16,27 @@ pre, code {
   font-size: 11pt;
 }
 
-code, .codebg {
+/* codewrap and imgwrap classes are used to make it so images scroll
+   horizontally in boxes if they would otherwise overflow. */
+.codewrap, .imgwrap {
+  overflow-x: auto;
+  display: block;
+  text-align: center;
+/*  padding-left: 12pt; */
+}
+
+.codewrap .block {
   display: inline;
-  clear: both;
+}
+
+/* .imgwrap, .block, .imgwrap img, .imgwrap a img */
+.codewrap {
   background-color: #C0C0C0;
 }
 
-.block {
-  padding-left: 12pt;
+code, .codebg {
+  display: inline;
+  clear: both;
   background-color: #C0C0C0;
 }
 
@@ -76,8 +89,10 @@ h3 {
 
 .postarea img {
   margin:           0 auto;
-  display:          block;
+  display:          inline-block;
+  max-width: 100%;
   box-shadow: 5px 5px 4px 0px #a4a4a4;
+  margin-bottom: 9px;
 }
 
 .postarea img.fitwide {
@@ -108,7 +123,7 @@ alert, .alert, .caption, imgcentercaption {
 }
 
 imgcentercaption, .caption {
-  margin-top: 10px;
+  margin-top: 2px;
   text-align: center;
   margin-bottom: 16px;
 }

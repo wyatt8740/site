@@ -40,8 +40,8 @@
         Platforms<br/>
       </h2>
       <p><i>28 April 2021</i> [<a class="permalink" href="./003_004.html#powerbook-linux-1">Permanent link</a>]<br/>
-        <b>Last updated:</b> <i>19 May 2021</i> (CardBus 802.11n wireless LAN
-        upgrade notes added)
+        <b>Last updated:</b> <i>05 March 2022</i> (720p video playback notes
+        added)
       </p>
       <a href="./powerbook_1/full/powerbook_quake.jpg"><img src="./powerbook_1/powerbook_quake.jpg" alt="Powerbook G4 running Quake on Debian in 2021."/></a>
       <imgcentercaption>My 1.33GHz PowerBook G4, running Quake under Debian
@@ -385,7 +385,9 @@
         This prompt is a place that we can add new temporary parameters,
         though! When prompted, type (case-sensitive, I think):
       </p>
-      <pre class="block">Linux radeon.agpmode=-1</pre>
+      <span class="codewrap">
+        <pre class="block">Linux radeon.agpmode=-1</pre>
+      </span>
       <p>
         …and press "return."
       </p>
@@ -394,7 +396,8 @@
         suffered from occasional hanging. I was able to fix this with some
         more options stuffed into '/etc/xorg.conf':
       </p>
-      <pre class="block">Section "Device"
+      <span class="codewrap">
+        <pre class="block">Section "Device"
     Identifier "Radeon"
     Driver "radeon"
     Option "AccelMethod" "EXA"
@@ -403,6 +406,7 @@
     Option "TearFree" "on" # I just hate tearing, so I threw this in there.
     Option "EXAVsync" "on" # known to cause instability on some machines, see radeon man page. Mine seems fine.
 EndSection</pre>
+      </span>
       <p>
         I am not sure if you can ever reach the same
         speeds as you would if AGP actually worked, but honestly it runs well
@@ -424,8 +428,10 @@ EndSection</pre>
         I created a file called '/etc/modprobe.d/radeon.conf', containing
         these lines:
       </p>
-      <pre class="block">options radeon agpmode=-1
+      <span class="codewrap">
+        <pre class="block">options radeon agpmode=-1
 options radeonfb agpmode=-1</pre>
+      </span>
       <p>
         I think the 'radeonfb' thing is a non-sequitur (frame-buffer with
         AGP DMA?) but better safe than sorry, since radeonfb is basically
@@ -436,8 +442,10 @@ options radeonfb agpmode=-1</pre>
         boot (note that I think the 'ybin -v' was unnecessary, but it
         updates the yaboot configuration):
       </p>
-      <pre class="block">$ sudo update-initramfs -u
+      <span class="codewrap">
+        <pre class="block">$ sudo update-initramfs -u
 $ sudo ybin -v</pre>
+      </span>
       <p>
         After doing that, my system has never hung in X.
       </p>
@@ -452,12 +460,14 @@ $ sudo ybin -v</pre>
         which contained the tools I was looking for. After it was installed, I
         added the following to the end of my '/etc/rc.local' file:
       </p>
-      <pre class="block">if [ -e /sbin/trackpad ]; then
+      <span class="codewrap">
+        <pre class="block">if [ -e /sbin/trackpad ]; then
   /sbin/trackpad notap || /bin/true
 fi
 if [ -e /sbin/fnset ]; then
   /sbin/fnset -u || /bin/true
 fi</pre>
+      </span>
       <p>
         Note that if you are using systemd as your init system, you can't run
         stuff at boot from 'rc.local' like I did. I'm using 'sysvinit' (System V
@@ -497,16 +507,69 @@ fi</pre>
         ctrl-alt-f1 for instance). Here's my personal configuration
         (note: pretty sure 272 is the mouse button event):
       </p>
-      <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
+      <span class="codewrap">
+        <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
 MID_CLICK="-middle 100 272"    # fn+alt+click
 SCROLL="-scroll 0"             # disable scroll key for now pending investigation (no idea how it works...)
 TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it interferes with playing Quake!</pre>
+      </span>
       <p>
         If you don't like the sensitivity or other things with the
         touchpad, and you are using mouseemu, note that any configuration changes
         need to target the "Mouseemu virtual mouse" device, rather than the
         "ADB mouse," for instance. This is because Mouseemu basically acts as
         a middle-man between your keyboard/mouse and X.
+      </p>
+      <h3 id="powerbook-mplayer">Video Playback: MPlayer</h3>
+      <p>
+        The PowerBook G4 seems to be pretty underpowered by today's standards
+        in many ways; one of the most immediately recognizeable is how much it
+        struggles to decode h.264 and render videos. It can handle 480p well
+        enough, but chokes if you try 720p (for the screen's native
+        resolution). At first, I thought this was the GPU's fault (on account
+        of having to disable the DMA functionality/AGP features), but later I
+        remembered "oh, yeah. back in the day h.264 required good hardware to
+        decode." I'd compare it to trying to decode HEVC on my circa 2010
+        laptop hardware.
+      </p>
+      <p>
+        Additionally, mpv's codebase is regularly purged of anything "legacy,"
+        and the performance of the supported video output drivers is not
+        great. I've always been partial to
+        <a href="https://mplayerhq.hu/design7/news.html">MPlayer</a>, anyway,
+        so I grabbed and compiled it. I discovered the best video output driver
+        for performance to be 'Vidix.' Documentation on Vidix is quite lacking,
+        and the code for it appears to be about twenty years old, so it was a
+        little confusing to figure out. Basically, though, it requires direct
+        hardware access, so mplayer needs to be run as root (either with sudo
+        or a setuid bit). Additionally, to tell it I am using a radeon card,
+        I put this in my ~/.mplayer/config file:
+      </p>
+      <span class="codewrap">
+        <pre class="block">vo=xvidix:radeon</pre>
+      </span>
+      <p>
+        I think I had to put that under /root/.mplayer/config, actually, on
+        account of having to run as root.
+      </p>
+      <p>
+        Anyway, after doing that, I still had the h.264 problem. So with my
+        sample video (
+        <a href="./007_008.html#bubblegum-review-1"><i>Bubblegum Crisis</i>,
+          episode 5: "Moonlight Rambler"</a>), I converted it to use
+        almost-MPEG-4 video (xvid codec) via ffmpeg on my desktop and then
+        moved the file over. The resulting video (using xvid for video and
+        vorbis for audio) played back at full speed with no tearing at 720p
+        in MPlayer!
+      </p>
+      <p>
+        It is possible baseline profile h.264 could have also worked, but I
+        didn't test that. Xvid videos are so fast to encode; it's great. I
+        hadn't used it in a long time. It's also possible that proper MPEG-4
+        (-vcodec mpeg4 in ffmpeg) might have worked. Xvid is technically a
+        derivative of the draft MPEG-4 implementation as created by Microsoft
+        in the late 90's or early 2000's, so it's approximately period correct
+        as well.
       </p>
       <h3>To-Do (Article Under Construction):</h3>
       <p>
