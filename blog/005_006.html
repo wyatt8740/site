@@ -128,32 +128,32 @@
           </ul>
         <li>Inside that file, write something like this:</li>
       </ol>
-      <span class="codewrap">
+      <div class="codewrap">
         <pre class="block">evdev:input:b0011v0001p0001eAB41*
  KEYBOARD_KEY_54=compose
  KEYBOARD_KEY_7e=compose
  KEYBOARD_KEY_3a=leftctrl
  KEYBOARD_KEY_46=capslock</pre>
-      </span>
+      </div>
       <p>
         The names of keys are defined in the linux kernel header
         <code>include/linux/input-event-codes.h</code>.</p>
       <p>
         To reload the key mappings without a reboot or unplug, do:
       </p>
-      <span class="codewrap">
+      <div class="codewrap">
         <pre class="block">udevadm hwdb --update</pre>
-      </span>
+      </div>
       <p>
         (or <code>systemd-hwdb update</code>, if you are boring)
       </p>
       <p>
         Followed by:
       </p>
-      <span class="codewrap">
+      <div class="codewrap">
         <pre class="block">udevadm control --reload-rules
 udevadm trigger</pre>
-      </span>
+      </div>
       <p>
         Enjoy your remapped keyboard. I put the steps in comments (which start
         with <code>#</code>) in one of my 'hwdb' entries so that I'd remember
@@ -166,12 +166,18 @@ udevadm trigger</pre>
       </h2>
       <p><i>14-27 June 2021</i> [<a class="permalink" href="./005_006.html#unicomp-mini-1">Permanent link</a>]<br/>
       </p>
-      <a href="./unicomp_1/full/UT40E7A_0001034_01.jpg"><img src="./unicomp_1/UT40E7A_0001034_01.jpg" alt="The Unicomp Mini M, a new keyboard. This is my own unit."/></a>
+      <div class="imgcontain">
+      <span class="imgwrap">
+        <a href="./unicomp_1/full/UT40E7A_0001034_01.jpg"><img src="./unicomp_1/UT40E7A_0001034_01.jpg" alt="The Unicomp Mini M, a new keyboard. This is my own unit."/></a>
+      </span>
+      <span class="imgwrap caption">
       <imgcentercaption>
         The Unicomp Mini M is, to my knowledge, the first entirely new keyboard
         design that Unicomp has ever produced. It's a pretty solid effort.
         <br/>Unicomp started in around 1996 (the year that I was born).
       </imgcentercaption>
+      </span>
+      </div>
       <h3>First, Some History</h3>
       <p>
         <a href="https://www.pckeyboard.com/">Unicomp</a>, based in Lexington,
@@ -208,18 +214,24 @@ udevadm trigger</pre>
         recordings of the mechanism in action, which provide a good substitute
         if you've not got a keyboard of your own in your hands to test with.
       </p>
-      <a href="./unicomp_1/bucklingspring_mov.gif"><img src="./unicomp_1/bucklingspring_mov.gif" alt="Animation of a buckling spring as it is pressed, buckles, and pings against the barrel surrounding the spring."/></a>
-      <imgcentercaption>
-        Recording of a cutaway of a buckling spring as it is pressed, buckles,
-        and pings against the barrel surrounding the spring.
-        <br/>
-        This animation comes from "<a href="http://ex4.sakura.ne.jp/kb/tech_bucklingspring_e.htm">
-          Qwerters Clinic</a>," a Japanese website dedicated to many kinds of
-        keyboard designs and switches.
-        <br/>
-        I highly recommend reading the linked page for more detailed
-        explanation of how it works. The page is in English.
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/bucklingspring_mov.gif"><img src="./unicomp_1/bucklingspring_mov.gif" alt="Animation of a buckling spring as it is pressed, buckles, and pings against the barrel surrounding the spring."/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            Recording of a cutaway of a buckling spring as it is pressed, buckles,
+            and pings against the barrel surrounding the spring.
+            <br/>
+            This animation comes from "<a href="http://ex4.sakura.ne.jp/kb/tech_bucklingspring_e.htm">
+              Qwerters Clinic</a>," a Japanese website dedicated to many kinds of
+            keyboard designs and switches.
+            <br/>
+            I highly recommend reading the linked page for more detailed
+            explanation of how it works. The page is in English.
+          </imgcentercaption>
+        </span>
+      </div>
       <p>
         The buckling spring in the above illustration is actually of what's
         termed a "Brother buckling spring," which was made by Brother in Japan
@@ -311,10 +323,16 @@ udevadm trigger</pre>
         seventh. I'm not sure if they build these things "to-order," or if
         they really are just struggling to keep up with the orders.
       </p>
-      <a href="./unicomp_1/full/UT40E7A_0001034_03.jpg"><img src="./unicomp_1/UT40E7A_0001034_03.jpg"/></a>
-      <imgcentercaption>
-        My Mini M's bottom label. The board got here within two days of its manufacture!
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/UT40E7A_0001034_03.jpg"><img src="./unicomp_1/UT40E7A_0001034_03.jpg"/></a>
+        </span>
+        <span class="imgwrap caption">
+        <imgcentercaption>
+          My Mini M's bottom label. The board got here within two days of its manufacture!
+        </imgcentercaption>
+        </span>
+      </div>
 
       <h3>Unpacking</h3>
       <p>
@@ -365,11 +383,17 @@ udevadm trigger</pre>
         to get it to swivel freely, since it was rubbing on the clips of the
         key itself. No big deal.
       </p>
-      <a href="./unicomp_1/full/UT40E7A_0001034_02.jpg"><img src="./unicomp_1/UT40E7A_0001034_02.jpg" alt="My Unicomp Mini M, with shell removed, showing the keys I replaced."/></a>
-      <imgcentercaption>
-        My Unicomp Mini M, naked. Also shows the keycaps I replaced. I'll
-        get the right colors soon!
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/UT40E7A_0001034_02.jpg"><img src="./unicomp_1/UT40E7A_0001034_02.jpg" alt="My Unicomp Mini M, with shell removed, showing the keys I replaced."/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            My Unicomp Mini M, naked. Also shows the keycaps I replaced. I'll
+            get the right colors soon!
+          </imgcentercaption>
+        </span>
+      </div>
       <p>
         Notice how the alt keys have green legends, akin to the PS/2 enhanced
         keyboards of old. That's a nice touch; I just wish they'd have kept
@@ -400,13 +424,19 @@ udevadm trigger</pre>
         colour option, akin to the color of keys on the IBM boards, and a
         pearl (or industrial grey… hey, I can dream) shell.
       </p>
-      <a href="./unicomp_1/full/industrial_grey.jpg"><img src="./unicomp_1/industrial_grey.jpg"/></a>
-      <imgcentercaption>
-        An Industrial Grey shell and pearl/pebble keys. I bet that the Mini M
-        would look fantastic in this colour of casing.
-        <br/>
-        This one's swapped onto a silver label terminal keyboard (1386303).
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/industrial_grey.jpg"><img src="./unicomp_1/industrial_grey.jpg"/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            An Industrial Grey shell and pearl/pebble keys. I bet that the Mini M
+            would look fantastic in this colour of casing.
+            <br/>
+            This one's swapped onto a silver label terminal keyboard (1386303).
+          </imgcentercaption>
+        </span>
+      </div>
       <p>
         I didn't ask about remapping, since I think they probably won't just
         give me source code and instructions on how to reprogram their
@@ -445,17 +475,17 @@ udevadm trigger</pre>
         '/etc/udev/hwdb.d/99-unicomp.hwdb' containing the following code.
         Create directories as necessary to create the file.
       </p>
-      <span class="codewrap">
+      <div class="codewrap">
         <pre class="block">evdev:input:b0003v17F6p1862*
 KEYBOARD_KEY_700e6=rightmeta
 KEYBOARD_KEY_700e7=rightalt</pre>
-      </span>
+      </div>
       <p>
         then, as root, run:
       </p>
-      <span class="codewrap">
+      <div class="codewrap">
         <pre class="block"># udevadm hwdb --update</pre>
-      </span>
+      </div>
       <p>
         On systemd systems, I have read that 'udevadm hwdb' is deprecated, but
         it still works on my Debian system which is using hwdb <i>without</i>
@@ -502,11 +532,17 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         tooling, because the stems are shaped slightly differently than the
         ones on my other boards are!
       </p>
-      <a href="./unicomp_1/full/keystems.jpg"><img src="./unicomp_1/keystems.jpg" alt="Comparison of Model F/Early Model M keystems, mid-to-late M keystems, and the new Unicomp ones."/></a>
-      <imgcentercaption>
-        Left to right: Early Model M (same as Model F keystems), Mid-to-late
-        IBM/Lexmark Model M, New keystem from Unicomp Mini M.
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/keystems.jpg"><img src="./unicomp_1/keystems.jpg" alt="Comparison of Model F/Early Model M keystems, mid-to-late M keystems, and the new Unicomp ones."/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            Left to right: Early Model M (same as Model F keystems), Mid-to-late
+            IBM/Lexmark Model M, New keystem from Unicomp Mini M.
+          </imgcentercaption>
+        </span>
+      </div>
       <p>
         I noticed also that unlike my Lexmark M, which sounds a little
         "twangy," this board sounds a lot closer to my 1386303, which
@@ -521,10 +557,16 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         tops for two-piece keycaps. I'd love to have some of those clear keys
         :)
       </p>
-      <a href="./unicomp_1/full/keystems_2.jpg"><img src="./unicomp_1/keystems_2.jpg" alt="Single unit keycap picture, showing differences between different board types."/></a>
-      <imgcentercaption>
-        Single-unit cap comparison. Same order as above.
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/keystems_2.jpg"><img src="./unicomp_1/keystems_2.jpg" alt="Single unit keycap picture, showing differences between different board types."/></a>
+          </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            Single-unit cap comparison. Same order as above.
+          </imgcentercaption>
+        </span>
+      </div>
       <h3>Improving click consistency: re-seating some springs</h3>
       <p>
         This keyboard had a couple springs I needed to re-seat;
@@ -578,12 +620,18 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         late-IBM/early Lexmark models (right) that just have moulded plastic
         walls there.
       </p>
-      <a href="./unicomp_1/full/board_baseplate_opening.jpg"><img src="./unicomp_1/board_baseplate_opening.jpg"/></a>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/board_baseplate_opening.jpg"><img src="./unicomp_1/board_baseplate_opening.jpg"/></a>
+        </span>
+        <span class="imgwrap caption">
       <imgcentercaption>
         Time will tell if the exposed hammers will become an issue.
         <br/>
         Left to right: 1987 M 1386303, 2021 Mini M UT40E7A, 1993 M 59G7980.
       </imgcentercaption>
+        </span>
+      </div>
       <p>
         It also appears that Unicomp is just cutting down a full-size barrel
         plates to create tenkeyless ones. I'm not especially surprised, since
@@ -593,11 +641,17 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         wasteful, too. But that means even more tooling, if they don't already
         have a mould lurking around from the IBM/Lexmark days.
       </p>
-      <a href="./unicomp_1/full/UT40E7A_0001034_05.jpg"><img src="./unicomp_1/UT40E7A_0001034_05.jpg" alt="Unicomp looks to be cutting the numpads off of full-size M barrel plates."/></a>
-      <imgcentercaption>
-        Note the cutting marks. Unicomp looks to be cutting the numpads off of
-        full-size M barrel plates.
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/UT40E7A_0001034_05.jpg"><img src="./unicomp_1/UT40E7A_0001034_05.jpg" alt="Unicomp looks to be cutting the numpads off of full-size M barrel plates."/></a>
+        </span>
+        <span class="imgcontain caption">
+          <imgcentercaption>
+            Note the cutting marks. Unicomp looks to be cutting the numpads off of
+            full-size M barrel plates.
+          </imgcentercaption>
+        </span>
+      </div>
       <p>
         I think IBM Japan made a buckling spring keypad at some point, and
         Unicomp appears to have at least one IBM Japan mould (they use it for
@@ -643,12 +697,19 @@ KEYBOARD_KEY_700e7=rightalt</pre>
       <p>
         Well, I did it.
       </p>
-      <a href="./unicomp_1/full/UT40E7A_0001034_06.jpg"><img src="./unicomp_1/UT40E7A_0001034_06.jpg" alt="Unicomp Mini M, with amber/yellow indicator LED's."/></a>
-      <imgcentercaption>
-        I think this amber might actually look better than green; they are
-        definitely a step up from blue.<br/>
-        Blue LED's are an amateur hour decision, in my opinion.
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/UT40E7A_0001034_06.jpg"><img src="./unicomp_1/UT40E7A_0001034_06.jpg" alt="Unicomp Mini M, with amber/yellow indicator LED's."/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            I think this amber might actually look better than green; they are
+            definitely a step up from blue.<br/>
+            Blue LED's are an amateur hour decision, in my opinion.
+          </imgcentercaption>
+        </span>
+      </div>
+
       <p>
         I had some green LED's out, then misplaced them. The only shop in town
         that sells individual LED's which I know of was closed by the time that
@@ -766,10 +827,10 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         If you want to check your keyboard's firmware version, it's relatively
         simple to do it. On a Linux machine, you can do something like this:
       </p>
-      <span class="codewrap">
+      <div class="codewrap">
         <pre class="block">$ lsusb |grep Unicomp
 Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
-      </span>
+      </div>
       <p>
         The key information you're looking for is technically in what 'lsusb'
         calls the 'iProduct' field. On non-Linux systems, or on Linux systems
@@ -781,9 +842,14 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
         only bare-metal Windows installation on a USB-compatible machine:
         a Dell Latitude D610 running XP SP3.
       </p>
-      <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
+      <div class="imgcontain">
+      <span class="imgwrap">
+        <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
+      </span>
+      <span class="imgwrap caption">
       <imgcentercaption>Hopefully, this will still be relevant to those of you
         that are using Windows 11.</imgcentercaption>
+      </span>
       <p>
         The key here is the 'v7_56' part. From what I can gather, it seems
         that the boards with the 'Q' key issue are on v7_52 or some older
@@ -942,11 +1008,17 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
         And that's all assuming that the key stem itself won't collide with the
         LED when a key is pressed!
       </p>
-      <a href="./unicomp_1/full/UT40E7A_0001034_04.jpg"><img src="./unicomp_1/UT40E7A_0001034_04.jpg"/></a>
-      <imgcentercaption>
-        Not much space to put an LED in. Unless you want it way off-center,
-        which I don't think is a great idea.
-      </imgcentercaption>
+      <div class="imgcontain">
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/UT40E7A_0001034_04.jpg"><img src="./unicomp_1/UT40E7A_0001034_04.jpg"/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>
+            Not much space to put an LED in. Unless you want it way off-center,
+            which I don't think is a great idea.
+          </imgcentercaption>
+        </span>
+      </div>
       <p>
         You also might be able to make the barrel plate translucent
         and add little cut-out spots for surface mount LED's, but I bet that'd

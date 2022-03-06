@@ -28,12 +28,12 @@ pre, code {
   text-align: center;
 }
 
-.prewrap .codewrap .block {
+.prewrap {
   display: inline;
 }
 
 /* .imgwrap, .block, .imgwrap img, .imgwrap a img */
-.codewrap {
+.codewrap, .codewrap .block {
   background-color: #C0C0C0;
 }
 
@@ -55,8 +55,8 @@ h1 {
   margin: 0 auto;
   padding: 6px;
 }
-3
-h2 {
+
+h3, h2 {
   clear: both;
   text-align: center;
   margin: 0 auto;
