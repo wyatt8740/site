@@ -13,20 +13,23 @@
     <link rel="stylesheet" type="text/css" href="../style.css"/>
   </head>
   <body>
-    <div class="navbar">
-      <a href="../index.html">Home</a>
-      <a class="active" href="../blog/index.html">Blog</a>
-      <a href="../about/index.html">About</a>
+    <div class="navbox"> 
+      <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a class="active" href="../blog/index.html">Blog</a>
+        <a href="../about/index.html">About</a>
+      </div>
     </div>
     <h1>Blog</h1>
-    <br/>
-    <div class="nav">
-      <div class="blerg_navleft">
+    <div class="navbox">
+      <span class="blerg_navleft">
         <a href="../blog/007_008.html">← Newer</a>
-      </div>
-      <div class="blerg_navright">
-        <a href="../blog/003_004.html">Older →</a>
-      </div>
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/003_004.html">Older →</a>
+        </span>
+      </span>
     </div>
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
@@ -557,6 +560,7 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         tops for two-piece keycaps. I'd love to have some of those clear keys
         :)
       </p>
+      
       <div class="imgcontain">
         <span class="imgwrap">
           <a href="./unicomp_1/full/keystems_2.jpg"><img src="./unicomp_1/keystems_2.jpg" alt="Single unit keycap picture, showing differences between different board types."/></a>
@@ -581,6 +585,7 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         So if just re-seating the keycaps isn't enough, you may find re-seating
         the springs does!
       </p>
+      
       <p>
         If you have a key that feels "lame" compared to the surrounding ones,
         don't be too afraid to try it. My only advice here is to not exert too
@@ -608,6 +613,7 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         disappointment/irritant, but only because I'd read otherwise prior to
         purchase. I have a tool to open it since I have opened my other M's
         before.
+      </p>
       <p>
         I also noticed that the holes seem a little narrower than they
         were on my other M's. My bit rubbed the walls of the hole when I put it
@@ -625,11 +631,11 @@ KEYBOARD_KEY_700e7=rightalt</pre>
           <a href="./unicomp_1/full/board_baseplate_opening.jpg"><img src="./unicomp_1/board_baseplate_opening.jpg"/></a>
         </span>
         <span class="imgwrap caption">
-      <imgcentercaption>
-        Time will tell if the exposed hammers will become an issue.
-        <br/>
-        Left to right: 1987 M 1386303, 2021 Mini M UT40E7A, 1993 M 59G7980.
-      </imgcentercaption>
+          <imgcentercaption>
+            Time will tell if the exposed hammers will become an issue.
+            <br/>
+            Left to right: 1987 M 1386303, 2021 Mini M UT40E7A, 1993 M 59G7980.
+          </imgcentercaption>
         </span>
       </div>
       <p>
@@ -662,6 +668,7 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         (New York, IBM Headquarters) usually collaborated on manufacturing,
         though. Maybe that keyboard was a one-off deal.
       </p>
+      
       <p>
         The Unicomp Mini M also uses plastic pegs on the case to mount the
         plate on, similarly to how my full-size ones do. I have no firsthand
@@ -697,6 +704,7 @@ KEYBOARD_KEY_700e7=rightalt</pre>
       <p>
         Well, I did it.
       </p>
+      
       <div class="imgcontain">
         <span class="imgwrap">
           <a href="./unicomp_1/full/UT40E7A_0001034_06.jpg"><img src="./unicomp_1/UT40E7A_0001034_06.jpg" alt="Unicomp Mini M, with amber/yellow indicator LED's."/></a>
@@ -709,7 +717,6 @@ KEYBOARD_KEY_700e7=rightalt</pre>
           </imgcentercaption>
         </span>
       </div>
-
       <p>
         I had some green LED's out, then misplaced them. The only shop in town
         that sells individual LED's which I know of was closed by the time that
@@ -752,6 +759,7 @@ KEYBOARD_KEY_700e7=rightalt</pre>
         off like I did, that'll cut the circuit, too, so that should be all
         you need in that case.
       </p>
+      
       <h4>LED Electrical Notes</h4>
       <p>
         The Unicomp controller board has tiny surface-mounted 1KΩ resistors on
@@ -843,13 +851,14 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
         a Dell Latitude D610 running XP SP3.
       </p>
       <div class="imgcontain">
-      <span class="imgwrap">
-        <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
-      </span>
-      <span class="imgwrap caption">
-      <imgcentercaption>Hopefully, this will still be relevant to those of you
-        that are using Windows 11.</imgcentercaption>
-      </span>
+        <span class="imgwrap">
+          <a href="./unicomp_1/full/winxp_devmgmt.png"><img src="./unicomp_1/winxp_devmgmt.jpg"/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>Hopefully, this will still be relevant to those of you
+            that are using Windows 11.</imgcentercaption>
+        </span>
+      </div>
       <p>
         The key here is the 'v7_56' part. From what I can gather, it seems
         that the boards with the 'Q' key issue are on v7_52 or some older
@@ -974,6 +983,7 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
       </p>
       <p>
         The only ways I can think of to justify "needing" backlighting are:
+      </p>
         <ol>
           <li>You're new to typing and are in the dark a lot,</li>
           <li>You're on a strange keyboard layout and haven't adapted to
@@ -1087,12 +1097,16 @@ Bus 003 Device 002: ID 17f6:1862 Unicomp, Inc. U AP1_4_87k_Kbrd_v7_56</pre>
         have, I'd have gotten my mini M in beige plastic to match my
         collection of IBM keyboards. :)
       </p>
-      </div>
-      <div class="blerg_navleft">
+    </div>
+    <div class="navbox">
+      <span class="blerg_navleft">
         <a href="../blog/007_008.html">← Newer</a>
-      </div>
-      <div class="blerg_navright">
-        <a href="../blog/003_004.html">Older →</a>
-      </div>
-      </body>
-    </html>
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/003_004.html">Older →</a>
+        </span>
+      </span>
+    </div>
+  </body>
+</html>

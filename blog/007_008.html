@@ -13,20 +13,23 @@
     <link rel="stylesheet" type="text/css" href="../style.css"/>
   </head>
   <body>
-    <div class="navbar">
-      <a href="../index.html">Home</a>
-      <a class="active" href="../blog/index.html">Blog</a>
-      <a href="../about/index.html">About</a>
+    <div class="navbox">
+      <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a class="active" href="../blog/index.html">Blog</a>
+        <a href="../about/index.html">About</a>
+      </div>
     </div>
     <h1>Blog</h1>
-    <br/>
-    <div class="nav">
+    <div class="navbox">
       <!--      <div class="blerg_navleft">
                 <a href="../blog/009_010.html">← Newer</a>
       </div> -->
-      <div class="blerg_navright">
-        <a href="../blog/005_006.html">Older →</a>
-      </div>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/005_006.html">Older →</a>
+        </span>
+      </span>
     </div>
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
@@ -1299,8 +1302,15 @@
       <!-- <div class="blerg_navleft">
            <a href="../blog/009_010.html">← Newer</a>
       </div> -->
-      <div class="blerg_navright">
-        <a href="../blog/005_006.html">Older →</a>
+      <div class="navbox">
+        <!--      <div class="blerg_navleft">
+                  <a href="../blog/009_010.html">← Newer</a>
+        </div> -->
+        <span class="rightbox"> <!-- needed for dillo -->
+          <span class="blerg_navright">
+            <a href="../blog/005_006.html">Older →</a>
+          </span>
+        </span>
       </div>
     </body>
   </html>

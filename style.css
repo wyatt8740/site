@@ -90,6 +90,18 @@ h3 {
 /*  white-space: pre-line;*/
 }
 
+.navbox {
+  padding-left:     6px;
+  padding-right:    6px;
+  margin:           0 auto; /* center */
+  width:            95vw;
+}
+
+.navbox div {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 .postarea img {
   margin:           0 auto;
   display:          inline-block;
@@ -147,16 +159,37 @@ imgcentercaption, .caption {
 
 .blerg_navright {
   float: right;
+  text-align: right;
 }
 
-.blerg_navleft, .navbar {
-  float: left;
+.blerg_navleft, .blerg_navright {
+  margin-left: -6px;
+  margin-right: -6px;
+  margin-bottom: 8px;
 }
+
+.navbar {
+  margin: -6px;
+}
+
+.blerg_navleft {
+  display: inline-block;
+  float: left;
+  
+}
+/*.navbar {
+  float: left;
+}*/
 
 .navbar a, .blerg_navright a, .blerg_navleft a {
+/*  border-left: solid;
+  border-right: solid;*/
   border-style: solid;
   border-width: 2px;
-  border-color: #1f1f1f;
+  /*  border-color: #dfdfdf; */
+  border-color: #808080;
+/*  border-color: #000000;*/
+/*  border-color: #ededed #9b9b9b #9b9b9b #ededed;*/
   background-color: #dfdfdf;
   padding: 5px;
 }
@@ -171,7 +204,7 @@ imgcentercaption, .caption {
 }
 
 .blerg_navleft, .blerg_navright {
-  margin-top: 0px;
+  margin-top: 1%;
   margin-bottom: 1%;
 }
 

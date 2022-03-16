@@ -13,18 +13,23 @@
     <link rel="stylesheet" type="text/css" href="../style.css"/>
   </head>
   <body>
-    <div class="navbar">
-      <a href="../index.html">Home</a>
-      <a class="active" href="../blog/index.html">Blog</a>
-      <a href="../about/index.html">About</a>
+    <div class="navbox">
+      <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a class="active" href="../blog/index.html">Blog</a>
+        <a href="../about/index.html">About</a>
+      </div>
     </div>
     <h1>Blog</h1>
-    <br/>
-    <div class="blerg_navleft">
-      <a href="../blog/005_006.html">← Newer</a>
-    </div>
-    <div class="blerg_navright">
-      <a href="../blog/001_002.html">Older →</a>
+    <div class="navbox">
+      <span class="blerg_navleft">
+        <a href="../blog/005_006.html">← Newer</a>
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/001_002.html">Older →</a>
+        </span>
+      </span>
     </div>
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
@@ -1115,23 +1120,27 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         would use for G/B/R, respectively, so this works out rather well.
       </p>
       <div class="imgcontain">
-      <span class="imgwrap">
-      <a href="./rgb_stuff/full/breath_of_fire_iv_rgb.jpg"><img src="./rgb_stuff/breath_of_fire_iv_rgb.jpg" alt="Photograph of my CRT, a Panasonic BT-H1390YN, displaying a battle in Breath of Fire IV over RGB via a cheap third-party component cable."/></a>
-      </span>
-      <span class="imgwrap caption">
-      <imgcentercaption>Breath of Fire IV, in glorious RGB-over-PS3-component-cable.<br/>
-        This is the output from the SCPH-1001 (the one with RCA jacks built in).<br/>
-        Definitely one of the most wonderful looking PSX RPG's I've seen.
-        The obligatory isometric 3D outside of battles is kind of annoying, though.
-      </imgcentercaption>
-      </span>
+        <span class="imgwrap">
+          <a href="./rgb_stuff/full/breath_of_fire_iv_rgb.jpg"><img src="./rgb_stuff/breath_of_fire_iv_rgb.jpg" alt="Photograph of my CRT, a Panasonic BT-H1390YN, displaying a battle in Breath of Fire IV over RGB via a cheap third-party component cable."/></a>
+        </span>
+        <span class="imgwrap caption">
+          <imgcentercaption>Breath of Fire IV, in glorious RGB-over-PS3-component-cable.<br/>
+            This is the output from the SCPH-1001 (the one with RCA jacks built in).<br/>
+            Definitely one of the most wonderful looking PSX RPG's I've seen.
+            The obligatory isometric 3D outside of battles is kind of annoying, though.
+          </imgcentercaption>
+        </span>
       </div>
     </div>
-    <div class="blerg_navleft">
-      <a href="../blog/005_006.html">← Newer</a>
-    </div>
-    <div class="blerg_navright">
-      <a href="../blog/001_002.html">Older →</a>
+    <div class="navbox">
+      <span class="blerg_navleft">
+        <a href="../blog/005_006.html">← Newer</a>
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/001_002.html">Older →</a>
+        </span>
+      </span>
     </div>
   </body>
 </html>
