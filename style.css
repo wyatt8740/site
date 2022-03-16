@@ -131,7 +131,7 @@ figure figcaption {
   margin: 5px 0 0 0;
 }
 
-alert, .alert, .caption, imgcentercaption {
+alert, .alert, .caption, imgcentercaption, .imgcentercaption {
   display: block;
   font-weight: bold;
   font-size: 11pt;
@@ -144,7 +144,7 @@ alert, .alert, .caption, imgcentercaption {
 /* We need to wrap imgcentercaption in a span with class caption for dillo to
    render it properly. Setting class caption on imgcentercaption does nothing.
    this is probably what I deserve for using non-standard tags, honestly. */
-imgcentercaption, .caption {
+imgcentercaption, .imgcentercaption, .caption {
   max-width: 100%;
   text-align: center;
 }
