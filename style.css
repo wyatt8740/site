@@ -11,6 +11,19 @@ body {
   background-color: #525252;
 }
 
+div.footnotes {
+  font-size: 10pt;
+}
+
+a:link.footnotelink, a:visited.footnotelink {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:hover.footnotelink, a:active.footnotelink {
+  text-decoration: underline;
+}
+
 pre, code {
   font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
   font-size: 11pt;
