@@ -18,8 +18,8 @@
         <a class="active" href="./index.html">Home</a>
         <a href="blog/index.html">Blog</a>
         <a href="about/index.html">About</a>
-        <a href="/site/light/index.html" >[Light Mode]</a>
-        <a href="/site/dark/index.html">[Dark Mode]</a>
+        <a href="/site/light/index.html" class="lightmode">[Light Mode]</a>
+        <a href="/site/dark/index.html" class="darkmode">[Dark Mode]</a>
       </div>
     </div>
 
@@ -66,7 +66,9 @@
       <p>
         I have added a light and dark mode, implemented entirely using symbolic
         links. No need for javascript, cookies, or server side page processing!
-        The only difference is which CSS file is symlinked to.
+        The only difference is which CSS file is symlinked to. The light CSS
+        hides the light mode button, and the dark CSS hides the dark mode
+        button.
       </p>
       <p>
         If you want to contact me, my e-mail address can be found on my GitLab

@@ -1,4 +1,4 @@
-.darkmode {
+.lightmode {
   display: none;
 }
 
@@ -9,15 +9,14 @@ body {
 				font-style: sans-serif;
  */
 
-  /*  font-family: "Times New Roman", FreeSerif, "Liberation Serif", Times, serif;*/
-  color: #dfdfdf;
+/*  font-family: "Times New Roman", FreeSerif, "Liberation Serif", Times, serif;*/
   font-family: "Nimbus Sans", "DejaVu Sans Serif", Tahoma, Arial, sans-serif;
   font-size: 12pt;
   background-color: #525252;
 }
 
 .tldr {
-  color: #ff6666;
+  color: #990000;
 }
 
 div.footnotes {
@@ -36,7 +35,6 @@ a:hover.footnotelink, a:active.footnotelink {
 pre, code {
   font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
   font-size: 11pt;
-  background-color: #375180;
 }
 
 /* codewrap and imgwrap classes are used to make it so images scroll
@@ -57,13 +55,13 @@ pre, code {
 
 /* .imgwrap, .block, .imgwrap img, .imgwrap a img */
 .codewrap, .codewrap .block {
-  background-color: #375180;
+  background-color: #C0C0C0;
 }
 
 code, .codebg {
   display: inline;
   clear: both;
-  background-color: ##375180;
+  background-color: #C0C0C0;
 }
 
 strike, .strike {
@@ -73,7 +71,7 @@ strike, .strike {
 h1 {
   text-align: center;
   clear: both;
-  background-color: #2E384A;
+  background-color: #DFDFDF;
   width: 95vw;
   margin: 0 auto;
   padding: 6px;
@@ -94,7 +92,7 @@ h4, h3, h2, p {
 
 h2.banner {
   margin-top: 6px;
-  background-color: #2E384A;
+  background-color: #DFDFDF;
   width: 95vw;
   margin: 24px auto;
   padding: 6px;
@@ -113,7 +111,7 @@ h3 {
   padding:          6px;
   margin:           0 auto; /* center */
   margin-top:       24px;
-  background-color: #2E384A;
+  background-color: #DFDFDF;
   width:            95vw;
 /*  white-space: pre-line;*/
 }
@@ -214,11 +212,11 @@ imgcentercaption, .imgcentercaption, .caption {
   border-right: solid;*/
   border-style: solid;
   border-width: 2px;
-  /*  border-color: #2e384a; */
+  /*  border-color: #dfdfdf; */
   border-color: #808080;
 /*  border-color: #000000;*/
 /*  border-color: #ededed #9b9b9b #9b9b9b #ededed;*/
-  background-color: #2e384a;
+  background-color: #dfdfdf;
   padding: 5px;
 }
 
@@ -241,13 +239,11 @@ imgcentercaption, .imgcentercaption, .caption {
 }
 
 a {
-  color: #00C4C4;
-/*  color: #0000EE;*/
+  color: #0000EE;
 }
 
 a:visited {
-  color: #00C4C4;
-/*  color: #0000EE; */
+  color: #0000EE;
 }
 
 ul.x1 {
