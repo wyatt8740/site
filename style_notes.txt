@@ -1,0 +1,6 @@
+Whichever file gets linked to style.css will become the default style.
+New styles can be added by using stylegen.sh, although I have to manually add
+the buttons still. Could almost definitely automate that.
+
+The HTML is the same across both currently usable styles. In fact, those html
+files are just symlinks to the base ones. RIP, Windows users.
