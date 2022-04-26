@@ -28,6 +28,7 @@ a:hover.footnotelink, a:active.footnotelink {
 pre, code {
   font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
   font-size: 11pt;
+  background-color: #375180;
 }
 
 /* codewrap and imgwrap classes are used to make it so images scroll
@@ -48,13 +49,13 @@ pre, code {
 
 /* .imgwrap, .block, .imgwrap img, .imgwrap a img */
 .codewrap, .codewrap .block {
-  background-color: #C0C0C0;
+  background-color: #375180;
 }
 
 code, .codebg {
   display: inline;
   clear: both;
-  background-color: #C0C0C0;
+  background-color: ##375180;
 }
 
 strike, .strike {
