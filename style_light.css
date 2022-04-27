@@ -183,12 +183,12 @@ imgcentercaption, .imgcentercaption, .caption {
   text-decoration: underline;
 }
 
-.blerg_navright {
+.blerg_navright, .menu_right {
   float: right;
   text-align: right;
 }
 
-.blerg_navleft, .blerg_navright {
+.blerg_navleft, .blerg_navright, .menu_left, .menu_right {
   margin-left: -6px;
   margin-right: -6px;
   margin-bottom: 8px;
@@ -198,16 +198,15 @@ imgcentercaption, .imgcentercaption, .caption {
   margin: -6px;
 }
 
-.blerg_navleft {
+.blerg_navleft, .menu_left {
   display: inline-block;
   float: left;
-  
 }
 /*.navbar {
   float: left;
 }*/
 
-.navbar a, .blerg_navright a, .blerg_navleft a {
+.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right a {
 /*  border-left: solid;
   border-right: solid;*/
   border-style: solid;
