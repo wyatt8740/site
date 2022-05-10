@@ -44,6 +44,8 @@ pre, code {
 .prewrap .codewrap, .imgwrap, .captionwrap {
   overflow-x: auto;
   display: block;
+  /* STUPID CHROME BUG ARRRGH. shouldn't need to set this */
+  overflow-y: hidden;
 /*  padding-left: 12pt; */
 }
 
