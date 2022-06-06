@@ -606,6 +606,65 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         in the late 90's or early 2000's, so it's approximately period correct
         as well.
       </p>
+      <h3 id="powerbook-fvwm">FVWM (Window Manager)</h3>
+      <p>
+        FVWM is a very light-weight window manager that I like to use on my
+        computers.
+      </p>
+      <p>
+        I discovered FVWM when I was trying to run Debian on an Android phone
+        with an X server based on SDL. It worked when a lot of other WM's
+        didn't want to, and I also managed to configure it to behave closer to
+        what I expect of a "regular" window manager like Gnome/MATE or the MS
+        Windows window manager. Reading the documentation, it quickly became
+        clear to me that FVWM was <i>ridiculously</i> flexible.
+      </p>
+      <p>
+        Since I was able to make it do basically everything I wanted, I
+        remembered it when I later decided to try CDE (Common Desktop
+        Environment) on a whim over a weekend. It seemed kind of nice, but
+        also pretty limiting. I decided that I could use FVWM to make it act
+        like MWM (Motif Window Manager, the basis for CDE) with a few more
+        features. And then I just sort of never looked back.
+      </p>
+      <p>
+        My FVWM config file is based on modifications to the FVWM 2.6 template
+        file that shipped with Debian, but I now run FVWM 3.x (built from git).
+        FVWM3 supports multiple monitors and rotation slightly better via
+        RANDR - 2.6 only supports Xinerama, which is pretty much no longer in
+        use. Other than that, up to this point, the configuration file has
+        required only minimal alterations to work in FVWM 3.x.
+      </p>
+      <p>
+        One of the nicest things about FVWM is the console. You can
+        interactively configure things in FVWM by writing lines in a console
+        to test them without reloading your <code>fvwmrc</code>.
+      </p>
+      <p>
+        Anyway, not too much to say here, except that FVWM performs nicely,
+        and with a compositor (e.g., Compton, Picom), it also renders well.
+        If there's any behavior of it that you don't like, it is very likely
+        possible to change it (without having to recompile anything) via its
+        configuration file. To move to a new computer, it's as easy as copying
+        the <code>~/.fvwmrc</code> file or <code>~/.fvwm</code> directory.
+      </p>
+      <p>
+        To extoll more virtues of FVWM, it's easy to implement things like a
+        "forced full-screen" mode by making a keyboard shortcut that hides
+        the decorations and borders on the current window and then maximizes
+        it. FVWM can also be used to make pretty much any other keyboard
+        shortcuts one might want, whether they be for window manager actions
+        or for launching external programs/scripts.
+      </p>
+      <p>
+        Anyway, I recommend FVWM not only for lightweight systems like this
+        but for all Unix machines. It's really excellent. If you're an emacs
+        user already, you will be quick to understand its appeal to me when
+        you try it.
+      </p>
+      <p>
+        ...What do you mean, you "don't use emacs?"
+      </p>
       <h3>To-Do (Article Under Construction):</h3>
       <p>
         I'll try to come back to this and expand on it later. There's
@@ -652,11 +711,6 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
           <li>Marginal HTML5/CSS3 support</li>
           <li>Nominally uses the Duktape Javascript engine (can be seen with pretty much only canvas elements)</li> 
           <li>Almost no support for other dynamic web content as of now</li>
-        </ul>
-        <li>Lighter-weight alternatives for desktop environments</li>
-        <ul>
-          <li>Definitely not strictly necessary.</li>
-          <li>I just love FVWM too much <i>not</i> to talk about it here!</li>
         </ul>
         <li>Porting miscellaneous programs, fixing big/little-endian mixups</li>
         <ul>
