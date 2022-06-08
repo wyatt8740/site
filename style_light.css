@@ -147,13 +147,13 @@ h3 {
   width:            100%;
 }
 
-figure {
+figure, .figure {
   margin: 0 auto;
   display: inline-block;
   width: min-content;
 }
 
-figure figcaption {
+figure figcaption, .figure .figcaption {
   text-align: center;
   display: block;
   margin: 5px 0 0 0;
