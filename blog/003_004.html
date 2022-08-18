@@ -185,8 +185,26 @@
             for them isn't as easy as it is on a classic Thinkpad</li>
           <li>No way to distinguish between left and right 'command' keys.
             They both send the same keycode. I think this might be a legacy of
-            the Apple Desktop Bus (ADB) which they use, since my Apple Extended
-            Keyboard (1987) also does this.</li>
+            the Apple Desktop Bus (ADB) which they use internally, since my
+            Apple Extended Keyboard (1987) also does this.
+          </li>
+          <li>
+            Buggy controller(?) means that swapping caps lock and control
+            cannot be done reliably (the caps lock key will miss some key
+            release events when used as control). The JIS (Japanese) layout
+            would have the control key in the correct spot, but would mess
+            other things up for me. This happens in OS X as well as in Linux.
+          </li>
+          <ul>
+            <li>Under a Linux kernel, you need to add the parameter
+              <code>adbhid.restore_capslock_events=1</code> to get caps lock
+              releases to <i>ever</i> be detected.
+            </li>
+            <li>
+              You can't stop the caps lock LED coming on and off, either; I had
+              to pop the key cap off and slide electrical tape over the LED. A
+              harrowing prospect to mess up and end up needing a new board.
+            </ul>
         </ul>
       </ul>
       <p>
