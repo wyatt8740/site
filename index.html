@@ -10,7 +10,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <title>Wyatt's Homepage</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
     <div class="navbox">
@@ -29,19 +29,23 @@
 
     <h1>Wyatt's Site</h1>
     <!--<div class="postarea">Hello, and welcome to an experimental site thing.<br/>
-       Don't expect much, but maybe I'll post stuff occasionally when I've done something that I think is neat. Or when I find something that I think is most definitely not neat and want to rant about POSIX compliance.
-    </div>-->
+        Don't expect much, but maybe I'll post stuff occasionally when I've done something that I think is neat. Or when I find something that I think is most definitely not neat and want to rant about POSIX compliance.
+        </div>-->
     <div class="postarea">
       <p>
         Hello, I'm Wyatt Ward. Welcome to my small site.
       </p>
+      <h2>What this Site is For</h2>
       <p>
         I've not been too active in sharing my discoveries/things I've learned
-        with the wider world, so this (especially the
+        with the wider world, so this site (and especially the
         <a href="./blog/">blog</a>) is an attempt to fix that by giving me
-        somewhere to do my write-ups. I hope this helps someone, and perhaps
-        also gives a small insight into what I'm learning, or maybe even an
-        insight into how my brain works.
+        somewhere to do my write-ups.
+      </p>
+      <p>
+        I do this in the hope that it helps someone, gives a small insight into
+        what I'm learning, or maybe even explains a little about how my brain
+        works.
       </p>
       <p>
         While I expect it to largely remain technical, I am not going to
@@ -55,45 +59,68 @@
         already in a guide somewhere, or else was documented by an out-of-date
         guide that was only somewhat applicable to a specific task at hand.
       </p>
+      <h2>On this Site's Design</h2>
       <p>
-        Regardless of how you feel about "Web 1.0," note that I have done my
-        best to make this site fast, lightweight, readable, and compatible with
-        a wide range of browsers. It is currently tested working in everything
-        from Chrome and Firefox to the smaller browsers like Netsurf, Dillo,
-        and Lynx. As of April 2022, I have also confirmed that IE6 renders my
-        site acceptably (good news for all of the two people who still use IE6
-        for anything).
+        This site is written so that it will display adequately on many devices
+        and browsers while requiring minimal processing power or RAM. Sure, I
+        could have used Bootstrap or any number of other CSS or Javascript
+        frameworks, but performance would suffer and the page would also
+        stand out less. I have tried to keep the site's CSS and HTML as
+        pragmatic as possible, while also attempting to achieve acceptable
+        results on a wide variety of rendering engines.
       </p>
+      <p>
+        It has been tested in browsers going back to Lynx, Internet Explorer 6,
+        and Dillo. This is good news for all of the two people who still use
+        IE6 for anything, although there you may have trouble with HTTPS
+        certificate validation. Were I hosting the site myself, it would be
+        available via both HTTP and HTTPS, thus avoiding the issue. I suspect
+        it will work properly in IE 5 as well, but I have not had a chance to
+        test that out yet.
+      </p>
+      <p>
+        So, regardless of how you feel about "Web 1.0," please keep in mind
+        my goals when designing this site. Remember that my priority was to
+        make this site fast, lightweight, readable, and compatible. If you
+        have suggestions on how I can improve readability or usability, do not
+        hesitate to let me know.
+      </p>
+      <h2>On Javascript</h2>
       <p>
         I love Javascript, and think it's fun sometimes, but I'd much rather
         have a page that's easily accessible to everyone, regardless of their
-        computing power and living situation.
+        computing power and living situation. Since there is no reason my site
+        <b>should</b> need Javascript, I see no reason to introduce it as a
+        requirement.
       </p>
       <p>
         I have added a light and dark mode, implemented entirely using symbolic
-        links. No need for javascript, cookies, or server side page processing!
+        links. No need for Javascript, cookies, or server side page processing!
         The only difference is which CSS file is symlinked to. The light CSS
         hides the light mode button, and the dark CSS hides the dark mode
         button.
       </p>
+    </div>
+    <div class="postarea">
+      <h2>Contact</h2>
       <p>
         If you want to contact me, my e-mail address can be found on my GitLab
-        or GitHub account page. If you have questions, comments, or even want
+        or GitHub account pages. If you have questions, comments, or even want
         to hire me, don't hesitate to get in touch!
       </p>
-      </div>      
-      <h2 class="banner" >Blog Posts</h2>
-      <div class="postarea">
-        <ul>
-          <li><a href="./blog/007_008.html#bubblegum-review-2">"Hug Me Tight:" Reflections on <i>Bubblegum Crisis</i>, Episode 6: "Red Eyes" (1989)</a> (27 March - 26 April 2022)</li>
-          <li><a href="./blog/007_008.html#bubblegum-review-1">"We Shouldn't be Born to be Sad:" Reflections on <i>Bubblegum Crisis</i>, Episode 5: "Moonlight Rambler" (1988)</a> (01 Feb - 07 March 2022)</li>
-          <li><a href="./blog/005_006.html#keyboard-remap-1">Global Per-Keyboard Remapping: Inside and Outside of X</a> (19 Dec 2021)</li>
-          <li><a href="./blog/005_006.html#unicomp-mini-1">Unicomp Returns to Form: My Thoughts on the Unicomp Mini M Keyboard</a> (14 to 22 June 2021)</li>
-          <li><a href="./blog/003_004.html#powerbook-linux-1">The PowerBook G4 Story</a> (28 Apr 2021)</li>
-          <li><a href="./blog/003_004.html#psx-rgb-1">Coercing RGB from Retro Video Game Consoles on the Cheap</a> (15 May 2020)</li>
-          <li><a href="./blog/001_002.html#cdemu">CDemu: A Brief Tour</a> (03 Feb 2020)</li>
-          <li><a href="./blog/001_002.html#posixshell">To My Peers: The POSIX Shell and You: Or: Why You're Likely Misusing #!/bin/sh</a> (14 Jul 2019)</li>
-        </ul>
+    </div>      
+    <h2 class="banner" >Blog Posts</h2>
+    <div class="postarea">
+      <ul>
+        <li><a href="./blog/007_008.html#bubblegum-review-2">"Hug Me Tight:" Reflections on <i>Bubblegum Crisis</i>, Episode 6: "Red Eyes" (1989)</a> (27 March - 26 April 2022)</li>
+        <li><a href="./blog/007_008.html#bubblegum-review-1">"We Shouldn't be Born to be Sad:" Reflections on <i>Bubblegum Crisis</i>, Episode 5: "Moonlight Rambler" (1988)</a> (01 Feb - 07 March 2022)</li>
+        <li><a href="./blog/005_006.html#keyboard-remap-1">Global Per-Keyboard Remapping: Inside and Outside of X</a> (19 Dec 2021)</li>
+        <li><a href="./blog/005_006.html#unicomp-mini-1">Unicomp Returns to Form: My Thoughts on the Unicomp Mini M Keyboard</a> (14 to 22 June 2021)</li>
+        <li><a href="./blog/003_004.html#powerbook-linux-1">The PowerBook G4 Story</a> (28 Apr 2021)</li>
+        <li><a href="./blog/003_004.html#psx-rgb-1">Coercing RGB from Retro Video Game Consoles on the Cheap</a> (15 May 2020)</li>
+        <li><a href="./blog/001_002.html#cdemu">CDemu: A Brief Tour</a> (03 Feb 2020)</li>
+        <li><a href="./blog/001_002.html#posixshell">To My Peers: The POSIX Shell and You: Or: Why You're Likely Misusing #!/bin/sh</a> (14 Jul 2019)</li>
+      </ul>
     </div>
   </body>
 </html>
