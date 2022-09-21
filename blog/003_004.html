@@ -204,7 +204,8 @@
               You can't stop the caps lock LED coming on and off, either; I had
               to pop the key cap off and slide electrical tape over the LED. A
               harrowing prospect to mess up and end up needing a new board.
-            </ul>
+            </li>
+          </ul>
         </ul>
       </ul>
       <p>
@@ -519,9 +520,9 @@ fi</pre>
       </div>
       <p>
         Note that if you are using systemd as your init system, you can't run
-        stuff at boot from 'rc.local' like I did. I'm using 'sysvinit' (System V
-        Init) for my init system. You'll have to find your own way to run stuff
-        at boot. A quick search suggests that
+        stuff at boot from <code>rc.local</code> like I did. I'm using
+        'sysvinit' (System V Init) for my init system. You'll have to find
+        your own way to run stuff at boot. A quick search suggests that
         <a href="https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/">
           this might not be too hard to do</a>, but I have not tried it myself.
       </p>
@@ -550,12 +551,13 @@ fi</pre>
       <p>
         Mouseemu is configured on my system via
         <code>/etc/default/mouseemu</code>, which is sourced by init scripts
-        in /etc/init.d/. I am pretty sure that the configuration is sourced
-        the same way on a Systemd-as-init machine. To find the keycodes you
-        need to pass to it, either find the key ID's in
-        'include/linux/input.h' or run 'showkey' outside of X (in a TTY;
-        ctrl-alt-f1 for instance). Here's my personal configuration (note:
-        pretty sure 272 is the mouse button event):
+        in <code>/etc/init.d/</code>. I am pretty sure that the configuration
+        is sourced the same way on a Systemd-as-init machine. To find the
+        keycodes you need to pass to it, either find the key ID's in
+        <code>include/linux/input.h</code> or run <code>showkey</code> outside
+        of X (in a TTY; ctrl-alt-f1 for instance). Here's my personal
+        configuration (note: I am pretty sure <code>272</code> is the mouse
+        button event, going from memory):
       </p>
       <div class="codewrap">
         <pre class="block">RIGHT_CLICK="-right 125 272"   # command + click
@@ -612,6 +614,9 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         vorbis for audio) played back at full speed with no tearing at 720p
         in MPlayer!
       </p>
+        <p>
+          
+        </p>
       <p>
         It is possible baseline profile h.264 could have also worked, but I
         didn't test that. Xvid videos are so fast to encode; it's great. I
@@ -804,6 +809,7 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
           </li>
         </ul>
       </ul>
+      
       <p>
         Stay tuned!
       </p>
