@@ -505,6 +505,66 @@ $ sudo ybin -v</pre>
       <p>
         After doing that, my system has never hung in X.
       </p>
+      <h3>Fixing DVI Output</h3>
+      <p>
+        As an aside, it's worth noting that to get the DVI output to work
+        properly (outputting a digital signal), you need to pass another
+        parameter to the <code>radeon</code> kernel module in Linux. Powermacs
+        apparently don't actually contain a "connector table" telling the
+        system where the video connections are physically mapped to. So you
+        have to manually tell the driver where it should look for things. So
+        without further ado, here's a couple more lines I added to my
+        <code>/etc/modprobe.d/radeon.conf</code> file:
+      </p>
+      <div class="codewrap">
+        <pre class="block">options radeon connector_table=4
+options radeonfb connector_table=4</pre>
+      </div>
+      <p>
+        You may have to play with other values to find one that works for
+        you... and pass in the arguments on the yaboot prompt in case you
+        misconfigure it so it doesn't drive your internal LCD correctly
+        anymore.
+      </p>
+      <p>
+        I had to dig through
+        <a href="https://raw.githubusercontent.com/torvalds/linux/b44f2fd87919b5ae6e1756d4c7ba2cbba22238e1/drivers/gpu/drm/radeon/radeon_mode.h"
+           >the driver's source code</a>
+        to figure that one out. No one else seems to really talk about it
+        anywhere. The closest I got was a discussion from back when the option
+        was set in user-space (from Xorg.conf, for instance).
+      </p>
+      <p>
+        To figure out what setting you need, you may want to look in that
+        source file at the <code>radeon_connector_table</code> definition. For
+        my laptop, I needed <code>CT_POWERBOOK_INTERNAL</code>, which has the
+        index <code>4</code> based on its position in the list. Without this,
+        the DVI port would only output analogue video.
+      </p>
+      <p>
+        The
+        <a href="https://www.x.org/releases/current/doc/man/man4/radeon.4.xhtml">documentation for the X.org radeon driver</a>
+        might also be useful for determining what you need, although in my
+        experience the <code>MacModel</code> option no longer works there. But
+        it gives better descriptions of what the different types mean:
+      </p>
+      <div class="codewrap">
+        <pre class="block">Option "MacModel" "string"
+    Used to specify Mac models for connector tables and quirks. If you have a
+    PowerBook or Mini with DVI that does not work properly, try the alternate
+    options as Apple does not seem to provide a good way of knowing whether they
+    use internal or external TMDS for DVI. Only valid on PowerPC. On Linux, the
+    driver will attempt to detect the MacModel automatically.
+        ibook −− ibooks
+        powerbook-external −− Powerbooks with external DVI
+        powerbook-internal −− Powerboo with integrated DVI
+        powerbook-vga −− Powerbooks with VGA rather than DVI
+        mini-external −− Mac Mini with external DVI
+        mini-internal −− Mac Mini with integrated DVI
+        imac-g5-isight −− iMac G5 iSight
+        emac −− eMac G4
+    The default value is undefined.</pre>
+      </div>
       <h3>Changing keyboard/mouse behaviors</h3>
       <p>
         I think the next thing I did (after installing an X server, since I
