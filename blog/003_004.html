@@ -545,8 +545,12 @@ options radeonfb connector_table=4</pre>
         The
         <a href="https://www.x.org/releases/current/doc/man/man4/radeon.4.xhtml">documentation for the X.org radeon driver</a>
         might also be useful for determining what you need, although in my
-        experience the <code>MacModel</code> option no longer works there. But
-        it gives better descriptions of what the different types mean:
+        experience the <code>MacModel</code> option no longer works there. Do
+        also note that the version of this man page installed on my Debian
+        system does not include the bit about <code>MacModel</code> at all,
+        since it hasn't worked since the move away from User Mode Setting
+        (UMS). But it gives better descriptions of what the different types
+        mean than the kernel sources do for KMS (Kernel Mode Setting):
       </p>
       <div class="codewrap">
         <pre class="block">Option "MacModel" "string"
@@ -565,6 +569,19 @@ options radeonfb connector_table=4</pre>
         emac −− eMac G4
     The default value is undefined.</pre>
       </div>
+      <p>
+        I happen to know my powerbook uses internal TMDS because I have seen
+        the schematics for it, but I don't know how users are <i>expected</i>
+        to find that information, since Apple didn't exactly intend to share
+        the schematics with anyone or make it obvious to the layperson that
+        it was showing internal TMDS. Almost twenty years later, I doubt they
+        care as much, but the schematic copies I saw were under an NDA
+        forbidding me from redistributing it. So I'm not going to. Sorry. I
+        wish I could.
+      </p>
+      <p>But, if you want to hunt for it, you want drawing number 051-6809,
+        titled "SCHEM,MLB,PB15," revision B... if you have my model, at least.
+      </p>
       <h3>Changing keyboard/mouse behaviors</h3>
       <p>
         I think the next thing I did (after installing an X server, since I
