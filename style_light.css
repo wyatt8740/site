@@ -133,7 +133,7 @@ h3 {
 .postarea img {
   margin:           0 auto;
   display:          inline-block;
-  max-width: 100%;
+  max-width: 98%%;
   box-shadow: 5px 5px 4px 0px #a4a4a4;
   margin-bottom: 9px;
 }
@@ -141,7 +141,7 @@ h3 {
 .postarea img.fitwide {
   margin:           0 auto;
   display:          block;
-  max-width:        100%;
+  max-width:        98%;
   max-height:       100%;
   height:           auto;
   width:            100%;
@@ -173,7 +173,7 @@ alert, .alert, .caption, imgcentercaption, .imgcentercaption {
    render it properly. Setting class caption on imgcentercaption does nothing.
    this is probably what I deserve for using non-standard tags, honestly. */
 imgcentercaption, .imgcentercaption, .caption {
-  max-width: 100%;
+  max-width: 98%;
   text-align: center;
 }
 
