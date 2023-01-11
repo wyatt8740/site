@@ -11,6 +11,7 @@
     <meta http-equiv="pragma" content="no-cache"/>
     <title>Wyatt's Blog</title>
     <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="alternate" type="application/rss+xml" title="Wyatt's Blog (RSS)" href="/site/blog/rss.xml" />
   </head>
   <body>
     <div class="navbox">
@@ -21,8 +22,8 @@
       </span>
       <span class="rightbox"> <!-- needed for dillo -->
         <span class="menu_right">
-          <a href="/site/light/blog/009.html" class="lightmode">[Light Mode]</a>
-          <a href="/site/dark/blog/009.html" class="darkmode">[Dark Mode]</a>
+          <a href="/site/light/blog/009_010.html" class="lightmode">[Light Mode]</a>
+          <a href="/site/dark/blog/009_010.html" class="darkmode">[Dark Mode]</a>
         </span>
       </span>
     </div>
@@ -40,28 +41,34 @@
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
       <ul>
-        <li><a href="#sega-1">Sega Stuff</a></li>
+        <li><a href="#sega-hw-1">Classic Sega Hardware Infodump</a></li>
       </ul>
     </div>
     <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
-    <div class="postarea" id="sega-1">
+    <div class="postarea" id="sega-hw-1">
       <h2>Classic Sega Hardware Infodump<br/>
+        (WORK-IN-PROGRESS POST)
       </h2>
-      <p><i>15 Aug 2022</i> [<a class="permalink" href="./009.html#sega-1">Permanent link</a>]<br/>
+      <p><i>29 Nov 2022</i> [<a class="permalink" href="./009_010.html#sega-hw-1">Permanent link</a>]<br/>
         After <a href="../blog/007_008.html">all of that
           <i>Bubblegum Crisis</i> jazz</a>, I sort of needed a break from
         writing for a bit. But I'm hesitantly feeling like writing again now!
       </p>
       <p>
-        But unfortunately my goals are rather vague this time around. I just
+        School's kicking my butt, so this has been halfway finished since
+        August (of 2022). But I decided I should just share it. So here's what
+        I've got, for what it's worth.
+      </p>
+      <p>
+        Unfortunately, my goals are rather vague this time around. I just
         kind of feel like writing about old Sega hardware. And maybe about
         some of my opinions on it.
       </p>
       <p>
-        Since my most recent project involved Sega stuff, I'll just monologue
-        about old Sega systems (which from my skewed perspective just means
-        'before the Saturn') until I don't feel like it anymore. I hope that
-        the result will be educational, entertaining, intellectually
+        Since one of my more recent projects involved Sega stuff, I'll just
+        monologue about old Sega systems (which from my skewed perspective just
+        means 'before the Saturn') until I don't feel like it anymore. I hope
+        that the result will be educational, entertaining, intellectually
         stimulating, or at least mildly interesting/enjoyable.
       </p>
       <h3>Sega's Hardware Legacy</h3>
@@ -78,6 +85,54 @@
         splash as Nintendo's entry did. This might partially be due to its
         inferior hardware.
       </p>
+      <p>
+        One interesting thing to note is that the SC-3000 was sold as a home
+        computer rather than a games console. And I don't mean like how the
+        Famicom was called "Family Computer" and just sort of slipped into
+        peoples' houses, and had a keyboard you could purchase to write BASIC
+        on it and a tape recorder to save your programs. I mean that the
+        SC-3000 was an all-in-one, complete computer solution rather than a
+        games console with a few computer peripherals marketed for it
+        (rather halfheartedly, I might add). The SC-3000 appears to be quite
+        rare, but I'd love to get to look at one some day. It really amounts
+        to a rather interesting footnote in Sega's history, but I thought
+        it might be worth mentioning here.
+      </p>
+      <p>
+        Now, Nintendo seems to have had a recall at some point
+        (I have not been able to find a solid citation for this fact, but it
+        seems so commonly discussed on forums that I've swallowed the claim.
+        If I ever get actually proficient at written Japanese I'll probably
+        try to ask around on Japanese boards and see if they have any more
+        credible sources. But the fact remains that it launched the very same
+        day as the SG-1000/SC-3000, and had far more flexible and capable
+        design as a games machine. This is largely because where the SG-1000/
+        SC-3000 used a graphics chip primarily tooled towards general purpose
+        home computing on TV screens, whereas the Famicom's PPU was designed
+        specifically for the purpose of playing games, much like some of the
+        hardware you might find in an arcade machine (albeit on a slightly
+        lower order of complexity, presumably to keep costs down). If you ever
+        look into programming the NES/Famicom (even if it's "just" ROM
+        hacking), and you've had experience with home computers of the 80's,
+        you will see plenty of ways that the NES/Famicom PPU design goes
+        counter to what you might have come to expect working on other
+        6502 CPU-based computers of the time, like the Commodore VIC-20 or
+        Atari 800. Don't believe me? If you want to see for yourself,
+        I suggest looking at the Commodore 64 programmers' manual for info on
+        the VIC-II (one of the more capable computer graphics chips of the
+        time the NES was released).
+      </p>
+      <p>
+        In fact, the closest I can immediately think of from that period to
+        being capable of what the NES PPU can do is probably the Commodore 64's
+        VIC-II chip, which actually borrowed a lot of ideas from the TMS9918
+        chip (which was used in the TI-99/4 and TI-99/4A computers and
+        <i>also</i> in the SG-1000).
+      </p>
+      <p>
+        But yeah, let's talk about the SG-1000 now.
+      </p>
+      <h4>The TMS9918's Legacy</h4>
       <p>
         The SG-1000 used the Texas Instruments TMS9918 VDP (Video Display
         Processor). First, it should be said that the TMS9918 was actually
@@ -263,9 +318,9 @@
         usually look more like $35-$40, which I don't think I'd ever be okay
         with paying. With the exception of the moulding on the back (which is
         stamped MK-1937 instead of SJ-6000) it appears to be exactly identical
-        to the Japanese domestic six button pad. For someone who is a fan of
+        to the Japanese domestic six button. For someone who is a fan of
         the size and shape of the NES "dog bone" controller, this is a great
-        feeling.
+        feeling, comfortably proportioned pad.
       </p>
       <div class="imgcontain imgwrap" id="sega_dogbone">
         <a href="sega_1/full/6-button-03.jpg">
@@ -284,8 +339,12 @@
         controller for small children. But if you're lucky, it might be cheaper
         than importing one from Japan (it very likely will be cheaper than
         importing). Not sure about how the prices stack up if you're in the
-        "Old World," though. I don't think Europe ever got this release, for
-        instance.
+        "Old World," though. I don't think Europe ever got this release, and I
+        am nearly certain Africa didn't. I have no clue about the rest of the
+        east... I suspect Australia also did not get it, but at least they're a
+        little closer to Japan geographically than I am. And New Zealand did
+        apparently get the SG-1000 (and maybe SC-3000), so I guess anything is
+        possible.
       </p>
       <h3>Three-Button Controllers</h3>
       <p>
@@ -406,6 +465,12 @@
         difference between VA5 (non-TMSS) and VA6 (TMSS) consoles that I am
         aware of. Basically it works by shutting off the VDP if it doesn't
         get its checks satisfied in a brief time window.
+      </p>
+      <p>
+        (Stay tuned! I'm still working on this post... I will update my
+        <a href="/site/blog/rss.xml">RSS feed</a>
+        when I think it's pretty much finished, but it won't appear there
+        until that time.)
       </p>
     </div>
     <div class="navbox">
