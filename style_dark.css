@@ -2,17 +2,13 @@
   display: none;
 }
 
+.bgc {
+  display: none;
+}
+
 body {
   /*	Sparing peoples' eyes. */
-  /*
-				font-family: "Courier New", Courier, "Unifont", monospace;
-				font-style: sans-serif;
- */
-
-  /*  font-family: "Times New Roman", FreeSerif, "Liberation Serif", Times, serif;*/
   color: #dfdfdf;
-  font-family: "Nimbus Sans", "DejaVu Sans Serif", Tahoma, Arial, sans-serif;
-  font-size: 12pt;
   background-color: #525252;
 }
 
@@ -20,41 +16,8 @@ body {
   color: #ff6666;
 }
 
-div.footnotes {
-  font-size: 10pt;
-}
-
-a:link.footnotelink, a:visited.footnotelink {
-  text-decoration: none;
-  /* color: #000000; */
-}
-
-a:hover.footnotelink, a:active.footnotelink {
-  text-decoration: underline;
-}
-
 pre, code {
-  font-family: "Liberation Mono", "Courier New", monospace, Courier, sans-serif;
-  font-size: 11pt;
   background-color: #375180;
-}
-
-/* codewrap and imgwrap classes are used to make it so images scroll
-   horizontally in boxes if they would otherwise overflow. */
-.prewrap .codewrap, .imgwrap, .captionwrap {
-  overflow-x: auto;
-  display: block;
-  /* STUPID CHROME BUG ARRRGH. shouldn't need to set this */
-  overflow-y: hidden;
-/*  padding-left: 12pt; */
-}
-
-.imgwrap, .captionwrap {
-  text-align: center;
-}
-
-.prewrap {
-  display: inline;
 }
 
 /* .imgwrap, .block, .imgwrap img, .imgwrap a img */
@@ -63,220 +26,34 @@ pre, code {
 }
 
 code, .codebg {
-  display: inline;
-  clear: both;
   background-color: ##375180;
 }
 
-strike, .strike {
-  text-decoration: line-through;
-}
-
 h1 {
-  text-align: center;
-  clear: both;
   background-color: #2E384A;
-  width: 95vw;
-  margin: 0 auto;
-  padding: 6px;
-}
-
-h3, h2 {
-  padding-top: 6px;
-  padding-bottom: 0px;
-  clear: both;
-  text-align: center;
-  margin: 0 auto;
-}
-
-h4, h3, h2, p {
-  padding-left: 6px;
-  padding-right: 6px;
 }
 
 h2.banner {
-  margin-top: 6px;
   background-color: #2E384A;
-  width: 95vw;
-  margin: 24px auto;
-  padding: 6px;
-}
-
-h3, h4 {
-  margin: 0 auto;
-}
-
-h3 {
-  text-align: left;
 }
 
 .postarea {
-  clear: both;
-  padding:          6px;
-  margin:           0 auto; /* center */
-  margin-top:       24px;
   background-color: #2E384A;
-  width:            95vw;
-/*  white-space: pre-line;*/
-}
-
-.navbox {
-  padding-left:     6px;
-  padding-right:    6px;
-  margin:           0 auto; /* center */
-  width:            95vw;
-}
-
-.navbox div {
-  padding-top: 3px;
-  padding-bottom: 3px;
 }
 
 .postarea img {
-  margin:           0 auto;
-  display:          inline-block;
-  max-width: 98%;
   box-shadow: 5px 5px 4px 0px #1E2530;
-  margin-bottom: 9px;
 }
-
-.postarea img.fitwide {
-  margin:           0 auto;
-  display:          block;
-  max-width:        98%;
-  max-height:       100%;
-  height:           auto;
-  width:            100%;
-}
-
-figure, .figure {
-  margin: 0 auto;
-  display: inline-block;
-  width: min-content;
-}
-
-figure figcaption, .figure .figcaption {
-  text-align: center;
-  display: block;
-  margin: 5px 0 0 0;
-}
-
-alert, .alert, .caption, imgcentercaption, .imgcentercaption {
-  display: block;
-  font-weight: bold;
-  font-size: 11pt;
-}
-
-.imgcontain {
-  padding-bottom: 10px;
-}
-
-/* We need to wrap imgcentercaption in a span with class caption for dillo to
-   render it properly. Setting class caption on imgcentercaption does nothing.
-   this is probably what I deserve for using non-standard tags, honestly. */
-imgcentercaption, .imgcentercaption, .caption {
-  max-width: 98%;
-  text-align: center;
-}
-
-.caption_break {
-  margin-bottom: 0px;
-}
-
-.caption_link {
-  text-decoration: underline;
-}
-
-.blerg_navright, .menu_right {
-  float: right;
-  text-align: right;
-}
-
-.blerg_navleft, .blerg_navright, .menu_left, .menu_right {
-  margin-left: -6px;
-  margin-right: -6px;
-  margin-bottom: 8px;
-}
-
-.navbar {
-  margin: -6px;
-}
-
-.blerg_navleft, .menu_left {
-  display: inline-block;
-  float: left;
-}
-/*.navbar {
-  float: left;
-}*/
 
 .navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right a {
-/*  border-left: solid;
-  border-right: solid;*/
-  border-style: solid;
-  border-width: 2px;
-  /*  border-color: #2e384a; */
-  /* border-color: #808080; */
   border-color: #4e5c75;
-/*  border-color: #000000;*/
-/*  border-color: #ededed #9b9b9b #9b9b9b #ededed;*/
   background-color: #2e384a;
-  padding: 5px;
-}
-
-.navbar, .blerg_navleft, .blerg_navright {
-  margin-bottom: 4px;
-}
-
-.navbar {
-  margin-top: 0px;
-  margin-bottom: 1%;
-}
-
-.blerg_navleft, .blerg_navright {
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
-.permalink {
-  /* float: right; */
 }
 
 a {
   color: #00C4C4;
-/*  color: #0000EE;*/
 }
 
 a:visited {
   color: #00C4C4;
-/*  color: #0000EE; */
-}
-
-ul.x1 {
-  margin-left:50px;
-}
-li ul.x1 {
-  display: list-item;
-  display: inline;list-item;
-  list-style-type: square;
-}
-li {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-ul, ol {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-li > ul {
-  margin-top: 3px;
-}
-hr {
-  display: block;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
 }

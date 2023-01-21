@@ -1,0 +1,86 @@
+.megatokyo {
+  display: none;
+}
+
+body {
+  /*	Sparing peoples' eyes. */
+  color: #dfdfdf;
+  background-color: #32404B;
+/*  background-color: #23313B;*/
+}
+
+.tldr {
+  color: #ff6666;
+}
+
+pre, code {
+  background-color: #375180;
+}
+
+/* .imgwrap, .block, .imgwrap img, .imgwrap a img */
+.codewrap, .codewrap .block {
+  background-color: #375180;
+}
+
+code, .codebg {
+  background-color: ##375180;
+}
+
+h1 {
+  font-family: "Liberation Serif", "Times New Roman", serif;
+  border-style: solid;
+  padding: 14px;
+  width: 90vw;
+  border-width: 6px;
+  /*border-color: #4A476D;*/
+  /* border-color: #545C7A;*/
+  /*border-color: #431D31;*/
+  /* border-color: #324551; */
+  color: #B9070B;
+  border-color: #545C7A;
+  background-color: #1E3153;
+  /* background-color: #575E75;*/
+  /* background-color: #25322D;*/
+  /* background-color: #1E3153;*/
+}
+
+h2.banner {
+  background-color: #282746;
+}
+
+.postarea {
+  border-style: solid;
+  padding: 14px;
+  width: 90vw;
+  border-width: 6px;
+  /*  border-color: #324551;
+  background-color: #282746;*/
+  /* border-color: #4A476D;*/
+  /*border-color: #33434E;*/
+  border-color: #545C7A;
+  background-color: #1E3153;
+}
+
+.postarea img {
+  box-shadow: 5px 5px 4px 0px #1E2530;
+}
+
+.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right a {
+  /* border-color: #49476D;*/
+  border-color: #33434E;
+  font-weight: normal;
+  background-color: #1E3052;
+  color: #83B6DB;
+}
+
+a {
+  /* font-weight: bold;*/
+  /* color: #AE3182;*/
+  color: #E48BCA;
+}
+
+a:visited {
+  /* font-weight: bold;*/
+  /* color: #AE3182;*/
+  color: #E48BCA;
+}
