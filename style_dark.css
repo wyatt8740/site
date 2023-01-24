@@ -45,7 +45,7 @@ h2.banner {
   box-shadow: 5px 5px 4px 0px #1E2530;
 }
 
-.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right a {
+.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a, .menu_right > span {
   border-color: #4e5c75;
   background-color: #2e384a;
 }

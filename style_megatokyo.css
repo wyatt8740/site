@@ -65,17 +65,21 @@ h2.banner {
   box-shadow: 5px 5px 4px 0px #1E2530;
 }
 
-.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right a {
+.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a, .menu_right > span {
   /* border-color: #49476D;*/
   border-color: #33434E;
   font-weight: normal;
   background-color: #1E3052;
+}
+.navbar a, .navbar a:visited, .blerg_navright a, .blerg_navright a:visited, .menu_left a, .menu_left a:visited, .menu_right > a, .menu_right > a:visited {
   color: #83B6DB;
 }
+
 
 a {
   /* font-weight: bold;*/
   /* color: #AE3182;*/
+  /* color: #83B6DB; */
   color: #E48BCA;
 }
 
