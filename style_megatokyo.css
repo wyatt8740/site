@@ -23,11 +23,11 @@ pre, code {
 }
 
 code, .codebg {
-  background-color: ##375180;
+  background-color: #375180;
 }
 
 h1 {
-  font-family: "Liberation Serif", "Times New Roman", serif;
+  /* font-family: "Liberation Serif", "Times New Roman", serif;*/
   border-style: solid;
   padding: 14px;
   width: 90vw;
@@ -36,7 +36,8 @@ h1 {
   /* border-color: #545C7A;*/
   /*border-color: #431D31;*/
   /* border-color: #324551; */
-  color: #B9070B;
+  /*color: #B9070B;*/
+  color: #D43336;
   border-color: #545C7A;
   background-color: #1E3153;
   /* background-color: #575E75;*/
