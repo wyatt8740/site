@@ -2,6 +2,13 @@
   display: none;
 }
 
+.blerg_navleft, .blerg_navright, .menu_left, .menu_right {
+  margin-left: -6px;
+  margin-right: -6px;
+  /*  margin-bottom: 8px;*/
+  /*  margin-bottom: 1%;*/
+}
+
 .bgc {
   display: none;
 }
