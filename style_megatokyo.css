@@ -72,7 +72,7 @@ h2.banner {
   font-weight: normal;
   background-color: #1E3052;
 }
-.navbar a, .navbar a:visited, .blerg_navright a, .blerg_navright a:visited, .menu_left a, .menu_left a:visited, .menu_right > a, .menu_right > a:visited {
+.navbar a, .navbar a:visited, .blerg_navleft a, .blerg_navright a, .blerg_navleft a:visited, .blerg_navright a:visited, .menu_left a, .menu_left a:visited, .menu_right > a, .menu_right > a:visited {
   color: #83B6DB;
 }
 
