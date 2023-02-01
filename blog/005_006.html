@@ -25,12 +25,12 @@
         <span class="menu_right">
           <a href="/site/light/blog/005_006.html" class="lightmode">[Light Mode]</a>
           <a href="/site/dark/blog/005_006.html" class="darkmode">[Dark Mode]</a>
-          <a href="/site/megatokyo/about/index.html" class="megatokyo">[Megatokyo Mode]</a>
+          <a href="/site/megatokyo/blog/005_006.html" class="megatokyo">[Megatokyo Mode]</a>
         </span>
       </span>
     </div>
-    <h1 class="megatokyo">Blog</h1>
-    <h1 class="bgc">Blogglegum Crisis</h1>
+    <h1>Blog</h1>
+    <!-- <h1 class="bgc">Blogglegum Crisis</h1> -->
     <div class="navbox">
       <span class="blerg_navleft">
         <a href="../blog/007_008.html">← Newer</a>
@@ -171,6 +171,44 @@ udevadm trigger</pre>
         Enjoy your remapped keyboard. I put the steps in comments (which start
         with <code>#</code>) in one of my 'hwdb' entries so that I'd remember
         them better.
+      </p>
+      <h3>Addendum 2023: Windows NT</h3>
+      <p>
+        I started using my Mini M keyboard on a Windows 2000 installation on a
+        Pentium III-class PC recently. The following registry entry remaps:
+      </p>
+      <ul>
+        <li>right alt → null,</li>
+        <li>right windows key → right al,</li>
+        <li>menu key → right window key.</li>
+      </ul>
+      <p>
+        <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout\Scancode Map</code> (type: <code>REG_BINARY</code>):
+      </p>
+      <div class="codewrap">
+           <pre class="block">0000   00 00 00 00  00 00 00 00
+0008   04 00 00 00  00 00 38 00
+0010   38 E0 5C E0  5C E0 5D E0
+0018   00 00 00 00</pre>
+      </div>      
+      <p>
+        You can find their instructions on how to arrange the registry entries
+        <a href="">here</a>. Note that I am pretty sure they actually swapped
+        the values in their descriptions of what the different remappings in
+        the example do. Also remember that these values have to be
+        little-endian (AKA backwards).
+      </p>
+      <p>
+        You can find Microsoft's list of scan codes
+        <a href="http://web.archive.org/web/20080409063910/http://www.microsoft.com/whdc/device/input/Scancode.mspx">here</a>.
+      </p>
+      <p>
+        You can find PDF and RTF versions of <a href="http://web.archive.org/web/20080409063910/http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/scancode.doc">the MS Word file</a>
+        linked on that page here: <a href="./keyremap_1/scancode.pdf">PDF</a>,
+        <a href="./keyremap_1/scancode.rtf">RTF</a>.
+      </p>
+      <p>
+        You need to reboot to apply the changes.
       </p>
     </div>
     <div class="postarea" id="unicomp-mini-1">
