@@ -457,11 +457,157 @@
         to do something no one else was doing.
       </p>
       <p>
-        So, if you want a PC-98
+        So, if you want a PC-98 for DOS, and you don't want to buy one for
+        early games and another for late games, I'd say a 486 or 386 is the
+        ideal range to choose from. Circa perhaps 1990 to 1994. You can find a
+        list of a whole bunch of machines
+        <a href="https://pc-9800.net/">on this site</a>.
       </p>
       <p>
-        Of course, I ignored all of the above options. NEC? That's just too
-        mainstream.
+        First, I helped my friend to choose something. She already kind of
+        knew what she wanted, so all I really had to do was cross reference
+        the models she talked about with the ones on that site to check for
+        red flags.
+      </p>
+      <h4>PC-9801 or PC-9821?</h4>
+      <p>
+        The PC-9801 was the original series of computers. The best way to
+        describe the differences might just be to show how the PC-9801 and
+        PC-9821 lines tended to differ.
+      </p>
+      <h4>9821:</h4>
+      <p>
+        The PC-9821 models came out targetted at use by Windows users, and have
+        some quality of life improvements. For instance, to change settings on a
+        PC-9801, you flip a bunch of DIP switches and need to have documentation
+        to discover what they do (they are not necessarily marked on the board).
+        But with the 9821, by holding the 'HELP' key while booting, you can
+        enter a software configurator which shows you virtual dip switches that
+        you can flip, with inline help text describing what each switch is
+        doing. It can be a real time saver.
+      </p>
+      <p>
+        The 9821 line also has 3.5" floppy disk drives; from what I can gather,
+        the 9801 series usually had 5.25" and the 9821 usually had 3.5". Since
+        3.5" floppies are a LOT easier to come by in good shape, and just
+        generally age a little better, that may be one reason to consider using
+        a PC-9821 if you intend to keep the original floppy drives.
+      </p>
+      <p>
+        A 9821 is also much more likely to come with an IDE hard disk drive,
+        or at least with a controller and connector for one. Typically, with
+        a 9801, you need to use a SCSI controller and SCSI drives to get large
+        storage capabilities. I personally struggle to make SCSI do what I want
+        sometimes, so that might be another argument for using a 9821.
+      </p>
+      <h4>9801:</h4>
+      <p>
+        On the other hand, the 9801's were intended to be DOS machines; it may
+        be easier to find a low-powered one, and it will <i>definitely</i> be
+        easier to find one without a window accelerator GPU built-in. They seem
+        to be generally less desirable than the early 9821's. Also, this is
+        just something I have heard, but people say it's harder to open up the
+        earlier 9801's (although later ones are probably pretty okay).
+      </p>
+      <h3>Yeah, But What Does All of That Mean?</h3>
+      <p>
+        I threw around a lot of terms describing the differences between the
+        9801 and 9821. To elaborate a little, here's some more detailed
+        explanations of what you should try to look for or avoid.
+      </p>
+      <h4>Red Flag #1: Integrated window accelerator graphics chip</h4>
+      <p>
+        Onboard window accelerator cards are for making Windows run with nice
+        effects, like showing the contents of windows while dragging them
+        around. Unfortunately, these machines force you to use that graphics
+        chipset; there's no way to just "unplug" it and go back to using
+        the old µPD7220 derivatives. So my friend needed to rule out
+        <i>most</i> of the PC-9821 line. <b>But</b>, some of the early ones
+        still had either no GPU card built in, or else simply had an
+        accelerator card pre-installed that could easily be popped out.
+      </p>
+      <h4>Red Flag #2: No FM sound</h4>
+      <p>
+        Some later systems omitted the FM sound, especially laptop PC98
+        models. We didn't look at the laptop models in much detail, though,
+        since my friend very clearly expressed that she wanted a desktop model.
+        Early models lacking FM sound are far too old to be able to play any
+        but the oldest PC-98 DOS games at a decent speed.
+      </p>
+      <p>
+        There are two main kinds of FM sound chips to consider; the "26-Sound"
+        and "86-Sound." If your system has 26-sound, it's much better than
+        nothing, but be forewarned that you might still end up springing for a
+        PC-9801-86 sound card board if you want stereo sound, PCM audio
+        playback, or Atari-style joystick compatibility. And that card on its
+        own seems to cost upwards of $100 USD. So factor that in when ordering.
+      </p>
+      <p>
+        Some 9821's (most, if not all, actually) have the "86 Sound" (YM2608)
+        built-in. On these systems, you can connect a joystick to the system
+        via an adapter that plugs into the keyboard port. I might add a
+        diagram for this at some point, but basically you need to ground
+        one or two wires and then hook the remaining pins up to the joystick
+        inputs. People on yahoo auctions will sell you pre-made adapter cables.
+      </p>
+      <h4>Red Flag #3: No CD Drive</h4>
+      <p>
+        This isn't an instant "NEVER buy this" or anything, but if you don't
+        have a CD drive built in, you may have to add one via a SCSI
+        controller card. So be sure to factor in that additional cost, if
+        having a CD drive actually matters to you.
+      </p>
+      <h4>Red Flag #4: Leaking Real-Time Clock (RTC) Battery</h4>
+      <p>
+        The one reason I hesitate at all to suggest buying an untested PC98 is
+        that some of them use Nickel-Cadmium (NiCad) real time clock batteries.
+        Every system with one of those should be treated as a time bomb, if
+        not already dead. Those NiCad battery barrels seem to be more common
+        in older stuff. But they are mounted to the motherboard, so when they
+        leak out, they start corroding the copper traces away. If it's not
+        caught quickly and treated/cleaned, it can and will kill motherboards.
+        If you're not sure which kind of battery a particular model uses,
+        proceed with caution.
+      </p>
+      <p>
+        If your system has a barrel battery, I suggest IMMEDIATELY
+        clipping/removing it from the board, buying a new battery cell, and
+        mounting it in a holder attached to the motherboard via a wire. If there
+        was leakage but the board still works, you should polish off the area
+        of leakage (down to good copper), use a little alcohol, and then re-seal
+        it with nail polish or something similar.
+      </p>
+      <p>
+        It's worth noting that not all RTC batteries are NiCads. I've also seen
+        rechargeable coin cell batteries, which seem to be much more reliable.
+      </p>
+      <p>
+        The ones that my friend got ended up not having barrel batteries, but
+        I believe the PC98-DO has one and lots of others besides also do.
+      </p>
+      <h4>Red Flag #5: There is no Red Flag #5</h4>
+      <p>
+        If you avoid a window accelerator built into the motherboard, and your
+        system has FM sound built in (especially a YM2608, for "86-Sound"),
+        you have already ensured that your system will be at least largely
+        compatible with most older DOS things. If you have a CD drive and
+        a non-leaked (or coin cell) clock battery, that's even better.
+      </p>
+      <h3>So, What Did My Friend Choose?</h3>
+      <p>
+        My friend chose to get two systems, a PC-9821 Cs2 and a PC-9821 Ce2.
+        I believe the idea was that if something was broken, she'd be able to
+        swap parts to get at least one system working fully. It ended up being
+        a good thing that she did get two, which I also intend to talk about
+        in detail later.
+      </p>
+      <h3>So, What Did <b>I</b> Choose for Myself?</h3>
+      <p>
+        Me? Well,  ignored all of the above options. NEC? Pssh. That's so
+        mainstream. I can do better than that.
+      </p>
+      <p>
+        Allow me to introduce the Epson PC-486GR.
       </p>
     </div>
     <!--    <div class="postarea"><h3>Nothing here yet.</h3>Maybe some day.</div>-->
