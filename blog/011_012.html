@@ -763,8 +763,8 @@
         and I didn't have too much trouble finding instructions for making one.
         I am also feeling kind of lazy at the moment, given how much devotion
         I am putting into just writing this article as it is. The VGA adapter
-        diagram elsewhere in this post took over an hour to draw that and make
-        it look all nice in the page.
+        diagram elsewhere in this post took over an hour to research, draw, and
+        make it look all nice in the page. So did the other mouse adapter one.
       </p>
       <h4>Red Flag #4: No CD Drive</h4>
       <p>
@@ -1035,26 +1035,68 @@
         Did your PC come with a mouse? If not, you need to get one for a lot of
         newer software.
       </p>
+      <h4>Mouse Card (Older Systems Only)</h4>
       <p>
         Older PC-98's might not have a mouse port, and for those you'd need
         to find a "bus mouse" card, I believe. This only applies to the ones
         made before around 1985. <a href="https://radioc.web.fc2.com/column/pc98bas/pc98kbdmouse_en.htm">
-          This site</a> claims the PC-9801, the 9801E, 9801F, and 9801M models
+        This site</a> claims the PC-9801, the 9801E, 9801F, and 9801M models
         are the ones that need a mouse card.
       </p>
+      <h4>Two Mouse Connectors</h4>
       <p>
-        For later machines, they will probably have one of two connectors.
-        The choices are a 9-pin D-Subminiature connector or a 9-pin mini-DIN
-        connector. If you have the mini-DIN, it's the same pinout as a
+        For later machines, you will probably have one of two possible
+        connectors. The choices are a 9-pin D-Subminiature connector or a 9-pin
+        mini-DIN connector. If you have the mini-DIN, it's the same pinout as a
         "Microsoft InPort" bus mouse for the US market, which is for mouses
         that connect via an ISA card. For this reason, searching ebay for
         a PC "bus mouse" can get you something electrically compatible with a
         PC98. If it uses the D-Sub connector, you will need to make or get
         an adapter. I think the adapter will have to come from Japan, since
-        to my knowledge no western PC's used a quadrature mouse with that
-        specific pinout. You could however rewire an Amiga or Atari ST or
-        AT&T 6300 mouse (or other two-or-more-button quadrature mouse) and
-        have it work.
+        <span class=".strike">to my knowledge no western PC's used a quadrature
+        mouse with that specific pinout</span> the western mouses that
+        seems to <i>possibly</i> share this pinout are
+        <a href="http://web.archive.org/web/20010802062315id_/https://www.cs.rochester.edu/~kparkins/pinouts.txt">
+        the original Microsoft "Green Eyed" bus mouse and perhaps a handful of
+        Logitech ones</a>. I am not sure if passive adapters for connecting
+        newer bus mouses to these older cards were ever widespread in the west,
+        since we seem to have moved away from them far sooner than they did in
+        Japan.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_mouse_pinouts">
+        <a href="pc9801_1/full/mouse_pinouts.png">
+          <img src="pc9801_1/mouse_pinouts.png"
+               alt="Bus Mouse pinouts. the pinouts are:
+                    Pin: Description:
+                    1: +5v,
+                    2: XA,
+                    3: XB,
+                    4: YA,
+                    5: YB,
+                    6: Left,
+                    7: Not Connected (or Middle),
+                    8: Right,
+                    9: Ground"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          The two common PC-9801 mouse pinouts. Seemingly, these are shared
+          with Microsoft bus mouses, although only the oldest of those use a
+          DE9 connector.
+        </div>
+      </div>
+      <p>
+        It would sort of make sense if this pinout was chosen to match
+        Microsoft's original mouse pinout, since NEC seemed to cooperate pretty
+        closely with ASCII Corporation (which was basically Microsoft's
+        Japanese arm).
+      </p>
+      <p>
+        You could try to rewire an Amiga or Atari ST or AT&T
+        6300 mouse (or other two-or-more-button quadrature mouse) and
+        have it work. You could also
+        <a href="http://oldcomputer.info/hacks/mouse/index.htm">try this guy's
+        "universal bus mouse" idea,</a> and convert probably just about any old
+        PS/2 ball mouse you might own into a bus mouse.
       </p>
       <p>
         I opted to buy a mini-DIN mouse, the Logitech PC-93-9MD, from someone
