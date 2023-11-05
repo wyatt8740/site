@@ -954,11 +954,131 @@
       </p>
       <h3>Expansion Cards</h3>
       <p>
-        My PC does not have a SCSI controller built in, although some variants
-        of it did come with one. That used a proprietary connector and
-        connected to 
+        My PC does not have an IDE or SCSI controller built in, although some
+        variants of it did come with one. There's an unused card edge slot in
+        the case that can be hooked to a proprietary Epson card, which I
+        believe uses SCSI and also houses a hard drive in a metal cage
+        alongside it. I didn't see one on Yahoo Auctions, but did see that they
+        have sold on there once in a while in the past.
       </p>
-      <h3>Things you can do while it's being shipped</h3>
+      <p>
+        That's not a deal-breaker, because there's also C-Bus, which is the
+        also-proprietary, but-at-least-publicly-documented slot NEC put on
+        the PC-98 series for end-user expansions. C-Bus SCSI controllers exist
+        and can be used to boot a hard drive, even on computers where a
+        proprietary hard drive interface is also provided. Mine came with one,
+        although I had trouble making it work. I have a feeling it was a
+        termination issue, since it looks to only have passive termination on
+        it.
+      </p>
+      <p>
+        There's a fair bit of configuration that many cards require to be done
+        via DIP switches. I sort of understand this, since the main thing to
+        do is ensure that no cards have overlapping addresses or interrupts,
+        but sometimes the finer points elude me. It would be a good idea to
+        take a picture of any cards you get before you start messing with the
+        switches so you can restore to the configuration it came to you in.
+      </p>
+      <p>
+        One interesting thing to note about these cards that I have not seen
+        mentioned in the English speaking world yet is that the little plastic
+        tab on some cards which presses a switch next to the slot to indicate
+        that the card should be treated as a 24-bit addressable card instead of
+        a 20-bit addressable one. If I understand correctly.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_cbus_img">
+        <a href="pc9801_1/full/cbus_cards_1.jpg">
+          <img src="pc9801_1/cbus_cards_1.jpg"
+               alt="(Picture of three C-bus cards; two SCSI controllers and one graphics card)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Back to front: I.O. Data GA-1024A-2 (graphics card), TEAC IF-55TB (SCSI controller), Logitec LHA-301 (SCSI controller).<br/>
+          Note the plastic doohickey on two of these cards. This presses down a
+          switch that is present in some PC98 models.
+        </div>
+      </div>
+      <p>
+        Apparently some later 24-bit-addressable cards don't have the button
+        presser anymore, and some later 9821's don't have the switch installed
+        on all slots but just assume a card is 24 bit addressible if it is
+        present. I swapped a 'button presser' onto the card closest to the
+        camera from the one in the middle and behavior did not seem to change,
+        but the card closest to the camera did already have a spot for me to
+        screw the lever thing into it, so it was clearly designed with the
+        intent of using one at some point.
+      </p>
+      <p>
+        Don't peel those stickers off the brown chips, by the way. Those cover
+        up EPROM (erasable programmable read-only memory) windows, and if
+        exposed to the right light frequencies (somewhere in the ultraviolet
+        range) the chip will be erased and the card won't operate properly.
+        If you happen to have an EPROM programmer and the correct pin adapters,
+        it'd be really great of you to dump the cards' ROM's and share them,
+        too, because they could lose their data naturally even without light
+        exposure at some point and need reprogramming. I sort of doubt the
+        manufacturers care enough or even have the files (if the still exist)
+        to help you out. Once the chips have lost their marbles, it's too late,
+        unless someone's made a backup and can re-program them.
+      </p>
+      <p>
+        I'll give a brief description of what my cards do, now.
+      </p>
+      <h4>Logitec LHA-301 SCSI Controller</h4>
+      <p>
+        This card is the SCSI card I actually use with my system. I had to buy
+        it separately; the PC did not come with this card from the previous
+        owner. They had the TEAC IF-55TB installed, which I could not get to
+        work reliably, so I replaced it.
+      </p>
+      <p>
+        It uses a "half-size amphenol" (mini-centronics) connector, which is
+        not a common SCSI connector here in the States but which seems to have
+        been rather popular with Japanese manufacturers instead of the "HD50"
+        miniaturized D-sub that most stuff seems to have used here. The
+        LHA-301<b>A</b> uses a more common HD50 connector, but I did not see
+        one for sale, and after reading descriptions of various SCSI controller
+        options online the 301 and 301A seemed like some of my best bets. They
+        even support "PnP" ("plug-n-play") in Windows, and support up through
+        Windows 2000. If I upgrade the BIOS ROM (not sure how exactly to do
+        that) from 1.05 to 1.07, it seemingly can support up to 8GB SCSI
+        drives. It also supports three data transfer methods for interacting
+        with the host system: PIO (the simplest, where the CPU is involved with
+        every byte read in), DMA (direct memory access, which bypasses the CPU
+        and writes directly to addresses in RAM so the CPU can work on other
+        things), and SMIT (I have <i>absolutely no idea</i> what this is,
+        but it seems to be the consensus of Japanese documentation I've
+        found that it's faster than both DMA and PIO). I have mine configured
+        for DMA right now and haven't had issues. I think there may be a DOS
+        driver I need to install to actually make use of it, but I haven't done
+        so, since I haven't felt too throttled by disk I/O yet and am just
+        glad it's working so stably right now.
+      </p>
+      <p>
+        I had to switch it out of "MO" (magneto-optical?) mode in order to make
+        the DOS installer see and initialize it properly - I guess maybe a past
+        owner was using it with a magneto-optical drive. The 130mm ones seem
+        pretty cool. But I'm not getting one right now! - I've spent enough on
+        this thing as it is!
+      </p>
+      <p>
+        This card has a software-based configurator (accessed by holding
+        ctrl+grph+L during boot) instead of DIP switches; I think it's really
+        nifty. It also <i>actually works</i> for me (as opposed to the
+        IF-55TB), which is also pretty nifty. From what I can see, the
+        difference might be that the 55TB doesn't seem to have a voltage
+        regulator on board, which is a prerequisite for active SCSI bus
+        termination (the better kind). If I have an active terminator on one
+        end and a passive resistor pack terminator on the other, that might
+        explain why it behaves erratically.
+      </p>
+      <p>
+        There's one thing it can't do, which is the PC-98's "Hi-Res"
+        mode, which requires things to be at different addresses. I don't think
+        this mode ever got much use, and later Windows-era machines had a
+        different, incompatible solution for higher-resolution display. Since
+        I don't know what I'd use it for, it doesn't bother me yet.
+      </p>
+      <h3>Things You Can Do While Your PC-98 is Being Shipped</h3>
       <p>
         So excited you can't sit still? Need to do something during the
         torturous wait for the day the huge expensive box arrives at your door?
@@ -1200,6 +1320,17 @@
         (around 31Khz).
       </p>
       <p>
+        Many if not all Sharp X68000 screens will also do 24KHz and can be
+        used, by the way. The X68000 appears to use a compatible connector,
+        too. Not sure about FM Towns, though. That's something that might be
+        worth researching.
+      </p>
+      <p>
+        Make sure the monitor you are looking for has <b>analogue RGB</b>, not
+        just digital. Many older monitors have only digital RGB, which will
+        limit the number of colors and types of software you can use.
+      </p>
+      <p>
         Additionally, finding a nicely priced one will be challenging, and you
         probably <b>will</b> get murdered on shipping. I won mine in an auction
         for $30 and paid <b>nearly ten times that much in shipping</b>, which
@@ -1226,7 +1357,7 @@
                alt="(Four pictures of the dirty PC-KD851 monitor that I bought on Yahoo Auctions Japan.)"/>
         </a>
         <div class="imgwrap caption imgcentercaption">
-          Original pictures from the Yahoo Auctions Japan listing for my
+          The original pictures from the Yahoo Auctions Japan listing for my
           monitor. These are what I had to go by when choosing to bid on it.
         </div>
       </div>
@@ -1247,16 +1378,34 @@
         rag and/or alcohol soaked rag to get most of the grime off. But it
         cleaned up pretty nicely!
       </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_monitor_before_after">
+        <a href="pc9801_1/full/monitor_before_after_clean.jpg">
+          <img src="pc9801_1/monitor_before_after_clean.jpg"
+               alt="(Before and after cleaning the monitor. Pretty much all the dirt came out.)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Before and after cleaning the monitor. Pretty much all the dirt came
+          out, but I was sore from scrubbing afterwards. Took maybe two or
+          three hours.
+        </div>
+      </div>
       <p>
         The PC-KD851 was originally made for the PC-8801 series, it seems,
-        rather than the 9801. But since it has an analogue RGB input, and
-        since the 8801 also could output at 24KHz, I decided it had a good
-        chance of being compatible. I think the seller also listed it as being
-        PC-9801 compatible, actually.
+        rather than the 9801. Specifically, I've found a catalog scan that
+        says it works with the PC-8801mkIISR, which indicates it's from around
+        1985. But since it has an analogue RGB input, and since the 8801 also
+        could output at 24KHz, I decided it had a good chance of being
+        compatible. I think the seller also listed it as being PC-9801
+        compatible, actually.
+      </p>
+      <p>
+        The PC-KD861 appears to simply be a better version of the 851 that can
+        also do 15 KHz. So I'd say that'd be one worth keeping an eye out for.
       </p>
       <p>
         Once again, this needed to be plugged into a stepdown transformer
-        before I felt comfortable turning it on.
+        before I felt comfortable turning it on. Thankfully there's an outlet
+        on the back of the Epson that I can use to daisy-chain it.
       </p>
       <h3>Floppy Drives: to Use or Replace?</h3>
       <p>
