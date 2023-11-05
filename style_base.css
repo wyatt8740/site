@@ -30,7 +30,12 @@ pre, code {
   overflow-y: hidden;
 }
 
-.imgwrap, .captionwrap {
+.codewrap .quote {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.imgwrap, .captionwrap, .tablewrap {
   text-align: center;
 }
 
@@ -225,4 +230,18 @@ hr {
   margin-right: auto;
   border-style: inset;
   border-width: 1px;
+}
+
+table, th, td {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  text-align: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  vertical-align: center;
 }
