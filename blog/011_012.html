@@ -82,6 +82,9 @@
                 <li><a href="#pc9801_buying_wyatt_mouse">Getting a Mouse</a></li>
                 <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a></li>
                 <li><a href="#pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: Use or Replace?</a></li>
+                <li><a href="#pc9801_buying_wyatt_writing_floppies_linux">Writing PC-98 Floppy Disks in Linux</a></li>
+                <li><a href="#pc9801_buying_wyatt_writing_floppies_openbsd">Writing PC-98 Floppy Disks in OpenBSD</a></li>
+                <li><a href="#pc9801_buying_wyatt_writing_floppies_windows">Writing PC-98 Floppy Disks in Windows</a></li>
                 <li><a href="#pc9801_buying_wyatt_adding_goteks">Retrofitting Gotek Floppy Drive Emulators</a></li>
                 <li><a href="#pc9801_buying_wyatt_setting_dip_switches_9821">How to Configure the DIP Switches on a PC-9821</a></li>
               </ul>
@@ -92,7 +95,7 @@
           <a href="#pc9801_buying_wyatt_useful_links">Useful Links</a>
           <ul>
             <li><a href="#pc9801_buying_wyatt_links_japanese">Japanese</a></li>
-            <li><a href="#pc9801_buying_wyatt_links_english">English</a></li>
+            <li><a href="#pc9801_buying_wyatt_links_western">Western</a></li>
           </ul>
         </li>
       </ul>
@@ -1442,6 +1445,29 @@
         like using them... when they work.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_writing_floppies_linux">Writing Floppy Disks (Linux)</h3>
+      <p>
+        
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_writing_floppies_openbsd">Writing Floppy Disks (OpenBSD)</h3>
+      <p>
+        OpenBSD is my darling OS. It does not have <code>ufiformat</code>,
+        though. I can't use OpenBSD as much as I'd like to, but it looks like
+        <a href="https://man.openbsd.org/makefs">it might be possible</a> to
+        create a PC-98 compatible (1232 KiB) floppy by initializing it with
+        <code>makefs</code>. <b>This has not been tested as of yet!</b>
+      </p>
+      <div class="codewrap">
+        <pre class="block">$ makefs -o floppy=1232 -t msdos 
+        </pre>
+      </div>      
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_writing_floppies_windows">Writing Floppy Disks (Windows)</h3>
+      <p>
+
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>FlashFloppy/HxC</h3>
       <p>
         Planning on forgoing floppy drives? You'll need to get some floppy
@@ -1618,7 +1644,7 @@
         settings on C-Bus cards.
       </p>
       <h3 id="pc9801_buying_wyatt_links_japanese">
-        Japanese Links
+        Japanese Sources
       </h3>
       <p>
         These are pages primarily in the Japanese language, usually if not
@@ -1631,9 +1657,10 @@
         Thankfully, with tech specs, things are often in English or katakana
         transliterations of English words. I've found it to be good practice.
       </p>
-      <h4><a href="https://www.pc-9800.net/index.htm">With98: PC-9800 Series Information</a> (Must read!!)</h4>
+      <br/>
+      <h4>[J] <a href="https://www.pc-9800.net/index.htm">With98: PC-9800 Series Information</a> (Must read!!)</h4>
       <p>
-        <b>&emsp;Subjects:</b> <i>NEC, Epson, Specifications, General Information</i>
+        <b>&emsp;Topics:</b> <i>NEC, Epson, Specifications, General Information</i>
       </p>
       <p>This site contains a comprehensive list of most if not all PC-98
         models (including Epson clones) released in Japan. It also contains
@@ -1651,9 +1678,10 @@
         focused accelerator (if you want DOS games, you don't probably want
         this).
       </p>
-      <h4> <a href="https://radioc.web.fc2.com/column/pc98bas/">Basic NEC PC-98 Information Archive (NEC PC-98 基本情報 書庫目録)</a></h4>
+      <br/>
+      <h4>[J, EN] <a href="https://radioc.web.fc2.com/column/pc98bas/">Basic NEC PC-98 Information Archive (NEC PC-98 基本情報 書庫目録)</a></h4>
       <p>
-        <b>&emsp;Subjects:</b>
+        <b>&emsp;Topics:</b>
           <i>NEC, MS-DOS, Programming, Peripherals, Pinouts, DIP Switches, Boot Key Commands, Technical Information, Memory Locations, Digital Signalling
         </i>
       </p>
@@ -1670,15 +1698,17 @@
         write an OS.
       </p>
       <p>
-        You don't have to be an OS developer to get useful information from
-        the site, though. It just has generally useful info, like how to add
-        memory. If you have to tinker with the hardware, it's just worth a
-        look. Especially if you're thinking of making your own external floppy
-        drive enclosure/adapter or similar.
+        It probably holds the most value for programmers, but you don't have to
+        be an OS developer to get useful information from the site. It just has
+        generally useful info, like how to add memory. If you have to tinker
+        with the hardware, it's just worth a look. Especially if you're
+        thinking of making your own external floppy drive enclosure/adapter or
+        similar.
       </p>
-      <h4><a href="http://shiuntenlos.ie-yasu.com/indx0020.htm">"Shiunten" Museum(?) - 試運転の資料館</a></h4>
+      <br/>
+      <h4>[J, EN] <a href="http://shiuntenlos.ie-yasu.com/indx0020.htm">"Shiunten" Museum(?) - 試運転の資料館</a></h4>
       <p>
-        <b>&emsp;Subjects:</b> <i>NEC, Epson, Pinouts, Part Numbers, Electrical Implementation Details</i>
+        <b>&emsp;Topics:</b> <i>NEC, Epson, Pinouts, Part Numbers, Electrical Implementation Details</i>
       </p>
       <p>
         I am not sure on the full details of what this site actually is, but I
@@ -1702,25 +1732,26 @@
           for the external floppy drive connectors on the PC98 and Epson models
           also is provided!</a>
       </p>
-      <h4><a href="https://98epjunk.shakunage.net/index.html">Workshop Memories(?) - 工作室の記憶</a></h4>
+      <br/>
+      <h4>[J] <a href="https://98epjunk.shakunage.net/index.html">Workshop Memories(?) - 工作室の記憶</a></h4>
       <p>
-        <b>&emsp;Subjects:</b> <i>NEC, Epson, Pinouts, Adapters, DIP Switches, Hardware Maintenance</i>
+        <b>&emsp;Topics:</b> <i>NEC, Epson, Pinouts, Adapters, DIP Switches, Hardware Maintenance</i>
       </p>
       <p>
         This is another site detailing pinouts and some DIP switch settings for
         some PC-98 related hardware. Lots of cable adapter wirings are also
         provided.
-      </p>
-      <p>
+        <br/>
         If I recall correctly, it also details how to disassemble and clean a
         floppy drive.
       </p>
-      <h3 id="pc9801_buying_wyatt_links_english">
-        English Links
+      <br/>
+      <h3 id="pc9801_buying_wyatt_links_western">
+        Western Sources
       </h3>
       <h4><a href="https://blog.soykaf.com/post/writing-pc98-floppy-images-under-linux/">Lainblog - Soykaf: Writing PC-98 Floppy Images Under Linux</a></h4>
       <p>
-        <b>&emsp;Subjects:</b> <i>Floppy Disks, Floppy Disk Drives, Floppy Disk Writing, Linux</i>
+        <b>&emsp;Topics:</b> <i>Floppy Disks, Floppy Disk Drives, Floppy Disk Writing, Linux</i>
       </p>
       <p>
         This is just a one-off blog post, as far as I know, but there's a
