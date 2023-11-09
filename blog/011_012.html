@@ -1575,7 +1575,7 @@
       </p>
       <h4>DOS CD Drive Configuration</h4>
       <p>
-        <b>NEC Brand Drives:</b><br/>
+        <b>NEC Brand Drives</b><br/>
         If you are using an NEC brand SCSI optical drive and an NEC SCSI-1
         controller, you can probably use the <code>NECCDA.SYS</code> driver. If
         it's an NEC SCSI optical drive and an NEC SCSI-II controller, I think
@@ -1601,7 +1601,32 @@
         some of those drivers. I can't confirm this.
       </p>
       <p>
-        <b>Automatically Adding a Drive:</b><br/>
+        <b>Other Drives</b><br/>
+        If you aren't using an NEC brand drive/controller, it could be that
+        trying to use the NEC drivers makes your system freeze. In that case,
+        I had to use a different driver to connect my SCSI CD drive, which
+        I found on archive.org and in case anything ever happens to it.
+        The driver in question is <code>CDSD.SYS</code>, which is under an open
+        source license, from what I can tell. The source code seems to be
+        available <a href="http://ysflight.in.coocan.jp/FM/towns/cdsd/CDSD_SRC.ZIP">here</a>
+        - note that it also appears it can be built for FM Towns! There is also
+        a version of the source code, which looks like it may be older, on
+        <a href="https://www.vector.co.jp/soft/dos/hardware/se000298.html">Vector.jp</a>,
+        which I have also used to find a floppy disk image converter in the
+        past.
+      </p>
+      <p>
+        There's additional notes about patches for CD-SD
+        <a href="http://akiyuki.boy.jp/old/t98next/midi/scsi4cd.zip">here,</a>
+        seemingly from the author of the T98-Next emulator author, to make it
+        work with CD Digital Audio properly. I haven't been able to test if the
+        version in the download I am hosting is CDDA patched yet.
+      </p>
+      <p>
+        <b>Download: <a href="pc9801_1/dl/PC%2d9800%20Series%20CD%2dROM%20Driver%20Collection%20%28v1%2e1%29%20%5bFD%5d%2ezip">PC-9800 Series CD-ROM Driver Collection (v1.1) [FD].zip</a></b> &ndash; 137 KiB
+      </p>
+      <p>
+        <b>Automatically Adding a Drive</b><br/>
         If doing a fresh install, or maybe also if running NEC DOS, you can
         try to let the installer automatically configure your driver for you.
         It might work, even if your drive is not NEC. I can't guarantee
@@ -1635,6 +1660,7 @@
         out.
       </p>
       <p>
+        <i>Step 1</i>:<br/>
         Step one is getting the driver files. Some of them
         (<code>NECCDA.SYS</code>, <code>NECCDB.SYS</code>,
         <code>NECCDC.SYS</code>, <code>NECCDD.SYS</code>,
@@ -1649,11 +1675,14 @@
       <p>
         To unpack a file like this, you need <code>EXPAND.EXE</code>, which is
         available in uncompressed form on NEC MS-DOS 6.2's disk 1 as well.
-        If <code>B:</code> is your DOS installer floppy disk (meaning you have
-        your floppy in drive 1 but booted from your hard drive, since the boot
-        drive is always <code>A:</code> on the PC-98), you can run the
-        following to change your 'current directory' to the root of the B drive
-        (where the .SY_ and expand.exe both are) and unpack a file.
+        If you booted from your hard drive and put the DOS installer disk in
+        the first floppy drive afterwards, then your hard drive will be <code>A:</code>
+        and your floppy disk will be in drive <code>B:</code> - this is
+        different from the IBM PC, but important to note.
+      </p>
+      <p>Assuming that the above is true (you booted from your hard drive),
+        the following should work to change your 'current directory' to the
+        root of the B drive and unpack the file back to the hard disk.
       </p>
       <div class="codewrap">
         <pre class="block">B:
@@ -1661,10 +1690,28 @@ cd &yen;
 expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
       </div>
       <p>
+        If you don't have the <code>A:&yen;DOS</code> directory, then you can
+        just output it to <code>A:&yen;NECCDA.SYS</code> instead.
+      </p>
+      <p>
         Also note, of course, that in Japanese DOS/Windows, the yen sign (&yen;)
         serves the same function as backslash (\), and is actually using the
         exact same character numeric representation internally. It's just
         that Japan's "code page" replaces \ with &yen;.
+      </p>
+      <p>
+        <i>Step 2</i>:<br/>
+        Step two is editing <code>CONFIG.SYS</code>. <code>CONFIG.SYS</code> is
+        a file that tells DOS about the drivers it should load, and how it
+        should load them. We need to tell DOS about our CD driver, so we need
+        to load it in CONFIG.SYS.
+      </p>
+      
+      <p>
+        Unfortunately, as far as I can recall, you can't load the CD driver
+        without first loading some other drivers.
+        I've provided my CONFIG.SYS file, in case it helps you to figure things
+        out.
       </p>
       <h3 id="pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: to Use or Replace?</h3>
       <p>
