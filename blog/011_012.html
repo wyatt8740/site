@@ -1743,7 +1743,16 @@ expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
         it should load them. In other words, because we need to tell DOS about
         our CD driver, it must have a <code>CONFIG.SYS</code> entry.
       </p>
-      
+      <div class="imgcontain imgwrap" id="pc9801_buyying_wyatt_configsys">
+        <a href="pc9801_1/full/config_sys.png">
+          <img src="pc9801_1/config_sys.png"
+               alt="(Screenshot of me editing my config.sys file.)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Me editing my CONFIG.SYS file. I use 'jed' as my text editor, but
+          'SEDIT' is the one that is shipped with NEC DOS 6.2.
+        </div>
+      </div>
       <p>
         Unfortunately, as far as I can recall, you can't load a CD driver
         without first loading some other drivers. I've provided my CONFIG.SYS
@@ -1754,15 +1763,19 @@ expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
         differently from mine. I think mine is pretty standard in this
         instance, though.
       </p>
+      <p>
+        So here is my <code>CONFIG.SYS</code>:
+      </p>
       <div class="codewrap">
         <pre class="block">FILES=30
 BUFFERS=10
 SHELL=&yen;COMMAND.COM /P
+
 DEVICE=A:&yen;DOS&yen;HIMEM.SYS
 DEVICE=A:&yen;DOS&yen;EMM386.EXE /UMB /P=64
+
 DEVICE=A:&yen;DOS&yen;SETVER.EXE
 DEVICEHIGH=A:&yen;DOS&yen;PRINT.SYS /U
-
 DEVICE=A:&yen;LOGITEC&yen;FAST301.EXE
 DEVICE=A:&yen;LOGITEC&yen;ASPILOG.SYS
 
@@ -1940,7 +1953,14 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_windows">Writing Floppy Disks (Windows)</h3>
       <p>
-
+        I have absolutely no clue how to format a floppy disk to 1.2MB at
+        360RPM under any version of Windows. My one floppy disk imaging tool of
+        choice doesn't work, because it assumes all floppies are 1.44MB.
+        And I don't even know what the API call would be in software to
+        communicate a mode change to the floppy drive in Windows. I guess
+        Greaseweazle would work, since it lets you read and write to the disk
+        with no interference from a floppy controller. But that's a hardware
+        solution no other platform needs.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>FlashFloppy/HxC</h3>
