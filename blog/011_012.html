@@ -95,6 +95,8 @@
                 </li>
                 <li><a href="#pc9801_buying_wyatt_mouse">Getting a Mouse</a></li>
                 <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a></li>
+                <li><a href="#pc9801_buying_wyatt_hdd">Getting a Hard Drive</a></li>
+                <li><a href="#pc9801_buying_wyatt_odd">Getting an Optical Drive</a></li>
                 <li><a href="#pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: Use or Replace?</a></li>
                 <li><a href="#pc9801_buying_wyatt_writing_floppies_linux">Writing PC-98 Floppy Disks in Linux</a></li>
                 <li><a href="#pc9801_buying_wyatt_writing_floppies_openbsd">Writing PC-98 Floppy Disks in OpenBSD</a></li>
@@ -985,7 +987,8 @@
         DIP switches. I can change the speed at <i>any time</i>, and have
         already gotten great use out of this feature.
       </p>
-      <h3>Expansion Cards</h3>
+      <h3 id="pc9801_buying_wyatt_expansion_cards">Expansion Cards</h3>
+      <h4>Hard Drive Controllers</h4>
       <p>
         My PC does not have an IDE or SCSI controller built in, although some
         variants of it did come with one. There's an unused card edge slot in
@@ -1054,10 +1057,10 @@
         unless someone's made a backup and can re-program them.
       </p>
       <p>
-        I'll give a brief description of what my cards do, now.
+        I'll give a brief description of what some cards do, now.
       </p>
-      <h4>Logitec LHA-301 SCSI Controller</h4>
       <p>
+        <b>Logitec LHA-301 SCSI Controller:</b><br/>
         This card is the SCSI card I actually use with my system. I had to buy
         it separately; the PC did not come with this card from the previous
         owner. They had the TEAC IF-55TB installed, which I could not get to
@@ -1074,17 +1077,17 @@
         even support "PnP" ("plug-n-play") in Windows, and support up through
         Windows 2000. If I upgrade the BIOS ROM (not sure how exactly to do
         that) from 1.05 to 1.07, it seemingly can support up to 8GB SCSI
-        drives. It also supports three data transfer methods for interacting
-        with the host system: PIO (the simplest, where the CPU is involved with
-        every byte read in), DMA (direct memory access, which bypasses the CPU
-        and writes directly to addresses in RAM so the CPU can work on other
-        things), and SMIT (I have <i>absolutely no idea</i> what this is,
-        but it seems to be the consensus of Japanese documentation I've
-        found that it's faster than both DMA and PIO). I have mine configured
-        for DMA right now and haven't had issues. I think there may be a DOS
-        driver I need to install to actually make use of it, but I haven't done
-        so, since I haven't felt too throttled by disk I/O yet and am just
-        glad it's working so stably right now.
+        drives. LHA-301 also supports three data transfer methods for
+        interacting with the host system: PIO (the simplest, where the CPU is
+        involved with every byte read in), DMA (direct memory access, which
+        bypasses the CPU and writes directly to addresses in RAM so the CPU can
+        work on other things), and SMIT (I have <i>absolutely no idea</i> what
+        this is, but it seems to be the consensus of Japanese documentation
+        I've found that it's faster than both DMA and PIO). I have mine
+        configured for DMA right now and haven't had issues. I think there may
+        be a DOS driver I need to install to actually make use of it, but I
+        haven't done so, since I haven't felt too throttled by disk I/O yet and
+        am just glad it's working so stably right now.
       </p>
       <p>
         I had to switch it out of "MO" (magneto-optical?) mode in order to make
@@ -1110,6 +1113,76 @@
         this mode ever got much use, and later Windows-era machines had a
         different, incompatible solution for higher-resolution display. Since
         I don't know what I'd use it for, it doesn't bother me yet.
+      </p>
+      <h4>Sound Cards</h4>
+      <p>
+        There are a few different kinds of sound cards available for the PC-98
+        series. I don't currently have any of them, but I have a MPU-PC9801II
+        on the way. I plan to get a PC-9801-86 eventually.
+      </p>
+      <p>
+        <b>86 Sound:</b><br/>
+        If you are lucky, your system will already have a PC-9801-86
+        compatible sound chip (YM2608, or OPNA), or even the full PC-9801-86
+        C-Bus board installed. There are also a handful of clones of the
+        PC-9801-86 that exist, but they don't seem especially common online.
+        The -86 board is common, but also expensive. If you can, I'd suggest
+        looking for a computer with a built-in "86 sound" chip. On With98
+        (see <a href="#pc9801_buying_wyatt_links_japanese">links</a>),
+        these are represented with something like "YM2608," "86 sound,"
+        or mentions of PCM or ADPCM capability. I think it was introduced
+        alongside the PC-9821 series, or perhaps very shortly thereafter.
+        Most 9821 models should have it, I think.
+      </p>
+      <p>
+        An "86 sound" compatible system will get you PCM audio support, which
+        is a massive upgrade that allows for things like voice acting, or
+        things like sound effects in Windows 3.1 (if you're into that).
+        It also gets you stereo FM synthesis sound and PCM recording
+        capabilities. In the long term, it's a nice thing to have.
+      </p>
+      <p>
+        <b>26 Sound:</b><br/>
+        An earlier sound card, the PC-9801-26 (or PC-9801-26K), will get you
+        mono FM synthesis sound and no PCM playback. It is based on the YM2203C
+        OPN chip. My Epson PC-486GR has one of these integrated into it, as do
+        many other early 90's and perhaps late 80's PC-98 models. If you're on
+        a budget, be reassured that most games I have tried support it, and
+        especially for the earlier DOS games (from the 80's) that I am most
+        interested in it's all you will need. It does not however have PCM,
+        and it is mono sound only.
+      </p>
+      <p>
+        The PC-9801-26K has more clones available than the -86 seems to. It's
+        also a fair deal cheaper to find a 26K card.
+      </p>
+      <p>
+        <b>MIDI:</b><br/>
+        Some stuff, especially later in the PC-98's lifetime, seems to adopt
+        MIDI sound. I am not aware of too many (if any) cards that perform
+        on-board MIDI synthesis, so you will likely need an external
+        synthesizer. One cheapish way to do that, once you have a MIDI card,
+        would be to get a good quality USB MIDI adapter for a modern PC and
+        run a software MIDI synth like timidity on it, and then connect
+        a MIDI cable between the PC-98 and the modern PC. If you pick the
+        right soundfont, that's enough to get you basically a Roland Sound
+        Canvas. A lot of games use "GS" (Roland's General MIDI extension)
+        or General MIDI instrument mappings, so that should get you a long way.
+      </p>
+      <p>
+        You could also hunt down a physical Roland Sound Canvas (SC-55mkII
+        and SC-88 seem to be popular options) for those games.
+      </p>
+      <p>
+        I have also seem some software that supports the earlier Roland MT-32.
+        I happen to already have one of those, so that's good. I can't really
+        recommend buying an MT-32 at today's market prices, though. I think
+        there was a Raspberry Pi project I saw to emulate an MT-32 which looks
+        much more affordable. And MUNT (the software MT-32 emulator people use)
+        is getting pretty good. The only inaccuracies I've noted are that
+        sometimes my real (early revision) MT-32 drops notes that MUNT will
+        play correctly. I have never felt that something felt wrong due to
+        this extra polyphony.         
       </p>
       <h3 id="pc9801_buying_wyatt_while_you_wait">Things You Can Do While Your PC-98 is Being Shipped</h3>
       <p>
@@ -1443,6 +1516,156 @@
         on the back of the Epson that I can use to daisy-chain it.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_hdd">Getting a Hard Drive</h3>
+      <p>
+        If your PC-98 or compatible doesn't come with a hard drive, then you
+        might need a SCSI controller.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_odd">Getting an Optical Drive</h3>
+      <h4>IDE Drives</h4>
+      <p>
+        Some later PC-98 models came with built-in IDE CD-ROM drives.
+        If yours doesn't have one, but is late enough to be using
+        IDE instead of SCSI, then there's a decent chance one might be
+        able to be installed in an open bay, I'd think. In the Ce2 and
+        CS2, it looks like the model is NEC CDR-260. They seem to have sold
+        these drives in the 'States, so maybe you can remove the front bezel
+        from one of the US-market ones and stick it in a '98 and have it work.
+      </p>
+      <p>
+        If your PC-98's built-in optical drive isn't working, it may be broken.
+        My friend got two systems, and one would not respond to the eject
+        button or turn its LED on at all. The other one, from the unit in
+        otherwise worse condition, would blink, and after she swapped the drive
+        into her other unit it worked just fine.
+      </p>
+      <p>
+        You might not be able to pick any old CD drive; they may look like
+        "normal" IDE drives, but in the Ce2 and Cs2 at least, they <i>might</i>
+        actually use some non-ATAPI command set. We aren't quite sure yet. I've
+        seen one person suggest that the CDR-260 might be one of the
+        <i>earliest</i> ATAPI compatible drives, but I can't guarantee
+        anything. If it is truly an ATAPI drive, then I expect you could
+        put in some other standard IDE CD drive and have it function, although
+        you still might not be able to get one where the tray, LED, and eject
+        button line up with the holes in the case. I'd be interested to know
+        if anyone manages to finagle something into working!
+      </p>
+      <h4>SCSI Drives</h4>
+      <p>
+        The other option is a SCSI optical drive. Since my PC-486GR never came
+        with an optical drive internally, and doesn't even have IDE, this is my
+        only option. Working SCSI CD drives can be had for prices that aren't
+        ludicrous still, but expect to pay about what you would for a used
+        Blu-Ray writer drive for one (as of 2023).
+      </p>
+      <p>
+        I don't know which if any PC-98 models used internal SCSI optical
+        drives, but I don't have that option so I would be daisy chaining
+        my CD drive to my SCSI bus after (or before) the hard drive.
+        Make sure your hard drive (if applicable) and optical drive SCSI
+        ID's don't overlap; you may have to adjust some jumpers or DIP switches
+        or press a button on the casing of your drive to change this and avoid
+        overlap.
+      </p>
+      <p>
+        Then, with SCSI optical drives, the problem becomes making it work with
+        DOS.
+      </p>
+      <h4>DOS CD Drive Configuration</h4>
+      <p>
+        <b>NEC Brand Drives:</b><br/>
+        If you are using an NEC brand SCSI optical drive and an NEC SCSI-1
+        controller, you can probably use the <code>NECCDA.SYS</code> driver. If
+        it's an NEC SCSI optical drive and an NEC SCSI-II controller, I think
+        that means you need the <code>NECCDB.SYS</code> driver instead. There's
+        also <code>NECCD.SYS</code> to try, as well as every other letter in
+        the range of <code>NECCD[A-K].SYS</code> at least.
+      </p>
+      <p>
+        Yeah, I know it's annoying. I can't find nice documentation to figure
+        out which drives go with which drivers, but I know at least <b>some</b>
+        of the drivers are for IDE drives. <b>I suspect most if not all of the
+          NECCD[C-K] range are for various IDE variants.</b>
+      </p>
+      <p>
+        Not all of those drivers come with NEC MS-DOS, even in version 6.2 (the
+        last released version). In addition, the above only seems to matter if
+        you are using an NEC branded SCSI drive; I wasn't able to get that
+        driver to detect my drive (non-NEC) at all unless I spoofed an NEC
+        vendor ID, and if I did that then the computer hung during
+        initialization of the driver. But by most accounts, <b>if you are
+        within the NEC ecosystem</b>, the above are the drivers to use.
+        It may be possible that <i>some</i> other drives will also work with
+        some of those drivers. I can't confirm this.
+      </p>
+      <p>
+        <b>Automatically Adding a Drive:</b><br/>
+        If doing a fresh install, or maybe also if running NEC DOS, you can
+        try to let the installer automatically configure your driver for you.
+        It might work, even if your drive is not NEC. I can't guarantee
+        anything.
+      </p>
+      <p>
+        If it hangs after a reboot, though, you will need to use a DOS boot
+        floppy disk to edit the hard drive's <code>AUTOEXEC.BAT</code> and
+        <code>CONFIG.SYS</code> files to remove the offending lines (which
+        will contain the phrase <code>CD_101</code> in every case I have seen
+        so far). You can also just prefix those lines with <code>REM </code>
+        (the space after <code>REM</code> is important), which is how you
+        comment out lines in both <code>BAT</code> files and in
+        <code>CONFIG.SYS</code>.
+      </p>
+      <p>
+        If DOS is already installed and you want to add a drive, I think the
+        correct step is probably to run the <code>CUSTOM</code> command, which
+        seems to be NEC's tool for automatically managing
+        <code>CONFIG.SYS</code> and <code>AUTOEXEC.BAT</code> for some typical
+        use cases. I can't really help you with it, though, because I don't
+        even know where to begin and I am more comfortable manually editing
+        CONFIG.SYS and AUTOEXEC.BAT anyway as far as CD drives are concerned.
+      </p>
+      <p>
+        <b>Manually Adding a Drive</b><br/>
+        If you've never messed around much in DOS before (including western
+        versions), some of this might be new to you. It's not too new to me,
+        but that doesn't mean I love the process, either. Basically, though,
+        here's the steps as I understand them. I hope I don't leave anything
+        out.
+      </p>
+      <p>
+        Step one is getting the driver files. Some of them
+        (<code>NECCDA.SYS</code>, <code>NECCDB.SYS</code>,
+        <code>NECCDC.SYS</code>, <code>NECCDD.SYS</code>,
+        and maybe(?) <code>NECCDCHK.SYS</code>) are included on the NEC
+        MS-DOS 6.2 floppy disk set (on disk 1). They should be installed
+        already, but if not, you can copy them off of the floppy disk.
+        They will be named with <code>.SY_</code> extensions instead of
+        <code>.SYS</code>, because <b>these are compressed files that need to
+        be unpacked.</b> If they were installed already, they are already
+        unpacked.
+      </p>
+      <p>
+        To unpack a file like this, you need <code>EXPAND.EXE</code>, which is
+        available in uncompressed form on NEC MS-DOS 6.2's disk 1 as well.
+        If <code>B:</code> is your DOS installer floppy disk (meaning you have
+        your floppy in drive 1 but booted from your hard drive, since the boot
+        drive is always <code>A:</code> on the PC-98), you can run the
+        following to change your 'current directory' to the root of the B drive
+        (where the .SY_ and expand.exe both are) and unpack a file.
+      </p>
+      <div class="codewrap">
+        <pre class="block">B:
+cd &yen;
+expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
+      </div>
+      <p>
+        Also note, of course, that in Japanese DOS/Windows, the yen sign (&yen;)
+        serves the same function as backslash (\), and is actually using the
+        exact same character numeric representation internally. It's just
+        that Japan's "code page" replaces \ with &yen;.
+      </p>
       <h3 id="pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: to Use or Replace?</h3>
       <p>
         Planning on using real floppy disks? You'll need some good diskettes.
@@ -1864,9 +2087,11 @@
       <h3 id="pc9801_buying_wyatt_links_western">
         Western Sources
       </h3>
+      <br/>
       <h4><a href="https://blog.soykaf.com/post/writing-pc98-floppy-images-under-linux/">Lainblog - Soykaf: Writing PC-98 Floppy Images Under Linux</a></h4>
       <p>
-        <b>&emsp;Topics:</b> <i>Floppy Disks, Floppy Disk Drives, Floppy Disk Writing, Linux</i>
+        <b>&emsp;Topics:</b> <i>Floppy Disks, Floppy Disk Drives, Floppy Disk
+          Writing, Linux, 360RPM, 3-Mode Drives, 1.2MB disks</i>
       </p>
       <p>
         This is just a one-off blog post, as far as I know, but there's a
@@ -1887,10 +2112,36 @@
         5.25" disk. Most western 3.5" floppy disks will not be from the
         factory.
       </p>
+      <br/>
       <h4><a href="https://bitchinbits.foolproofdesigns.com/pc-9821/pc-9821-cheat-sheet/">PC-9821 Cheat Sheet</a></h4>
       <p>
-        
+        <b>&emsp;Topics:</b> <i>NEC, DIP Switches</i>
       </p>
+      <p>
+        This one covers a bunch of things, most prominently translations of the
+        DIP switch setting descriptions for one particular PC-9821 model.
+        They might vary a little for yours, but especially if you have an
+        NEC model (rather than an Epson) it helps quite a bit with figuring
+        out what you are looking at.
+      </p>
+      <br/>
+      <h4><a href="https://nfggames.com/forum2/index.php?topic=6694.0">NFG Forums: "NEC PC-9801 - How to Partition &amp; Format an HDD?"</a></h4>
+      <p>
+        <b>&emsp;Topics:</b> <i>MS-DOS, NEC, Epson, Installation, Hard Disks,
+          Hard Disk Formatting, Hard Disk Partitioning, Hard Disk
+          Initialization</i>
+      </p>
+      <p>
+        This one is an invaluable resource, since the hard disk initialization
+        process isn't quite the same as the one you may be used to from western
+        DOS. Someone's gone to the trouble of taking lots of screenshots
+        to guide you through initializing and formatting a fresh HDD for
+        booting DOS from. It saved me a lot of time. It specifically is
+        describing the process in NEC MS-DOS 6.2 (which can also be run and
+        installed on an Epson PC-98; it doesn't have the "Epson Check" sabotage
+        some earlier versions of NEC MS-DOS do).
+      </p>
+      <br/>
       <h3 id="pc9801_buying_wyatt_search_terms">Useful Search Terms</h3>
       <p>
         Can't find what you're looking for above? Here's some words that might

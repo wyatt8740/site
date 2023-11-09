@@ -11,3 +11,4 @@ generate() {
 
 generate dark
 generate light
+generate megatokyo

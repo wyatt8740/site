@@ -21,6 +21,11 @@ pre, code {
   font-size: 11pt;
 }
 
+.block {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 /* codewrap and imgwrap classes are used to make it so images scroll
    horizontally in boxes if they would otherwise overflow. */
 .prewrap .codewrap, .imgwrap, .captionwrap {
