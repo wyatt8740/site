@@ -1142,6 +1142,17 @@
         capabilities. In the long term, it's a nice thing to have.
       </p>
       <p>
+        It has a single DE9 (often mistakenly called DB9) connector for
+        a joystick using the Atari joystick pinout. Thus it may be usable with
+        a Sega Master System or potentially a Mega Drive pad as well.
+        Due to the exact way the Mega Drive sends out button presses, it may
+        be possible for it to behave strangely. This is because of the hack
+        Sega did to get that many buttons on a backward compatible controller,
+        and it depends basically on how fast the controller is being polled
+        if it works properly or not. Some buttons might still work fine,
+        though.
+      </p>
+      <p>
         <b>26 Sound:</b><br/>
         An earlier sound card, the PC-9801-26 (or PC-9801-26K), will get you
         mono FM synthesis sound and no PCM playback. It is based on the YM2203C
@@ -1155,6 +1166,11 @@
       <p>
         The PC-9801-26K has more clones available than the -86 seems to. It's
         also a fair deal cheaper to find a 26K card.
+      </p>
+      <p>
+        It has two DE9 (often mistakenly called DB9) connectors for joysticks
+        in the "Atari joystick" button configuration. This means it can be
+        used with Sega Master System pads, or possibly Mega Drive pads.
       </p>
       <p>
         <b>MIDI:</b><br/>
@@ -1183,6 +1199,14 @@
         sometimes my real (early revision) MT-32 drops notes that MUNT will
         play correctly. I have never felt that something felt wrong due to
         this extra polyphony.         
+      </p>
+      <p>
+        <b>Sound Blaster:</b><br/>
+        There is a Sound Blaster card for the PC-98, using an OPL3 chip and
+        very much analogous to the ISA sound blaster 16's in IBM compatibles. I
+        don't have a clue what software uses it, but there you have it. It does
+        exist. It also has IBM-style joystick connectors
+        ("gameport connectors").
       </p>
       <h3 id="pc9801_buying_wyatt_while_you_wait">Things You Can Do While Your PC-98 is Being Shipped</h3>
       <p>
@@ -1523,6 +1547,11 @@
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_odd">Getting an Optical Drive</h3>
+      <p>
+        If you want to transfer files via CD, or play or install something
+        distributed on CD, you may need to get a drive if your PC-98 doesn't
+        have one.
+      </p>
       <h4>IDE Drives</h4>
       <p>
         Some later PC-98 models came with built-in IDE CD-ROM drives.
@@ -1575,6 +1604,14 @@
       </p>
       <h4>DOS CD Drive Configuration</h4>
       <p>
+        DOS doesn't know what a CD drive is, normally. It needs extensions
+        loaded into it to be able to access them. This is also true in the
+        IBM-compatible DOS world, but the drivers are a little different,
+        seemingly. This section will basically assume you're using a SCSI
+        drive, but might mention alternatives for IDE drive users here and
+        there.
+      </p>
+      <p>
         <b>NEC Brand Drives</b><br/>
         If you are using an NEC brand SCSI optical drive and an NEC SCSI-1
         controller, you can probably use the <code>NECCDA.SYS</code> driver. If
@@ -1601,7 +1638,7 @@
         some of those drivers. I can't confirm this.
       </p>
       <p>
-        <b>Other Drives</b><br/>
+        <b>Other (Non-NEC SCSI) Drives</b><br/>
         If you aren't using an NEC brand drive/controller, it could be that
         trying to use the NEC drivers makes your system freeze. In that case,
         I had to use a different driver to connect my SCSI CD drive, which
@@ -1701,17 +1738,163 @@ expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
       </p>
       <p>
         <i>Step 2</i>:<br/>
-        Step two is editing <code>CONFIG.SYS</code>. <code>CONFIG.SYS</code> is
-        a file that tells DOS about the drivers it should load, and how it
-        should load them. We need to tell DOS about our CD driver, so we need
-        to load it in CONFIG.SYS.
+        Step two is editing <code>CONFIG.SYS</code>.This is a special file in
+        DOS that tells it about the drivers it should load at startup, and how
+        it should load them. In other words, because we need to tell DOS about
+        our CD driver, it must have a <code>CONFIG.SYS</code> entry.
       </p>
       
       <p>
-        Unfortunately, as far as I can recall, you can't load the CD driver
-        without first loading some other drivers.
-        I've provided my CONFIG.SYS file, in case it helps you to figure things
-        out.
+        Unfortunately, as far as I can recall, you can't load a CD driver
+        without first loading some other drivers. I've provided my CONFIG.SYS
+        file, in case it helps you to figure things out. A lot of it is
+        irrelevant, but I think it depends on at least <code>HIMEM.SYS</code>
+        and <code>EMM386.EXE</code> to work properly. You will have to adjust
+        it to look in the right places, if your hard drive is organized
+        differently from mine. I think mine is pretty standard in this
+        instance, though.
+      </p>
+      <div class="codewrap">
+        <pre class="block">FILES=30
+BUFFERS=10
+SHELL=&yen;COMMAND.COM /P
+DEVICE=A:&yen;DOS&yen;HIMEM.SYS
+DEVICE=A:&yen;DOS&yen;EMM386.EXE /UMB /P=64
+DEVICE=A:&yen;DOS&yen;SETVER.EXE
+DEVICEHIGH=A:&yen;DOS&yen;PRINT.SYS /U
+
+DEVICE=A:&yen;LOGITEC&yen;FAST301.EXE
+DEVICE=A:&yen;LOGITEC&yen;ASPILOG.SYS
+
+DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_101 /I5
+
+LASTDRIVE=Q
+DOS=HIGH,UMB</pre>
+      </div>
+      <p>
+        I believe the important bits there are the lines with
+        <code>HIMEM.SYS</code>, <code>EMM386.EXE</code>, and
+        <code>CDSD.SYS</code>. If they aren't already there, anything else in
+        this example can probably be omitted. For instance, the
+        <code>LOGITEC</code> things are for my specific SCSI controller,
+        but I don't think you need to have a special driver loaded for your
+        particular controller board. Just try them if you have problems
+        (with your appropriate card's drivers, of course).
+      </p>
+      <p>
+        The <code>/P=64</code> argument to <code>EMM386</code> can likely be
+        omitted; EMM386 defaults to using all of the expanded memory area it
+        can (rather than just 64 pages, like that is specifying). It was just
+        automatically added by something or another and I haven't had a reason
+        to change it yet. But the <b>important</b> arguments are the ones to
+        <code>CDSD.SYS</code> - particularly, you need to know your optical
+        drive's SCSI ID and feed it as an argument to <code>CDSD</code> or it
+        will fail with a complaint about an invalid SCSI ID. It seems to be a
+        somewhat common convention to make the drives with ID's 5 and 6 optical
+        drives, so if you only have one or two optical drives <code>/I:5</code>
+        makes sense. To add a drive 6, you'd simply add a second
+        <code>CDSD.SYS</code> line... I think. If my understanding is correct,
+        in that case you'd also need to name the driver (<code>/D:</code>)
+        something else for a secondary optical drive; maybe CD_102. The
+        name actually apparently does not matter, as long as it matches up with
+        a line in <code>AUTOEXEC.BAT</code> (which we will get to next).
+      </p>
+      <p>
+        <i>Step 3</i>:<br/>
+        Finally, we need to edit <code>AUTOEXEC.BAT</code>. This is another
+        special file that DOS looks for and reads at startup. The difference
+        is that <code>AUTOEXEC.BAT</code> runs commands just like a user can at
+        a command prompt manually; I don't <i>think</i> there's a way to
+        manually load in drivers like <code>CONFIG.SYS</code> does.
+      </p>
+      <p>
+        In our case, <code>AUTOEXEC.BAT</code> needs to run a program called
+        <code>MSCDEX.EXE</code>, Microsoft's CD Extensions program. I suppose
+        it's what DOS calls a TSR program (terminate-stay-resident), in that
+        it loads its code into memory for other programs to hook into later
+        when they need to access the CD drive. It's a sort of workaround for
+        the lack of multitasking to make it so programmers don't have to have
+        their own CD driver as part of their software's code. I guess you could
+        also say it's like some horrible kind of shared library (like DLL's).
+      </p>
+      <p>
+        Anyway - here's my AUTOEXEC.BAT.
+      </p>
+      <div class="codewrap">
+        <pre class="block">PATH A:&yen;DOS;A:&yen;
+SET TEMP=A:&yen;DOS
+SET DOSDIR=A:&yen;DOS
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:Q
+A:&yen;DOS&yen;SMARTDRV.EXE /X</pre>
+      </div>
+      <p>
+        You can ignore the <code>SMARTDRV</code> line; it's for hard drive data
+        caching, which speeds up disk drive use sometimes. I don't know if it
+        does anything for CD speeds. <code>MSCDEX</code> is the only critical
+        one, I believe.
+      </p>
+      <p>
+        It seems to be another convention with the PC-98 for things to map the
+        optical drive to drive letter Q. Weird, isn't it. I think I might get
+        it though; if they are the farthest drive letters down the list that
+        they can be, then adding another hard drive or floppy drive is less
+        likely to mess up any scripts that might have been written assuming
+        that drive 'D:' would be a floppy disk or something. Since the PC-98
+        uses a proper Shugart interface instead of IBM's version of it, it
+        can have four floppy drives, so this makes a little more sense. But
+        if you want to change the drive letter from 'Q:' to something else,
+        you change the <code>/L:Q</code> to
+        <code>/L:(your-drive-letter)</code>.
+      </p>
+      <p>
+        <b>Two SCSI Drives</b><br/>
+        Here's how I would <b>guess</b> you would change it to use two CD
+        drives with SCSI ID's 5 and 6, mapped to drive letters P and Q.
+        This is only a guess.
+      </p>
+      <p>
+        Partial <code>CONFIG.SYS</code> file:
+      </p>
+      <div class="codewrap">
+        <pre class="block">DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_101 /I5
+DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_102 /I6</pre>
+      </div>
+      <p>
+        Partial <code>AUTOEXEC.BAT</code> file:
+      </p>
+      <div class="codewrap">
+        <pre class="block">A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:P
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
+      </div>
+      <p>
+        <b>One IDE Drive and One SCSI Drive</b><br/>
+        You should also be able to mix and match drivers. I am assuming a
+        driver file for the IDE drive is NECCDM.SYS, but <b>you may need
+        a different file.</b> If you have an internal IDE drive and an
+        external SCSI drive, you might try something like this:
+      </p>
+      <p>
+        Partial <code>CONFIG.SYS</code> file:
+      </p>
+      <div class="codewrap">
+        <pre class="block">REM NEC internal IDE CD drive doesn't have a SCSI ID
+DEVICE=A:&yen;DOS&yen;NECCDM.SYS /D:CD_101
+REM External SCSI CD drive is SCSI ID 5
+DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_102 /I5</pre>
+      </div>
+      <p>
+        Partial <code>AUTOEXEC.BAT</code> file:
+      </p>
+      <div class="codewrap">
+        <pre class="block">REM NEC internal IDE CD drive
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:P
+REM External SCSI CD drive
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
+      </div>
+      <p>
+        One final reminder: I do not know for sure that all of this works
+        like I think it does. But that experience which I have with DOS leads
+        me to believe it is so. DOS just has a way of defying expectations.
       </p>
       <h3 id="pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: to Use or Replace?</h3>
       <p>
