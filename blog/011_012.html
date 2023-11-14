@@ -99,6 +99,9 @@
                     <li>
                       <a href="#pc9801_buying_wyatt_epson_terminal_fdd">Bonus: Terminal FDD Mode</a>
                     </li>
+                    <li>
+                      <a href="#pc9801_buying_wyatt_epson_laptops">Laptop Features</a>
+                    </li>
                   </ul>
                 </li>
                 <li><a href="#pc9801_buying_wyatt_things_to_look_for">Things I Looked for When Purchasing</a>
@@ -581,7 +584,7 @@
         it needs to be new enough for that, and it also makes no attempt to
         throttle itself to match the framerate of the screen - it just runs at
         full-tilt all the time, so you have to be able to make the computer run
-        slow enough for it to be playable. It's comically fast at 50 MHz.
+        slow enough for it to be playable. It's comically fast at 75 MHz.
       </p>
       <h4>DOS, Windows, or Other?</h4>
       <p>
@@ -785,13 +788,19 @@
         still had either no GPU card built in, or else simply had an
         accelerator card pre-installed that could easily be popped out.
       </p>
-      <h4>Red Flag #3: No FM sound</h4>
+      <h4 id="pc9801_buying_wyatt_no_fm_sound">Red Flag #3: No FM sound</h4>
       <p>
         Some later systems omitted the FM sound, especially laptop PC-98
         models. We didn't look at the laptop models in much detail, though,
         since my friend very clearly expressed that she wanted a desktop model.
         Early models lacking FM sound are far too old to be able to play any
         but the oldest PC-98 DOS games at a decent speed.
+      </p>
+      <p>
+        From what I can tell, NEC <b>never made any laptops with FM sound</b>
+        that did not have a built-in graphics accelerator of some kind.
+        So beware. However, in the section about what I bought below (I did not
+        buy a laptop), I will mention a possible workaround.
       </p>
       <p>
         There are two main kinds of FM sound chips to consider; the "26-Sound"
@@ -997,7 +1006,7 @@
                     switch, a volume dial, and four DIP switches."/>
         </a>
         <div class="imgwrap caption imgcentercaption">
-          A three-speed hardware "turbo switch!"
+          A three-speed hardware "turbo switch! You can change it at any time."
         </div>
       </div>
       <p>
@@ -1050,6 +1059,67 @@
           PC-486HA, HX, HG
         </li>
       </ul>
+      <p>
+        It appears that soft DIP switches 2-7 and 2-4 must be changed, but I
+        am having trouble deciphering what their values should be for correct
+        operation. If the software configurator lets you flip both, then both.
+        Otherwise, I would try just setting switch 2-4 first and seeing what
+        happens.
+      </p>
+      <p>
+        The last thing about this terminal mode to note is that you can use
+        either a real 'external FDD' cable or a standard(ish) style 50-pin
+        SCSI "Centronics" cable for the physical connection between the two
+        computers.
+      </p>
+      <h4 id="pc9801_buying_wyatt_epson_laptops">Laptop Features</h4>
+      <p>
+        You may recall that I said in the
+        <a href="#pc9801_buying_wyatt_no_fm_sound">"red flags" section</a>
+        that no PC-98 laptops without a window accelerator chip built-in have
+        FM sound. this is absolutely true, but only because
+        I specified that <i>"<b>NEC</b> never made any."</i>
+      </p>
+      <p>
+        Because guess what?
+      </p>
+      <p>
+        <a href="https://kizuna.5ch.net/test/read.cgi/i4004/1525089405/?v=pc#912">Epson <i>did</i> make (some of) them.</a>
+      </p>
+      <p>
+        Due to Epson's "upgradeability" as a marketing feature, it looks like it
+        was made possible to swap one screen for another after buying if you wanted
+        an upgrade; due to this, giving model numbers is kind of meaningless, but
+        if you <a href="https://pc-9800.net/db_epson/note_index.htm">start
+        with the 1993 models here you will see the ones that came with color
+        screens in "stock" configuration.
+      </p>
+      <p>
+        However, you should be warned that many if not practically all of them
+        no longer have functioning screens, according to others. They seem
+        prone to dissolving into some strong-smelling vinegar-like substance
+        with age. I am not sure how feasible it would be to replace the LCD
+        with something newer. But I do believe that it might be possible to
+        hijack the external RGB output from the back of it and feed it back
+        in, if you were dedicated and could find a tiny panel that would
+        accept its resolution. I have not seen evidence of people doing this
+        (although I did not look particularly hard for such evidence either).
+      </p>
+      <p>
+        They should be usable as desktop machines plugged into an external
+        screen, but why not just get a desktop with actual C-bus card support
+        at that point?
+      </p>
+      <p>
+        I love the idea of the laptops. And the looks. I'm just not sure which
+        if any of them are not prone to dissolving their own screens and
+        haven't spent quite enough time researching them. If you are certain
+        that your screens won't decay and you have a choice between a TFT and
+        an STN panel, take a TFT. Unless you like and feel nostalgic for how
+        blurry early color LCD's were (and for the really bad viewing angles
+        and contrast dials). I think they're kind of neat; my thinkpad 350 has
+        an STN panel.
+      </p>
       <h3 id="pc9801_buying_wyatt_expansion_cards">Expansion Cards</h3>
       <h4>Hard Drive Controllers</h4>
       <p>
@@ -1057,18 +1127,20 @@
         variants of it did come with one. There's an unused card edge slot in
         the case that can be hooked to a proprietary Epson card, which I
         believe uses SCSI and also houses a hard drive in a metal cage
-        alongside it. I didn't see one on Yahoo Auctions, but did see that they
-        have sold on there once in a while in the past.
+        alongside it. I didn't see one on Yahoo Auctions, but did see that the
+        cards have sold on there once in a while in the past. It might actually
+        be a SASI card (pre-SCSI but basically compatible); I have read
+        conflicting reports on that subject.
       </p>
       <p>
-        That's not a deal-breaker, because there's also C-Bus, which is the
-        also-proprietary, but-at-least-publicly-documented slot NEC put on
-        the PC-98 series for end-user expansions. C-Bus SCSI controllers exist
-        and can be used to boot a hard drive, even on computers where a
-        proprietary hard drive interface is also provided. Mine came with one,
-        although I had trouble making it work. I have a feeling it was a
-        termination issue, since it looks to only have passive termination on
-        it.
+        The lack of that card is not a deal-breaker, because there's also
+        C-Bus, which is the also-proprietary, but-at-least-publicly-documented
+        slot NEC put on the PC-98 series for end-user expansions. C-Bus SCSI
+        controllers exist and can be used to boot a hard drive, even on
+        computers where a proprietary hard drive interface is also provided.
+        Mine came with one, although I had trouble making it work. I have a
+        feeling it was a termination issue, since it looks to only have
+        passive termination on it.
       </p>
       <p>
         If you want to get a SCSI C-bus card, it seems that it would be best to
@@ -2169,8 +2241,22 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         the caveat that you won't have a nice plastic bezel to cover up the
         gaps on the sides of the Gotek. That's why I have masking tape on the
         front of mine. When I'm not looking directly at it, it's fine! And it
-        blocks a little of the noise from the blower fan on the 50MHz 486DX
+        blocks a little of the noise from the blower fan on the 75 MHz 486 DX4
         that mine has been upgraded with by the previous owner inside.
+      </p>
+      <p>
+        Yes; I know the sticker says 50MHz DX2. But there's some other kind of
+        accelerator card - which the Japanese seem to call a
+        <a href="https://en.wikipedia.org/wiki/Geta_(footwear)">Geta</a> -
+        inside of it that I am pretty sure is not an Epson product.
+      </p>
+      <p>
+        I am guessing they are called "geta" because of the way that the CPU
+        sort of sits on a PCB with pins (like the vertical boards on the shoes)
+        underneath that sort of look like stilts. This board is required
+        because the 486 DX4 runs at 3.3 volts rather than the 5 volts of the
+        original 486 SX/DX and DX2, thus needing a voltage converter between
+        it and the PC itself.
       </p>
       <p>
         An additional oddity is that the Epson uses laptop-style 26 pin floppy
