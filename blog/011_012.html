@@ -1466,6 +1466,15 @@
         used with Sega Master System pads, or possibly Mega Drive pads.
       </p>
       <p>
+        <b>Sound Blaster:</b><br/>
+        There is a Sound Blaster card for the PC-98, using an OPL3 chip and
+        very much analogous to the ISA sound blaster 16's in IBM compatibles. I
+        don't have a clue what software uses it, but there you have it. It does
+        exist. It also has IBM-style joystick connectors ("gameport
+        connectors"). Neither I nor my friend currently have any of these
+        cards.
+      </p>
+      <p>
         <b>MIDI:</b><br/>
         Some stuff, especially later in the PC-98's lifetime, seems to adopt
         MIDI sound. I am not aware of too many (if any) cards that perform
@@ -1477,29 +1486,161 @@
         right soundfont, that's enough to get you basically a Roland Sound
         Canvas. A lot of games use "GS" (Roland's General MIDI extension)
         or General MIDI instrument mappings, so that should get you a long way.
+        Some games also use the Roland MT-32, which <b>is not</b> GS
+        compatible. You could perhaps use MUNT (which emulates the MT-32 pretty
+        well) for this, if you can legally obtain the ROM chips and dump them.
+        That way, you just need to connect your PC-98 to a modern PC and have
+        the modern PC perform the MIDI synthesis for you.
       </p>
       <p>
         You could also hunt down a physical Roland Sound Canvas (SC-55mkII
-        and SC-88 seem to be popular options) for those games.
+        and SC-88 seem to be popular options) for the GS games. For the MT-32,
+        an actual MT-32 is ideal; a D-110 might also work, but the sounds will
+        be different (arguably, the D-110 has better samples - but it will not
+        represent what the games were actually designed to sound like, even if
+        the instrument ID's mostly match up). The D-110 is also <i>huge</i> by
+        comparison to an MT-32, since the D-110 is 19" rack mounted equipment.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_sound_canvas">
+        <a href="pc9801_1/full/sound_canvas.jpg">
+          <img src="pc9801_1/sound_canvas.jpg"
+               alt="(Picture of a Roland SC-55K synth on top of a Roland MT-32 synth.)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Roland MT-32 and SC-55K. The Sound Canvas and MT-32 seem to be the
+          primary MIDI synthesizers used with the PC-98 series.<br/>
+          I'm going to have to find a better way to stack these with my monitor.
+        </div>
+      </div>
+      <p>
+        <b>Roland Sound Canvas:</b><br/>
+        I just recently got a Roland SC-55K, which is based on the SC-55mkii
+        but lacks a screen and most of the buttons of the actual SC-55mkii.
+        It's a unit meant for karaoke, is Japan-exclusive, and is also
+        basically an enhanced version of the SC-55ST. The 55ST, unlike the
+        SC-55K, has no MIDI thru or MIDI out ports to speak of. So if you're
+        choosing between a 55ST and a 55K, I'd suggest the 55K. It's just
+        a 55ST, but with more I/O. For the non-Karaoke features, you can just
+        use the SC-55ST manual for directions and it'll get you where you need
+        to go, since the 55ST is a strict subset of the 55K's functionality.
       </p>
       <p>
+        Don't be tempted into thinking you can just use your PC's serial port
+        as a MIDI interface; most software doesn't seem to allow doing this,
+        even though the 55mkII, 55ST, and 55K all support MIDI over RS232.
+        Things really expect you to have an MPU interface, unfortunately for
+        your wallet.
+      </p>
+      <p>
+        If you get a 55ST or 55K, and your software <i>does</i> support MIDI
+        over RS232 on a PC-98, you want to use the "PC-1" position for the
+        switch on the back. The
+        <a href="http://lib.roland.co.jp/support/jp/manuals/res/2209091700/SC-55K_j.pdf">55K's Japanese manual</a>
+        says that the "PC-1" position is for the "PC-9800 series," whereas
+        the
+        <a href="http://cdn.roland.com/assets/media/pdf/SC-55ST_OM.pdf">English
+        manual for the 55ST</a> omits that and just mentions in a note
+        that "PC-1" is for a 31.25Kbps connection. Otherwise, it basically
+        glosses over the existance of the "PC-1" setting and emphasizes the use
+        of "PC-2" for IBM compatibles (PC/AT class).
+      </p>
+      <p>
+        The SC-55 and family are GS MIDI synths; if a game asks you to choose
+        between "GS" and some other sound formats (perhaps "26", "86", and
+        "MT"), "GS" pretty much means the Sound Canvas series in this context.
+      </p>
+      <p>
+        I've run my 55K with the original Roland power brick
+        straight from a wall outlet (around 120V) without issue, but I
+        typically use my stepdown transformer to be safe.
+      </p>
+      <p>
+        For the record, the SC-55K,and presumably the SC-55mkii, ask for
+        a 9 volt DC, <b>tip/center-negative</b> power connection. This is the
+        same as an MT-32, a Famicom, a Super Famicom/European SNES, or a Sega
+        Master System, and almost the same as a Sega Genesis (<b>model I</b>
+        only). So if you don't want/can't use a stepdown transformer, or
+        weren't given the original power brick with your Japanese-imported
+        unit, you can use any of the above power bricks as a substitute.
+        The extra one volt or so of the Genesis power brick will be burned off
+        as extra heat by the 7805 voltage regulator that the Sound Canvas uses.
+        You could probably even use a 12v <b>center negative</b> brick and it'd
+        work. If you encounter problems with this, the 12 volts might be
+        overheating the regulator. Let it cool down and use a lower voltage
+        brick.
+      </p>
+      <p>
+        You can also get a new power brick for it; I've had luck with the
+        Triad Magnetics
+        <a href="https://catalog.triadmagnetics.com/item/wall-plug-in-transformers/wall-plug-ins-switch-mode-power-supplies/wsu090-1300-r">WSU090-1300-R</a>
+        power adapter, which I've been buying through Digi-key. It can also be
+        bought from Mouser - or even Console5, apparently. I typically don't
+        use Console5, but maybe it's worth it if there's some other old game
+        console stuff you need. I've only once bought something from it, and
+        that was for making my own Wii S-Video cord.
+      </p>
+      <p>
+        This isn't meant as a promotion for the Triad over any other supply;
+        just as an easy option that is readily commercially available if
+        someone doesn't want to do the legwork to figure out all the specs on
+        their own. Anything that can deliver at least one watt at 9 volts
+        DC, has a negative tip/positive shell polarity arrangement, uses an
+        approximately 2.1mm x 5.5mm x 11mm plug, and accepts your local voltage
+        as an input should work.
+      </p>
+      <p>
+        Note that the '-R' at the end of the product model name is important.
+        <b>The non-'-R' version of this supply is positive-tipped, and will
+        quite possibly damage your hardware.</b> So if you're looking for one
+        on other sites like eBay or Amazon, make sure it's the '-R' version.
+      </p>
+      <p>
+        <b>Roland MT-32:</b><br/>
         I have also seen some software that supports the earlier Roland MT-32.
-        I happen to already have one of those, so that's good. I can't really
-        recommend buying an MT-32 at today's market prices, though. I think
-        there was a Raspberry Pi project I saw to emulate an MT-32 which looks
-        much more affordable. And MUNT (the software MT-32 emulator people use)
-        is getting pretty good. The only inaccuracies I've noted are that
-        sometimes my real (early revision) MT-32 drops notes that MUNT will
-        play correctly. I have never felt that something felt wrong due to
-        this extra polyphony.         
+        Thankfully, I've had one of those for about five or six years now. I
+        can't really recommend buying an MT-32 at today's market prices,
+        though. I think there was a Raspberry Pi project I saw to emulate an
+        MT-32 which looks much more affordable. And MUNT (the software MT-32
+        emulator people use) is getting pretty good. The only inaccuracy I've
+        noted (<a href="https://www.youtube.com/watch?v=Kng3Rfn2tBk">I arrange
+        music on my MT-32</a>) are that sometimes my real (early revision)
+        MT-32 drops notes that MUNT will play correctly - I have never felt
+        that something felt wrong due to this extra polyphony. My early
+        revision MT-32 also can't handle system exclusive messages in rapid
+        succession like later revisions of the hardware (or MUNT) can. So in a
+        lot of ways, I'd argue, MUNT is actually better than the real thing.
       </p>
       <p>
-        <b>Sound Blaster:</b><br/>
-        There is a Sound Blaster card for the PC-98, using an OPL3 chip and
-        very much analogous to the ISA sound blaster 16's in IBM compatibles. I
-        don't have a clue what software uses it, but there you have it. It does
-        exist. It also has IBM-style joystick connectors
-        ("gameport connectors").
+        That won't make me stop loving my MT-32, but it is a reason that I
+        don't think it's truly necessary to own one. If you can find a legal
+        way to obtain the ROM chips, that should be enough. Maybe someone on
+        ebay will sell the original chips harvested from dead hardware once in
+        a while? I'd guess that that would count as owning a legitimate copy of
+        the copyrighted information to make your own ROM dumps from. MUNT
+        <i>does</i> require ROM dumps to work, unfortunately.
+      </p>
+      <p>
+        <b>Which Synth to Buy?:</b><br/>
+        If you are wanting to buy a MIDI module, but only one of them, and you
+        don't have a huge amount of money to do so, I'd say the SC-55 or
+        similar is a better purchase for a wider variety of games. If you
+        <i>do</i> have a huge amount of money, get a CM-500 which contains both
+        an MT-32 and a SC-55.
+      </p>
+      <p>
+        And if you have a truly <i>enormous</i> sum of money, I'd (of course)
+        appreciate any donations you can afford to give! If you're thankful for
+        the info I've accumulated and set about sharing here, please know
+        that it'd help a lot with recovering from the damage I've done to my
+        finances while doing the legwork that led to me writing this article!
+      </p>
+      <p>
+        Of course, I also appreciate a written 'thank you,' even without
+        monetary transactions. It's also a great motivator to keep writing
+        if I know I'm helping people.
+      </p>
+      <p>
+        
       </p>
       <h3 id="pc9801_buying_wyatt_while_you_wait">Things You Can Do While Your PC-98 is Being Shipped</h3>
       <p>
