@@ -2549,7 +2549,30 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_linux">Writing Floppy Disks (Linux)</h3>
       <p>
-        
+        The key to writing floppies for a PC-98 in Linux is to use a program
+        called "ufiformat." Especially if your PC-98 is not new enough to
+        support 300 RPM 1.44MB disk reading/writing, it is absolutely
+        essential.
+      </p>
+      <p>
+        I wrote a script for me and my friend that handles the details of
+        setting up a floppy disk for the PC-98 series. It depends on the
+        following utilities (and perhaps more).
+      </p>
+      <ul>
+        <li>
+          A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
+          shell)
+        </li>
+        <li><code>ufiformat</code></li>
+        <li><code>lsscsi</code></li>
+        <li><code>awk</code></li>
+        <li><code>sudo</code></li>
+      </ul>
+      <p>
+        The <code>sudo</code> calls can all be removed if you plan to invoke
+        the script as root. So I don't actually consider <code>sudo</code> to
+        be a hard dependency.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_openbsd">Writing Floppy Disks (OpenBSD)</h3>
@@ -2561,8 +2584,7 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         <code>makefs</code>. <b>This has not been tested as of yet!</b>
       </p>
       <div class="codewrap">
-        <pre class="block">$ makefs -o floppy=1232 -t msdos 
-        </pre>
+        <pre class="block">$ makefs -o floppy=1232 -t msdos</pre>
       </div>      
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_windows">Writing Floppy Disks (Windows)</h3>
@@ -2825,7 +2847,8 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         surface mount type capacitors are involved. They are hard to desolder
         safely with an iron (without ripping up traces/solder pads), and early
         ones <b>love</b> to die. Upon desoldering, they will smell strangely
-        like fish. A hot air station is recommended.
+        like fish. A hot air station is recommended (to maximize the smell of
+        fish).
       </p>
       <p>
         As far as I can tell, both my Epson and my friend's PC-9821 Ce2's/Cs2's
@@ -2836,7 +2859,8 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
       <p>
         Additionally, the PC-9821 A* series computers seem to have problematic
         capacitors in their power supplies rather frequently. I would suggest
-        replacing all capcitors in those, if you go for one of them.
+        replacing all capcitors in those, if you go for one of them. Or find a
+        PSU that was already recapped (probably expensive).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_maintenance_rust">
@@ -3019,10 +3043,10 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
       </p>
       <p>
         In brief, some floppy drives (many USB ones, but not as many internal
-        western ones) can run at 360 RPM, as in the PC-98, and basically
-        operates identically to a 5.25" disk of the same density. You need your
-        3.5" floppy disk to be <i>sectored and formatted</i> as if it were a
-        5.25" disk. Most western 3.5" floppy disks will not be from the
+        western ones - if any) can run at 360 RPM, as in the PC-98, and
+        basically operates identically to a 5.25" disk of the same density. You
+        need your 3.5" floppy disk to be <i>sectored and formatted</i> as if it
+        were a 5.25" disk. Most western 3.5" floppy disks will not be from the
         factory.
       </p>
       <br/>
