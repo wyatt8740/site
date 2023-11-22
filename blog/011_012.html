@@ -142,7 +142,23 @@
                 <li><a href="#pc9801_buying_wyatt_mouse">Getting a Mouse</a></li>
                 <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a></li>
                 <li><a href="#pc9801_buying_wyatt_hdd">Getting a Hard Drive</a></li>
-                <li><a href="#pc9801_buying_wyatt_odd">Getting an Optical Drive</a></li>
+                <li><a href="#pc9801_buying_wyatt_odd">Getting an Optical Drive</a>
+                  <ul>
+                    <li><a href="#pc9801_buying_wyatt_odd_ide">IDE Drives</a></li>
+                    <li><a href="#pc9801_buying_wyatt_odd_scsi">SCSI Drives</a>
+                      <ul>
+                        <li><a href="#pc9801_buying_wyatt_odd_scsi_dos_config">DOS CD Drive Configuration</a>
+                          <ul>
+                            <li><a href="#pc9801_buying_wyatt_odd_scsi_nec_brand">NEC Brand Drives</a></li>
+                            <li><a href="#pc9801_buying_wyatt_odd_scsi_other_brand">Other (Non-NEC) Branded Drives</a></li>
+                            </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="#pc9801_buying_wyatt_odd_auto_add">Automatically Adding a Drive</a></li>
+                    <li><a href="#pc9801_buying_wyatt_odd_manual_add">Manually Adding a Drive</a></li>
+                  </ul>
+                </li>
                 <li><a href="#pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: Use or Replace?</a></li>
                 <li><a href="#pc9801_buying_wyatt_writing_floppies_linux">Writing PC-98 Floppy Disks in Linux</a></li>
                 <li><a href="#pc9801_buying_wyatt_writing_floppies_openbsd">Writing PC-98 Floppy Disks in OpenBSD</a></li>
@@ -1705,7 +1721,7 @@
       </div>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
-        <span id="pc9801_buying_wyatt_which_synth"><b>Which Synth to Buy?:</b><br/>
+        <span id="pc9801_buying_wyatt_which_synth"><b>Which Synth to Buy?:</b></span><br/>
         If you are wanting to buy a MIDI module, but only one of them, and you
         don't have a huge amount of money to do so, I'd say the SC-55 or
         similar is a better purchase for a wider variety of games. If you
@@ -1764,6 +1780,22 @@
         the nervousness that I would have plugging it in directly.
       </p>
       <p>
+        I have successfully run a Roland SC-55K with its original Japanese
+        100V rated power brick directly on US wall power, but I still am
+        using it with a stepdown now - after I realized that I'd just been
+        using an incorrectly specified Japanese domestic wall wart. You guys
+        in Europe are kind of lucky, in a way: it'd be a <b>lot</b> harder to
+        accidentally plug a Japanese power cord/brick directly into your wall.
+        Here in the states, it is quite easy to do absentmindedly.
+      </p>
+      <p>
+        I do recommend labelling your power cables on both ends - down by the
+        plugs and up by where they plug into your equipment. I used blue
+        painter's tape to make them stand out. This way, I am hopefully
+        reminded that there is something special about the plug I'm holding if
+        I ever need to rearrange the cables under my desk.
+      </p>
+      <p>
         If your PSU happens to have text on the back stating that it is rated
         for at least your voltage, then ignore everything I just said. But
         my Epson at least only specifies 100V at 50 or 60 Hz.
@@ -1796,6 +1828,19 @@
         while heavy it means you don't have to worry about earth grounding it
         at the wall outlet.
       </p>
+      <p>
+        For accessories for your PC-98, if they use a DC barrel jack, you may
+        be better off if you get a new wall wart that is simply correctly
+        specced for your mains voltage and desired output/plug size. I
+        mentioned the correct AC adapter for the Roland MT-32 and SC-55 above,
+        for instance. This way, you don't have to worry about getting a power
+        strip or similar for your stepdown transformer. Most of the good ones
+        (non-Chinese) don't have a ground prong on their outlets, so most
+        US spec power taps won't (safely) be able to cut it. You might have
+        to import a Japanese strip, or use a US "cheater plug" with a wire
+        strapped to that metal contact underneath that runs to a ground point
+        on the stepdown transformer.
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_mouse">Mouse</h3>
       <p>
@@ -1820,15 +1865,16 @@
         a PC "bus mouse" can get you something electrically compatible with a
         PC-98. If it uses the D-Sub connector, you will need to make or get
         an adapter. I think the adapter will have to come from Japan, since
-        <span class=".strike">to my knowledge no western PC's used a quadrature
-        mouse with that specific pinout</span> the western mouses that
-        seems to <i>possibly</i> share this pinout are
+        the only western-market mouses that seems to <i>possibly</i> share this pinout
+        are
         <a href="http://web.archive.org/web/20010802062315id_/https://www.cs.rochester.edu/~kparkins/pinouts.txt">
         the original Microsoft "Green Eyed" bus mouse and perhaps a handful of
         Logitech ones</a>. I am not sure if passive adapters for connecting
         newer bus mouses to these older cards were ever widespread in the west,
         since we seem to have moved away from them far sooner than they did in
         Japan.
+      </p>
+      <p>
       </p>
       <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_mouse_pinouts">
         <a href="pc9801_1/full/mouse_pinouts.png">
@@ -1847,15 +1893,17 @@
         </a>
         <div class="imgwrap caption imgcentercaption">
           The two common PC-9801 mouse pinouts. Seemingly, these are shared
-          with Microsoft bus mouses, although only the oldest of those use a
+          with Microsoft bus mouses, although only the oldest of those use the
           DE9 connector.
         </div>
       </div>
       <p>
-        It would sort of make sense if this pinout was chosen to match
-        Microsoft's original mouse pinout, since NEC seemed to cooperate pretty
-        closely with ASCII Corporation (which was basically Microsoft's
-        Japanese arm).
+        It would sort of make sense if the pinout and D-sub connector were
+        chosen to match Microsoft's original mouse pinout, since NEC seemed to
+        cooperate pretty closely with ASCII Corporation (ASCII was basically
+        Microsoft's Japanese arm). I have found evidence that a PC-9801 version
+        of the "green eyed mouse" exists, and that there was a C-bus mouse
+        controller card for it, too.
       </p>
       <p>
         You could try to rewire an Amiga or Atari ST or AT&amp;T
@@ -1863,16 +1911,21 @@
         have it work. You could also
         <a href="http://oldcomputer.info/hacks/mouse/index.htm">try this guy's
         "universal bus mouse" idea,</a> and convert probably just about any old
-        PS/2 ball mouse you might own into a bus mouse.
+        PS/2 ball mouse you might own into a bus mouse. Probably some early-ish
+        optical PS/2 or USB ones, too, since some of those just imitated the
+        quadrature signals from their sensor IC's so they could be used with
+        existing PS/2 interface/controller chips as a drop-in upgrade for ball
+        mouse designs.
       </p>
       <p>
         I opted to buy a mini-DIN mouse, the Logitech PC-93-9MD, from someone
         in Texas and then ordered a mouse adapter from Japan, since I was in
-        no hurry but my PC-98 has a D-sub mouse connector. I also decided
-        I didn't want to wire up my own this time, since making something both
-        small and durable is tough, and the cost of shipping parts from Digikey
-        is almost as bad as just buying a used adapter from halfway across
-        the planet unless you have other things you're buying at the same time.
+        no hurry but my particular PC-98 has a D-sub mouse connector. I also
+        decided I didn't want to wire up my own this time, since making
+        something both small and durable is tough, and the cost of shipping
+        parts from Digikey is almost as bad as just buying a used adapter from
+        halfway across the planet unless you have other things you're buying at
+        the same time.
       </p>
       <p> 
         Does that defeat the point of buying a mouse domestically...?
@@ -2087,7 +2140,8 @@
         distributed on CD, you may need to get a drive if your PC-98 doesn't
         have one.
       </p>
-      <h4>IDE Drives</h4>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h4 id="pc9801_buying_wyatt_odd_ide">IDE Drives</h4>
       <p>
         Some later PC-98 models came with built-in IDE CD-ROM drives.
         If yours doesn't have one, but is late enough to be using
@@ -2116,7 +2170,8 @@
         button line up with the holes in the case. I'd be interested to know
         if anyone manages to finagle something into working!
       </p>
-      <h4>SCSI Drives</h4>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h4 id="pc9801_buying_wyatt_odd_scsi">SCSI Drives</h4>
       <p>
         The other option is a SCSI optical drive. Since my PC-486GR never came
         with an optical drive internally, and doesn't even have IDE, this is my
@@ -2145,7 +2200,8 @@
         Then, with SCSI optical drives, the problem becomes making it work with
         DOS.
       </p>
-      <h4>DOS CD Drive Configuration</h4>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h4 id="pc9801_buying_wyatt_odd_scsi_dos_config">DOS CD Drive Configuration</h4>
       <p>
         DOS doesn't know what a CD drive is, normally. It needs extensions
         loaded into it to be able to access them. This is also true in the
@@ -2154,8 +2210,9 @@
         drive, but might mention alternatives for IDE drive users here and
         there.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
-        <b>NEC Brand Drives</b><br/>
+        <span id="pc9801_buying_wyatt_odd_scsi_nec_brand"><b>NEC Brand Drives</b></span><br/>
         If you are using an NEC brand SCSI optical drive and an NEC SCSI-1
         controller, you can probably use the <code>NECCDA.SYS</code> driver. If
         it's an NEC SCSI optical drive and an NEC SCSI-II controller, I think
@@ -2180,10 +2237,21 @@
         It may be possible that <i>some</i> other drives will also work with
         some of those drivers. I can't confirm this.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
-        <b>Other (Non-NEC SCSI) Drives</b><br/>
+        <span id="pc9801_buying_wyatt_odd_scsi_other_brand"><b>Other (Non-NEC SCSI) Drives</b></span><br/>
         If you aren't using an NEC brand drive/controller, it could be that
-        trying to use the NEC drivers makes your system freeze. In that case,
+        trying to use the NEC drivers makes your system freeze.
+      </p>
+      <p>
+        Mine <i>did</i> freeze; I suppose it could just be that the NEC driver
+        is doing an "Epson Check" and intentionally sabotaging me for not using
+        their hardware. If that is all it is, then there's supposed to be an
+        Epson installer tool somewhere specifically made to patch out these
+        "Epson Checks" in NEC software. But I didn't think of that until
+        afterwards, so I looked for other, non-NEC solutions.
+      </p>
+      <p>
         I had to use a different driver to connect my SCSI CD drive, which
         I found on archive.org and in case anything ever happens to it.
         The driver in question is <code>CDSD.SYS</code>, which is under an open
@@ -2205,8 +2273,9 @@
       <p>
         <b>Download: <a href="pc9801_1/dl/PC%2d9800%20Series%20CD%2dROM%20Driver%20Collection%20%28v1%2e1%29%20%5bFD%5d%2ezip">PC-9800 Series CD-ROM Driver Collection (v1.1) [FD].zip</a></b> &ndash; 137 KiB
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
-        <b>Automatically Adding a Drive</b><br/>
+        <span id="pc9801_buying_wyatt_odd_auto_add"><b>Automatically Adding a Drive</b></span><br/>
         If doing a fresh install, or maybe also if running NEC DOS, you can
         try to let the installer automatically configure your driver for you.
         It might work, even if your drive is not NEC. I can't guarantee
@@ -2231,8 +2300,9 @@
         even know where to begin and I am more comfortable manually editing
         CONFIG.SYS and AUTOEXEC.BAT anyway as far as CD drives are concerned.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
-        <b>Manually Adding a Drive</b><br/>
+        <span id="pc9801_buying_wyatt_odd_manual_add"><b>Manually Adding a Drive</b></span><br/>
         If you've never messed around much in DOS before (including western
         versions), some of this might be new to you. It's not too new to me,
         but that doesn't mean I love the process, either. Basically, though,
@@ -2452,6 +2522,7 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         like I think it does. But that experience which I have with DOS leads
         me to believe it is so. DOS just has a way of defying expectations.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_adapting_floppy_drives">Floppy Drives: to Use or Replace?</h3>
       <p>
         Planning on using real floppy disks? You'll need some good diskettes.
