@@ -1340,7 +1340,8 @@
         Where was I going with this? - oh, right. <b>It's possible that someone
         took the RAM out of your PC.</b> I haven't seen this happen yet, but
         with a "junk" listing it'd be only too easy to do it and sell the RAM
-        separately.
+        separately. Maybe if that's the case, you can modify a JEDEC stick to
+        fit an Epson PC-98 clone by cutting traces and running wires.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_expansion_cards">Expansion Cards</h3>
@@ -2192,7 +2193,10 @@
       <p>
         If you want to transfer files via CD, or play or install something
         distributed on CD, you may need to get a drive if your PC-98 doesn't
-        have one.
+        have one. Much like hard drives, your main options (depending on your
+        model of computer) are IDE drives and SCSI drives, as far as CD's are
+        concerned. PC-9821's often (always?) came with IDE controllers; 9801's
+        and Epsons didn't (although I think some of the last Epson 98's did).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_ide">IDE Drives</h4>
@@ -3142,12 +3146,19 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         know.
       </p>
       <p>
-        In brief, some floppy drives (many USB ones, but not as many internal
-        western ones - if any) can run at 360 RPM, as in the PC-98, and
-        basically operates identically to a 5.25" disk of the same density. You
-        need your 3.5" floppy disk to be <i>sectored and formatted</i> as if it
-        were a 5.25" disk. Most western 3.5" floppy disks will not be from the
-        factory.
+        In brief, some 3.5" floppy drives can run at 360 RPM - many USB ones,
+        but not as many internal western ones, if any. The PC-98 traditionally
+        used 360 RPM, even for 3.5" disks. In this mode of operation, a 3.5"
+        diskette is accessed exactly like a 5.25" diskette, as far as the drive
+        or computer is concerned. But for this to work, your floppy must first
+        be <i>sectored and formatted</i> as if it were a 5.25" disk. Most
+        western 3.5" floppy disks will not be from the factory - they'll be
+        IBM formatted, which for high density floppies means 300 RPMs and
+        1.44 megabytes of data instead of 360 RPMs and 1.2 megabytes. If your
+        drive and software supports it, you can transform an IBM formatted
+        floppy into a PC98 formatted one. Also, some later PC-9821's (perhaps
+        1993 or 1994 onwards) can natively handle 300 RPM 1.44 megabyte
+        diskettes in addition to their historical 360RPM DD and HD formats.
       </p>
       <br/>
       <h4><a href="https://bitchinbits.foolproofdesigns.com/pc-9821/pc-9821-cheat-sheet/">PC-9821 Cheat Sheet</a></h4>
