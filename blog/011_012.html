@@ -1041,8 +1041,7 @@
         <a href="pc9801_1/full/486gr_front_panel.jpg">
           <img src="pc9801_1/486gr_front_panel.jpg"
                alt="The front panel of an Epson PC-486GR, containing a
-                    high/normal resolution switch, a high/medium/low CPU speed
-                    switch, a volume dial, and four DIP switches."/>
+                    high/normal resolution switch, a high/medium/low CPU speed                    switch, a volume dial, and four DIP switches."/>
         </a>
         <div class="imgwrap caption imgcentercaption">
           A three-speed hardware "turbo switch!" You can change it at any time.
@@ -1763,6 +1762,25 @@
         free). I don't know if the "intelligent mode" of the MPU-401 is
         emulated there, though.
       </p>
+      <p>
+        The "intelligent mode" of the MPU-401 uses an 8 track sequencer,
+        sync and metronome outputs, and possibly other things. The alternative
+        is the simpler "UART mode," where the MPU-401 basically acts like a
+        dumb 31250 baud serial port. I don't know that I've personally ever
+        had trouble, but it's something other people on the internet always are
+        warning people about regarding USB adapters with old synths like the
+        MT-32. Maybe my USB adapter has that 'intelligent mode?' - It's the
+        Roland UM-One. Some of the other USB adapters I've tried <i>are</i>
+        prone to dropping notes. Maybe that's why. I'm out of my element here.
+        It appears that emulators like DOSBox and Neko Project 2 Kai support
+        MPU-401 emulation in software (and thus should be usable with a dumb UART
+        USB adapter).
+      </p>
+      <p>
+        I'm not aware of any hardware MPU cards that <i>don't</i> come from
+        Roland for C-Bus, so maybe it's irrelevant to worry about intelligent
+        mode MPU-401 support.
+      </p>
       <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_mpu">
         <a href="pc9801_1/full/mpu-pc98ii.jpg">
           <img src="pc9801_1/mpu-pc98ii.jpg"
@@ -1883,6 +1901,7 @@
         while heavy it means you don't have to worry about earth grounding it
         at the wall outlet.
       </p>
+      <h4>Accessories that Use AC Adapters</h4>
       <p>
         For accessories for your PC-98, if they use a DC barrel jack, you may
         be better off if you get a new wall wart that is simply correctly
@@ -1896,11 +1915,96 @@
         strapped to that metal contact underneath that runs to a ground point
         on the stepdown transformer.
       </p>
+      <p>
+        If you want to get something new and of reasonably good quality, I'd
+        suggest ordering on Digi-key or Mouser - or at least searching for part
+        numbers by doing that and then buying what you find by narrowing down
+        your search off of somewhere like ebay, or maybe your local hobby
+        store, if your hobby shop will get stuff like that for you.
+      </p>
+      <p>
+        If your stuff comes with the original AC adapter, you can probably use
+        it with your step-down transformer as well.
+      </p>
+      <h4>Using western 120/240V accessories with a 100V PC</h4>
+      <p>
+        Perhaps it's just on account of poor quality electronics in the
+        housing, but if I have my external SCSI hard drive housing switched on
+        prior to turning on my Epson, the epson comes up with a "VR Failure"
+        error (which I assume means "Voltage Regulator"). When using a ZuluSCSI
+        board in the housing, I don't have to connect the 120V AC cable to the
+        housing since it's powered by the SCSI controller's "TERMPWR"
+        (Termination Power). Doing this, I can sidestep the error. I can also
+        simply turn on the PC prior to flipping on the power switch on the
+        housing and then press reset on the PC, and that also works.
+      </p>
+      <p>
+        Why does this happen? I honestly don't know. I suspect it has something to do
+        with the two devices not sharing a common earth ground, perhaps. Or
+        maybe the power supply design inside my drive housing is of
+        questionable quality? It's not a name branded thing, so that wouldn't
+        be <i>entirely</i> surprising to me. But the output voltages are pretty
+        much on the dot (checked with my Fluke 77 multimeter).
+      </p>
+      <p>
+        Obviously, <i>something</i> weird is going on, so if you come across
+        problems like this, I'd suggest trying to avoid using those
+        accessories, but I've yet to find that I've actually hurt anything by
+        doing this. Maybe it's just that the disk drive is trying to provide
+        termination power and that's messing something up with the power supply
+        to the C-bus cards? It might not be 120V related at all.
+      </p>
+      <p>
+        In general, I think you'll probably be fine to use your domestic stuff
+        with it, as long as nothing has a hot chassis (you have bigger problems
+        if you have stuff with metal casing that does this; I don't think
+        anything you'd want to use with a PC-98 would have a hot chassis
+        construction, so it's not something to worry about). It can be a good
+        way to save some money, if you can find domestic printers, scanners,
+        serial terminals, external CD drives/external hard drives, and so on.
+      </p>
+      <p>
+        &hellip;Actually, my modern desktop PC (which runs on 120V) is hooked
+        to my PC-98 via a null modem serial cable, and it doesn't give a
+        voltage regulator error message, so it's probably just some peculiarity
+        of my SCSI controller or drive housing or configuration.
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_mouse">Mouse</h3>
       <p>
         Did your PC come with a mouse? If not, you need to get one for a lot of
         newer software.
+      </p>
+      <p>
+        First off, you can't use a serial mouse. Well, maybe you <i>can</i>,
+        at least in Windows, but if you are trying to run DOS programs I don't
+        know if there's any TSR or similar software to make a serial mouse
+        work. I also would expect that even if there is some workaround like
+        this (akin to CTMOUSE/Cutemouse in western DOS), no DOS programs for
+        the PC-98 are going to be programmed with such drivers in mind and
+        may cause resource conflicts. Basically, I wouldn't even try, and
+        consider it a bad idea, given the relative ease with which you can
+        get a fully-compatible mouse.
+      </p>
+      <p>
+        What you <i>actually</i> need to look for is commonly termed a
+        "bus mouse." These mouses just send raw signals from the optical
+        gate sensors on the X and Y axis rollers of a ball mouse over a
+        wire back to the host computer, with no encoding like PS/2 mouses use.
+        Pinouts varied, so not <i>all</i> things that could be arguably termed
+        "bus mouses" will work, but anything made for IBM PC's probably will.
+      </p>
+      <p>
+        The term "bus mouse" refers to the fact that early PC's had no built
+        in mouse port, and so the user had to get or make an ISA card and link
+        the mouse up to the computer's ISA bus. When used outside of an IBM
+        context, these mouses typically seem to be called something like
+        "quadrature mouses" instead. The terms are largely interchangeable.
+        Quadrature is a word to describe the four signals that a mouse will
+        send out for ball movement (two infrared light sensors per axis).
+      </p>
+      <p>
+        Here's the run down on the things you might need.
       </p>
       <h4>Mouse Card (Older Systems Only)</h4>
       <p>
@@ -1908,7 +2012,45 @@
         to find a "bus mouse" card, I believe. This only applies to the ones
         made before around 1985. <a href="https://radioc.web.fc2.com/column/pc98bas/pc98kbdmouse_en.htm">
         This site</a> claims the PC-9801, the 9801E, 9801F, and 9801M models
-        are the ones that need a mouse card.
+        are the ones that need a mouse card. I don't have a PC-98 that old, so
+        I haven't looked too hard, but I did not see any mouse controller cards
+        with a cursory search when I tried. They're out there, but they might
+        be somewhat uncommon. I'd expect that the early "green eyed" microsoft
+        mouses came with cards, so maybe look for those? - Obviously, you'll
+        need the C-bus version (not the ISA version the US and other countries
+        got). It might be ASCII or NEC branded instead of Microsoft.
+      </p>
+      <p>
+        You should note that most software that requires a mouse is probably
+        new enough to need EGC, so these early PC-98 models will be pretty
+        much useless in that capacity. The main reason to get a card would
+        be for historical interest, I'd expect.
+      </p>
+      <p>
+        These early C-Bus mouse cards should use the 9-pin D-Subminiature
+        connector as described in the following section. You can of course make
+        an adapter to use the mini-DIN variant connector with one. I have
+        reason to believe that the IBM-compatible version of the Microsoft
+        "green eyed" mouse used the same connector, so if you get a card
+        without a mouse, that might be an option for you that will save on
+        shipping... but I see that someone recently bought one for $80 on ebay
+        without a card, so it may be a smarter idea to just import some other
+        PC-98 mouse from Japan or make an adapter (see the following section).
+      </p>
+      <p>
+        I've seen at least one NEC ad featuring the green eyed mouse, so it
+        <i>could</i> be a period-correct part for an early PC-9801 model that
+        needs a separate mouse card, if you're going for originality. Actually,
+        it looks to me from a search like the model number for the original
+        mouse bundle might be NEC's "<b>PC-9871</b>." It seems to include a
+        Microsoft green eyed mouse. There were maybe other mouse interface
+        boards released later&hellip; but the PC-9872R seems to be <i>just</i>
+        a DE9 mouse without a card. So maybe not. The mouse port was integrated
+        pretty early on; it seems like the only models that need a card are
+        probably the original PC-9801, the 9801E* 9801F*, and 9801M* series.
+        Later ones seem to have an integrated port. You should check that
+        yourself before you take my word for it, but I believe this statement
+        to be accurate.
       </p>
       <h4>Two Mouse Connectors</h4>
       <p>
@@ -1920,8 +2062,8 @@
         a PC "bus mouse" can get you something electrically compatible with a
         PC-98. If it uses the D-Sub connector, you will need to make or get
         an adapter. I think the adapter will have to come from Japan, since
-        the only western-market mouses that seems to <i>possibly</i> share this pinout
-        are
+        the only western-market mouses that seems to <i>possibly</i> share this
+        pinout are
         <a href="http://web.archive.org/web/20010802062315id_/https://www.cs.rochester.edu/~kparkins/pinouts.txt">
         the original Microsoft "Green Eyed" bus mouse and perhaps a handful of
         Logitech ones</a>. I am not sure if passive adapters for connecting
