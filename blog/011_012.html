@@ -1476,7 +1476,39 @@
         This card has a software-based configurator (accessed by holding
         ctrl+grph+L during boot) instead of DIP switches; I think it's really
         nifty. It also <i>actually works</i> for me (as opposed to the
-        IF-55TB), which is also pretty nifty. From what I can see, the
+        IF-55TB), which is also pretty nifty.
+      </p>
+      <p>
+        <b>One thing worth noting about the LHA-301 is that it doesn't seem to
+          work with older, mechanical PC-98 keyboards</b> (like PC-9801V
+        boards). I believe this is because the 9801V board requires the PC to
+        send a "READY" signal to the keyboard before the board will send any
+        key events to the host computer. Later boards apparently do not require
+        this. <b>I could not even enter the configuration screen with the 9801V
+        board, and had to switch to my rubber dome Epson to do so.</b> There is
+        one generation of PC-9801 mechanical keyboard after the 9801V series,
+        so I cannot confirm or deny if those work. The difference there is that
+        the lock keys don't mechanically latch downwards ('alternate action')
+        when engaged. They also have the extra 'function keys' that are lacking
+        on the 9801V board. <b>There is a chance that these later mechanical
+        keyboards will work,</b> but I can only guarantee that my 1992 rubber
+        dome Epson board (and probably rubber dome NEC boards from around then
+        onwards) can be used to configure the LHA-301.
+      </p>
+      <p>
+        So, if you don't want to have two keyboards sitting around, you may
+        need to avoid the LHA-301, accept that you will be using a mushy rubber
+        dome board, or maybe try that final generation of mechanical boards
+        with the extra function keys and non-latching lock keys.
+      </p>
+      <p>
+        This is the only time I have found a problem with using the 9801V board
+        - Everything else I have tried works fine with it. I'm just glad I
+        already had successfully configured it with the Epson board, or I would
+        have probably not recognized that the keyboard was the problem.
+      </p>
+      <p>
+        From what I can see, the
         difference might be that the 55TB doesn't seem to have a voltage
         regulator on board, which is a prerequisite for active SCSI bus
         termination (the better kind). If I have an active terminator on one
