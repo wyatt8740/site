@@ -9,7 +9,7 @@
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
     <meta http-equiv="pragma" content="no-cache"/>
-    <title>Wyatt's Blog: NEC PC-98 Megadump</title>
+    <title>Wyatt's Blog: The NEC PC-98 Megadump</title>
     <link rel="stylesheet" type="text/css" href="../style_base.css"/>
     <link rel="stylesheet" type="text/css" href="../style.css"/>
     <link rel="alternate" type="application/rss+xml" title="Wyatt's Blog (RSS)" href="/site/blog/rss.xml" />
@@ -44,12 +44,13 @@
     <div class="postarea" id="toc">
       <b>Posts on this page:</b>
       <ul>
-        <li><a href="#pc9801-1"><b>Lost in Translation: The Hidden World of Old Japanese Domestic Computers</b></a></li>
+        <li><a href="#pc9801-1"><b>Lost in Translation: The Hidden World of Old Japanese Domestic Computers (The PC-98 Megadump)</b></a></li>
       </ul>
     </div>
     <div class="postarea" id="pc9801-1">
       <h2>Lost in Translation:<br/>
-        The Hidden World of Old Japanese Domestic Computers
+        The Hidden World of Old Japanese Domestic Computers<br/>
+        (A.K.A. The PC-98 Megadump)
       </h2>
       <center><br/><b><u>This page is under construction!</u></b>
         <br/>
@@ -68,10 +69,10 @@
       </p>
       <!-- pc9801_buying_wyatt_introduction -->
       <p>
-        I also think that my friend will probably end up collaborating with me
-        on this, so if that's the case then this may be a <i>joint</i> post.
+        I think that my friend will probably end up collaborating with me on
+        this, so if that's the case then this may be a <i>joint</i> post!
         I'll let her decide how much she feels like sharing, though. I think
-        we will be trying to compartmentalize into sections so it's somewhat
+        we will be trying to compartmentalize into sections, so it's somewhat
         clear who's who. But this article is still under construction, so be
         warned!
       </p>
@@ -387,6 +388,14 @@
         and I <i>loved</i> the soundtrack (which was composed by Yuzo Koshiro,
         who later did the music for <i>Streets of Rage</i> and is often
         considered a master of frequency modulation synthesis music).
+      </p>
+      <p>
+        It also can have a Yamaha OPN series frequency modulation (FM) sound
+        chip - I'm not aware of any cards featuring this chip on IBM
+        compatibles (that is to say, ISA cards). The only things in the west
+        that I can think of that have <i>similar</i> sound chips are the Sega
+        Genesis (YM2612) and Neo Geo (YM2610)... but the YM2608 is more
+        advanced than either of those in most ways.
       </p>
       <p>
         Sure, there are a handful of visual novel-esque games that I would
@@ -2339,6 +2348,59 @@
         before I felt comfortable turning it on. Thankfully there's an outlet
         on the back of the Epson that I can use to daisy-chain it.
       </p>
+      <h4>OSSC - Open Source Scan Converter</h4>
+      <p>
+        Another approach is to use an existing western monitor that can't do
+        24KHz natively by using an external digital video scaler that
+        <i>can</i> handle it. I used an OSSC version 1.6, which is now an
+        older version of OSSC but which seems to work fine.
+      </p>
+      <p>
+        You will <b>need</b> to find a remote for your OSSC if you get one -
+        most functions and configuration cannot be done with the on-board
+        buttons. it's good to note that it doesn't need to be the remote that
+        was originally shipped with it. If you hold down the rightmost button
+        (closest to the LCD) on the front of the scaler unit while switching
+        it on, you can program it to use the codes from some other remote
+        control that outputs "NEC Protocol" infrared codes. Examples of some
+        remotes I have that work with it include my Pioneer A/V receiver and
+        laserdisc player remote controls, as well as my ancient Sony universal
+        remote. You could probably even use a Game Boy Color or an
+        HP-28C/28S/48S/48SX/48G/48GX calculator with the appropriate software,
+        since both of those have infrared LED's that are software
+        controllable! - I don't actually know what the range of the HP-48
+        series transmitter LED is, though.
+      </p>
+      <p>
+        OSSC's ship with remotes, so if you buy one new this is not an issue.
+        You can buy the remote in question from third party sellers, but don't
+        bother getting one pre-programmed for the OSSC specifically unless the
+        price is really good. If you want to get one that is dedicated for the
+        OSSC and has enough buttons to send all the controls it can use, then
+        you can get an "L336" learning remote control and send it codes from
+        some other programmable remote control that is set up for a device
+        you don't have. Maybe using multiple device settings if you run out
+        of buttons on the first one.
+      </p>
+      <p>
+        To program the L336, you should first hold the button for the 'output'
+        you want to program a key on - so the 'TV' button for instance. When
+        the light comes on on the remote, aim your other remote control at the
+        L336 and press the button code you want the L336 to be able to send.
+        Repeat as necessary for all buttons you need. I also suggest that
+        you get or print a label/overlay for the L336 to remind you which
+        buttons do what. It really is helpful if you are trying to fine-tune
+        something. You will probably need to do a little fine-tuning to make
+        a PC-98 look just right on your LCD.
+      </p>
+      <p>
+        <b>I vastly prefer the look of the video output on my CRT;</b> it just
+        feels better to me. But the costs involved can be vicious, and a CRT
+        monitor unfortunately takes up a solid chunk of space&hellip; even for
+        a small screen. The picture quality from my OSSC is good; any
+        screenshot you see in my post here is originally fed through my VGA
+        splitter, then OSSC, and eventually into my HDMI capture USB.
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_hdd">Getting a Hard Drive</h3>
       <p>
@@ -2370,8 +2432,11 @@
         distributed on CD, you may need to get a drive if your PC-98 doesn't
         have one. Much like hard drives, your main options (depending on your
         model of computer) are IDE drives and SCSI drives, as far as CD's are
-        concerned. PC-9821's often (always?) came with IDE controllers; 9801's
-        and Epsons didn't (although I think some of the last Epson 98's did).
+        concerned. PC-9821's often (perhaps always ) came with IDE
+        controllers; 9801's and Epsons didn't (although I think some of the
+        last Epson 98's did; seemingly the models introduced in or after
+        September 1993 have an IDE interface built in, so the PC-486H* and
+        PC-486F* models; 486G* and 486S* models and earlier do not).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_ide">IDE Drives</h4>
@@ -2380,9 +2445,13 @@
         If yours doesn't have one, but is late enough to be using
         IDE instead of SCSI, then there's a decent chance one might be
         able to be installed in an open bay, I'd think. In the Ce2 and
-        CS2, it looks like the model is NEC CDR-260. They seem to have sold
+        Cs2, it looks like the model is NEC CDR-260. They seem to have sold
         these drives in the 'States, so maybe you can remove the front bezel
         from one of the US-market ones and stick it in a '98 and have it work.
+        Perhaps it was sold in other countries as well.
+      </p>
+      <p>
+        
       </p>
       <p>
         If your PC-98's built-in optical drive isn't working, it may be broken.
@@ -2394,14 +2463,14 @@
       <p>
         You might not be able to pick any old CD drive; they may look like
         "normal" IDE drives, but in the Ce2 and Cs2 at least, they <i>might</i>
-        actually use some non-ATAPI command set. We aren't quite sure yet. I've
-        seen one person suggest that the CDR-260 might be one of the
-        <i>earliest</i> ATAPI compatible drives, but I can't guarantee
-        anything. If it is truly an ATAPI drive, then I expect you could
-        put in some other standard IDE CD drive and have it function, although
-        you still might not be able to get one where the tray, LED, and eject
-        button line up with the holes in the case. I'd be interested to know
-        if anyone manages to finagle something into working!
+        actually use some non-ATAPI command set. We (my friend and I) aren't
+        quite sure yet. I've seen one person suggest that the CDR-260 might be
+        one of the <i>earliest</i> ATAPI compatible drives, but I can't
+        guarantee anything. If it is truly an ATAPI drive, then I expect you
+        could put in some other standard IDE CD drive and have it function,
+        although you still might not be able to get one where the tray, LED,
+        and eject button line up with the holes in the case. I'd be interested
+        to know if anyone manages to finagle something into working!
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_scsi">SCSI Drives</h4>
