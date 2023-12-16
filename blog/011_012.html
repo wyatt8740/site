@@ -132,6 +132,7 @@
                         </li>
                       </ul>
                     </li>
+                    <li><a href="#pc9801_buying_wyatt_cards_irq">IRQ's</a>
                   </ul>
                 </li>
                 <li><a href="#pc9801_buying_wyatt_while_you_wait">Things You Can Do While It's being Shipped</a>
@@ -1852,6 +1853,133 @@
         Of course, I also appreciate a written 'thank you,' even without
         monetary transactions. It's also a great motivator to keep writing
         if I know I'm helping people.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_cards_irq">IRQ's</h3>
+      <p>
+        For the most part, using factory default settings, most stuff "just worked" for me.
+      </p>
+      <p>
+        However, my LHA-301 card wanted to be on INT0 (IRQ 3). This is the same
+        IRQ my PC-9801-86 card wants to use by default. I suspect this was at
+        least part of why Touhou 4 and 5 would hang my computer. The final IRQ's
+        I chose for all my parts are as follows. For the sake of providing more
+        information, I have also included the other IRQ's (including internal
+        ones that don't really have much to do with the C-Bus). C-Bus IRQ's
+        should be any that have an associated interrupt number. 
+      </p>
+      <table>
+        <tr>
+          <th>
+            IRQ #
+          </th>
+          <th>
+            Interrupt #
+          </th>
+          <th>
+            Device Name
+          </th>
+        </tr>
+        <tr>
+          <td>0</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>System timer (internal)</td> <!-- description -->
+        </tr>
+        <tr>
+          <td>1</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>Keyboard (internal)</td> <!-- description -->
+        </tr>
+        <tr>
+          <td>2</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>VSync/CRTV (internal)</td> <!-- description -->
+        </tr>
+        <tr>
+          <td>3</td> <!-- IRQ -->
+          <td>INT0</td> <!-- INT -->
+          <td><b>PC-9801-86 (Sound card)</b></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>4</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>RS-232C (internal)</td> <!-- description -->
+        </tr>
+        <tr>
+          <td>5</td> <!-- IRQ -->
+          <td>INT1</td> <!-- INT -->
+          <td><b>MPU-PC-98II (MIDI)</b></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>6</td> <!-- IRQ -->
+          <td>INT2</td> <!-- INT -->
+          <td></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>7</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>"Slave:" IRQ8-IRQ15<br/>(internal)</td> <!-- description -->
+        </tr>
+        <tr>
+          <td>8</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>Printer (V30 CPU)<br/>
+            "Numeric Data Processor" (80286 CPU)<br/>((internal)
+          </td> <!-- description -->
+        </tr>
+        <tr>
+          <td>9</td> <!-- IRQ -->
+          <td>INT3</td> <!-- INT -->
+          <td><b>Logitec LHA-301 (SCSI)</b><br/>
+          <i>(Hard drive controllers, both SASI/SCSI and ATA)</i></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>10</td> <!-- IRQ -->
+          <td>INT41</td> <!-- INT -->
+          <td></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>11</td> <!-- IRQ -->
+          <td>INT42</td> <!-- INT -->
+          <td><i>1MB Floppy Drive Controller (internal)</i></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>12</td> <!-- IRQ -->
+          <td>INT5</td> <!-- INT -->
+          <td></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>13</td> <!-- IRQ -->
+          <td>INT6</td> <!-- INT -->
+          <td><i>Bus Mouse (by default)</i></td> <!-- description -->
+        </tr>
+        <tr>
+          <td>14</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>"Numeric Data Processor" (V30 CPU)<br/>
+            Unused (80286)
+          </td> <!-- description -->
+        </tr>
+        <tr>
+          <td>15</td> <!-- IRQ -->
+          <td></td> <!-- INT -->
+          <td>(System timer?) (internal)</td> <!-- description -->
+        </tr>
+      </table>
+      <div class="imgwrap">
+        <b>Bold:</b> As configured in my system.<br/>
+        <i>Italic:</i> Systems <i>usually</i> (but not always) use this interrupt for this purpose if hardware is present.
+      </div>
+      <p>
+        You can find a more complete (and complicated) table in English
+        <a href="https://radioc.web.fc2.com/column/pc98bas/pc98memmap_en.htm">here.</a>
+      </p>
+      <p>
+        Note that the MPU-PC98II MIDI card defaults to using INT2, so I moved
+        it to INT1 by changing a jumper. I discovered that Touhou 2 would not
+        use my MIDI card otherwise, for some reason. If you encounter weird
+        issues - especially MIDI issues - try changing the interrupt back to
+        INT2.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_while_you_wait">Things You Can Do While Your PC-98 is Being Shipped</h3>
