@@ -1872,6 +1872,12 @@
         ones that don't really have much to do with the C-Bus). C-Bus IRQ's
         should be any that have an associated interrupt number. 
       </p>
+      <p>
+        Basically, when you use expansion cards, your goal should be to not
+        have any IRQ's overlapping between different bits of your hardware. So
+        if your sound card is on IRQ 3 (INT0), you should make sure none of
+        your other cards use IRQ3 (INT0).
+      </p>
       <table>
         <tr>
           <th>
