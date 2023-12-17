@@ -1987,9 +1987,11 @@
       <p>
         Note that the MPU-PC98II MIDI card defaults to using INT2, so I moved
         it to INT1 by changing a jumper. I discovered that Touhou 2 would not
-        use my MIDI card otherwise, for some reason. If you encounter weird
-        issues - especially MIDI issues - try changing the interrupt back to
-        INT2.
+        use my MIDI card otherwise, for some reason. I've seen some discussion
+        online about how its MMD driver (its MIDI driver) has trouble/won't
+        detect a MIDI card on IRQ #6. But for most other stuff, if you
+        encounter weird issues - especially MIDI issues - try changing the
+        interrupt back to INT2.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_while_you_wait">Things You Can Do While Your PC-98 is Being Shipped</h3>
