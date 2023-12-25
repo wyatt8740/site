@@ -1382,16 +1382,19 @@
       </p>
       <p>
         If you want to get a SCSI C-bus card, it seems that it would be best to
-        get one that can be compatible with the PC-9801-55 (which is the
-        'standard' that most or all bootable SCSI controllers seem to follow).
+        get one that can be compatible with the <b>PC-9801-55</b> card (which
+        appears to be is the 'standard' that most or all bootable SCSI
+        controllers seem to mimic to some degree).
       </p>
       <p>
         There's a fair bit of configuration that many cards require to be done
-        via DIP switches. I sort of understand this, since the main thing to
-        do is ensure that no cards have overlapping addresses or interrupts,
-        but sometimes the finer points elude me. It would be a good idea to
-        take a picture of any cards you get before you start messing with the
-        switches so you can restore to the configuration it came to you in.
+        via DIP switches (if you can get a later era SCSI-2 card, you are more
+        likely to be able to do software configuration than with older ones).
+        I sort of understand this, since the main thing to do is ensure that
+        no cards have overlapping addresses or interrupts, but sometimes the
+        finer points elude me. It would be a good idea to take a picture of
+        any cards you get before you start messing with the switches so you
+        can restore to the configuration it came to you in.
       </p>
       <p>
         One interesting thing to note about these cards that I have not seen
@@ -1462,23 +1465,23 @@
         not a common SCSI connector here in the States but which seems to have
         been rather popular with Japanese manufacturers instead of the "HD50"
         miniaturized D-sub that most stuff seems to have used here. The
-        LHA-301<b>A</b> uses a more common HD50 connector, but I did not see
-        one for sale, and after reading descriptions of various SCSI controller
-        options online the 301 and 301A seemed like some of my best bets. They
-        even support "PnP" ("plug-n-play") in Windows, and support up through
-        Windows 2000. If I upgrade the BIOS ROM (not sure how exactly to do
-        that) from 1.05 to 1.07, it seemingly can support up to 8GB SCSI
-        drives. LHA-301 also supports three data transfer methods for
-        interacting with the host system: PIO (the simplest, where the CPU is
-        involved with every byte read in), DMA (direct memory access, which
-        bypasses the CPU and writes directly to addresses in RAM so the CPU can
-        work on other things), and SMIT (I have <i>absolutely no idea</i> what
-        this is, but it seems to be the consensus of Japanese documentation
-        I've found that it's faster than both DMA and PIO). I have mine
-        configured for DMA right now and haven't had issues. I think there may
-        be a DOS driver I need to install to actually make use of it, but I
-        haven't done so, since I haven't felt too throttled by disk I/O yet and
-        am just glad it's working so stably right now.
+        LHA-301<b>A</b> uses a more common (in the west) HD50 connector, but I
+        did not see one for sale, and after reading descriptions of various
+        SCSI controller options online the 301 and 301A seemed like some of my
+        best bets. They even support "PnP" ("plug-n-play") in Windows, and
+        support up through Windows 2000. If I upgrade the BIOS ROM (not sure
+        how exactly to do that) from 1.05 to 1.07, it seemingly can support up
+        to 8GB SCSI drives. LHA-301 also supports three data transfer methods
+        for interacting with the host system: PIO (the simplest, where the CPU
+        is involved with every byte read in), DMA (direct memory access, which
+        bypasses the CPU and writes directly to addresses in RAM so the CPU
+        can work on other things), and SMIT (I have <i>absolutely no idea</i>
+        what this is, but it seems to be the consensus of Japanese
+        documentation I've found that it's faster than both DMA and PIO). I
+        have mine configured for DMA right now and haven't had issues. I think
+        there may be a DOS driver I need to install to actually make use of
+        it, but I haven't done so, since I haven't felt too throttled by disk
+        I/O yet and am just glad it's working so stably right now.
       </p>
       <p>
         I had to switch it out of "MO" (magneto-optical?) mode in order to make
