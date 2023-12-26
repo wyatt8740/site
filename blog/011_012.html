@@ -1581,14 +1581,21 @@
       </p>
       <p>
         It has a single DE9 (often mistakenly called DB9) connector for
-        a joystick using the Atari joystick pinout. Thus it may be usable with
-        a Sega Master System or potentially a Mega Drive pad as well.
-        Due to the exact way the Mega Drive sends out button presses, it may
-        be possible for it to behave strangely. This is because of the hack
-        Sega did to get that many buttons on a backward compatible controller,
-        and it depends basically on how fast the controller is being polled
-        if it works properly or not. Some buttons might still work fine,
-        though.
+        a joystick using the Atari joystick pinout. For at least one of the
+        two fire buttons it supports in this implementation, it may be usable
+        with a Sega Master System or a Mega Drive pad as well.
+      </p>
+      <p>
+        If you want both fire buttons to work on your joystick/gamepad, then
+        it needs to map the second fire button to pin 7 (first one is on pin
+        6). It follows the "MSX" joystick pinout. Sega pads put the second
+        fire button on pin 9, so you'll need to make an adapter or rewire the
+        controller. I've made a adapters for some different kinds of
+        joysticks: a modified TAC-2 joystick with two distinct fire buttons
+        (fire 2 on pin 5, like the Comrex), a Comrex Commander joystick (fire
+        2 on pin 5 from the factory), and some Sega gamepads (fire 2 on pin 9).
+        You should also make <i>especially</i> sure when doing this that 5
+        volts and ground (if present) are mapped correctly.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
