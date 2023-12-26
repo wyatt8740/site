@@ -3020,11 +3020,29 @@
         <b>I have successfully used the last of those options</b> (reading the
         'additional notes' I mentioned above and following the directions
         there exactly, using the downloads from vector.jp and archived
-        versions of the links for Microsoft assembler tools) <b>to make a
-        version of CDSD.SYS. I just have to try it out when I get back home
-        with the physical SCSI CD drive I got for Christmas.</b> I will host
-        that file as well, if it ends up working.
-        </p>
+        versions of the links for Microsoft assembler tools that used to be
+        hosted on the M$ website) <b>to make a version of CDSD.SYS. I just
+        have to try it out when I get back home with the physical SCSI CD
+        drive I got for Christmas.</b> I will host that file as well, if it
+        ends up working.
+      </p>
+      <p>
+        Finally, I should note that
+        <a href="https://blog.tlfoxhuman.net/2023/08/09/use-scsi-cd-drive-on-pc98/">
+        this Japanese blogger</a> seems to have figured out how to assemble
+        and link the program without using any Microsoft software, via the
+        assembler <a href="https://jwasm.github.io/"><code>JWASM</code></a>,
+        the linker
+        <a href="https://hp.vector.co.jp/authors/VA007890/dos/language.html#VAL"><code>VAL</code></a>,
+        and
+        <a href="https://hp.vector.co.jp/authors/VA007890/dos/language.html#EXE2COM"><code>EXE2COM</code></a>
+        to replace Microsoft's own <code>EXE2BIN</code>. Might be worth
+        checking out how they did that. I haven't tried it yet.
+      </p>
+      <p>
+        Of course, hopefully you won't need any of that, and the driver
+        (or one of the others) in this zip file will do the job for you!!
+      </p>
       <p>
         <b>Download: <a href="pc9801_1/dl/PC%2d9800%20Series%20CD%2dROM%20Driver%20Collection%20%28v1%2e1%29%20%5bFD%5d%2ezip">PC-9800 Series CD-ROM Driver Collection (v1.1) [FD].zip</a></b> &ndash; 137 KiB
       </p>
@@ -3719,7 +3737,95 @@ fi
         Corrosion
       </h3>
       <p>
-        
+        A lot of PC-98's I see for sale suffer from some degree of rusting on
+        the shell. This is annoying, but if not severe then it's
+        <i>probably</i> fine. The <b>very real</b> problem is that of battery
+        leaking and PCB corrosion. Earlier models are probably more likely to
+        have Nickel-Cadmium barrel batteries, which are a bane to pretty much
+        anyone who wants to use a vintage computer. They <b>WILL</b> leak out,
+        eventually, even if yours looks fine - but probably yours has started
+        leaking already, if you have such a battery.
+      </p>
+      <p>
+        Luckily my 486GR and my friend's CE2's do not have those batteries;
+        they use a rechargeable lithium coin cell instead. If yours has a
+        NiCad barrel cell, though, clip it off at once, wipe some vinegar
+        around where it was, followed by some alcohol to get the vinegar off.
+        (&hellip;NiCad's <i>are</i> alkalinic, right??)
+      </p>
+      <p>
+        Anyway, if the corrosion hasn't crept far from the battery's spot on
+        the board, you are lucky. Sand the corrosion off to expose good
+        copper, repair traces if corrosion has left no good copper behind in
+        those spots. After some alcohol cleaning, <b>let it dry</b> and then
+        paint over the exposed copper with nail polish or similar to replace
+        the solder resist which used to cover the copper that you removed.
+        Then, get a new NiCad cell - but solder wires into the
+        main board where the battery used to be, and mount the battery itself
+        somewhere on the casing or otherwise isolated from the PCB as much as
+        possible. That way, when it leaks next time, it hopefully won't pour
+        its copper-eating contents all over the circuit board.
+      </p>
+      <p>
+        If your corrosion is bad, you may need to do more intensive sanding
+        and scrubbing and soldering, or perhaps even just replace the board.
+        Hopefully, you won't have to do that.
+      </p>
+      <p>
+        The other thing that can cause corrosion is capacitors leaking. This
+        is by far the most common with old surface mount capacitors; many
+        PC-9801-86 sound cards seem to have leaked capacitors which leave
+        this sort of blue-green residue on the board. This stuff is nowhere
+        near as caustic as the NiCad battery leakage, but it's still
+        <i>definitely</i> not a good thing. If your PC has these (my 486GR
+        does not, nor do my friend's Ce2's and Cs2), and you see leakage or
+        your computer is acting weird, then get a hot air station as soon
+        as possible and remove all the surface mount caps (after documenting
+        where the caps were, what their capacitances were, and what their
+        voltage ratings were). Buy new caps and put them on. Early surface
+        mount capacitors just kind of sucked in pretty much everything people
+        put them in.
+      </p>
+      <p>
+        Desolder the caps in a well ventilated area!!! - the smell is awful.
+        The electrolyte, when heated up sufficiently, smells of bad fish.
+        No; I am not kidding. It truly is a 'fish' smell!
+      </p>
+      <p>
+        Once desoldered, clean off board of residue again (I forget once again
+        if the electrolyte is alkalinic or not... either jump straight to the
+        alcohol, consider deploying the vinegar first if appropriate). You
+        will probably find that soldering surface mount caps is easier than
+        desoldering them.
+      </p>
+      <p>
+        <b>I do NOT recommend</b> that you desolder the surface mount caps
+        with a regular iron. <i>Maybe</i> it's possible - but all I've
+        succeeded in doing that way is ripping up traces at least half of the
+        time.
+      </p>
+      <p>
+        Hopefully, if your PC is not a laptop/notebook model, and it's old
+        enough to use a 486 CPU or older, then it won't be using many (if any)
+        surface mount caps. I don't know how common the problem is on PC-98's,
+        but it impacted a lot of later Amiga models for sure, as well as
+        X68000's and possibly FM Towns computers. I have a friend with two
+        Amiga 4000's; one still needs recapping. (Wish he'd just let me have
+        the damn thing.) Sega's Game Gear is also rather famous for pretty much
+        <i>universally</i> needing all new capacitors at this point.
+      </p>
+      <p>
+        I think Nintendo's Game Boy used some SMD caps on the CPU board, if
+        I remember correctly... but for some reason, I haven't noticed leakage
+        there yet. If so, then that's curious. I could of course be wrong,
+        and conflating it with the later consoles like the Game Boy Pocket or
+        Game Boy Color - by which point surface mount caps had seemingly
+        improved somewhat.
+      </p>
+      <p>
+        I sort of expect this won't be a problem for most of you, except for
+        maybe if you go for a very late PC-98 or have some problematic
+        expansion cards.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2 id="pc9801_buying_wyatt_useful_links">Useful Links</h2>
