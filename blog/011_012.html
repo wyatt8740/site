@@ -145,6 +145,7 @@
                   </ul>
                 </li>
                 <li><a href="#pc9801_buying_wyatt_mouse">Getting a Mouse</a></li>
+                <li><a href="#pc9801_buying_wyatt_joystick">Getting a Joystick or Game Pad</a></li>
                 <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a></li>
                 <li><a href="#pc9801_buying_wyatt_hdd">Getting a Hard Drive</a></li>
                 <li><a href="#pc9801_buying_wyatt_odd">Getting an Optical Drive</a>
@@ -898,6 +899,14 @@
         if you don't need music via CD playback, then ZuluSCSI boards can
         emulate a data CD drive, which is enough for installing something like
         Windows 98 or some games.
+      </p>
+      <p>
+        Also, if you do this, you should probably try to find an NEC branded
+        external drive, since while there is a generic driver, it is buggy with
+        CD audio playback and I've not managed to fix it yet or find anyone
+        else who has already done it for me. NEC's drivers only seem to like
+        NEC's SCSI drives. For data (non-music playback), the third party
+        driver works fine.
       </p>
       <h4>Red Flag #5: There is no Red Flag #5</h4>
       <p>
@@ -1726,22 +1735,32 @@
         capabilities. In the long term, it's a nice thing to have.
       </p>
       <p>
-        It has a single DE9 (often mistakenly called DB9) connector for
-        a joystick using the Atari joystick pinout. For at least one of the
-        two fire buttons it supports in this implementation, it may be usable
-        with a Sega Master System or a Mega Drive pad as well.
+        The 86 sound <b>card</b> (i.e., not integrated onto motherboard) has a
+        single DE9 (often mistakenly called DB9) connector for a joystick using
+        a variant/extension of the basic Atari (2600) joystick pinout. For at
+        least one of the two fire buttons, it may be usable with a Sega Master
+        System or a Mega Drive pad as well. To get multiple fire buttons
+        working with non-MSX pads, some rewiring or adapters may be required.
+        I talk about this more in the "joysticks" section, later down on the
+        page.
       </p>
       <p>
         If you want both fire buttons to work on your joystick/gamepad, then
-        it needs to map the second fire button to pin 7 (first one is on pin
-        6). It follows the "MSX" joystick pinout. Sega pads put the second
+        it needs to rewire/map the second fire button to pin 7 (first one is on
+        pin 6). It follows the "MSX" joystick pinout. Sega pads put the second
         fire button on pin 9, so you'll need to make an adapter or rewire the
         controller. I've made a adapters for some different kinds of
         joysticks: a modified TAC-2 joystick with two distinct fire buttons
         (fire 2 on pin 5, like the Comrex), a Comrex Commander joystick (fire
         2 on pin 5 from the factory), and some Sega gamepads (fire 2 on pin 9).
         You should also make <i>especially</i> sure when doing this that 5
-        volts and ground (if present) are mapped correctly.
+        volts and ground (if present) are mapped correctly. See the
+        <a href="pc9801_buying_wyatt_joystick">"Joysticks/Gamepads" section</a>
+        for some more information on hooking joysticks up to a PC-98.
+      </p>
+      <p>
+        You will likely need to disable your integrated 26 or 86 sound chip in
+        your BIOS or with DIP switches for the one on the card to function.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
@@ -1760,9 +1779,26 @@
         also a fair deal cheaper to find a 26K card.
       </p>
       <p>
-        It has two DE9 (often mistakenly called DB9) connectors for joysticks
-        in the "Atari joystick" button configuration. This means it can be
-        used with Sega Master System pads, or possibly Mega Drive pads.
+        It has <b>two</b> DE9 (often mistakenly called DB9) connectors for
+        joysticks in the "Atari joystick" button configuration (actually, the
+        MSX variant thereof). This means it can be partially used with Sega
+        Master System pads, or possibly Mega Drive pads. If you make a wiring
+        adapter, they can fully work with Sega controllers or any other
+        'parallel type' western joystick. See the above "86 sound" section for
+        a brief run-down on the wiring.
+      </p>
+      <p>
+        <b>Integrated 26 sound computers may not have a joystick port.</b>
+        Unlike with the "86 sound" integrated models, I am not sure if an
+        adapter can be made to repurpose the mouse port on the 26 sound models.
+        For this reason, even if you don't want 86 sound, you may still want to
+        at least buy a 'dedicated' PC-9801-26 sound card, which is cheaper than
+        an 86 by far. See the
+        <a href="pc9801_buying_wyatt_joystick">"Joysticks/Gamepads" section</a>
+        for some more information on hooking joysticks up to a PC-98 system.
+      <p>
+        You will likely need to disable your integrated 26 sound chip in your
+        BIOS or with DIP switches for the one on the card to function.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
@@ -2782,6 +2818,225 @@
           in the 'States which will work with the PC-9801/9821 series.
         </div>
       </div>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_joystick">Joysticks/Gamepads</h3>
+      <p>
+        There are a couple of kinds of joysticks for PC-98's. There's a Sound
+        Blaster card out there that has what appears to be an IBM-style
+        "Gameport" on-board. I don't know what all uses this, and don't have
+        one of these cards.
+      </p>
+      <p>
+        Another kind worth a mention connects via the keyboard port, sharing
+        the bus with your actual keyboard, and can imitate keyboard key
+        presses. These are usually programmable so you can bind keys to buttons
+        for different games. They should be compatible with anything that uses
+        a keyboard for input, even when the joystick port doesn't work. Touhou
+        and Touhou II, for instance, should be playable with one of these.
+        Unfortunately, I have not gotten one yet, and I've heard the one kind I
+        know about has slight input lag.
+      </p>
+      <p>
+        The third kind, which I <i>think</i> is most common and widely
+        supported, is
+      </p>
+      <p>
+        Also note that some joysticks with multiple buttons (at least in the
+        west) would wire multiple fire buttons in parallel to one pin on the
+        cord, meaning that they all act as the same button. Internal rewiring
+        and new cables may be required to fix this on such a joystick. One that
+        does this which is quite popular/famous is the Suncom TAC-2.
+      </p>
+      
+      <p>
+        Here's an adapter diagram. It took me over an hour to draw to make
+        it look all pretty. Hand drew all of the smaller text in the picture
+        pixel by pixel. :p
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_joystick_adapter">
+        <a href="pc9801_1/full/joystick-adapter.png">
+          <img src="pc9801_1/joystick-adapter.png"
+               alt="Epson PC-486GR, set up on my desk with mouse, monitor, flashfloppy drives, and keyboard."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Systems equipped with built-in "86 sound" (and PC-98DO's) can use an
+          MSX compatible joystick by connecting this adapter to the mouse
+          port.<br/>
+          Don't plug it in backwards!!!!
+        </div>
+      </div>
+      <p>
+        This adapter will let you use a MSX-compatible joysticks on a PC-98DO
+        or seemingly any model that contains integrated "86 sound." <b>This
+        adapter does not work on the system I ended up getting,</b> which uses
+        "26 sound". I think the only solution on computers in my situation is
+        to get a dedicated "86 sound" compatible card - probably a PC-9801-86.
+        You could maybe also get one of a handful of clones that never seem to
+        show up for sale but purportedly exist. I looked for those first in the
+        hopes that they would be cheaper - no cigar. But maybe <i>you</i> will
+        have better luck!
+      </p>
+      <h4>Picking a Joystick/Gamepad</h4>
+      <p>
+        Generally, with joysticks, there are a few things to keep in mind when
+        buying. These have to do with the things that <i>you</i> think of when
+        you imagine your ideal joystick.
+      </p>
+      <ul>
+        <li>Ergonomics (Form Factor, Button Layout)
+          <ul>
+            <li>
+              Gamepad or joystick? - the answer might be "both," for all I know.
+            </li>
+            <li>
+              Handheld, desktop, or some kind of hybrid?
+            </li>
+            <li>
+              How does it fit in your hand?
+            </li>
+          </ul>
+        </li>
+        <li>Responsiveness
+          <ul>
+            <li>
+              How far does the stick or d-pad move?
+            </li>
+            <li>
+              Tightness - do you like a tight stick that resists all movement,
+              or do you like a little wiggle room when in 'neutral?'
+            </li>
+            <li>
+              How far should the stick have to travel for an input to be registered?
+            </li>
+            <li>
+              How do diagonals feel? Is it easy to accidentally move diagonally
+              when trying to move in a cardinal direction? Or is it perhaps
+              annoying to actually use diagonals due to the extreme travel
+              required for a diagonal to register?
+            </li>
+          </ul>
+        </li>
+        <li>Feedback (Tactility/Feel)
+          <ul>
+            <li>
+              To click or not to click? - I personally like it when I can hear
+              that a switch in a joystick has activated.
+            </li>
+            <li>
+              Haptic feedback - this may or may not be tied to 'clickiness,'
+              depending on how the click is generated and how the switch
+              mechanism is designed. If a joystick has rubber domes underneath
+              it, you may feel a haptic/tactile bump but not get much auditory
+              feedback.
+            </li>
+          </ul>
+        </li>
+        <li>Reliability
+          <ul>
+            <li>
+              Build quality - Was it made to last?
+            </li>
+            <li>
+              How do the controller's parts age? What are problem spots to look out for?
+            </li>
+            <li>
+              What kind of switch or sensing mechanism does the controller use?
+              - not all switches are created equal; some seem to fare the
+              years much better than others. Some are very sensitive to dust,
+              humidity, or any number of other factors.
+            </li>
+            <li>
+              How often does it need maintenance in normal use?
+            </li>
+          </ul>
+        </li>
+        <li>Repairability
+          <ul>
+            <li>
+              Materials - Brittle plastic? Good plastic? Metal? What are the
+              parts made of?
+            </li>
+            <li>
+              Parts availability/procurement - can you still <i>get</i>
+              or <i>make</i> the parts to fix the stick if or when it breaks?
+            </li>
+            <li>
+              If most of the ones that are available are broken, how much
+              trouble is fixing them going to be? - Assuming you really like
+              the other characteristics of the controller enough to do your own
+              repair work.
+            </li>
+            <li>
+              Do you have the tools and knowledge to fix it, or the
+              means/willpower to acquire said tools and knowledge?
+            </li>
+          </ul>
+        </li>
+        <li>Availability
+          <ul>
+            <li>
+              Is it still being manufactured?
+            </li>
+            <li>
+              If it is being manufactured, is the currently manufactured
+              version still readily compatible with older systems?
+              <ul>
+                <li>
+                  As an example, "Speedlink" seems to make a new version of the
+                  "Competition Pro" joystick, for example but stupidly it only
+                  sells it with a USB interface. So if you want to use it with
+                  vintage hardware, I'd guess you'd need to take it apart, gut
+                  the thing, get a correct cable, and rewire it yourself to
+                  bypass the USB controller. So you may just be better off
+                  getting a vintage one, maybe.
+                </li>
+                <li>
+                  Neither of my two favorite sticks are currently in
+                  production, to my knowledge. I've yet to try a Competititon
+                  Pro.
+                </li>
+              </ul>
+            </li>
+            <li>
+              If it is not being manufactured still, how common are they on the
+              used market?
+            </li>
+            <li>
+              How reasonable are the prices for used ones?
+            </li>
+            <li>
+              What's the condition of used ones, should a spare be required to
+              source parts? How long will your replacements last?
+            </li>
+          </ul>
+        </li>
+        <li>Aesthetics
+          <ul>
+            <li>
+              Does it look purty (pretty)?
+            </li>
+            <li>
+              Does it even matter to you?
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4>My Recommended Joysticks/Gamepads</h4>
+      <p>
+        I can't help with <i>all</i> of these criteria, but what I can do is
+        tell you what <i>I personally</i> value in a joystick, and maybe show
+        you my favorites.
+      </p>
+      <p>
+        Want a joystick or controller, but aren't sure which ones are good, and
+        don't know where to even begin with that list? - I'm no expert, but I
+        at least can give you a <i>few</i> very good options. I firmly believe
+        the sticks I discuss here to be good (at least when in good condition);
+        I mainly claim not to be an expert because there are many joysticks I
+        likely have never seen or heard of which might actually be quite good
+        as well. Ultimately, it's subjective, and it's up to you to decide what
+        you like in a joystick or gamepad.
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_monitor">Monitor</h3>
       <p>
