@@ -3662,6 +3662,16 @@ expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
       <p>
         So here is my <code>CONFIG.SYS</code>:
       </p>
+      <p>
+        <span class="emphatic"><b>NOTE:</b> <i>If you are directly
+        copying and pasting this text into a file and moving it to your
+        PC-98, you MUST replace all '</i></span> <code>&yen;</code><span class="emphatic"><i>' characters with '</i></span> <code>\</code><span class="emphatic"><i>' characters!</i></span><br/>
+        This is because a unicode '<code>&yen;</code>' character is represented by
+        different bytes than a
+        <a href="https://www.sljfaq.org/afaq/encodings.html#encodings-JIS-X-0201">JIS-X-0201/code page 932</a>
+        '<code>&yen;</code>'. The byte representing the character '<code>\</code>' in ASCII
+        is the same byte that represents '<code>&yen;</code>' in CP932.
+      </p>
       <div class="codewrap">
         <pre class="block">FILES=30
 BUFFERS=10
