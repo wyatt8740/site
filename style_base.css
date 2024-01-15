@@ -73,6 +73,10 @@ h3, h2 {
   margin: 0 auto;
 }
 
+h3.tagline {
+  text-align: center;
+}
+
 h4, h3, h2, p {
   padding-left: 6px;
   padding-right: 6px;
@@ -139,6 +143,15 @@ figure figcaption, .figure .figcaption {
   text-align: center;
   display: block;
   margin: 5px 0 0 0;
+}
+
+.alert-heading {
+  text-align: center;
+}
+
+.alert-body {
+  display: block;
+  font-size: 11pt;
 }
 
 alert, .alert, .caption, imgcentercaption, .imgcentercaption {
