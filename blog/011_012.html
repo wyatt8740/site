@@ -4456,6 +4456,218 @@ fi
         Here's some advice on caring for your PC.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3>Dump Your BIOS ROM('s)!!</h3>
+      <p>
+        It's a very good idea, if you have the equipment to do so, to take the
+        ROM chips out of your PC-98 and make copies of them. That way, it's
+        easy to create replacements for them if the originals fail. One of my
+        friend's PC-9821Ce2's has an EPROM-based BIOS in it, whereas the others
+        look to be mask ROM - but I suppose those could be one-time-program
+        PROM's as well, which are vulnerable to bit decay over the years.
+      </p>
+      <p>
+        I actually can't figure out where the ROM chips are on my 486GR; I
+        haven't checked the underside of the motherboard or inspected the CPU
+        card closely enough yet, but all the chips I thought could have been
+        ROM's seem to be SRAM's, according to the internet. I really hope that
+        I've just overlooked it, and that it's not buried inside one of Epson's
+        ASIC's (Application-Specific Integrated Circuits; basically single
+        purpose chips that aren't designed for use outside of one or a handful
+        of products, and which typically perform hyper-specific tasks that
+        wouldn't make sense outside of the specific equipment they are
+        installed in). If they are, it <i>might</i> be a good thing - if it's
+        mask ROM. But if it's not mask ROM, I really hope it doesn't give out.
+      </p>
+      <p>
+        Regardless, though, if you don't want to pull out your EPROM programmer
+        (or if, like me, you do not have one&hellip;), there is software that
+        seems to be able to make okay dumps of BIOS ROM's; you can find its
+        source code in the repository for the <a href="https://github.com/AZO234/NP2kai/tree/master/np2tool">Neko Project II
+          Kai</a> emulator, in the <code>np2tool</code> directory, in the file
+        <code>GETBIOS.ASM</code>, or you can use an existing binary build of
+        <code>GETBIOS.COM</code> (which will be easier for most people).
+      </p>
+      <p>
+        The readme file for Neko Project II Kai implies that
+        <code>GETBIOS.COM</code> is supposed to be a part of the
+        <a href="https://github.com/AZO234/NP2kai/blob/master/np2tool/np2tool.zip">np2tool zip file</a>,
+        but it clearly isn't, so you can instead grab it from
+        <a href="http://retropc.net/yui/np2tool/index.html">retropc.net</a>, as
+        linked to from another Neko Project II Kai page
+        <a href="https://simk98.github.io/np21w/download.html">here</a>. You
+        might as well back up everything else using those other tools on
+        the retropc.net page, too.
+      </p>
+      <p>
+        Move your program(s) onto the PC-98 using whatever means are necessary.
+        I suggest a floppy diskette or Gotek with a flash drive, but a hard
+        drive could also work if you have another computer with an appropriate
+        disk drive interface to connect it to. Make sure you have as much free
+        space as possible on your floppy disk, if you choose that route. The
+        font ROM is <i>rather large</i>.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_rom_dumping">
+        <a href="pc9801_1/full/dumping_bios_dos.png">
+          <img src="pc9801_1/dumping_bios_dos.png"
+               alt="A BIOS dump in progress on my PC-486GR."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          By the way, this is how you're supposed to be making your ROM files
+          for use with Neko Project II (and some other emulators as well).
+        </div>
+      </div>
+      <p>
+        I'd love to share my dump with you here, but I am probably not allowed
+        to do that, legally speaking. Don't like it? If you live in an
+        ostensibly free country, maybe write to your representatives and pray
+        for a miracle. Because unless theyu stop representing the interests of
+        capital and start representing <i>you</i>, it's going to take a
+        miracle for entrenched companies to do a complete 180 on this of their
+        own volition.
+      </p>
+      <p>
+        Maybe someone else out there in a country where it's legal to do so
+        will make and share a copy of the 486GR ROM's some day; I hope that
+        happens. Because I'll likely be dead or nearly 100 years old by the
+        time the Epson's BIOS is public domain, and I'd guess most EPROM's
+        and flash memory will have rotted away by the time my current country
+        lets it go.
+      </p>
+      <p>
+        Oh yeah; Steamboat Willie is public domain, now that anyone who
+        remembers seeing it in a theater is dead. So have fun with that, guys!
+        Only 73 more years to go for the Epson ROM's&hellip;!
+      </p>
+      <p>
+        That copyright was around before I was born, and it'll still be around
+        when I'm dead and buried in all likelihood. So It's unlikely I'll
+        <i>ever</i> be allowed to share it while I'm breathing. You'll probably
+        have to ask my next of kin and hope that they've kept it. Assuming
+        that <i>they</i> haven't also kicked the bucket yet.
+      </p>
+      <p>
+        Huh? What's that? You think I'm sounding a little bitter? Whatever
+        would make you think something like <i>that</i>? Copyrights that last
+        longer than human beings are only sensible. I for one pledge allegiance
+        every day to our benevolent corporate hegemony&ndash; and to the Free
+        Market,&trade; for which it stands.
+      </p>
+      <p>
+        <b><i><u>ANYWAY</u></i>:</b>
+      </p>
+      <p>
+        I can at least give you my checksums. I hope they're useful to you -
+        Maybe if you get your own Epson, or your own PC-9801-86 sound board,
+        it'll be good for comparing.
+      </p>
+      <h4>Epson PC-486GR BIOS ROM Checksums</h4>
+      <div class="codewrap">
+        <pre class="block"> 
+$ (for file in BIOS.ROM SOUND.ROM SOUND_26_486GR.ROM FONT.ROM; do
+      echo "$file"':'
+      printf 'CRC32:\t '; crc32 "$file"
+      printf 'MD5:\t ';   md5sum &lt; "$file"
+      printf 'SHA-1:\t '; sha1sum &lt; "$file"
+      printf 'SHA-256: '; sha256sum &lt; "$file"; echo; done
+   ) |sed 's/ -.*//'
+
+BIOS.ROM:
+CRC32:   9c4807a1
+MD5:     5db6205995036a8c034015f28d8e62df 
+SHA-1:   22a9027352e926cc64dea59d8e4011749380d9f9 
+SHA-256: 95c319bf81533c8ee9cf7f93b75ef0d6aaa8565f384b9c584c6e45cf2c1d8d85 
+
+(**Note: NEC's PC-9801-86 sound card; on-board Epson 26 sound ROM disabled in BIOS settings**)
+SOUND.ROM:
+CRC32:   80eabfde
+MD5:     42c271f8b720e796a484cc1165ff4914 
+SHA-1:   e09c54152c8093e1724842c711aed6417169db23 
+SHA-256: f05b508d49f31f2a1a61724f013572592abc0833c09c45a72180e84247dc0d0d 
+
+(**Note: Integrated "26 sound" ROM; removed 86 card,re-enabled 26 sound in BIOS, and then re-dumped**)
+SOUND.ROM:
+CRC32:   6cdfa793
+MD5:     a77fc2bc7c696dd68dba18e02f89d386 
+SHA-1:   4b8250f9b9db66548b79f961d61010558d6d6e1c 
+SHA-256: 53a7db5388de3ffe8dc746d7dffde0da4fda951bf2c80a3f981308d120c06215
+
+FONT.ROM:
+CRC32:   e18f4529
+MD5:     d890c89b099879b962b759fd0839aa91 
+SHA-1:   900025caec5e4e6758eb7fcf8e29bb90686399d2 
+SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
+ </pre>
+      </div>
+      <p>
+        Notice how if you have an onboard sound source, its rom must be dumped
+        with any other sound card removed and after making sure the internal
+        source is re-enabled in your BIOS or DIP switches.
+      </p>
+      <p>
+        While and after doing this, make sure there's no corruption on the
+        floppy disk you're using to move the files to another computer, since
+        unlike with most things, corruption in your BIOS ROM backup could be
+        disastrous if you ever need to restore it and you find that your only
+        copy was destroyed by a bad floppy disk.
+      </p>
+      <p>
+        You might laugh, but I had this happen the first time I tried making a
+        backup. Later backup attempts seemed to work better (using different
+        media). I also did the second backup attempt using my hard drive and
+        then copied from the HDD to the FDD after doing the dump so I could
+        perhaps compare more easily. And of course, that way I have a copy
+        backed up on the HDD, which isn't too bad of an idea to begin with.
+        Just a little more redundancy if things go south.
+      </p>
+      <p>
+        You might want to run the <code>MAKEFONT</code> program from that site,
+        too, while you're at it. It'll generate a FONT.BMP file, which contains
+        all of the font in a human readable picture format. I haven't figured
+        out how to convert FONT.ROM into the FONT.BMP format (it seems to be
+        compressed in some way), and some emulators use FONT.BMP instead of
+        FONT.ROM. Also, it's just neat to see the whole font, and having it in
+        a more human readable format is another plus.
+      </p>
+      <h4>Other ROM's</h4>
+      <p>
+        You might have other ROM's in your system. Some kinds of C-Bus cards
+        (including some sound cards) have them, for instance; my SCSI
+        controller is one of these. I don't know of a tool to dump roms from
+        these cards, although one very probably exists. Maybe a linux boot
+        would be enough to get access to them, sort of like how I can dump my
+        newer PC's VGA BIOSes from <code>/sys/</code>. That's something I
+        should probably try. It might or might not work; the steps that work
+        for dumping my VGA BIOS option ROM are shown on
+        <a href="http://etherboot.org/wiki/romdumping">here on etherboot.org</a>.
+      </p>
+      <p>
+        By the way, an "option ROM" is IBM's terminology for any accessory card
+        or hardware that contains a ROM that is supposed to be accessed by the
+        computer's main processor(s). It's an old piece of terminology,
+        contemporary with phrases like "PC compatible," "IBM Compatible," and
+        so on. IBM's marketing jargon was "Options by IBM," and IBM used that
+        word instead of "accessory" a lot of the time. Your IBM PC didn't get
+        accessories or expansions; it got <i>options</i>.
+      </p>
+      <p>
+        Anyway, I just think it's neat that that little fragment of 1980's PC
+        terminology has just barely held on still; even UEFI systems support
+        loading from ROM's. That said, they have to be crafted differently than
+        old style BIOS ROM's, and aren't compatible. Microsoft's documentation
+        still calls them UEFI option ROM's, though!
+      </p>
+      <p>
+        On the IBM PC platform, a SCSI controller or other device that requires
+        boot initialization or can control the computer from very early on is
+        still readable after boot. Assuming the PC-98 doesn't do something very
+        strange with some bus arbiter or something, I don't see why one
+        wouldn't be able to dump, for instance, a SCSI boot ROM without
+        resorting to an external piece of dumping hardware. I have yet to try
+        this because I have been able to find dumps of my cards' rom's around
+        the web already and I am thus less worried about immediately backing
+        mine up... Although I still should.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_maintenance_problem_models">
         Known Problem Models
       </h3>
