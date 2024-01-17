@@ -70,20 +70,13 @@
       </div>
       <hr/>
       <p><i>1 Nov 2023</i> [<a class="permalink" href="./011_012.html#pc9801-1">Permanent link</a>]<br/>
-        A good friend of mine with a passion for pixel art has long had a
-        fascination with old Japanese domestic computers, especially the NEC
-        PC-9801 series. This started me on another deep dive into things I
-        didn't understand, but which I now want to document and help others
-        to discover.
-      </p>
-      <!-- pc9801_buying_wyatt_introduction -->
-      <p>
-        I think that my friend will probably end up collaborating with me on
-        this, so if that's the case then this may be a <i>joint</i> post!
-        I'll let her decide how much she feels like sharing, though. I think
-        we will be trying to compartmentalize into sections, so it's somewhat
-        clear who's who. But this article is still under construction, so be
-        warned!
+        A good friend of mine recenty convinced me to dive headfirst down the
+        rabbit hole of things I didn't really understand: old Japanese domestic
+        computers, and particularly the NEC PC-9801 series. After seeing the
+        relatively lacking English language documentation available for these
+        systems, I now want to document and help others on their own journeys
+        to discover more about these computers themselves. Perhaps it will even
+        be an interesting read for someone who doesn't intend to get one!
       </p>
       <p>
         So far, this article is on track to be longer than even the Bubblegum
@@ -96,7 +89,17 @@
       </p>
       <h3 id="pc9801_buying_wyatt_toc">Table of Contents</h3>
       <ul>
-        <li><a href="#pc9801_buying_wyatt_introduction">Introduction</a></li>
+        <li><a href="#pc9801_buying_wyatt_backstory">Firstly, the Backstory</a>
+          <ul>
+            <li><a href="#pc9801_buying_wyatt_motivation">Motivations</a>
+              <ul>
+                <li><a href="#pc9801_buying_wyatt_better_with_a_friend">Everything's Better with a Friend!</a></li>
+                <li><a href="#pc9801_buying_wyatt_co_op_mode">Co-Op Mode</a></li>
+              </ul>
+            </li>
+            <li><a href="#pc9801_buying_wyatt_introduction">Introduction</a></li>
+          </ul>
+        </li>
         <li><a href="#pc9801_buying_wyatt_guide_top">Wyatt's PC-9801 Buyer and User Guide</a>
           <ul>
             <li><a href="#pc9801_buying_wyatt_video_companion">Companion Videos</a></li>
@@ -196,13 +199,146 @@
             <li><a href="#pc9801_buying_wyatt_links_western">Western</a></li>
           </ul>
         </li>
-      </ul>
+        </ul>
+        <h2 id="pc9801_buying_wyatt_backstory">Firstly, the Backstory</h2>
+      <h3 id="pc9801_buying_wyatt_motivation">Motivations</h3>
       <p>
-        I've always been more of a Sharp X68000 person, myself. Not because
-        there's anything <i>wrong</i> with the 98, though!&ndash; the X68000 is
-        just a much more powerful computer if you are interested in playing
-        games, with much stronger graphical capabilities in most respects than
-        its competition.
+        I recently ended up with a Japanese PC of my own. I got it in part so I
+        could help a good friend of mine with a passion for pixel art and a
+        fascination with old Japanese computers to dive into and embrace that
+        passion for old electronics. I have been swimming in this passion for a
+        long time now, but she had felt that it was out of her reach before she
+        met me. So my main reasons for getting it were that:
+      </p>
+      <ol>
+        <li>
+          I would enjoy learning more about it, too,
+        </li>
+        <li>
+          My friend was already determined to get one,
+        </li>
+        <li>
+          I had considerably more pre-existing knowledge about DOS and
+          SCSI and other "old computer things" than she did, and
+        </li>
+        <li>
+          I could maybe grease the wheels of learning for her, and help both
+          of us to get off the ground faster.
+        </li>
+      </ol>
+      <p>
+        I think that ended up being a good decision. Old computers aren't like
+        most old game consoles; there's a lot more stuff to go wrong with
+        them, and parts are more varied and harder to come by. Documentation is
+        much more important, and not everything is going to "just work" if
+        plugged in.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3>Everything's Better with a Friend!</h3>
+      <p>
+        So in short, I wanted to accelerate my friend's rate of learning by
+        being able to answer her questions as they arose. I didn't really have
+        anyone I could ask these kinds of questions a lot of the time. Even
+        when I was able to eke an answer out of someone (on IRC or wherever),
+        it was often still a little confusing to me, and I didn't want to
+        encroach further on peoples' time by asking too many follow-up
+        questions and end up annoying them. In these kinds of conditions,
+        just learning about the basics of things can take a pretty long time.
+      </p>
+      <h4>The Tower of Babel is Populated Solely by Engineers</h4>
+      <p>
+        I also think a lot of engineering types, even brilliant ones, are kind
+        of bad at communicating the things they know in ways that we mere
+        mortals may understand them. One only has to look at wikipedia articles
+        on mathematics&ndash; or maybe on something in physics, like
+        <a href="https://en.wikipedia.org/wiki/Color_temperature?useskin=monobook">color
+          temperature</a>, to realize the breadth and scope of this problem.
+      </p>
+      <p>
+        That article is perfectly accurate in what it describes, but it is
+        nearly useless for someone like me who was only trying to look up why color
+        temperature exists and how it's actually measured or quantified.
+      </p>
+      <p>
+        In that example, the crucial thing I was missing was what
+        <a href="https://en.wikipedia.org/wiki/Black-body_radiation?useskin=monobook">"black-body radiation"</a>
+        is, but the article on it lacks good practical examples in plain view,
+        so all it does is overwhelm me. It is actually something that many
+        people have seen before, without even realizing it. It's the reason
+        that heated iron (from, say, a blast furnace) glows red when hot&ndash;
+        and white when even hotter.
+      </p>
+      <p>
+        The key point that is missing (or presumed to be already known) is
+        that <i>everything</i> can glow like that if it is heated enough
+        compared to its surroundings. Color temperature is measured in kelvin
+        because it can be most easily quantified by describing how much warmer
+        than absolute zero a perfectly black object (one that does not reflect
+        any light that strikes it) would need to be to glow with that frequency
+        (and therefore color) of light.
+      </p>
+      <p>
+        Anyway&ndash; because I didn't have someone to explain things like that
+        to me in one place, particularly the iron glowing example, it took me
+        <i>years</i> to figure out what color temperature actually
+        <i>meant</i>. In this case, with this old technology, I also can have
+        trouble finding clear explanations of how things work.
+      </p>
+      <p>
+        Try looking up information on how to write a DOS
+        <code>CONFIG.SYS</code> file, for instance, or maybe try to find a
+        number in a little-endian hexadecimal dump without realizing that all
+        the numbers are going to be in reverse byte order from what is most
+        intuitive. So, if looking for hexadecimal <code>0xDEADBEEF</code>,
+        you'd need to search for the byte sequence <code>0xEFBEADDE</code> on
+        things like Intel computers). Good luck figuring <i>that</i> one out
+        on your own if no one's explained endian-ness to you yet!
+      </p>
+      <p>
+        I know there's a lot of information on this page, but maybe by trying
+        to describe everything in a somewhat reasonable order and by describing
+        terms as they come up, I can avoid some of the failings of Wikipedia at
+        being approachable. To this end, I also have a table of contents, so
+        that one may jump straight to the thing that interests them, and jump
+        back for a definition or prerequisite knowledge as needed.
+      </p>
+      <p>
+        My hope, then, is to at least help people to at least know what
+        questions to ask, and perhaps some terms they need to search for.
+        Ideally, I'll also be able to answer most of those questions on this
+        page clearly enough that the searches are all but unnecessary.
+        I want this article to somehow manage to be understandable without
+        talking down to anyone. I hope to be able to strike such a balance,
+        and to learn what does and doesn't work when teaching others.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <!-- pc9801_buying_wyatt_introduction -->
+      <h4 id="pc9801_buying_wyatt_co_op_mode">Co-Op Mode</h4>
+      <p>
+        To that end, I think that my friend will probably end up collaborating
+        with me on this. I think that her insights and sharing what stuck out
+        to her can help me to avoid falling into the engineer's trap of
+        assuming that others understand the underlying concepts of their
+        ramblings without them having to fully explain it in a way they can
+        grasp. And I also am interested to see how much she's learned! We've
+        known each other for just over a year, and she's made leaps and bounds.
+      </p>
+      <p>
+        Anyway, if that's the case, and she does contribute, then this may be a
+        <i>joint</i> post! I'll let her decide how much she feels like sharing,
+        though. I think we will be trying to compartmentalize into sections, so
+        it's somewhat clear who's who. But this article is still under
+        construction, so be warned!
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h2>Introduction</h2>
+      <p>
+        To be honest, I've always been more of a Sharp X68000 person than a
+        PC-98 person, myself. Not because there's anything <i>wrong</i> with
+        the 98, though!&ndash; the X68000 is just a much more powerful computer
+        if you are interested in playing games, with much stronger graphical
+        capabilities in most respects than its competition. It also helps that
+        the source code for Human68K (the OS) is available freely.
       </p>
       <p>
         Unfortunately, the X68000 has a few problems if you're looking to
@@ -276,6 +412,7 @@
         the X1 computer itself regularly shows up for pretty fair prices
         online, even in red (the objective best color for it).
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>Some Reasons NOT to Buy a Japanese Computer</h3>
       <p>
         So, basically, I'd been considering getting into Japanese computers for
@@ -305,6 +442,7 @@
         shipping fees from about halfway across the planet whenever I ran into
         a new problem that needed a hardware solution.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>Why I Still Ended Up Getting a Japanese Computer Anyway</h3>
       <p>
         So, knowing all of this would happen, and that it'd be a massive money
@@ -312,10 +450,17 @@
       </p>
       <p>
         Well, basically, it was because of my aforementioned good friend with
-        the pixel art passion.
+        the pixel art passion. I have been helping her on her journey into
+        older computers, which were already an interest of mine. That, combined
+        with my own predisposition towards interest in old computers, was
+        enough to motivate me to bite the bullet. I knew that she'd have an
+        uphill battle learning to use one on her own, and that it'd be more
+        fun (and simple) for me to help if I had a physical computer of my own,
+        too.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2>The NEC PC-9801</h2>
-      <h3>Why Do People Get the PC-9801?</h3>
+      <h3>Why Do People Get a PC-9801?</h3>
       <p>
         My aforementioned good friend had long been enamored specifically with
         the NEC PC-9801 and its descendants. To be completely honest, the PC-98
@@ -415,6 +560,7 @@
         comes to mind, for instance. But that had a Sega CD port (in English,
         I might add), so why not just play that?!
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>Why Did <i>I</i> Get the PC-9801?</h3>
       <h4>(The Influence of Friendship On Financial Decisions)</h4>
       <p>
@@ -454,6 +600,7 @@
         And so, without further ado, I bring you&hellip;
       </p>
       <hr/>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2 id="pc9801_buying_wyatt_guide_top">Wyatt's PC-9801 Buyer and User Guide</h2>
       <h4 id="pc9801_buying_wyatt_video_companion">Companion Videos</h4>
       <p>
@@ -638,6 +785,7 @@
           CGA, EGA, Tandy, or VGA chipset. Potentially more than one of them.
         </li>
       </ul>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_which_pc">Choose Your Kart (Computer)!</h3>
       <p>
         So, ya really want to learn about the PC-9801, do ya? Well, first, what
@@ -691,6 +839,7 @@
         full-tilt all the time, so you have to be able to make the computer run
         slow enough for it to be playable. It's comically fast at 75 MHz.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4>DOS, Windows, or Other?</h4>
       <p>
         If you intend to get a PC-98 and run Windows programs on it, you can
@@ -737,8 +886,9 @@
       </p>
       <p>
         The rest of this article will probably not focus on Windows much, if at
-        all.
+        all. Maybe I'll cover N88-BASIC and/or other OS'es, some day, though.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <hr/>
       <h3 id="pc9801_buying_wyatt_what_are_my_options">What are My Options for Hardware, then?</h3>
       <p>
@@ -836,6 +986,7 @@
         have heard, but people say it's harder to open up the earlier 9801's
         (although later ones are probably pretty okay).
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>Yeah, But What Does All of That Mean?</h3>
       <p>
         I threw around a lot of terms describing the differences between the
@@ -988,6 +1139,7 @@
         I might just add that you shouldn't be dependent on the hard drive
         (if yours is sent with one) still working. Have contingency plans.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2 id="pc9801_buying_wyatt_what_my_friend_bought">What My Friend Bought (and Her Experiences)</h2>
       <p>
         My friend chose to get two systems, a PC-9821 Cs2 and a PC-9821 Ce2.
@@ -1051,6 +1203,7 @@
       <p>
         <i>(If she sends me some nice pictures, they could appear here soon.)</i>
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2 id="pc9801_buying_wyatt_what_i_bought">What I Bought (and My Experiences)</h2>
       <p>
         Me? Well, I pretty much just ignored all of the above options. NEC?
@@ -1099,6 +1252,7 @@
         Epsons out from using its versions of DOS and some of its PC-98
         expansion cards in software.
       </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_epson_clones">Epson Compatibility</h3>
       <p>
         There seems to be
@@ -1507,6 +1661,7 @@
       </p>
       <!-- TODO: link to archive of the mercari page I bought mine on; add-------------------------------------------------
            images from the listing I bought. -->
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_the_surprises">Surprises Upon Arrival</h3>
       <p>
         You can only prepare for so much. Not all sellers necessarily can be
@@ -2222,6 +2377,9 @@
           <th>
             Device Name
           </th>
+          <th>
+            PC-9821Ce2/Cs2
+          </th>
         </tr>
         <tr>
           <td>0</td> <!-- IRQ -->
@@ -2274,27 +2432,32 @@
           <td>9</td> <!-- IRQ -->
           <td>INT3</td> <!-- INT -->
           <td><b>Logitec LHA-301 (My SCSI card)</b><br/>
-          <i>(Hard drive controllers, both SASI/SCSI and ATA)</i></td> <!-- description -->
+            <i>(Hard drive controllers, both SASI/SCSI and ATA)</i></td> <!-- description -->
+          <td>"Hard Disk/CD-ROM Interface"</td>
         </tr>
         <tr>
           <td>10</td> <!-- IRQ -->
           <td>INT41</td> <!-- INT -->
           <td></td> <!-- description -->
+          <td>"640K Floppy Board Interface"</td>
         </tr>
         <tr>
           <td>11</td> <!-- IRQ -->
           <td>INT42</td> <!-- INT -->
           <td><i>1MB Floppy Drive Controller (internal)</i></td> <!-- description -->
+          <td>"1M Side, 1.44MByte Interface"</td>
         </tr>
         <tr>
           <td>12</td> <!-- IRQ -->
           <td>INT5</td> <!-- INT -->
           <td></td> <!-- description -->
+          <td>"Sound Board"</td>
         </tr>
         <tr>
           <td>13</td> <!-- IRQ -->
           <td>INT6</td> <!-- INT -->
           <td><i>Bus Mouse (by default)</i></td> <!-- description -->
+          <td>"Mouse Interface"</td>
         </tr>
         <tr>
           <td>14</td> <!-- IRQ -->
@@ -4140,6 +4303,39 @@ fi
         because the 486 DX4 runs at 3.3 volts rather than the 5 volts of the
         original 486 SX/DX and DX2, thus needing a voltage converter between
         it and the PC itself.
+      </p>
+      <p>
+        &hellip;But I digress.
+      </p>
+      <p>
+        The <i>bad</i> news is that if you bought one of these with the 2x
+        5.25" drive configuration, you weren't given that bracket! - You might
+        have to either find someone selling the 3.5" floppy drives for one on
+        their own or else make your own adapter (or find a pre-made one that
+        fits the slot). If you have access to wood and are a little crafty, you
+        could probably carve one. Or you could 3D print one. Maybe you could
+        also make one with Lego, or something? - I believe, but cannot confirm,
+        that the 486GR's floppy drive bay is the same as the one in some of the
+        earlier Epson PC-286 and PC-386 lines, so you may be able to find a
+        listing for drives from one of those. That is, if they were offered
+        with 3.5" disk drives. NEC was kind of late to move to 3.5" disks.
+      </p>
+      <p>
+        The 3.5" drives used in the 486GR2, 486GR2E, and 486GR3 models&ndash; the
+        versions of the 486GR that aren't 5.25" only&ndash; are
+        <a href="https://98epjunk.shakunage.net/fdd/md3541g_smd_pin.html">model
+          MD3541G</a>, which seems to have been made by Canon (yes; that's
+        Canon, the camera and printer company. Not by some other company called
+        Canon that you never heard of).
+      </p>
+      <p>
+        By the way, it seems to be confirmed by that last link that Epson's
+        <a href="https://pc-9800.net/db_epson/data/pc-386ge.htm">PC-386GE</a>
+        (PC-386GE2, PC-386GE2B, PC-386GE3) and
+        <a href="https://pc-9800.net/db_epson/data/pc-386gs.htm">PC-386GS</a>
+        (PC-386GS2, PC-386GS2E, PC-386GS3) also use the MD3541G. So, if you
+        find one cheap, maybe you could consider using it as an oversized
+        external 3.5" floppy drive unit for your 486? :)
       </p>
       <p>
         An additional oddity is that the Epson uses laptop-style 26 pin floppy
