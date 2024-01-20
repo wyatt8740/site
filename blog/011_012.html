@@ -1398,6 +1398,7 @@
         had such a ruling... I may be wrong on that. Maybe they have by now,
         but given the abysmal state of copyright law there I'd assume not.
       </p>
+      <h4>Patching the "Epson Check"</h4>
       <p>
         In any case, Epson created a "Software Installation Program (SIP),"
         which took NEC's DOS files and patched the copyright check so that it
@@ -1415,6 +1416,17 @@
         for a decade or more. Its page is
         <a href="https://web.archive.org/web/20211020051818/https://www.vector.co.jp/soft/dos/util/se001911.html">archived here</a>,
         or more directly can be downloaded here: <a href="https://web.archive.org/web/20190331040503/http://ftp.vector.co.jp/00/19/531/dspl113.lzh">dspl113.lzh</a>.
+      </p>
+      <p>
+        If I remember correctly, the way I used it was first booting into DOS
+        6.2 and then inserting my floppy with a different version of DOS on it,
+        and running <code>DISPELL.EXE /A &lt;drive letter&gt;</code>. I think
+        it's also possible to run it and tell it to patch just individual files,
+        which might be preferable if you encounter a game that comes with DOS
+        on it which seems to just go through a reboot loop constantly. In that
+        case, you'd just want to provide the file names of the dos files on the
+        disk. Be sure you also run <code>dir /a</code> to see any possible
+        hidden files! And make a backup before you run the patcher.
       </p>
       <p>
         LZH files can be opened in 7-zip, but there's also LZH (or is it LHA?)
