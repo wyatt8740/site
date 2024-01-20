@@ -4739,6 +4739,51 @@ fi
         Maybe if you get your own Epson, or your own PC-9801-86 sound board,
         it'll be good for comparing.
       </p>
+      <p>
+        <b>Disclaimer:</b> <i>This is not a "proper" ROM dump for the BIOS. That may
+          require me to remove an EPROM from the CPU card on my Epson (assuming
+          that's what that EPROM is) and dump it directly out-of-circuit. I
+          think that ROM contains more than what the programs I used are
+          capable of, so they would not be good enough for the MAME project,
+          probably. I have neither an EPROM programmer to read it nor a proper
+          QFP chip puller to safely remove the IC.</i>
+      </p>
+      <p>
+        Note that I have the distinct feeling most of these program authors
+        were not targeting Epsons when they wrote their ROM dumpers,
+        so we just have to hope Epson implemented theirs identically to
+        NEC's.
+      </p>
+      <p>
+        The 86 sound ROM matches the checksum of the one in MAME's source
+        code. The 26 sound ROM matches the checksum of the Epson PC-486MU's
+        sound ROM in MAME's sources,  so they must use the same ROM and I am
+        therefore guessing that the sound ROM is correct. Does it sound
+        different than a real PC-9801-26K card does? Maybe! - or maybe they
+        just omit the NEC copyright string from the Epson 26 Sound ROM.
+      </p>
+      <p>
+        The font ROM does NOT match the checksum of the 486MU one in MAME's
+        sources. But I've managed to find out that the 486MU's typeface
+        actually just differs slightly. Someone hooked me up with a dump,
+        which I immediately deleted after verifying this. I don't seriously
+        think Epson's about to complain about that; not after they've erased
+        almost all mention of the 486GR's very existance from their site.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_epson_font_pic">
+        <a href="pc9801_1/full/font_diff.png">
+          <img src="pc9801_1/font_diff.png"
+               alt="Picture: The multiplication sign/asterisk (*) character at
+                    0x0AA3 differs between the PC-486GR and 486MU. This
+                    difference is one of several."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          In the top left corner of each document panel, you can see how the
+          asterisk (*) character is different between the ROM's, but both are
+          valid.<br/>There are other little differences here and there. Viewed
+          in 1bpp, row interleaved.
+        </div>
+      </div>
       <h4>Epson PC-486GR BIOS ROM Checksums</h4>
       <div class="codewrap">
         <pre class="block"> 
