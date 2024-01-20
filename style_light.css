@@ -2,12 +2,43 @@
   display: none;
 }
 
+.navbox .navbar, .rightbox .menu_right {
+  /* margin-top: 20px;*/
+  margin-top: 3px;
+}
+
 .blerg_navleft, .blerg_navright, .menu_left, .menu_right {
-  margin-left: -6px;
-  margin-right: -6px;
+/*  margin-left: -6px;
+  margin-right: -6px;*/
+  margin-left: 2px;
+  margin-right: 2px;
   /*  margin-bottom: 8px;*/
   /*  margin-bottom: 1%;*/
 }
+
+.navbox {
+  width: 95vw;
+}
+
+.menu_left, .blerg_navleft {
+  margin-left:28px;
+}
+
+.menu_right, .blerg_navright {
+  margin-right:28px;
+}
+
+.menu_left a, .blerg_navleft a, .menu_right a, .blerg_navright a{
+  border-style: solid;
+  /* border-left-width: 4px;
+  border-right-width: 4px; */
+/*  border-bottom-width: 4px;
+  border-top-width: 4px;*/
+  border-color: #DFDFDF;
+  border-left-color: #DFDFDF;
+  border-right-color: #DFDFDF;
+}
+
 
 .bgc {
   display: none;
@@ -33,6 +64,7 @@ code, .codebg {
 }
 
 h1 {
+  width: 90vw;
   background-color: #DFDFDF;
 }
 
@@ -41,6 +73,7 @@ h2.banner {
 }
 
 .postarea {
+  width: 90vw;
   background-color: #DFDFDF;
 }
 

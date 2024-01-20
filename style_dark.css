@@ -2,11 +2,26 @@
   display: none;
 }
 
+.navbox .navbar, .rightbox .menu_right {
+  /* margin-top: 20px;*/
+  margin-top: 3px;
+}
+
 .blerg_navleft, .blerg_navright, .menu_left, .menu_right {
-  margin-left: -6px;
-  margin-right: -6px;
+/*  margin-left: -6px;
+  margin-right: -6px; */
+  margin-left: 2px;
+  margin-right: 2px;
   /*  margin-bottom: 8px;*/
   /*  margin-bottom: 1%;*/
+}
+
+.menu_left, .blerg_navleft {
+  margin-left:28px;
+}
+
+.menu_right, .blerg_navright {
+  margin-right:28px;
 }
 
 .bgc {
@@ -37,7 +52,12 @@ code, .codebg {
 }
 
 h1 {
+  width: 90vw;
   background-color: #2E384A;
+  /* padding: 14px; */
+  /*border-width: 6px;*/
+  border-color: #2E384A;
+/*  border-style: solid;*/
 }
 
 h2.banner {
@@ -45,6 +65,12 @@ h2.banner {
 }
 
 .postarea {
+  width: 90vw;
+  /* padding: 14px;
+  border-width: 6px; */
+  /* border-color: #404040; */
+  border-color: #2E384A;
+  /* border-style: solid; */
   background-color: #2E384A;
 }
 
