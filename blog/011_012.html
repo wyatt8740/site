@@ -1420,7 +1420,15 @@
       <p>
         If I remember correctly, the way I used it was first booting into DOS
         6.2 and then inserting my floppy with a different version of DOS on it,
-        and running <code>DISPELL.EXE /A &lt;drive letter&gt;:</code>. This was
+        and running:
+      </p>
+      <div class="codewrap">
+        <pre class="block"> 
+&gt; DISPELL.EXE /A &lt;drive letter&gt;:
+ </pre>
+      </div>
+      <p>
+        This was
         enough to get a bootable DOS 3.3 floppy which I then used to launch
         Popful Mail, since Popful mail refuses to run on DOS 5 or 6. I think
         it's also possible to run DISPELL and tell it to patch just individual
@@ -1431,8 +1439,22 @@
         possible hidden files! And make a backup before you run the patcher.
       </p>
       <p>
-        LZH files can be opened in 7-zip, but there's also LZH (or is it LHA?)
-        for the PC-98 if you want to unpack it there. Also, Windows XP and
+        I don't actually know what the <code>/A</code> parameter in DISPELL's
+        case does. I didn't bother to translate it yet. If it were open
+        sourced, I would have made a translated English patch for you guys. :(
+      </p>
+      <p>
+        It may still be possible to make a translation patch like that with
+        just a binary to work with, but I don't know if I feel motivated enough
+        to try to cram the english text into the pre-allocated space for a
+        Japanese string (or else changing the pointers everywhere in the
+        program).
+      </p>
+      <p>
+        To open the archive, LZH files can be opened in 7-zip, but there's also
+        LZH (or is the program name LHA?) for the PC-98 if you want to unpack
+        it there. I forget if it's compatible with the LHA files that the Amiga
+        crowd often will use for distributing files. Also, Windows XP and
         higher should be able to open it just like zip files, albeit in
         Japanese releases only.
       </p>
