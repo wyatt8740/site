@@ -1363,26 +1363,66 @@
         </div>
       </div>
       <p>
-        Actually, on that topic, NEC did something similar with its releases of
-        MS-DOS between versions 3.3 and 5.0H for the PC-9800 series computers.
-        It performed an "Epson check," as it seems to typically be labelled in
-        Japan, where it checks the computer's boot ROM and possibly others(?)
-        for an NEC copyright string.
+        But anyway, NEC did something similar with its releases of MS-DOS
+        between versions 3.3 and 5.0H for the PC-9800 series computers. It
+        performed the aforementioned "Epson check," where it checks the
+        computer's boot ROM and possibly others(?) for an NEC copyright string.
+        If not found, it sends the PC into a reboot loop.
       </p>
       <p>
         This is similar to the Sega "Trademark Security System" or Nintendo's
         Game Boy boot logo lockout (where the nintendo logo needs to be
         included in the cartridge ROM to proceed). <i>Sega v. Accolade</i>
-        made such trademark based lockouts (<i>"Hey! You copied our proprietary
-        string of characters that we deliberately used to lock you out and
-        control our monopoly over a market! THAT'S COPYRIGHT VIOLATION! MODS!
-          BAN THIS EVIL COMPANY FROM DOING BUSINESS IN <b>OUR</b> FREE
-          MARKET THAT ONLY WE ARE ALLOWED TO COMPETE IN!!!"</i>) unenforceable
-        if they were needed in order to achieve interoperability. But I don't
-        think Japan itself ever had such a ruling... I may be wrong on that.
+        made such trademark based lockouts I guess they didn't buy their
+        argument, which I would phrase as follows:
+      </p>
+      <div class="codewrap">
+        <div class="quote">
+          <p>
+            <i>"Hey! You copied our proprietary string of characters that we
+              deliberately used to lock you out and control our monopoly over a
+              market! THAT'S COPYRIGHT VIOLATION! MODS! BAN THIS EVIL COMPANY FROM
+              DOING BUSINESS IN <b>OUR</b> FREE MARKET THAT ONLY WE ARE ALLOWED TO
+              COMPETE IN!!!"</i> &emsp;&ndash; Sega, NEC, Nintendo, and every
+            other entity that perverts the original intended purpose of
+            copyright laws for an unfair advantage
+          </p>
+        </div>
+      </div>
+      <p>
+        So in the US's <i>Sega v. Accolade</i>, such arguments were deemed
+        unenforceable, since the purpose of copyright law isn't to act as
+        <i>de facto</i> patents. If these sorts of small bits of data were
+        needed in order to achieve interoperability and allow others to
+        compete on a platform, this was deemed as fair use. I do not think
+        Japan itself ever had such a ruling... I may be wrong on that.
       </p>
       <p>
-        Anyway, by the time of 6.2, this "Epson check" had been  had been
+        In any case, Epson created a "Software Installation Program (SIP),"
+        which took NEC's DOS files and patched the copyright check so that it
+        would pass on their systems. If this were in the US, I'm sure that NEC
+        would argue that it was an unauthorized "derivative work" and go after
+        them that way, but it seems that such a technique was considered fine
+        inside Japan, at least at that time. Even though it sounds pretty much
+        like how ROM hacks are made.
+      </p>
+      <p>
+        I haven't found a copy of the SIP, but there is a free (as in "Free
+        Beer," not "Freedom") program for DOS that accomplishes the same thing
+        called <i>DISPELL</i>. It used to be available on vector.co.jp, but
+        appears to have been erased in the last couple years after being online
+        for a decade or more. Its page is
+        <a href="https://web.archive.org/web/20211020051818/https://www.vector.co.jp/soft/dos/util/se001911.html">archived here</a>,
+        or more directly can be downloaded here: <a href="https://web.archive.org/web/20190331040503/http://ftp.vector.co.jp/00/19/531/dspl113.lzh">dspl113.lzh</a>.
+      </p>
+      <p>
+        LZH files can be opened in 7-zip, but there's also LZH (or is it LHA?)
+        for the PC-98 if you want to unpack it there. Also, Windows XP and
+        higher should be able to open it just like zip files, albeit in
+        Japanese releases only.
+      </p>
+      <p>
+        Regardless, by the time of 6.2, this "Epson check" had been  had been
         removed, and NEC's version of MS-DOS 6.2 works fine on Epson computers
         with no modifications needed.
       </p>
