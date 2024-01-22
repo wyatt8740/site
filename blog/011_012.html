@@ -69,7 +69,7 @@
         </p>
       </div>
       <hr/>
-      <p><i>1 Nov 2023</i> [<a class="permalink" href="./011_012.html#pc9801-1">Permanent link</a>]<br/>
+      <p><span class="date-heading"><i>1 Nov 2023</i></span> [<a class="permalink" href="./011_012.html#pc9801-1">Permanent link</a>]<br/>
         A good friend of mine recenty convinced me to dive headfirst down the
         rabbit hole of things I didn't really understand: old Japanese domestic
         computers, and particularly the NEC PC-9801 series. After seeing the
@@ -4895,6 +4895,7 @@ SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
       <h3 id="pc9801_buying_wyatt_maintenance_problem_models">
         Known Problem Models
       </h3>
+      <h4>Capacitor failures</h4>
       <p>
         For the PC-9801/PC-9821 series computers, I mainly have heard of
         problems with the "A-MATE" series, which I believe consists of the
@@ -4922,25 +4923,109 @@ SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
         <li>PC-9821</li>
       </ul>
       <p>
+        There's at least one guy I've seen online in the Anglosphere who has a
+        9821An that he had to replace a bunch of caps on, too. So I guess maybe
+        it's just that <i>all of the A series</i> are maybe likely to have bad
+        caps.
+      </p>
+      <p>
         The problems mainly seem to be capacitors going bad, primarily in the
         power supplies. I get the impression that they may also have problems
-        with early surface mount capacitors going bad, since people often speak
-        of them in the same sentence as they talk about later-model Sharp
-        X68000 computers (which I believe also had motherboard capacitor
-        issues).
+        with early surface mount electrolytic capacitors going bad, since
+        people often speak of them in the same sentence as they talk about
+        later-model Sharp X68000 computers (which I believe also had
+        motherboard capacitor issues).
+      </p>
+      <p>
+        I also bought an 86 sound board which all the caps had leaked on. THAT
+        was fun. I could get the barest semblance of audio out of one side with
+        my speakers cranked to max, and nothing from the other. I got a second
+        one that was already recapped for entirely too much and the one in need
+        of recapping sits until I have a hot air soldering station. It seems
+        that at least some 86 sound boards had the same issue as the A-series
+        computers (which also used surface mount electrolytic capacitors).
       </p>
       <p>
         In general, it's a good idea to replace capacitors in all old
-        electronics one gets, but I don't really follow my own advice.
+        electronics one gets, but I don't really always follow my own advice.
         Capacitor failures might just cause a problem that can be fixed by
         replacing the capacitor, but they can also cause cascading failures
         where more stuff fails, either immediately or after a short delay
         (if the cap isn't immediately replaced). Even if the device appears to
         continue working, if you hear a POP coming from your electronics, don't
-        ignore it.
+        ignore it. I just can't <i>afford</i> to follow it, but seriously if
+        the wrong capacitor(s) pop I might be looking for a whole new computer
+        or CRT or whatever, or buying a lot of parts other than capacitors to
+        fix what just broke. Please, please, please consider recapping your
+        stuff, if you can afford to and have the time to. I know some repair
+        places will also do it for you. There's a local shop that rebuilds
+        speakers where I live that also can do recap work for people. Maybe
+        you have somewhere like that you can ask around at?        
       </p>
       <p>
-        
+        It should also be said that the "A" series models are considered quite
+        good when they're in working condition. They're more easily expandible
+        than the Ce2 and Cs2 systems are, with a socket so you can
+        upgrade CPU's and an extra C-bus slot, and they are at least as
+        featureful, with Integrated 86 sound and all of that good stuff. So if
+        you can do the work, or if you can get it done by someone, they might
+        still be a great choice.
+      </p>
+      <p>
+        Do note that the A series mentioned above might not be capable of
+        touhou in stock configuration, but with a CPU upgrade it could be
+        pretty good for that. Make sure you factor in that cost when deciding,
+        should you be invested in playing the Touhou games. Deriving from the
+        information in ZUN (the developer)'s readme file, You'd want at least
+        66MHz to play it. That means a 2x multiplier 486DX2 or equivalent if
+        your computer has a 33MHz bus, and 3x+ multiplier
+        486DX4/Am5x86/Cx5x86/whatever else I'm forgetting about for a 25MHz bus
+        one.
+      </p>
+      <p>
+        I think it may be possible to convert a 25MHz bus computer into a 33MHz
+        bus one by replacing a "crystal" (quartz-based oscillator) on the
+        motherboard, but I don't know if other things might need changing. And
+        you'd defintely have to know how to solder to even try that. 
+      </p>
+      <h4>Touhou</h4>
+      <p>
+        <i><b>The Ce2 and Cs2 (and the stock 486GR, for that matter) are
+        not ideal if you want to play Touhou,</b></i> since the Ce2 and
+        Cs2 have no CPU socket (they have a soldered-down 486SX only). If you
+        were very good at soldering and had the right tools, you could of
+        course replace that with a different one by soldering it in. Or look
+        for a pretty uncommon accelerator board that piggybacks on top of the
+        soldered-down CPU. I haven't seen one of them for sale in months.
+        The 486GR as well as most of NEC's "A" line (and maybe B line?) have
+        CPU sockets.
+      </p>
+      <p>
+        If you like the smaller sized computers, you may want to instead
+        consider a 9821Ce or 9821Cs (sans 2); those have a 486 ODP socket on
+        them. The downsides are that the Ce and Cs are older, and only have two
+        C-bus slots, and use SCSI drives (both optical and hard disk)
+        internally... and SCSI stuff tends to cost more. If you keep a hard
+        disk inside, then that means you won't need a C-bus card for that, so
+        I'd say both slots would likely be filled by an 86 sound card and a
+        MIDI card, if it were me.
+      </p>
+      <p>
+        If you have a computer with an ODP socket instead of a normal one, then
+        you either need to ground the extra pin on the socket and use a normal
+        CPU or pay the silly prices for an "overdrive" 486 with the extra pin
+        on ebay (can be over four times the cost. Sure, the ODP's have write
+        back or whatever... but I suspect half of it is just people not wanting
+        to solder a wire to the motherboard).
+      </p>
+      <p>
+        My friend got three Ce2's and a Cs2, all untested, and all of them more
+        or less worked. One had a bad optical drive, and they all needed their
+        floppy drive heads cleaned, and one had a hard drive that had had a
+        head crash, so that needed replacing, but since they use IDE that's not
+        as painful as it can be with SCSI drives. And the motherboards and
+        power supplies all worked just fine, So maybe they've actually aged
+        better than the A series did?
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_maintenance_capacitors">
