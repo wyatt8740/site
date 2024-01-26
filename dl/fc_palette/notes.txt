@@ -1,0 +1,48 @@
+This is currently my NES/Famicom palette of choice for use in emulators.
+If I had NESRGB or HDMINES, I'd also be using it there.
+
+I made it myself, since I have long been annoyed by all other palettes for
+various reasons.
+
+-------------
+
+v0 is my initial capture, using my NXP SAA7113H (video processor) and em2861
+(USB interface chip) video capture USB stick. This was in the form of a
+"Roxio Easy VHS to USB" stick, but such USB's are also widely found in the
+ezcap DC60+ and /some/ the various easycap clones.
+
+I did no adjustments to the default settings on it; just captured them as-is.
+I used ffmpeg's tblend filter to merge pairs of frames together to try to
+eliminate some noise, after also converting the 480i fields back into 240p
+frames using ffmpeg's separatefields filter.
+
+I generated bars of color on the Famicom using a demo ROM and averaged a large
+area of each color to determine my RGB triplets.
+
+It looks nice, I think, but kind of desaturated. Almost like a GBA. Still not
+bad, though, and way better than the FCEUX default palette for instance. I also
+prefer it to Nestopia's "Canonical" one and BMF Final V2 (BMF Final V2 was my
+go-to palette until now).
+
+-------------
+
+v1 is done with the same USB, but with some of the user-adjustable settings
+tweaked to make it subjectively closer to my Panasonic BT-H1390YN CRT broadcast
+monitor. This made it look a little bit more colorful and generally a bit
+darker (but not too badly, I think). I am really happy with v1 so far.
+
+The settings on the em2861/SAA7113H Roxio capture USB for this capture were as
+follows:
+
+    brightness:      min=0 max=255 step=1 default=128 value=115
+    contrast:        min=0 max=127 step=1 default=64 value=80
+    saturation:      min=0 max=127 step=1 default=64 value=90
+    hue:     min=-128 max=127 step=1 default=0 value=0
+    volume:  min=0 max=31 step=1 default=31 value=31
+    mute:    default=1 value=0
+    red_balance:     min=-48 max=48 step=1 default=0 value=0
+    blue_balance:    min=-48 max=48 step=1 default=0 value=0
+    sharpness:       min=0 max=15 step=1 default=0 value=0
+    chroma_agc:      default=1 value=0
+    chroma_gain:     min=0 max=127 step=1 default=40 value=40
+
