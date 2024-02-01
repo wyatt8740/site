@@ -2038,17 +2038,18 @@
         intent of using one at some point.
       </p>
       <p>
-        Don't peel those stickers off the brown chips, by the way. Those cover
-        up EPROM (Erasable Programmable Read-Only Memory) quartz windows, and
-        if exposed to the right light frequencies (somewhere in the ultraviolet
-        range) the chip will be erased and the card won't operate properly.
-        If you happen to have an EPROM programmer and the correct pin adapters,
-        it'd be really great of you to dump the cards' ROMs and share them,
-        too, because they could lose their data naturally even without light
-        exposure at some point and need reprogramming. I sort of doubt the
-        manufacturers care enough or even have the files (if the still exist)
-        to help you out. Once the chips have lost their marbles, it's too late,
-        unless someone's made a backup and can re-program them.
+        <b>Don't peel those stickers off the brown chips, by the way.</b>
+        Those cover up EPROM (Erasable Programmable Read-Only Memory) quartz
+        windows, and if exposed to the right light frequencies (somewhere in
+        the ultraviolet range) the chip will eventually be erased and the card
+        won't operate properly. If you happen to have an EPROM programmer and
+        the correct pin adapters, it'd be really great of you to dump the
+        cards' ROMs and share them, too, because they could lose their data
+        naturally even without light exposure at some point and need
+        reprogramming. I sort of doubt the manufacturers care enough or even
+        have the files (if they still exist) to help you out. Once the chips
+        have lost their marbles, it's too late, unless someone's made a backup
+        and can re-program them.
       </p>
       <p>
         I'll give a brief description of what some cards do, now.
@@ -4644,22 +4645,33 @@ fi
         copies of them, if you have the equipment to do so. That way, it's
         easy to create replacements for them if the originals fail. One of my
         friend's PC-9821Ce2's has an EPROM-based BIOS in it, whereas the others
-        look to be mask ROM - but I suppose those could be one-time-program
-        PROM's as well, which are vulnerable to bit decay over the years.
+        look to be mask ROM. But I suppose those could be one-time-program
+        EPROM's as well.  OTP chips are  also vulnerable to bit decay over the
+        years just like EPROM's are. They're the same chips that are inside of
+        EPROMs, but without the quartz crystal window in the chip "packaging"
+        (outer shell). The window is meant to let light strike it when erasing
+        is desired. Those are brown or purplish usually because they use a
+        ceramic casing rather than a cheaper plastic one so that they can
+        accomodate an erasing window.
+      </p>
+      <p>
       </p>
       <p>
         But there's a problem with this simple physical approach: I actually
-        can't figure out where the ROM chips are on my 486GR! I haven't checked
-        the underside of the motherboard or inspected the CPU card closely
-        enough yet, but all the chips I thought could have been ROM's seem to
-        be SRAM's, according to the internet. I really hope that I've just
-        overlooked it, and that it's not buried inside one of Epson's ASIC's
-        (Application-Specific Integrated Circuits; basically single purpose
-        chips that aren't designed for use outside of one or a handful of
-        products, and which typically perform hyper-specific tasks that
+        can't figure out where most of the ROM chips are on my 486GR! I
+        haven't checked the underside of the motherboard yet, but nearly all
+        the chips I thought could have been ROM's seem to be SRAM's, according
+        to the internet. I was able to find one EPROM, in a QFP format, on its
+        CPU card. I really hope that I've just overlooked them, and the rest
+        are not buried inside one or more of Epson's ASIC's. ASIC means
+        (Application-Specific Integrated Circuit. Basically they are single
+        purpose chips that have functionality endemic to one or a handful of
+        products and which typically perform hyper-specific tasks that
         wouldn't make sense outside of the specific equipment they are
         installed in). If they are, it <i>might</i> be a good thing - if it's
         mask ROM. But if it's not mask ROM, I really hope it doesn't give out.
+        I am guessing it's mask ROM, if they were confident they got
+        everything more or less right.
       </p>
       <p>
         Regardless, though, if you don't want to pull out your EPROM programmer
