@@ -26,7 +26,7 @@ table th, table td {
   vertical-align: center;
 }
 
-.menu_right {
+.blerg_navright, .menu_right {
   float: right;
   text-align: right;
 }
