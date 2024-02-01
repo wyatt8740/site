@@ -1,0 +1,32 @@
+/* This is the only CSS for this "theme." All it does is hide the "print mode"
+   link, if your browser has CSS turned on. */
+
+body {
+  font-family: "DejaVu Serif", "Times New Roman", Georgia, Garamond, serif;
+}
+
+.printmode {
+  display: none;
+}
+
+alert, .alert, .caption, imgcentercaption, .imgcentercaption {
+  display: block;
+  font-weight: bold;
+}
+
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  text-align: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  vertical-align: center;
+}
+
+.blerg_navright, .menu_right {
+  float: right;
+  text-align: right;
+}
