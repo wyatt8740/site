@@ -197,7 +197,7 @@ imgcentercaption, .imgcentercaption, .caption {
   float: left;
 }*/
 
-.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a, .menu_right > span {
+.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a {
   border-style: solid;
   border-width: 2px;
   padding: 5px;

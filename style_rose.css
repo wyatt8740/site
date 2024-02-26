@@ -1,6 +1,9 @@
-.megatokyo {
+.rose {
   display: none;
 }
+
+/* maybe change the body text color to the current blue link color,
+   and the link color to a vivid rose? */
 
 .navbox .navbar, .rightbox .menu_right {
   /* margin-top: 20px;*/
@@ -23,24 +26,24 @@
   margin-left: 28px;
 }
 
-.menu_left a, .blerg_navleft a, .menu_right a, .blerg_navright a {
+.menu_left a, .blerg_navleft a, .menu_right a, .blerg_navright a{
   border-style: solid;
   border-left-width: 4px;
   border-right-width: 4px;
 /*  border-bottom-width: 4px;
   border-top-width: 4px;*/
-  border-color: #1E3153;
+  border-color: #350026;
 }
 
 .menu_left a, .blerg_navleft a, .menu_right a, .blerg_navright a{
-/*  border-left-color: #545C7A;
-  border-top-color: #545C7A;*/
+/*  border-left-color: #670f4d;
+  border-top-color: #670f4d;*/
 /*  border-top-color: #242329;
   border-left-color: #242329;*/
 /*  border-bottom-color: #242329;
   border-right-color: #242329;*/
-  border-left-color: #1E3153;
-  border-right-color: #1E3153;
+  border-left-color: #350026;
+  border-right-color: #350026;
 }
 
 .menu_right, .blerg_navright {
@@ -53,9 +56,10 @@
 
 body {
   /*	Sparing peoples' eyes. */
-  color: #dfdfdf;
-  background-color: #32404B;
-  background-image: url("/site/res/grid_blog_megatokyo.png");
+  /* color: #dfdfdf; */
+  color: #c7c7c7;
+  background-color: #00008c;
+  background-image: url("/site/res/grid_blog_rose.png");
 /*  border-left: 10px solid #3E1B30;
   border-right: 10px solid #3E1B30;
   margin: 0px;*/
@@ -63,7 +67,7 @@ body {
 }
 
 h2,h3,h4,h5, .date-heading, .caption {
-  color: #ffffff;
+  color: #fafafa;
 }
 
 .emphatic {
@@ -71,16 +75,18 @@ h2,h3,h4,h5, .date-heading, .caption {
 }
 
 pre, code {
-  background-color: #375180;
+  background-color: #82005D;
 }
 
 /* .imgwrap, .block, .imgwrap img, .imgwrap a img */
 .codewrap, .codewrap .block {
-  background-color: #375180;
+  background-color: #82005D;
+  color: #d7d7d7;
 }
 
 code, .codebg {
-  background-color: #375180;
+  background-color: #82005D;
+  color: #d7d7d7;
 }
 
 h1 {
@@ -90,16 +96,16 @@ h1 {
   width: 90vw;
   border-width: 6px;
   /*border-color: #4A476D;*/
-  /* border-color: #545C7A;*/
+  /* border-color: #670f4d;*/
   /*border-color: #431D31;*/
   /* border-color: #324551; */
   /*color: #B9070B;*/
   color: #D43336;
-  border-color: #545C7A;
-  background-color: #1E3153;
+  border-color: #670f4d;
+  background-color: #350026;
   /* background-color: #575E75;*/
   /* background-color: #25322D;*/
-  /* background-color: #1E3153;*/
+  /* background-color: #350026;*/
 }
 
 h2.banner {
@@ -115,25 +121,20 @@ h2.banner {
   background-color: #282746;*/
   /* border-color: #4A476D;*/
   /*border-color: #33434E;*/
-  border-color: #545C7A;
-  background-color: #1E3153;
+  border-color: #670f4d;
+  background-color: #350026;
 }
 
 .postarea img {
-  box-shadow: 5px 5px 4px 0px #1E2530;
+  box-shadow: 5px 5px 4px 0px #1a0012;
 }
 
-.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a {
+.navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a, .menu_right > span {
   /* border-color: #49476D;*/
 /*  border-color: #33434E;*/
   font-weight: normal;
-  background-color: #1E3153;
+  background-color: #350026;
 }
-
-.menu_right > span.menu_legend {
-  background-color: inherit;
-}
-
 .navbar a, .navbar a:visited, .blerg_navleft a, .blerg_navright a, .blerg_navleft a:visited, .blerg_navright a:visited, .menu_left a, .menu_left a:visited, .menu_right > a, .menu_right > a:visited {
   color: #83B6DB;
 }
