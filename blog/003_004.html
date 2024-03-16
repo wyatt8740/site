@@ -274,13 +274,42 @@
         to weld them (risky), I'll either have to try taping it down, finding a
         battery clip that fits in the gap in the board, or throwing caution
         to the wind, sanding down the coin cell's sides (to create a rough
-        texture), and soldering the tabs from the old battery onto it.</p>
+        texture), and soldering the tabs from the old battery onto it.
+      </p>
       <p>
         I've done that before with alkaline cells, although I don't like doing
         it at all, and I'm always afraid I'll injure myself some day doing it.
         I'm not sure I want to risk it with an Li-ion cell, so for now I've
         just resigned myself to keeping the existing battery in here until
         I stop being able to ignore it.
+      </p>
+      <p>
+        On that note, it should be stated that the system clock adjustment
+        doesn't work quite the same here as on an x86 PC compatible. On an
+        x86 computer, you'd use <code>hwclock --systohc</code> to write the
+        current time into the system's real-time clock (so that it survives
+        a reboot). This command does not exist on my Powerbook, though;
+        instead, it uses <code>clock</code>, version 1.4 I think.
+
+      </p>
+      <p>
+        To set the time on a Powerbook with this command, you'd first set the
+        system date using the <code>date</code> command like on other Linux
+        machines; specifically, <code>date -s [timestamp]</code>, where
+        timestamp is a pretty flexibly formatted string that describes the
+        time - such as '<code>Wed 29 Jul 2020 08:03:25 PM EDT</code>'.
+      </p>
+      <p>
+        Then, you need to update the hardware clock so that it matches (more
+        or less) what the system clock says. To do that on a Power mac, it'd
+        be <code>/sbin/clock -w</code> (as root) on my Debian system to write
+        to the register in the RTC.
+      </p>
+      <p>
+        This <i>can and will</i> survive reboots or power offs, seemingly so
+        long as the main system battery is not fully depleted. The problem
+        is only if you let it sit for long periods powered off and unused,
+        or otherwise let the battery totally die in one way or another.
       </p>
       <h3>Software: Getting Rolling</h3>
       <p>
