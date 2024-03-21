@@ -107,7 +107,7 @@ h1 {
   /*color: #B9070B;*/
   color: #000000;
   border-color: #b76bb0;
-  background-color: #c78fc2;
+  background-color: #D0ACCD;
   /* background-color: #575E75;*/
   /* background-color: #25322D;*/
   /* background-color: #350026;*/
@@ -127,7 +127,7 @@ h2.banner {
   /* border-color: #4A476D;*/
   /*border-color: #33434E;*/
   border-color: #B76BB0;
-  background-color: #C78FC2;
+  background-color: #D0ACCD;
 }
 
 .postarea img {
@@ -138,7 +138,7 @@ h2.banner {
   /* border-color: #49476D;*/
 /*  border-color: #33434E;*/
   font-weight: normal;
-  background-color: #C78FC2;
+  background-color: #D0ACCD;
 }
 .navbar a, .navbar a:visited, .blerg_navleft a, .blerg_navright a, .blerg_navleft a:visited, .blerg_navright a:visited, .menu_left a, .menu_left a:visited, .menu_right > a, .menu_right > a:visited {
   color: #0000ae;
