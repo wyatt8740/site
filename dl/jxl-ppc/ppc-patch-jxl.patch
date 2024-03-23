@@ -1,0 +1,67 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c16fe5c6..db93fe72 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,16 +31,16 @@ endif()
+ 
+ project(JPEGXL LANGUAGES C CXX)
+ 
+-include(CheckCXXSourceCompiles)
+-check_cxx_source_compiles(
+-   "int main() {
+-      #if !defined(__EMSCRIPTEN__)
+-      static_assert(false, \"__EMSCRIPTEN__ is not defined\");
+-      #endif
+-      return 0;
+-    }"
+-  JPEGXL_EMSCRIPTEN
+-)
++#include(CheckCXXSourceCompiles)
++#check_cxx_source_compiles(
++#   "int main() {
++#      #if !defined(__EMSCRIPTEN__)
++#      static_assert(false, \"__EMSCRIPTEN__ is not defined\");
++#      #endif
++#      return 0;
++#    }"
++#  JPEGXL_EMSCRIPTEN
++#)
+ 
+ message(STATUS "CMAKE_SYSTEM_PROCESSOR is ${CMAKE_SYSTEM_PROCESSOR}")
+ include(CheckCXXCompilerFlag)
+diff --git a/tools/cjxl.cc b/tools/cjxl.cc
+index 10d8ba10..0f02649f 100644
+--- a/tools/cjxl.cc
++++ b/tools/cjxl.cc
+@@ -665,8 +665,11 @@ jxl::Status CompressArgs::ValidateArgs(const CommandLineParser& cmdline) {
+       // We have seen sporadic failures caused by setaffinity_np.
+       fprintf(stderr,
+               "Failed to choose default num_threads; you can avoid this "
+-              "error by specifying a --num_threads N argument.\n");
+-      return false;
++              "error by specifying a --num_threads N argument.\n"
++              "Warning: falling back to a single thread!!\n");
++      // return false;
++      num_threads = 1;
++      return true;
+     }
+     num_threads = topology.packages * topology.cores_per_package;
+   }
+diff --git a/tools/djxl.cc b/tools/djxl.cc
+index 7ea46abe..e2a89e18 100644
+--- a/tools/djxl.cc
++++ b/tools/djxl.cc
+@@ -164,8 +164,11 @@ jxl::Status DecompressArgs::ValidateArgs(const CommandLineParser& cmdline) {
+       // We have seen sporadic failures caused by setaffinity_np.
+       fprintf(stderr,
+               "Failed to choose default num_threads; you can avoid this "
+-              "error by specifying a --num_threads N argument.\n");
+-      return false;
++              "error by specifying a --num_threads N argument.\n"
++              "Warning: falling back to a single thread!!\n");
++      // return false;
++      num_threads = 1;
++      return true;
+     }
+     num_threads = topology.packages * topology.cores_per_package;
+   }

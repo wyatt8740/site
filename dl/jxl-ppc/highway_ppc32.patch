@@ -1,0 +1,60 @@
+diff --git a/debian/control b/debian/control
+index 7c60ebc..372a859 100644
+--- a/debian/control
++++ b/debian/control
+@@ -4,8 +4,7 @@ Section: misc
+ Priority: optional
+ Standards-Version: 3.9.8
+ Build-Depends: cmake,
+-               debhelper (>= 9),
+-               libgtest-dev
++               debhelper (>= 9)
+ Homepage: https://github.com/google/highway
+ 
+ Package: libhwy-dev
+diff --git a/debian/rules b/debian/rules
+index 969fc12..81dda6d 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -3,4 +3,5 @@
+ 	dh $@ --buildsystem=cmake
+ 
+ override_dh_auto_configure:
+-	dh_auto_configure -- -DHWY_SYSTEM_GTEST=ON
++	dh_auto_configure -- -DHWY_COMPILE_ONLY_SCALAR=1 -DBUILD_TESTING=FALSE
++#	dh_auto_configure -- -DHWY_SYSTEM_GTEST=ON
+diff --git a/hwy/base.h b/hwy/base.h
+index e7a859f..9e3b077 100644
+--- a/hwy/base.h
++++ b/hwy/base.h
+@@ -209,7 +209,7 @@
+ #define HWY_ARCH_X86 0
+ #endif
+ 
+-#if defined(__powerpc64__) || defined(_M_PPC)
++#if defined(__powerpc64__) || defined(_M_PPC) || defined(__POWERPC__) || defined(__powerpc__)
+ #define HWY_ARCH_PPC 1
+ #else
+ #define HWY_ARCH_PPC 0
+diff --git a/hwy/targets.h b/hwy/targets.h
+index bf2665a..a280b3d 100644
+--- a/hwy/targets.h
++++ b/hwy/targets.h
+@@ -14,7 +14,7 @@
+ 
+ #ifndef HIGHWAY_HWY_TARGETS_H_
+ #define HIGHWAY_HWY_TARGETS_H_
+-
++#define HWY_COMPILE_ONLY_SCALAR
+ #include <vector>
+ 
+ // For SIMD module implementations and their callers. Defines which targets to
+@@ -34,7 +34,7 @@
+ // #define HWY_BROKEN_TARGETS HWY_AVX3
+ 
+ // Uncomment to definitely avoid generating those target(s):
+-// #define HWY_DISABLED_TARGETS HWY_SSE4
++ #define HWY_DISABLED_TARGETS HWY_SSE4
+ 
+ // Uncomment to avoid emitting BMI/BMI2/FMA instructions (allows generating
+ // AVX2 target for VMs which support AVX2 but not the other instruction sets)
