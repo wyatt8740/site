@@ -59,7 +59,7 @@ body {
   /* color: #dfdfdf; */
   color: #000000;
   background-color: #25463b;
-  background-image: url("/site/res/grid_blog_lightrose.png");
+  background-image: url("./res/grid_blog_lightrose.png");
 /*  border-left: 10px solid #3E1B30;
   border-right: 10px solid #3E1B30;
   margin: 0px;*/
@@ -149,7 +149,9 @@ a {
   /* color: #AE3182;*/
   /* color: #83B6DB; */
   /* color: #E48BCA; */
-  color: #000098;  
+  color: #000098;
+  /* color: #9E061B; */
+  /* color: #9E061B; */
 }
 
 a:visited {
