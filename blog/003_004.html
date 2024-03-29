@@ -817,6 +817,118 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         Another downside is that it ruined all other window managers for me
         (and MS Windows).
       </p>
+      <h3 id="powerbook-fan">Fan Control/Tuning</h3>
+      <p>
+        The fans on the Powerbook G4 are quite loud when they kick in, even at
+        their lowest speed; under Linux, by default they kick in if you do
+        almost anything on the system&ndash; that is, when the CPU or GPU
+        (probably CPU, I think) hits 50 degrees celsius. This is quite nice for
+        lap use/comfort, since powerbooks (and all power-hungry apple metallic
+        laptops, really) like to use the human's legs as a heat sink, but even
+        after I changed the thermal paste and pads (not a fun job, I'll add),
+        the temperatures barely improved, if at all! So I did some digging.
+      </p>
+      <p>
+        The fans on the powerbook are controlled by an ADT7460 chip (reference:
+        search for <code>Apple "051-6809" "PB15"</code>; you want to find a
+        PDF). The documentation in the linux kernel (for the
+        <code>ad746x</code> driver) states that by setting a field called
+        <code>limit_adjust</code> in sysfs, I can tweak the temperature the
+        fans come on at relative to the default threshold. So setting it to
+        <code>-5</code> would make it come on at 45 degrees, and <code>5</code>
+        would make it come on at 60 degrees, for instance.
+      </p>
+      <p>
+        So the next question becomes, "what's a safe temperature?" - and the
+        answer seems to be that non-military/industrial PowerPC 7447A chips
+        are rated for a die junction temperature of up to 105 degrees celsius.
+        And at least the 7447A chips, have a thermal sensor built into the chip
+        itself specifically to measure the die junction temperature. Not all
+        other "G4" CPU's do, though, so check what you have by reading
+        <code>/proc/cpuinfo</code>. If you can stand it I'd suggest just
+        leaving the setting alone, but even if we allow for a margin of error
+        of plus or minus 20 degrees celsius on heat measurements, that means we
+        could set <code>limit_adjust</code> to <code>20</code> safely and have
+        the fan come on at 70 degrees.
+      </p>
+      <p>
+        I decided I'd like to be able to control this easily without using sudo
+        all the time, so I decided to write a (very safe, I'm sure...) C
+        program with <code>root</code> as its owner that has the
+        <code>setuid</code> bit set. This means the program runs as root - so
+        you may want to try an alternative solution, like writing a udev rule.
+      </p>
+      <p>
+        I don't <i>think</i> the code is bad, but it's a risk it might be
+        better not to take.
+      </p>
+      <p>
+        Regardless, you can find my C program under my
+        <a href="https://gitlab.com/wyatt8740/misc-c-tools.git">misc-c-tools</a>
+        repository, in the <code>powerbook</code> directory. To make things
+        even more comfy for myself it can be coupled with this shell script.
+        Place your compiled setuid C program in ~/bin along with this script
+        and add <code>"$HOME"'/bin'</code> to your <code>PATH</code>
+        environment variable. I just call the script <code>fan</code>.
+      </p>
+      <div class="codewrap">
+        <pre class="block"> 
+#! /usr/bin/env sh
+# View or adjust powerbook fan temperature thresholds for activation.
+# See the datasheet of your system's CPU to figure out a safe range.
+# PowerPC 7447A: maximum temperature: 105 degrees celsius
+# https://www.nxp.com/docs/en/data-sheet/MPC7447AEC.pdf
+
+# NOTE: with some chips (like PowerPC 7447A), I seem to recall
+# reading somewhere that they can have measurements off by a fair amount
+# in either direction, but I think it's fair to assume that +-20 degrees
+# is *plenty* of wiggle room. So that'd mean it'd be safe to set the limit to
+# 20, probably (which would make the fan threshold 70 degrees). I usually stay
+# under 10.
+
+# fanlimit is a setuid binary that this script passes arguments to. Gee, that
+# sure seems safe!
+# It adjusts the threshold temperature relative to its "default" threshold.
+# If the default threshold is 50 degrees Celsius, then running this script
+# with the number '6' as an argument would make the fan threshold become
+# 56 degrees Celsius. Likewise, '-6' would make it become 44 degrees Celsius.
+
+details() {
+  CTRL_PATH='/sys/devices/platform/temperatures'
+  echo 'Limit adjust:     '"$(cat "$CTRL_PATH"'/limit_adjust')"
+  echo "Pref'd Fan Speed: ""$(cat "$CTRL_PATH"'/specified_fan_speed')"
+  echo '--'
+  echo "Sensor 1:"
+  echo "  Temperature:    ""$(cat "$CTRL_PATH"/sensor1_temperature)"
+  echo "  Threshold:      ""$(cat "$CTRL_PATH"/sensor1_limit)"
+  echo "  Fan speed:      ""$(cat "$CTRL_PATH"/sensor1_fan_speed)"
+  echo "Sensor 2:"
+  echo "  Temperature:    ""$(cat "$CTRL_PATH"/sensor2_temperature)"
+  echo "  Threshold:      ""$(cat "$CTRL_PATH"/sensor2_limit)"
+  echo "  Fan speed:      ""$(cat "$CTRL_PATH"/sensor2_fan_speed)"
+}
+
+if [ "$#" -eq 0 ]; then
+  details
+else
+  "$HOME"'/bin/fanlimit' "$@"
+  details
+fi
+        </pre>
+      </div>
+      <p>
+        Then, using it is as easy as running the command <code>fan</code>
+        in a terminal to view temperatures and settings, or
+        <code>fan &lt;number&gt;</code> to adjust the fan's activation
+        threshold to (baseline) plus (number). In other words,
+        <code>fan 6</code> would make my fan come on at 56 degrees celsius.
+      </p>
+      <p>
+        I wouldn't go higher than 20, but there's nothing to stop you from
+        doing that, if you want. I just really think the cooler the better
+        for the laptop's longevity, so I'm okay with the fan coming on around
+        55-60 degrees celsius.
+      </p>
       <h3>To-Do (Article Under Construction):</h3>
       <p>
         I'll try to come back to this and expand on it later. There's
@@ -824,20 +936,6 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         that I think I can cover (consider it an informative teaser, of sorts):
       </p>
       <ul>
-        <li>Curbing overly-aggressive (and loud) fans</li>
-        <ul>
-          <li>The 7447a is rated for 105°C max. die junction temperature</li>
-          <li>The onboard sensor is wildly inaccurate, but still within ±20°C,
-            I think</li>
-          <li>Kernel makes the fans kick on at 50°C, by default, which is
-            basically the temperature it reaches when starting a web browser
-            or otherwise not being idle</li>
-          <li>Powerbook fans are LOUD</li>
-          <li>My solution: bump threshold for activation up by 5-8°C or so,
-            resulting in a far quieter system while still well within the safe
-            temperature range
-          </li>
-        </ul>
         <li>Fixing Firefox 52/Seamonkey 2.49 on PowerPC:</li>
         <ul>
           <li>Official Debian package was really buggy/crash-prone</li>
