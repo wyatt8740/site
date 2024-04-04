@@ -189,6 +189,9 @@
           </ul>
         </li>
         <li>
+          <a href="#pc9801_buying_wyatt_touhou">Touhou Project Notes</a>
+        </li>
+        <li>
           <a href="#pc9801_buying_wyatt_maintenance">Maintenance</a>
           <ul>
             <li><a href="#pc9801_buying_wyatt_bios_rom_dumping">Preventative Maintenance: Back Up Your BIOS ROM('s)!! (ROM Dumping)</a></li>
@@ -4683,6 +4686,57 @@ fi
       </p>
       <p>
         <b>Download: <a href="pc9801_1/dl/floppy_internal_extender.zip">floppy_internal_extender.zip</a></b> &ndash; 955 KiB
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h2 id="pc9801_buying_wyatt_touhou">Touhou Project Notes</h2>
+      <p>
+        The Touhou games are a huge reason a lot of people might buy a PC-98,
+        and I have grown to enjoy them, so maybe they're worth mentioning in a
+        special section.
+      </p>
+      <p>
+        If you buy a "CanBe" or "Cereb" series PC-98 (Pentium era, uses a sound
+        chip equivalent to a PC-9801-118 card), they use a YMF297 FM chip
+        instead of a YM2608, and this presents some compatibility issues with
+        the sound drivers used by the Touhou games (and other DOS games). But
+        if all you care about is Touhou, I'm happy to tell you that these
+        issues are fixable! So don't feel like those cheap Pentium-class
+        CanBe's you see are utterly worthless! I'd not recommend one if you
+        want to play a LOT of DOS games, but for Touhou it's plenty.
+      </p>
+      <h3>Touhou 1 (Highly Responsive to Prayers) with CanBe / Cereb /
+        PC-9801-118 Sound Sources</h3>
+      <p>
+        The first Touhou game uses a very different driver than all later
+        Touhou PC-98 games. There are notes in Japanese
+        <a href="http://j02.nobody.jp/jto98/n_desk_sound/canbsdi.htm">on this page</a>
+        that describe how to make Touhou 1 run by downgrading a driver.
+      </p>
+      <p>
+        "<a href="https://www.ne.jp/asahi/soft/mino/minosoft/railway/index.htm">Railway Goes On Far Away</a>"
+        is a free game that contains a working version of the
+        <code>MDRV98.COM</code> file you need to run the first Touhou game on a
+        CanBe. Simply take <code>MDRV98.COM</code> and replace the file in
+        your Touhou 1 installation directory (I would make a backup of its
+        <code>MDRV98.COM</code> as well, first). This downgrades the driver from
+        3.4F to 3.4E.
+      </p>
+      <h3>Touhou 2 (Story of Eastern Wonderland) with CanBe / Cereb /
+        PC-9801-118 Sound Sources</h3>
+      <p>
+        The second touhou game has a patch, but that patch was not included on
+        the game disks. It took me a while to find it, but it can be downloaded
+        <a href="http://www.kt.rim.or.jp/~aotaka/am/get.htm">from here</a>.
+        Run the program (or extract it; 7-zip will do it like an LZH file) and
+        then copy the files into your Touhou 2 install folder. Then start the
+        game by running <code>GAMECB.BAT</code>.
+      </p>
+      <h3>Touhou 3, 4, and 5 with CanBe / Cereb / PC-9801-118 Sound Sources</h3>
+      <p>
+        These games came bundled with a canbe patch version. Just run canbe.exe
+        (or manually extract with 7-zip, like with Touhou 2) and run the
+        unpacked <code>GAMECB.BAT</code> to launch the game, just like with
+        Touhou 2.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2 id="pc9801_buying_wyatt_maintenance">Maintenance</h2>
