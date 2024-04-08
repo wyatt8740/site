@@ -73,6 +73,33 @@
         </p>
       </div>
       <hr/>
+      <div class="alert-heading"><b><u>Helping Me Out</u></b></div>
+      <p>
+        I have sunk a <i><b>lot</b></i> of money into the PC-98 and even more
+        of my time collecting and writing all of this documentation. I haven't
+        had work since December, and while I've stopped spending on the PC-98
+        since then, I've continued writing even as I look for work.
+      </p>
+      <p>
+        I'm not going to stop writing this if I have any say in the matter,
+        regardless - but I'd like to please ask you to consider a donation
+        as a thanks if you've found anything here helpful. I need to keep
+        a roof over my head and I'd really appreciate it if you'd like to
+        thank me.
+      </p>
+      <p>
+        Alternately, if you or someone you know would like to consider hiring
+        me, would you please consider <a href="https://tech.lgbt/@wyatt8740">getting in touch</a>?
+        I'd also be happy to just give one on one lessons, if you'd like to
+        pick my brain about something or get some guidance.
+      </p>
+      <p>
+        You can donate or commission me (including for lessons)
+        <a href="https://ko-fi.com/wyatt8740">here on Ko-Fi</a>;
+        you'll get fastest responses if you also contact me via that link in
+        the previous paragraph. Thanks so much for your consideration! :)
+      </p>
+      <hr/>
       <p><span class="date-heading"><i>1 Nov 2023</i></span> [<a class="permalink" href="./011_012.html#pc9801-1">Permanent link</a>]<br/>
         A good friend of mine recenty convinced me to dive headfirst down the
         rabbit hole of things I didn't really understand: old Japanese domestic
@@ -160,7 +187,11 @@
                 </li>
                 <li><a href="#pc9801_buying_wyatt_mouse">Getting a Mouse</a></li>
                 <li><a href="#pc9801_buying_wyatt_joystick">Getting a Joystick or Game Pad</a></li>
-                <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a></li>
+                <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a>
+                  <ul>
+                    <li><a href="#pc9801_buying_wyatt_ossc">OSSC - Open Source Scan Converter</a></li>
+                  </ul>
+                </li>
                 <li><a href="#pc9801_buying_wyatt_hdd">Getting a Hard Drive</a></li>
                 <li><a href="#pc9801_buying_wyatt_odd">Getting an Optical Drive</a>
                   <ul>
@@ -3782,7 +3813,8 @@
         before I felt comfortable turning it on. Thankfully there's an outlet
         on the back of the Epson that I can use to daisy-chain it.
       </p>
-      <h4>OSSC - Open Source Scan Converter</h4>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h4 id="pc9801_buying_wyatt_ossc">OSSC - Open Source Scan Converter</h4>
       <p>
         Another approach is to use an existing western monitor that can't do
         24KHz natively by using an external digital video scaler that
@@ -3834,6 +3866,109 @@
         a small screen. The picture quality from my OSSC is good; any
         screenshot you see in my post here is originally fed through my VGA
         splitter, then OSSC, and eventually into my HDMI capture USB.
+      </p>
+      
+      <p>
+        The optimal settings I have found for my OSSC so far, for the output
+        from my 486GR, were discovered by running "MPS" (Multi Paint System
+        or Maguro Paint System/Tuna Paint) and drawing a red line around the
+        permimeter of the screen to determine horizontal and vertical
+        back porch &amp; front porch settings.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_ossc_sampling_settings">
+        <a href="pc9801_1/full/ossc_settings_sampling.png">
+          <img src="pc9801_1/ossc_settings_sampling.png"
+               alt="Screenshot of MPS on PC98 with a red box around outside of
+                    screen and the Open Source Scan Converter advanced sampling
+                    settings menu opened. Values are:
+                    H. samplerate: 848
+                    H. s.rate frac: .00
+                    H. synclen: 64
+                    H. backporch: 85
+                    H. active: 640
+                    V. synclen: 3
+                    V. backporch: 31
+                    V. active: 400
+                    Sampling phase: 135 degrees"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Sampling settings to get a nice centered crisp picture on my
+          PC-486GR with an OSSC.<br/>
+          These settings might vary wildly for your system, but give these
+          a shot!
+        </div>
+      </div>
+      <p>
+        Then I filled the whole screen with black and adjusting the black
+        levels (red, green, and blue offsets, or "brightness") until a color
+        picker on my computer that was showing a picture from HDMI capture of
+        the OSSC was showing numerically close RGB values for &lt;1,0,0&gt;,
+        &lt;0,1,0&lt;, and &lt;0,0,1&gt;. Since RGB values are between zero and
+        15 on the PC-98, a 24-bit PC RGB value would be &lt;16,0,0&gt;,
+        &lt;0,16,0&gt;, and &lt;0,0,16&gt; respectively. But I just got
+        somewhere close to that and said, "that's good."
+      </p>
+      <p>
+        For "white levels" (red, green, and blue gain, or "contrast"), I brought
+        the gain controls down until RGB &lt;15,15,15&gt; was just barely
+        reaching or very close to reaching PC RGB &lt;255,255,255&gt; - so that
+        bringing any given one of the sub-colors down by one on the PC-98 would
+        drop the brightness proportionately on PC RGB. This is to avoid
+        "overexposing," or clipping the highlights.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_ossc_rgb_settings">
+        <a href="pc9801_1/full/ossc_settings_rgb.png">
+          <img src="pc9801_1/ossc_settings_rgb.png"
+               alt="Screenshot of MPS on PC98 with a solid near-black
+                    (RGB 1,0,0) screen and the Open Source Scan Converter
+                    'Video In Proc' settings menu opened. Values are:
+                    Video LPF: Auto
+                    YPbPr in ColSpa: Rec. 601
+                    R/PR offset: 146
+                    G/Y offset: 148
+                    B/Pb offset: 147
+                    R/Pr gain: 17
+                    G/Y gain: 9
+                    B/Pb gain: 10
+                    Pre-ADC Gain: 5
+                    Clamp/ALC offset: 0
+                    ALC V filter: 512 lines
+                    ALC H filter: 16 pixels"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Even just visually seeing if bumping values up changes the picture is
+          useful,<br/>if you don't have a capture USB and are just trying to make
+          the picture nice on your monitor.
+        </div>
+      </div>
+      <p>
+        By the way, to adjust the palette in MPS, you left click on the numbers
+        under the R, G, and B rows in the palette to raise them by one, or right
+        click to lower them by one.
+      </p>
+      <p>
+        I also adjusted the Pre-ADC gain down for a coarser adjustment before
+        fine-tuning.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_ossc_save_settings">
+        <a href="pc9801_1/full/ossc_settings_save.png">
+          <img src="pc9801_1/ossc_settings_save.png"
+               alt="O.S.S.C. screenshot with a DOS prompt in the background. the
+                    O.S.S.C. display shows me about to save profile zero after
+                    making these adjustments.
+                    "/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Don't forget to save a preset when done!<br/>
+          Maybe also associate the RGBHV input with your preset, so you don't
+          have to manually load it after switching the OSSC on.
+        </div>
+      </div>
+      <p>
+        You may want to not only save a profile, but also export your settings
+        to a micro SD card after doing this. Note that settings often don't
+        survive firmware updates and backups from older OSSC firmwares might
+        not be able to be restored, so keeping notes might be important, too.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_hdd">Getting a Hard Drive</h3>
