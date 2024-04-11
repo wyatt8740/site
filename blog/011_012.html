@@ -221,6 +221,11 @@
           </ul>
         </li>
         <li><a href="#pc9801_buying_wyatt_touhou">Touhou Project Notes</a></li>
+        <li><a href="#pc9801_buying_wyatt_dos_help">Japanese MS-DOS Help</a>
+          <ul>
+            <li><a href="#pc9801_buying_wyatt_dos_sedit">SEDIT: NEC MS-DOS's Built-In Text Editor</a></li>
+          </ul>
+        </li>
         <li>
           <a href="#pc9801_buying_wyatt_maintenance">Maintenance</a>
           <ul>
@@ -4247,8 +4252,8 @@
       </p>
       <div class="codewrap">
         <pre class="block">B:
-          cd &yen;
-          expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
+cd &yen;
+expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
       </div>
       <p>
         If you don't have the <code>A:&yen;DOS</code> directory, then you can
@@ -4303,21 +4308,21 @@
       </p>
       <div class="codewrap">
         <pre class="block">FILES=30
-          BUFFERS=10
-          SHELL=&yen;COMMAND.COM /P
+BUFFERS=10
+SHELL=&yen;COMMAND.COM /P
 
-          DEVICE=A:&yen;DOS&yen;HIMEM.SYS
-          DEVICE=A:&yen;DOS&yen;EMM386.EXE /UMB /P=64
+DEVICE=A:&yen;DOS&yen;HIMEM.SYS
+DEVICE=A:&yen;DOS&yen;EMM386.EXE /UMB /P=64
 
-          DEVICE=A:&yen;DOS&yen;SETVER.EXE
-          DEVICEHIGH=A:&yen;DOS&yen;PRINT.SYS /U
-          DEVICE=A:&yen;LOGITEC&yen;FAST301.EXE
-          DEVICE=A:&yen;LOGITEC&yen;ASPILOG.SYS
+DEVICE=A:&yen;DOS&yen;SETVER.EXE
+DEVICEHIGH=A:&yen;DOS&yen;PRINT.SYS /U
+DEVICE=A:&yen;LOGITEC&yen;FAST301.EXE
+DEVICE=A:&yen;LOGITEC&yen;ASPILOG.SYS
 
-          DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_101 /I5
+DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_101 /I5
 
-          LASTDRIVE=Q
-          DOS=HIGH,UMB</pre>
+LASTDRIVE=Q
+DOS=HIGH,UMB</pre>
       </div>
       <p>
         I believe the important bits there are the lines with
@@ -4370,10 +4375,10 @@
       </p>
       <div class="codewrap">
         <pre class="block">PATH A:&yen;DOS;A:&yen;
-          SET TEMP=A:&yen;DOS
-          SET DOSDIR=A:&yen;DOS
-          A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:Q
-          A:&yen;DOS&yen;SMARTDRV.EXE /X</pre>
+SET TEMP=A:&yen;DOS
+SET DOSDIR=A:&yen;DOS
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:Q
+A:&yen;DOS&yen;SMARTDRV.EXE /X</pre>
       </div>
       <p>
         You can ignore the <code>SMARTDRV</code> line; it's for hard drive data
@@ -4405,20 +4410,20 @@
       </p>
       <div class="codewrap">
         <pre class="block">DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_101 /I5
-          DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_102 /I6</pre>
+DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_102 /I6</pre>
       </div>
       <p>
         Partial <code>AUTOEXEC.BAT</code> file:
       </p>
       <div class="codewrap">
         <pre class="block">A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:P
-          A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
       </div>
       <p>
         <b>One IDE Drive and One SCSI Drive</b><br/>
         You should also be able to mix and match drivers. I am assuming a
         driver file for the IDE drive is NECCDM.SYS, but <b>you may need
-          a different file.</b> If you have an internal IDE drive and an
+a different file.</b> If you have an internal IDE drive and an
         external SCSI drive, you might try something like this:
       </p>
       <p>
@@ -4426,18 +4431,18 @@
       </p>
       <div class="codewrap">
         <pre class="block">REM NEC internal IDE CD drive doesn't have a SCSI ID
-          DEVICE=A:&yen;DOS&yen;NECCDM.SYS /D:CD_101
-          REM External SCSI CD drive is SCSI ID 5
-          DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_102 /I5</pre>
+DEVICE=A:&yen;DOS&yen;NECCDM.SYS /D:CD_101
+REM External SCSI CD drive is SCSI ID 5
+DEVICE=A:&yen;DOS&yen;CDSD.SYS /D:CD_102 /I5</pre>
       </div>
       <p>
         Partial <code>AUTOEXEC.BAT</code> file:
       </p>
       <div class="codewrap">
         <pre class="block">REM NEC internal IDE CD drive
-          A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:P
-          REM External SCSI CD drive
-          A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_101 /L:P
+REM External SCSI CD drive
+A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
       </div>
       <p>
         One final reminder: I do not know for sure that all of this works
@@ -4483,7 +4488,7 @@
       </p>
       <ul>
         <li>
-          A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
+A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
           shell)
         </li>
         <li><code>ufiformat</code></li>
@@ -4902,6 +4907,25 @@
         You can also use <a href="https://www.vector.co.jp/soft/dos/util/se017776.html">LHE</a>
         to unpack LZH files. <code>lhe CANBE.LZH .</code> will unpack the file
         to your current directory.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h2>Japanese MS-DOS Help</h2>
+      <p>
+        Unfortunately, even here, you can't escape from Microsoft's eternal
+        stranglehold on operating systems. But NEC's MS-DOS is kind of
+        different from western MS-DOS.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_dos_sedit">SEDIT: NEC MS-DOS's Built-In Text Editor</h3>
+      <p>
+        How you use this changes kind of wildly between versions. Basically I
+        just run <code>sedit [file to edit]</code> so I don't have to figure
+        out how to load a file, and then saving and exiting differs.
+        I think on DOS version 5 it's F1 followed by 'S' to save, and maybe
+        'Q' to quit. On DOS 3.3 I just hit f10 and choose the top item in the
+        menu to both save and quit. I usually use
+        <a href="https://www.vector.co.jp/soft/dos/writing/se005817.html">"JED"</a>
+        instead, which is English and also feels more emacs-y.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h2 id="pc9801_buying_wyatt_maintenance">Maintenance</h2>
