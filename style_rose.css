@@ -75,7 +75,7 @@ h2,h3,h4,h5, .date-heading, .caption {
 }
 
 pre, code {
-  background-color: #82005D;
+  background-color: #C495C1;
 }
 
 .quote {
@@ -85,13 +85,13 @@ pre, code {
 
 /* .imgwrap, .block, .imgwrap img, .imgwrap a img */
 .codewrap, .codewrap .block {
-  background-color: #824470;
-  color: #d7d7d7;
+  background-color: #C495C1;
+  color: #000000;
 }
 
 code, .codebg {
-  background-color: #824470;
-  color: #d7d7d7;
+  background-color: #C495C1;
+  color: #000000;
 }
 
 h1 {
