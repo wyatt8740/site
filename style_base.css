@@ -77,7 +77,7 @@ h3.tagline {
   text-align: center;
 }
 
-h4, h3, h2, p {
+h5, h4, h3, h2, p {
   padding-left: 6px;
   padding-right: 6px;
 }
@@ -89,7 +89,7 @@ h2.banner {
   padding: 6px;
 }
 
-h3, h4 {
+h3, h4, h5 {
   margin: 0 auto;
 }
 

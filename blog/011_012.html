@@ -5325,7 +5325,13 @@ A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
         motherboard, but I don't know if other things might need changing. And
         you'd defintely have to know how to solder to even try that. 
       </p>
-      <h4>Touhou</h4>
+      <h4>The Touhou Problem</h4>
+      <h5>See also: <a href="#pc9801_buying_wyatt_touhou">Touhou Project Notes</a></h5>
+      <p>
+        The Touhou games present a special challenge, if you want your
+        old DOS game compatible system to also be able to run it at a good
+        speed.
+      </p>
       <p>
         <i><b>The Ce2 and Cs2 (and the stock 486GR, for that matter) are
             not ideal if you want to play Touhou,</b></i> since the Ce2 and
@@ -5334,18 +5340,29 @@ A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
         course replace that with a different one by soldering it in. Or look
         for a pretty uncommon accelerator board that piggybacks on top of the
         soldered-down CPU. I haven't seen one of them for sale in months.
-        The 486GR as well as most of NEC's "A" line (and maybe B line?) have
-        CPU sockets.
+        The 486GR, several other Epson models, and most of NEC's "A" line (and
+        maybe B line?) have CPU sockets.
+      </p>
+      <h4>So What Should I get?</h4>
+      <p>
+        <b>If you don't need Touhou,</b> then almost definitely a 9821Ce2 or
+        9821Cs2. They are in a sweet spot for compatibility with older stuff
+        and having 86 sound built in. You may also consider a 9821Ce or 9821Cs
+        (sans 2); those have a 486 ODP socket on them. The downsides are that
+        the Ce and Cs are older, and only have two C-bus slots, and use SCSI
+        drives (both optical and hard disk) internally... and SCSI stuff tends
+        to cost more. If you keep a hard disk inside, then that means you won't
+        need a C-bus card for that, so I'd say both slots would likely be
+        filled by an 86 sound card and a MIDI card, if it were me.
       </p>
       <p>
-        If you like the smaller sized computers, you may want to instead
-        consider a 9821Ce or 9821Cs (sans 2); those have a 486 ODP socket on
-        them. The downsides are that the Ce and Cs are older, and only have two
-        C-bus slots, and use SCSI drives (both optical and hard disk)
-        internally... and SCSI stuff tends to cost more. If you keep a hard
-        disk inside, then that means you won't need a C-bus card for that, so
-        I'd say both slots would likely be filled by an 86 sound card and a
-        MIDI card, if it were me.
+        But with that being said, <b>I have been told by a Japanese native(?)
+          that the Ce (not Ce2) has an "NEC check" in its onboard SCSI
+          controller;</b> that means it might not let you use non-NEC hard
+        drives and/or optical drives if they're connected. That kind of ruins a
+        lot for me. So I'd suggest a Ce2, either an Epson model with an 86
+        sound board + SCSI controller, or a Ce2/Cs2. Or A-MATE series if you
+        are prepared to replace every electrolytic capacitor on it.
       </p>
       <p>
         If you have a computer with an ODP socket instead of a normal one, then
@@ -5363,6 +5380,37 @@ A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
         as painful as it can be with SCSI drives. And the motherboards and
         power supplies all worked just fine, So maybe they've actually aged
         better than the A series did?
+      </p>
+      <p>
+        <b>If you need Touhou and also other DOS games,</b> get a recapped
+        A-MATE (one of the PC-9821Ap* models from the list above), or any 25MHz
+        or faster 486-class PC-98 or Epson 98 clone with an ODP socket that you
+        can put a 486DX4 into. <b>You will also need a voltage converter board
+          or you might fry the DX4 when you put it in.</b>
+      </p>
+      <p>
+        <b>If you <i>ONLY</i> need Touhou,</b> get either a 9821 C166/C200/C233
+        "cereb," or a PC-9801-118 sound board plus a V166/V200/V233 "ValueStar"
+        and then use the "CanBe" sound patches for the games. These have a 166
+        to 233 MHz Pentium MMX CPU in them, and will provide a VERY smooth
+        experience with minimal slowdown. Information on the "CanBe" patches
+        can be found in the <a href="#pc9801_buying_wyatt_touhou">"Touhou Project
+          Notes"</a> section on this page. You may even have a superior
+        experience to anyone who uses any kind of 486. Even MIDI in Touhou 2
+        can work if you change the address of the GamePort in the BIOS without
+        needing any more boards. But you'll have to use a joystick-to-keyboard
+        adapter if you want to use a gamepad or MSX/Atari style Joystick.
+      </p>
+      <p>
+        The ValueStar models do not have a YMF288 on board for sound, so you
+        will need to get a PC-9801-118 card or solder a YMF288 to the board
+        yourself (and possibly support circuitry).
+      </p>
+      <p>
+        You could even get multiple PC-98's; one Ce2, one Pentium-class for
+        Touhou, and maybe even a third PC-98 (like a 9801V* or 9801RA) for very
+        old games that run best on an NEC V30 CPU. Most stuff runs fine on a
+        Ce2, though, so the third might be optional.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_maintenance_capacitors">
