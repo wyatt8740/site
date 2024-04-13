@@ -31,11 +31,8 @@ cleanupfunc() # catch ^C and similar and delete temp files before exiting
   exit 0
 }
 trap cleanupfunc HUP INT QUIT ABRT TERM
-# remove trap for ^C and other signals that would kill the program
-trap - HUP INT QUIT ABRT TERM
-# run clean up (delete temp files)
 
-TMPFILE="$(mktemp -t 'urlgen_gdrive_XXXXXX.png')"
+TMPFILE="$(mktemp -t 'urlgen_gdrive_XXXXXX.txt')"
 # echo "temp file ""$TMPFILE"
 # takes a 'virus scan warning' page and generates a downloadable url for it
 while [ "$#" -gt 0 ]; do
@@ -61,5 +58,7 @@ while [ "$#" -gt 0 ]; do
   shift 1
 done
 
-
+# remove trap for ^C and other signals that would kill the program
+trap - HUP INT QUIT ABRT TERM
+# run clean up (delete temp files)
 cleanupfunc
