@@ -1,0 +1,65 @@
+#! /usr/bin/env sh
+# when given a link to the 'antivirus scan can't be done' page, this downloads
+# the file from the page.
+
+# mktemp and wget are the only non-posix things here, I think.
+# should be relatively easy to substitute curl or something for wget, and I
+# think mktemp could be replaced by some static path if you don't think it'll
+# run in parallel. Or make your own random file generation script/program.
+
+#https://drive.usercontent.google.com/download
+#?id=[redacted]
+#&export=download
+#&authuser=0
+#&confirm=t
+#&uuid=[redacted]
+#&at=[redacted]
+
+# 'at' parameter ('access token?') seems to be absent unless all cookies are
+# correctly fed in, but does not seem to be necessary for a DL to work.
+
+getkeyval() {
+  sed 's/^.*\"'"$1"'\" value=\"//;s/\".*//'
+  echo
+}
+
+cleanupfunc() # catch ^C and similar and delete temp files before exiting
+{
+  if [ -e "$TMPFILE" ]; then
+    rm -f "$TMPFILE"
+  fi
+  exit 0
+}
+trap cleanupfunc HUP INT QUIT ABRT TERM
+# remove trap for ^C and other signals that would kill the program
+trap - HUP INT QUIT ABRT TERM
+# run clean up (delete temp files)
+
+TMPFILE="$(mktemp -t 'urlgen_gdrive_XXXXXX.png')"
+# echo "temp file ""$TMPFILE"
+# takes a 'virus scan warning' page and generates a downloadable url for it
+while [ "$#" -gt 0 ]; do
+
+  echo "$1" | grep -q drive.google.com/file/d/
+  if [ "$?" -eq 0 ]; then
+    # get av warning link from main dl/preview page url
+    driveid="$(echo "$1" | sed 's!^.*drive.google.com/file/d/!!;s!/.*!!')"
+    avurl='https://drive.usercontent.google.com/download?id='"$driveid"'&export=download&authuser=0'
+  else
+    avurl="$1"
+  fi
+  wget --quiet --user-agent='Mozilla/5.0 (X11; Linux x86_64; rv:116.0) Gecko/20100101 Firefox/116.0' "$avurl" -O "$TMPFILE"
+  driveid='?id='"$(getkeyval "id" < "$TMPFILE")"
+  driveexport='&export='"$(getkeyval "export" < "$TMPFILE")"
+  driveauthuser='&authuser='"$(getkeyval "authuser" < "$TMPFILE")"
+  driveconfirm='&confirm='"$(getkeyval "confirm" < "$TMPFILE")"
+  driveuuid='&uuid='"$(getkeyval "uuid" < "$TMPFILE")"
+  #  driveat='&at='"$(getkeyval "at" < "$TMPFILE")"
+  dlurl='https://drive.usercontent.google.com/download'"$driveid""$driveexport""$driveauthuser""$driveconfirm""$driveuuid"
+  echo "$dlurl"
+  wget --content-disposition --user-agent='Mozilla/5.0 (X11; Linux x86_64; rv:116.0) Gecko/20100101 Firefox/116.0' "$dlurl"
+  shift 1
+done
+
+
+cleanupfunc
