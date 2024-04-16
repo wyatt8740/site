@@ -5130,39 +5130,39 @@ fi
       <h4>Epson PC-486GR BIOS ROM Checksums</h4>
       <div class="codewrap">
         <pre class="block"> 
-          $ (for file in BIOS.ROM SOUND.ROM SOUND_26_486GR.ROM FONT.ROM; do
-          echo "$file"':'
-          printf 'CRC32:\t '; crc32 "$file"
-          printf 'MD5:\t ';   md5sum &lt; "$file"
-          printf 'SHA-1:\t '; sha1sum &lt; "$file"
-          printf 'SHA-256: '; sha256sum &lt; "$file"; echo; done
-          ) |sed 's/ -.*//'
+$ (for file in BIOS.ROM SOUND.ROM SOUND_26_486GR.ROM FONT.ROM; do
+echo "$file"':'
+printf 'CRC32:\t '; crc32 "$file"
+printf 'MD5:\t ';   md5sum &lt; "$file"
+printf 'SHA-1:\t '; sha1sum &lt; "$file"
+printf 'SHA-256: '; sha256sum &lt; "$file"; echo; done
+) |sed 's/ -.*//'
 
-          BIOS.ROM:
-          CRC32:   9c4807a1
-          MD5:     5db6205995036a8c034015f28d8e62df 
-          SHA-1:   22a9027352e926cc64dea59d8e4011749380d9f9 
-          SHA-256: 95c319bf81533c8ee9cf7f93b75ef0d6aaa8565f384b9c584c6e45cf2c1d8d85 
+BIOS.ROM:
+CRC32:   9c4807a1
+MD5:     5db6205995036a8c034015f28d8e62df 
+SHA-1:   22a9027352e926cc64dea59d8e4011749380d9f9 
+SHA-256: 95c319bf81533c8ee9cf7f93b75ef0d6aaa8565f384b9c584c6e45cf2c1d8d85 
 
-          (**Note: NEC's PC-9801-86 sound card; on-board Epson 26 sound ROM disabled in BIOS settings**)
-          SOUND.ROM:
-          CRC32:   80eabfde
-          MD5:     42c271f8b720e796a484cc1165ff4914 
-          SHA-1:   e09c54152c8093e1724842c711aed6417169db23 
-          SHA-256: f05b508d49f31f2a1a61724f013572592abc0833c09c45a72180e84247dc0d0d 
+(**Note: NEC's PC-9801-86 sound card; on-board Epson 26 sound ROM disabled in BIOS settings**)
+SOUND.ROM:
+CRC32:   80eabfde
+MD5:     42c271f8b720e796a484cc1165ff4914 
+SHA-1:   e09c54152c8093e1724842c711aed6417169db23 
+SHA-256: f05b508d49f31f2a1a61724f013572592abc0833c09c45a72180e84247dc0d0d 
 
-          (**Note: Integrated "26 sound" ROM; removed 86 card,re-enabled 26 sound in BIOS, then re-dumped**)
-          SOUND.ROM:
-          CRC32:   6cdfa793
-          MD5:     a77fc2bc7c696dd68dba18e02f89d386 
-          SHA-1:   4b8250f9b9db66548b79f961d61010558d6d6e1c 
-          SHA-256: 53a7db5388de3ffe8dc746d7dffde0da4fda951bf2c80a3f981308d120c06215
+(**Note: Integrated "26 sound" ROM; removed 86 card,re-enabled 26 sound in BIOS, then re-dumped**)
+SOUND.ROM:
+CRC32:   6cdfa793
+MD5:     a77fc2bc7c696dd68dba18e02f89d386 
+SHA-1:   4b8250f9b9db66548b79f961d61010558d6d6e1c 
+SHA-256: 53a7db5388de3ffe8dc746d7dffde0da4fda951bf2c80a3f981308d120c06215
 
-          FONT.ROM:
-          CRC32:   e18f4529
-          MD5:     d890c89b099879b962b759fd0839aa91 
-          SHA-1:   900025caec5e4e6758eb7fcf8e29bb90686399d2 
-          SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
+FONT.ROM:
+CRC32:   e18f4529
+MD5:     d890c89b099879b962b759fd0839aa91 
+SHA-1:   900025caec5e4e6758eb7fcf8e29bb90686399d2 
+SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
         </pre>
       </div>
       <p>
