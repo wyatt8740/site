@@ -1484,7 +1484,28 @@
         had such a ruling... I may be wrong on that. Maybe they have by now,
         but given the abysmal state of copyright law there I'd assume not.
       </p>
+      <h4>Identifying an "Epson Check"</h4>
+      <p>
+        In every case I've seen so far, "Epson Checks" have made the computer
+        reboot during the booting process, putting it into a boot loop. If your
+        game or other software does this during startup, it is likely an Epson
+        Check. If it randomly reboots later on, then it may or may not be an
+        Epson check.
+      </p>
+      <p>
+        According to the manual that came with Epson's Software Installation
+        Package (which I <b>did</b> find), it resets just after the DOS
+        copyright message shows up. Their manual states that some NEC
+        board drivers also do this. 
+      </p>
       <h4>Patching the "Epson Check"</h4>
+      <p>
+        First off, Epson had its own versions of MS-DOS that did not have a
+        check to begin with. The Epson check would exist if you tried to
+        install NEC's DOS, or if a game or other software had a copy of NEC
+        MS-DOS on its floppy disk. NEC's N88 Disk-BASIC also suffers from this
+        check, but Epson released its own version of Disk BASIC that did not.
+      </p>
       <p>
         In any case, Epson created a "Software Installation Program (SIP),"
         which took NEC's DOS files and patched the copyright check so that it
@@ -1505,8 +1526,9 @@
       </p>
       <p>
         If I remember correctly, the way I used it was first booting into DOS
-        6.2 and then inserting my floppy with a different version of DOS on it,
-        and running:
+        6.2 (in version 6.2, NEC removed the "Epson Check"). I then inserted
+        my floppy with a different version of NEC DOS (such as 3.3 or 5.x) on
+        it, and ran:
       </p>
       <div class="codewrap">
         <pre class="block"> 
@@ -1514,15 +1536,15 @@
         </pre>
       </div>
       <p>
-        This was
-        enough to get a bootable DOS 3.3 floppy which I then used to launch
-        Popful Mail, since Popful mail refuses to run on DOS 5 or 6. I think
-        it's also possible to run DISPELL and tell it to patch just individual
-        files, which might be preferable if you encounter a game that comes
-        with DOS on it which seems to just go through a reboot loop constantly.
-        In that case, you'd just want to provide the file names of the dos
-        files on the disk. Be sure you also run <code>dir /a</code> to see any
-        possible hidden files! And make a backup before you run the patcher.
+        This was enough to get a bootable DOS 3.3 floppy which I then used to
+        launch Popful Mail, since Popful mail refuses to run on DOS 5 or 6. I
+        think it's also possible to run DISPELL and tell it to patch just
+        individual files, which might be preferable if you encounter a game
+        that comes with DOS on it which seems to just go through a reboot loop
+        constantly. In that case, you'd just want to provide the file names of
+        the dos files on the disk. Be sure you also run <code>dir /a</code> to
+        see any possible hidden files! And make a backup before you run the
+        patcher.
       </p>
       <p>
         I don't actually know what the <code>/A</code> parameter in DISPELL's
