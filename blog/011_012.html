@@ -186,6 +186,7 @@
                   </ul>
                 </li>
                 <li><a href="#pc9801_buying_wyatt_mouse">Getting a Mouse</a></li>
+                <li><a href="#pc9801_buying_wyatt_keyboard">Getting a Keyboard</a></li>
                 <li><a href="#pc9801_buying_wyatt_joystick">Getting a Joystick or Game Pad</a></li>
                 <li><a href="#pc9801_buying_wyatt_monitor">Getting a Monitor</a>
                   <ul>
@@ -3427,12 +3428,53 @@
         optical mouses can apparently be used, too.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
+      <h3 id="pc9801_buying_wyatt_keyboard">Keyboard</h3>
+      <p>
+        There are a lot of models of PC-98 keyboards out there, but you do need
+        a special PC-98 keyboard or to make an adapter to use a western one. I
+        suggest using an original so all the keys are where they are marked as
+        being.
+      </p>
+      <p>
+        There are at least two connectors PC-9801 series keyboards used. The
+        original 9801 used a full size DIN connector and is not compatible with
+        later models physically. The pinout of the full-size DIN one is numbered
+        the same as the pinout of the mini-DIN, so I think a passive adapter
+        could make it work.
+      </p>
+      <p>
+        The earlier boards are mechanical, usually
+        (or maybe always) with linear NEC "oval" switches (the actual product
+        name remains unknown). These are some very pleasant switches, which I
+        compare favorably to vintage linear Alps Electric or Cherry switches,
+        but with key weights similar to those of buckling spring keyboards,
+        almost. Later keyboards use rubber domes; my Epson rubber dome uses
+        Fujitsu's dome-and-slider design like the Sun type 5 keyboard uses. It
+        feels okay, but I prefer the 9801V mechanical board greatly.
+      </p>
+      <p>
+        There's also a tradeoff here: some things don't work right with
+        mechanical boards. Usually I think this is because they are ignoring
+        BIOS subroutines and directly accessing the keyboard, and not sending
+        the "ready" signal after each keypress that earlier boards are
+        expecting. My SCSI controller's settings are supposed to be accesed
+        via a key combination (ctrl-graph-L), but that shortcut only works
+        when using a rubber dome keyboard due to some oversight by the
+        programmers who wrote the boot ROM on the card. If you want something
+        that works everywhere, and only want one keyboard, therefore, I suggest
+        a rubber dome model... but if you can afford to, I suggest getting one
+        of each. Or just get a mechanical board - stuff that won't work with a
+        mechanical keyboard is still quite rare in my experience. Just be aware
+        if you run into problems that that might be the issue.
+      </p>
+      <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_joystick">Joysticks/Gamepads</h3>
       <p>
         There are a couple of kinds of joysticks for PC-98's. There's a Sound
         Blaster card out there that has what appears to be an IBM-style
         "Gameport" on-board. I don't know what all uses this, and don't have
-        one of these cards.
+        one of these cards. I've heard it said almost nothing in DOS uses that.
+        It's probably more useful in Windows 9x games, though.
       </p>
       <p>
         Another kind worth a mention connects via the keyboard port, sharing
