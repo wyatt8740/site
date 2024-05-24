@@ -326,7 +326,8 @@
         Thus, I quickly decided to put Debian on it. I chose Debian primarily
         because it's my distro of choice on my x86 desktop and laptop, but
         also because it actually had
-        <a href="https://www.debian.org/releases/jessie/powerpc/release-notes/">
+        <!--<a href="https://www.debian.org/releases/jessie/powerpc/release-notes/">-->
+          <a href="http://web.archive.org/web/20181223034021id_/https://www.debian.org/releases/jessie/powerpc/release-notes/">
           an official, current 32-bit PowerPC release</a> (Jessie) at the time
         that I installed it. This is no longer the case (it's not what they
         dub a "release architecture" due to some problems), but it's still
@@ -341,6 +342,33 @@
         attempting to get it to boot off a USB. Apparently, it can be done, but I
         was quick to lose patience with Open Firmware and went for the install
         medium which I was more certain could actually work.
+      </p>
+      <p>
+        <b>Note:</b> As of May 2024, I have tried a more recent installer and
+        it has failed to install the GRUB bootloader (which it appears to try
+        to use instead of "Yaboot" these days). For that reason, I suggest
+        using the Debian Jessie installer and then changing your sources.list
+        to that of "stretch," doing
+        <code>apt-get update; apt-get dist-upgrade</code>, then doing the same
+        to move to "buster," "bullseye," "bookworm," and then finally "sid"
+        (unstable). Yes, this is horrible, and I am sorry about that. :p
+      </p>
+      <p>
+        And maybe make a backup disk image when that's all done, or between
+        stages.
+      </p>
+      <p>
+        This is of course going to require you to undergo
+        <a href="https://wiki.debian.org/UsrMerge">the /usr merge</a>, so yeah,
+        that's fun. But newer debian does not appear to package Yaboot anymore,
+        so either you should manually obtain and install yaboot somehow, or do
+        this. Or figure out why GRUB isn't working! - For me, the error seemed
+        to be "not a PReP partition," which sort of makes sense given that
+        PReP is something some Debian PowerPC systems use to boot, but I don't
+        know how to tell <code>grub-install</code> that I'm actually on
+        something newer than that - or maybe how to tell it to not care about
+        that and keep going. I don't know how backward compatible "new world"
+        bootrom power macs are with PReP.
       </p>
       <div class="imgcontain imgwrap">
         <a href="./powerbook_1/full/g4_debian_install.jpg"><img src="./powerbook_1/g4_debian_install.jpg" alt="Debian installer, running for the first time on the Powerbook"/></a>
