@@ -932,6 +932,13 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         would make it come on at 60 degrees, for instance.
       </p>
       <p>
+        If you can't seem to find this stuff in sysfs, then make sure you have
+        the <code>therm_adt746x</code> module loaded. I have it in my
+        <code>/etc/modules</code> file, but I think the recommended practice
+        now is to put things in files under <code>/etc/modules-load.d/</code>
+        instead.
+      </p>
+      <p>
         So the next question becomes, "what's a safe temperature?" - and the
         answer seems to be that non-military/industrial PowerPC 7447A chips
         are rated for a die junction temperature of up to 105 degrees celsius.
