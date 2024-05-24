@@ -396,6 +396,33 @@
         only when paired with the correct radio chip (an AR5133 or AR5122;
         almost all cards seem to use the 2GHz-only AR2122 and AR2133 instead).
       </p>
+      <p>
+        To choose your own card, if you go the Atheros route (recommended,
+        unless you also want to use it for OS X), look at this table in the
+        OpenBSD <a href="http://man.openbsd.org/OpenBSD-7.5/athn#Chipset">athn(4)</a>
+        manual page.
+      </p>
+      <p>
+        I linked to the page from OpenBSD 7.5 so that I could be sure the page
+        would not change, but "current" OpenBSD's manual page
+	    (<a href="http://man.openbsd.org/athn#Chipset">link</a>) might have
+        even more information available.
+      </p>
+      <p>
+        In order of suitability, with number one being the best, here's what
+        I'd prefer for a card:
+      </p>
+      <ol>
+        <li><b>AR5008-3NX</b> (AR5416+AR5133; 2.4 and 5GHz; 3 transmitter and 3 receiver paths)</li>
+        <li><b>AR5008-2NX</b> (AR5416+AR5122; 2.4 and 5GHz; 2 transmitter and 2 receiver paths)</li>
+        <li><b>AR5008-3NG</b> (AR5416+AR2133; 2.4 GHz only; 3 transmitter and 3 receiver paths)</li>
+        <li><b>AR5008-2NG</b> (AR5416+AR2133; 2.4 GHz only; 2 transmitter and 2 receiver paths)</li>
+      </ol>
+      <p>
+        <i>All of these are good upgrades from what's built-in</i>, so if you
+        can't find one of the 5GHz capable cards, just get a 2.4GHz one and
+        it's still going to make an observable improvement.
+      </p>
       <div class="imgcontain imgwrap">
         <a href="./powerbook_1/full/wlan.jpg"><img src="./powerbook_1/wlan.jpg" alt="The new wireless LAN card, installed."/></a>
         <div class="imgwrap caption imgcentercaption">
