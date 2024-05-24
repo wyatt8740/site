@@ -1,0 +1,116 @@
+diff --git a/windows/menu.cpp b/windows/menu.cpp
+index e9c5a0a..184bdca 100644
+--- a/windows/menu.cpp
++++ b/windows/menu.cpp
+@@ -232,6 +232,7 @@ void sysmenu_update(HMENU hMenu)
+ 	CheckMenuItem(hMenu, IDM_SCRNMUL10, MF_BYCOMMAND | MFCHECK(scrnmul == 10));
+ 	CheckMenuItem(hMenu, IDM_SCRNMUL12, MF_BYCOMMAND | MFCHECK(scrnmul == 12));
+ 	CheckMenuItem(hMenu, IDM_SCRNMUL16, MF_BYCOMMAND | MFCHECK(scrnmul == 16));
++	CheckMenuItem(hMenu, IDM_SCRNMUL24, MF_BYCOMMAND | MFCHECK(scrnmul == 24));
+ }
+ 
+ 
+diff --git a/windows/np2.cpp b/windows/np2.cpp
+index 5a1a65f..6d3d0a1 100644
+--- a/windows/np2.cpp
++++ b/windows/np2.cpp
+@@ -2181,6 +2181,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+ 				case IDM_SCRNMUL10:
+ 				case IDM_SCRNMUL12:
+ 				case IDM_SCRNMUL16:
++				case IDM_SCRNMUL24:
+ 					if ((!scrnmng_isfullscreen()) &&
+ 						!(GetWindowLong(g_hWndMain, GWL_STYLE) & WS_MINIMIZE))
+ 					{
+diff --git a/windows/resource.h b/windows/resource.h
+index acde5ac..f10bed9 100644
+--- a/windows/resource.h
++++ b/windows/resource.h
+@@ -570,6 +570,7 @@
+ #define IDM_SCRNMUL10                   40060
+ #define IDM_SCRNMUL12                   40062
+ #define IDM_SCRNMUL16                   40066
++#define IDM_SCRNMUL24                   40074
+ #define IDM_RESET                       40101
+ #define IDM_CONFIG                      40102
+ #define IDM_NEWDISK                     40103
+diff --git a/windows/resources/1252/np2.rc b/windows/resources/1252/np2.rc
+index d2b8f7e..9d0cb96 100644
+--- a/windows/resources/1252/np2.rc
++++ b/windows/resources/1252/np2.rc
+@@ -947,6 +947,7 @@ BEGIN
+     MENUITEM " 800x500(x1.25",              IDM_SCRNMUL10
+     MENUITEM " 960x600(x1.5)",              IDM_SCRNMUL12
+     MENUITEM "1280x800(x2)",                IDM_SCRNMUL16
++    MENUITEM "1920x1200(x3)",               IDM_SCRNMUL24
+     MENUITEM SEPARATOR
+ END
+ 
+diff --git a/windows/resources/932/np2.rc b/windows/resources/932/np2.rc
+index 25bab9f..5e4f6fa 100644
+--- a/windows/resources/932/np2.rc
++++ b/windows/resources/932/np2.rc
+@@ -968,6 +968,7 @@ BEGIN
+     MENUITEM " 800x500(x1.25)",             IDM_SCRNMUL10
+     MENUITEM " 960x600(x1.5)",              IDM_SCRNMUL12
+     MENUITEM "1280x800(x2)",                IDM_SCRNMUL16
++    MENUITEM "1920x1200(x3)",               IDM_SCRNMUL24
+     MENUITEM SEPARATOR
+ END
+ 
+diff --git a/windows/resources/932/np2jp.rc b/windows/resources/932/np2jp.rc
+index 9b55410..8f8ecaa 100644
+--- a/windows/resources/932/np2jp.rc
++++ b/windows/resources/932/np2jp.rc
+@@ -940,6 +940,7 @@ BEGIN
+     MENUITEM " 800x500(x1.25)",             IDM_SCRNMUL10
+     MENUITEM " 960x600(x1.5)",              IDM_SCRNMUL12
+     MENUITEM "1280x800(x2)",                IDM_SCRNMUL16
++    MENUITEM "1920x1200(x3)",               IDM_SCRNMUL24
+     MENUITEM SEPARATOR
+ END
+ 
+diff --git a/windows/resources/936/np2.rc b/windows/resources/936/np2.rc
+index 690458a..8fa7f3e 100644
+--- a/windows/resources/936/np2.rc
++++ b/windows/resources/936/np2.rc
+@@ -781,6 +781,7 @@ BEGIN
+     MENUITEM " 800x500",                    IDM_SCRNMUL10
+     MENUITEM " 960x600",                    IDM_SCRNMUL12
+     MENUITEM "1280x800",                    IDM_SCRNMUL16
++    MENUITEM "1920x1200",                   IDM_SCRNMUL24
+     MENUITEM SEPARATOR
+ END
+ 
+diff --git a/windows/resources/950/np2.rc b/windows/resources/950/np2.rc
+index 4b8a337..7d9e1b1 100644
+--- a/windows/resources/950/np2.rc
++++ b/windows/resources/950/np2.rc
+@@ -781,6 +781,7 @@ BEGIN
+     MENUITEM " 800x500",                    IDM_SCRNMUL10
+     MENUITEM " 960x600",                    IDM_SCRNMUL12
+     MENUITEM "1280x800",                    IDM_SCRNMUL16
++    MENUITEM "1920x1200",                   IDM_SCRNMUL24
+     MENUITEM SEPARATOR
+ END
+ 
+diff --git a/x/gtk2/gtk_menu.c b/x/gtk2/gtk_menu.c
+index 23016fd..9903d2a 100755
+--- a/x/gtk2/gtk_menu.c
++++ b/x/gtk2/gtk_menu.c
+@@ -464,6 +464,7 @@ static GtkRadioActionEntry screensize_entries[] = {
+ { "800x500",  NULL, "800x500",  NULL, NULL, 10 },
+ { "960x600",  NULL, "960x600",  NULL, NULL, 12 },
+ { "1280x800", NULL, "1280x800", NULL, NULL, 16 },
++{ "1920x1200", NULL, "1920x1200", NULL, NULL, 24 },
+ };
+ static const guint n_screensize_entries = G_N_ELEMENTS(screensize_entries);
+ 
+@@ -590,6 +591,7 @@ static const gchar *ui_info =
+ "    <menuitem action='800x500'/>\n"
+ "    <menuitem action='960x600'/>\n"
+ "    <menuitem action='1280x800'/>\n"
++"    <menuitem action='1920x1200'/>\n"
+ "   </menu>\n"
+ #endif
+ #if defined(SUPPORT_VIDEOFILTER)
