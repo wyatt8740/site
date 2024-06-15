@@ -326,7 +326,8 @@
         Thus, I quickly decided to put Debian on it. I chose Debian primarily
         because it's my distro of choice on my x86 desktop and laptop, but
         also because it actually had
-        <a href="https://www.debian.org/releases/jessie/powerpc/release-notes/">
+        <!--<a href="https://www.debian.org/releases/jessie/powerpc/release-notes/">-->
+          <a href="http://web.archive.org/web/20181223034021id_/https://www.debian.org/releases/jessie/powerpc/release-notes/">
           an official, current 32-bit PowerPC release</a> (Jessie) at the time
         that I installed it. This is no longer the case (it's not what they
         dub a "release architecture" due to some problems), but it's still
@@ -341,6 +342,33 @@
         attempting to get it to boot off a USB. Apparently, it can be done, but I
         was quick to lose patience with Open Firmware and went for the install
         medium which I was more certain could actually work.
+      </p>
+      <p>
+        <b>Note:</b> As of May 2024, I have tried a more recent installer and
+        it has failed to install the GRUB bootloader (which it appears to try
+        to use instead of "Yaboot" these days). For that reason, I suggest
+        using the Debian Jessie installer and then changing your sources.list
+        to that of "stretch," doing
+        <code>apt-get update; apt-get dist-upgrade</code>, then doing the same
+        to move to "buster," "bullseye," "bookworm," and then finally "sid"
+        (unstable). Yes, this is horrible, and I am sorry about that. :p
+      </p>
+      <p>
+        And maybe make a backup disk image when that's all done, or between
+        stages.
+      </p>
+      <p>
+        This is of course going to require you to undergo
+        <a href="https://wiki.debian.org/UsrMerge">the /usr merge</a>, so yeah,
+        that's fun. But newer debian does not appear to package Yaboot anymore,
+        so either you should manually obtain and install yaboot somehow, or do
+        this. Or figure out why GRUB isn't working! - For me, the error seemed
+        to be "not a PReP partition," which sort of makes sense given that
+        PReP is something some Debian PowerPC systems use to boot, but I don't
+        know how to tell <code>grub-install</code> that I'm actually on
+        something newer than that - or maybe how to tell it to not care about
+        that and keep going. I don't know how backward compatible "new world"
+        bootrom power macs are with PReP.
       </p>
       <div class="imgcontain imgwrap">
         <a href="./powerbook_1/full/g4_debian_install.jpg"><img src="./powerbook_1/g4_debian_install.jpg" alt="Debian installer, running for the first time on the Powerbook"/></a>
@@ -395,6 +423,71 @@
         rev. A2. I spent around $12 on it. The 5416 can support dual-band, but
         only when paired with the correct radio chip (an AR5133 or AR5122;
         almost all cards seem to use the 2GHz-only AR2122 and AR2133 instead).
+      </p>
+      <p>
+        To choose your own card, if you go the Atheros route (recommended,
+        unless you also want to use it for OS X), look at this table in the
+        OpenBSD <a href="http://man.openbsd.org/OpenBSD-7.5/athn#Chipset">athn(4)</a>
+        manual page.
+      </p>
+      <p>
+        I linked to the page from OpenBSD 7.5 so that I could be sure the page
+        would not change, but "current" OpenBSD's manual page
+	    (<a href="http://man.openbsd.org/athn#Chipset">link</a>) might have
+        even more information available.
+      </p>
+      <p>
+        In order of suitability, with number one being the best, here's what
+        I'd prefer for an 802.11N card:
+      </p>
+      <ol>
+        <li><b>AR5008-3NX</b> (AR5416+AR5133; 2.4 and 5GHz; 3 transmitter and 3 receiver paths)
+          <ul>
+            <li>
+              Atheros reference cardbus design: <a href="https://wikidevi.wi-cat.ru/Atheros_AR5BCB-00072"><b>AR5BCB-00072</b></a>
+              <ul>
+                <li>
+                  I have one of these; it's an Atheros-branded "engineering sample" reference card.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://wikidevi.wi-cat.ru/index.php/Special:Ask?title=Special%3AAsk&q=[[Chip1+model::~AR5416*]]+[[Chip2+model::~AR5133*]]&po=%3FInterface%0D%0A%3FFCC+ID%0D%0A%3FManuf%0D%0A%3FManuf+product+model=Manuf.+mdl%0D%0A%3FVendor+ID%0D%0A%3FDevice+ID%0D%0A%3FSubvendor+ID%0D%0A%3FSubdevice+ID%0D%0A%3FChip1+model%0D%0A%3FChip2+model%0D%0A%3FSupported+802dot11+protocols=PHY+modes%0D%0A%3FMIMO+config%0D%0A%3FOUI%0D%0A%3FEstimated+year+of+release=Est.+year&eq=yes&p[format]=broadtable&order[0]=ASC&sort_num=&order_num=ASC&p[limit]=500&p[offset]=&p[link]=all&p[sort]=&p[headers]=show&p[mainlabel]=&p[intro]=&p[outro]=&p[searchlabel]=%E2%80%A6+further+results&p[default]=&p[class]=sortable+wikitable+smwtable">More adapters using this chipset</a>
+            </li>
+          </ul>
+        </li>
+        <li><b>AR5008-2NX</b> (AR5416+AR5122; 2.4 and 5GHz; 2 transmitter and 2 receiver paths)
+          <ul>
+            <li>
+              <a href="https://wikidevi.wi-cat.ru/index.php/Special:Ask?title=Special%3AAsk&q=[[Chip1+model::~AR5416*]]+[[Chip2+model::~AR5122*]]&po=%3FInterface%0D%0A%3FFCC+ID%0D%0A%3FManuf%0D%0A%3FManuf+product+model=Manuf.+mdl%0D%0A%3FVendor+ID%0D%0A%3FDevice+ID%0D%0A%3FSubvendor+ID%0D%0A%3FSubdevice+ID%0D%0A%3FChip1+model%0D%0A%3FChip2+model%0D%0A%3FSupported+802dot11+protocols=PHY+modes%0D%0A%3FMIMO+config%0D%0A%3FOUI%0D%0A%3FEstimated+year+of+release=Est.+year&eq=yes&p[format]=broadtable&order[0]=ASC&sort_num=&order_num=ASC&p[limit]=500&p[offset]=&p[link]=all&p[sort]=&p[headers]=show&p[mainlabel]=&p[intro]=&p[outro]=&p[searchlabel]=%E2%80%A6+further+results&p[default]=&p[class]=sortable+wikitable+smwtable">More adapters using this chipset</a>
+            </li>
+          </ul>
+        </li>
+        <li><b>AR5008-3NG</b> (AR5416+AR2133; 2.4 GHz only; 3 transmitter and 3 receiver paths)
+          <ul>
+            <li>
+              Atheros reference cardbus design: <a href="https://wikidevi.wi-cat.ru/Atheros_AR5BCB-00071"><b>AR5BCB-00071</b></a>
+            </li>
+            <li>
+              <a href="https://wikidevi.wi-cat.ru/index.php/Special:Ask?title=Special%3AAsk&q=[[Chip1+model::~AR5416*]]+[[Chip2+model::~AR2133*]]&po=%3FInterface%0D%0A%3FFCC+ID%0D%0A%3FManuf%0D%0A%3FManuf+product+model=Manuf.+mdl%0D%0A%3FVendor+ID%0D%0A%3FDevice+ID%0D%0A%3FSubvendor+ID%0D%0A%3FSubdevice+ID%0D%0A%3FChip1+model%0D%0A%3FChip2+model%0D%0A%3FSupported+802dot11+protocols=PHY+modes%0D%0A%3FMIMO+config%0D%0A%3FOUI%0D%0A%3FEstimated+year+of+release=Est.+year&eq=yes&p[format]=broadtable&order[0]=ASC&sort_num=&order_num=ASC&p[limit]=500&p[offset]=&p[link]=all&p[sort]=&p[headers]=show&p[mainlabel]=&p[intro]=&p[outro]=&p[searchlabel]=%E2%80%A6+further+results&p[default]=&p[class]=sortable+wikitable+smwtable">More adapters using this chipset</a>
+            </li>
+          </ul>
+        </li>
+        <li><b>AR5008-2NG</b> (AR5416+AR2122; 2.4 GHz only; 2 transmitter and 2 receiver paths)
+          <ul>
+            <li>My <a href="https://wikidevi.wi-cat.ru/D-Link_DWA-645_rev_A1">D-Link DWA-645, revision A2</a></li>
+            <li>Very common and cheap, still a huge improvement over Apple's internal card</li>
+            <li>
+              <a href="https://wikidevi.wi-cat.ru/index.php/Special:Ask?title=Special%3AAsk&q=[[Chip1+model::~AR5416*]]+[[Chip2+model::~AR2122*]]&po=%3FInterface%0D%0A%3FFCC+ID%0D%0A%3FManuf%0D%0A%3FManuf+product+model=Manuf.+mdl%0D%0A%3FVendor+ID%0D%0A%3FDevice+ID%0D%0A%3FSubvendor+ID%0D%0A%3FSubdevice+ID%0D%0A%3FChip1+model%0D%0A%3FChip2+model%0D%0A%3FSupported+802dot11+protocols=PHY+modes%0D%0A%3FMIMO+config%0D%0A%3FOUI%0D%0A%3FEstimated+year+of+release=Est.+year&eq=yes&p[format]=broadtable&order[0]=ASC&sort_num=&order_num=ASC&p[limit]=500&p[offset]=&p[link]=all&p[sort]=&p[headers]=show&p[mainlabel]=&p[intro]=&p[outro]=&p[searchlabel]=%E2%80%A6+further+results&p[default]=&p[class]=sortable+wikitable+smwtable">More adapters using this chipset</a>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <p>
+        <i>All of these are good upgrades from what's built-in</i>, so if you
+        can't find one of the 5GHz capable cards, just get a 2.4GHz one and
+        it's still going to make an observable improvement. Most that I have
+        found (like the D-Link card I talk about below) are 2.4GHz only.
       </p>
       <div class="imgcontain imgwrap">
         <a href="./powerbook_1/full/wlan.jpg"><img src="./powerbook_1/wlan.jpg" alt="The new wireless LAN card, installed."/></a>
@@ -837,6 +930,13 @@ TYPING_BLOCK="-typing-block 0" # block mouse for 0ms after a keypress, or it int
         fans come on at relative to the default threshold. So setting it to
         <code>-5</code> would make it come on at 45 degrees, and <code>5</code>
         would make it come on at 60 degrees, for instance.
+      </p>
+      <p>
+        If you can't seem to find this stuff in sysfs, then make sure you have
+        the <code>therm_adt746x</code> module loaded. I have it in my
+        <code>/etc/modules</code> file, but I think the recommended practice
+        now is to put things in files under <code>/etc/modules-load.d/</code>
+        instead.
       </p>
       <p>
         So the next question becomes, "what's a safe temperature?" - and the
