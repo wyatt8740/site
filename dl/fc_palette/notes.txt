@@ -4,8 +4,9 @@ If I had NESRGB or HDMINES, I'd also be using it there.
 I made it myself, since I have long been annoyed by all other palettes for
 various reasons.
 
--------------
-
+-------------------------
+00_wyatt_fc_v0_unsat.pal
+-------------------------
 v0 is my initial capture, using my NXP SAA7113H (video processor) and em2861
 (USB interface chip) video capture USB stick. This was in the form of a
 "Roxio Easy VHS to USB" stick, but such USB's are also widely found in the
@@ -24,8 +25,9 @@ bad, though, and way better than the FCEUX default palette for instance. I also
 prefer it to Nestopia's "Canonical" one and BMF Final V2 (BMF Final V2 was my
 go-to palette until now).
 
--------------
-
+-------------------------
+01_wyatt_fc_v1.pal
+-------------------------
 v1 is done with the same USB, but with some of the user-adjustable settings
 tweaked to make it subjectively closer to my Panasonic BT-H1390YN CRT broadcast
 monitor. This made it look a little bit more colorful and generally a bit
@@ -45,4 +47,13 @@ follows:
     sharpness:       min=0 max=15 step=1 default=0 value=0
     chroma_agc:      default=1 value=0
     chroma_gain:     min=0 max=127 step=1 default=40 value=40
+
+
+-------------------------
+02_wyatt_fc_enhanced.pal
+-------------------------
+"enhanced" is only from a certain point of view, but basically this one is a
+manual edit of v1 that increases the brightness of some of the darkest colors a
+bit to make the picture more visible. I like it, personally, and I think it's
+still pretty faithful. Basically it's a crude partial form of gamma correction.
 
