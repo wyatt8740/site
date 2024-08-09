@@ -383,6 +383,102 @@
           and most or all of the dust is gone, too! A great success. 10/10, highly recommended.
         </div>
       </div>
+      <p>
+        Next, I had to stop beating around the bush and try to remove all of
+        the chips. I have no hot air station (which just blows super hot air
+        on the board to melt the solder on all the pins of a chip at once to
+        allow removal), so I had to improvise.
+      </p>
+      <p>
+        This is the kind of job I had for a very long time said "I'll do it
+        later when I have the right tools." I have a SNES that I think I can
+        fix if I can obtain the correct ones, for instance. And an NEC
+        PC-9801-86 sound card (with a Yamaha YM2608 Frequency Modulated (FM)
+        synthesizer chip). But since tools were not forthcoming, I decided I
+        needed to bite the bullet on this one.
+      </p>
+      <p>
+        A friend of mine with similar interests living in France that I spoke
+        with on both IRC and Fediverse (mastodon <i>et al</i>) told me to try
+        flooding one side of the chip with solder and melting it all, then
+        bending that side of the chip up and doing the other.
+      </p>
+      <p>
+        It seemed as good an idea as any, although it's complicated by the fact
+        that there's a large gap between pins 5 and "9" (I'd call it "pin 6,"
+        but the datasheet and schematic both skip pins 6, 7, and 8). To avoid
+        this, I flooded each side independently and used my second soldering
+        iron to melt the second set of pins, prying up with both irons.
+      </p>
+      <p>
+        This is something you should try to avoid on boards that might already
+        have pads and traces weakened by battery acid, but because this is RAM
+        specifically it is separated out into "buses" that make it so the
+        nearby chips share a lot of wiring with each other and most signals
+        can easily be grabbed from them.
+      </p>
+      <p>
+        Actually, i also discovered that three of the chips had already had
+        <i>each and every pin and almost every pad on one side</i> eaten away
+        before I began, which made things a little easier for desoldering.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-corroded-pins-1">
+        <a href="centris_1/full/centris_corroded_pins_1.jpg">
+          <img src="centris_1/centris_corroded_pins_1.jpg"
+               alt="Three chips bent back like they were on hinges, revealing
+                    that all the legs on one side are damaged by corrosion and
+                    uncovering the battery acid residue lurking underneath."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Lots of battery acid under there, too! Good thing I'm taking these off to clean&hellip;
+        </div>
+      </div>
+      <p>
+        In any case, my technique basically worked. I think most or all of the
+        damaged pins were already gone due to battery acid; all of the five
+        chips that have all pads intact after removal are the ones that the
+        acid didn't land on or otherwise touch.
+      </p>
+      <p>
+        If anyone's wondering though, yes, this means just a water flosser is
+        unlikely to be able to get all the acid off!
+      </p>
+      <div class="imgcontain imgwrap" id="centris-corroded-pins-2">
+        <a href="centris_1/full/centris_corroded_pins_2.jpg">
+          <img src="centris_1/centris_corroded_pins_2.jpg"
+               alt="After scrubbing some of the acid off with alcohol swabs,
+                    with all three chips that were eaten away by acid lifted
+                    on one side."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          With three chips lifted up on one side, that's 30 pins I no longer
+          need to worry about further damaging. :\
+        </div>
+      </div>
+      <p>
+        After all of them are removed, it's time for a damage assessment. Five
+        chips' worth of pads are completely unscathed. Apple's Quadra 800 and
+        Centris 650 used the same motherboard, and the schematic for them
+        shows that some configurations of Centris 650 shipped with only eight
+        soldered-down RAM chips. All five of the undamaged chip pads are on
+        the correct side for a 4MB factory configuration, mercifully! - so I
+        might only solder eight chips back down to save myself some work and
+        at least verify that the system still can have a pulse.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-all-ram-removed-1">
+        <a href="centris_1/full/centris_all_ram_removed_1.jpg">
+          <img src="centris_1/centris_all_ram_removed_1.jpg"
+               alt="All sixteen chips are removed and the solder pads are
+                    visible. Unfortunately most chips have at least one
+                    damaged pin, but I was able to remove them without more
+                    major catastrophes and I cleaned under them."/>
+                    </a>
+        <div class="imgwrap caption imgcentercaption">
+          It looks much cleaner now, although it's going to be a headache
+          wiring it all back up. And the corroded SIMM slots still need
+          removed for cleaning.
+        </div>
+      </div>
     </div> <!-- /postarea -->
     <div class="navbox">
 <!--      <span class="blerg_navleft">
