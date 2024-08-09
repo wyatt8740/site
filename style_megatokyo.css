@@ -123,6 +123,10 @@ h2.banner {
   box-shadow: 5px 5px 4px 0px #1E2530;
 }
 
+.postarea .visit_counter {
+  box-shadow: none;
+}
+
 .navbar a, .blerg_navright a, .blerg_navleft a, .menu_left a, .menu_right > a {
   /* border-color: #49476D;*/
 /*  border-color: #33434E;*/
