@@ -1,0 +1,67 @@
+
+#TabsToolbar {
+    -moz-box-ordinal-group: 10 !important;
+}
+
+#toolbar-menubar {
+    -moz-box-ordinal-group: 10 !important;
+}
+
+#titlebar {
+    -moz-box-ordinal-group: 0 !important;
+}
+
+.tabbrowser-tab
+{
+    min-height: initial !important;
+    padding-inline: 0px !important;
+}
+
+.tab-content
+{
+    padding: 0 8px !important;
+}
+
+.tab-background
+{
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+#TabsToolbar:not([brighttext]) #tabbrowser-tabs:not([noshadowfortests]) .tabbrowser-tab:is([visuallyselected="true"], [multiselected]) > .tab-stack > .tab-background
+{
+    box-shadow: none !important;
+    background-image: none !important;
+    border-left: 1px solid #cacaca !important;
+    border-right: 1px solid #cacaca !important;
+    background-color: var(--toolbar-bgcolor) !important;
+    border-bottom: 2px solid #e06464 !important;
+}
+
+#TabsToolbar:not([brighttext]) #tabbrowser-tabs:not([noshadowfortests]) .tabbrowser-tab:is([visuallyselected="true"], [multiselected]):first-child > .tab-stack > .tab-background
+{
+    border-left: 0px solid rgba(0, 0, 0, 0) !important;
+}
+
+#tabs-newtab-button .toolbarbutton-icon
+{
+    border-radius: 0 !important;
+}
+
+/* Make titlebar appear last */
+#titlebar
+{
+    order: 999;
+}
+
+#PersonalToolbar
+{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.23) !important;
+}
+
+#navigator-toolbox
+{
+    display: flex !important;
+    flex-direction: column !important;
+}
