@@ -1,1 +1,0 @@
-../MPS_multi_paint_system.txt
