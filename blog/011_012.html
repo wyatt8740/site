@@ -5046,7 +5046,48 @@ fi
       </p>
       <div class="codewrap">
         <pre class="block">$ makefs -o floppy=1232 -t msdos</pre>
-      </div>      
+      </div>
+      <p>
+        Note that this might only work for three mode internal drives. To write
+        with a USB drive I believe you might have to craft and send the
+        appropriate SCSI commands to the device, which I believe to be
+        something like the following C-like pseudocode function:
+      </p>
+      <div class="codewrap">
+        <pre class="block">
+
+void format_pc98_disk() {
+  int num_tracks = 77;
+  int num_heads  = 2;
+  int track      = 0;
+  int head       = 0;
+  while(track &lt; num_tracks) {
+    head = 0;
+    while(head &lt; num_heads) {
+      /*
+       * scsi_command is an imaginary function,
+       * but its equivalent must exist in
+       * OpenBSD somewhere
+       */
+      scsi_command(
+        scsi_device,
+        /* command */
+        [ 0x04, 0x17, (uint8_t)track, 0x00,
+          0x00, 0x00,       0x00,     0x00,
+          0x0C, 0x00,       0x00,     0x00 ],
+        /* command data */
+        [ 0x00, (0xB0 || head), 0x00, 0x08,
+          0x00,      0x00,      0x04, 0xd0,
+          0x00,      0x00,      0x04, 0x00 ]
+      );
+      head++;
+    };
+    track++;
+  }
+}
+
+</pre>
+      </div>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_windows">Writing Floppy Disks (Windows)</h3>
       <p>
