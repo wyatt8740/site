@@ -4463,11 +4463,12 @@
         distributed on CD, you may need to get a drive if your PC-98 doesn't
         have one. Much like hard drives, your main options (depending on your
         model of computer) are IDE drives and SCSI drives, as far as CD's are
-        concerned. PC-9821's often (perhaps always ) came with IDE
-        controllers; 9801's and Epsons didn't (although I think some of the
-        last Epson 98's did; seemingly the models introduced in or after
-        September 1993 have an IDE interface built in, so the PC-486H* and
-        PC-486F* models; 486G* and 486S* models and earlier do not).
+        concerned. PC-9821 models mostly came with IDE controllers, except for
+        1992 and maybe some 1993 models. 9801's and Epsons didn't (although I
+        think some of the last Epson 98's did; seemingly the models introduced
+        in or after September 1993 have an IDE interface built in, so the
+        PC-486H* and PC-486F* models; 486G* and 486S* models and earlier do
+        not).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_ide">IDE Drives</h4>
@@ -4495,13 +4496,15 @@
         You might not be able to pick any old CD drive; they may look like
         "normal" IDE drives, but in the Ce2 and Cs2 at least, they <i>might</i>
         actually use some non-ATAPI command set. We (my friend and I) aren't
-        quite sure yet. I've seen one person suggest that the CDR-260 might be
-        one of the <i>earliest</i> ATAPI compatible drives, but I can't
-        guarantee anything. If it is truly an ATAPI drive, then I expect you
-        could put in some other standard IDE CD drive and have it function,
-        although you still might not be able to get one where the tray, LED,
-        and eject button line up with the holes in the case. I'd be interested
-        to know if anyone manages to finagle something into working!
+        quite sure yet. I've seen one person suggest that the CDR-260 that
+        they use might be one of the <i>earliest</i> ATAPI compatible drives,
+        but I can't guarantee anything. If it is truly an ATAPI drive, then I
+        expect you could put in some other standard IDE CD drive and have it
+        function, although you still might not be able to get one where the
+        tray, LED, and eject button line up with the holes in the case. I'd be
+        interested to know if anyone manages to finagle something into working!
+        It might be possible to simply change the software driver to a later
+        ATAPI one in that case.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_scsi">SCSI Drives</h4>
@@ -4938,7 +4941,9 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         The key to writing floppies for a PC-98 in Linux is to use a program
         called "ufiformat." Especially if your PC-98 is not new enough to
         support 300 RPM 1.44MB disk reading/writing, it is absolutely
-        essential.
+        essential. It only works on "three mode" capable USB floppy drives.
+        There's a tool called "DITT" that <i>may</i> work for built in drives,
+        but I cannot guarantee that.
       </p>
       <p>
         I wrote a script for me and my friend that handles the details of
@@ -5023,6 +5028,10 @@ fi
         is from a Japanese online game market which bundles emulators with
         games - I extracted the disk image from it. So perhaps I need to
         try to find an original physical copy.
+      </p>
+      <p>
+        It might also just be a problem with 486 machines, since now my friend
+        has a Pentium-era one that seemingly plays Ys just fine? Strange.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_openbsd">Writing Floppy Disks (OpenBSD)</h3>
