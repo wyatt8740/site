@@ -1,0 +1,639 @@
+diff -r 68e4c357d26c browser/app/profile/firefox.js
+--- a/browser/app/profile/firefox.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/app/profile/firefox.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -354,6 +354,17 @@
+ // migrated to colorways themes hosted on AMO).
+ pref("browser.theme.colorway-migration", true);
+ 
++#ifdef UNIX_BUT_NOT_MAC
++  pref("browser.urlbar.clickSelectsAll", false);
++#else
++  pref("browser.urlbar.clickSelectsAll", true);
++#endif
++#ifdef UNIX_BUT_NOT_MAC
++  pref("browser.urlbar.doubleClickSelectsAll", true);
++#else
++  pref("browser.urlbar.doubleClickSelectsAll", false);
++#endif
++
+ // Whether using `ctrl` when hitting return/enter in the URL bar
+ // (or clicking 'go') should prefix 'www.' and suffix
+ // browser.fixup.alternate.suffix to the URL bar value prior to
+diff -r 68e4c357d26c browser/base/content/browser-context.inc
+--- a/browser/base/content/browser-context.inc	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/base/content/browser-context.inc	Sun Oct 08 18:57:22 2023 -0400
+@@ -191,8 +191,9 @@
+                 oncommand="gContextMenu.mediaCommand('showcontrols');"/>
+       <menuseparator id="context-media-sep-video-commands"/>
+       <menuitem id="context-viewvideo"
+-                data-l10n-id="main-context-menu-video-view-new-tab"
+-                oncommand="gContextMenu.viewMedia(event);"/>
++                data-l10n-id="main-context-menu-video-view"
++                oncommand="gContextMenu.viewMedia(event);"
++                onclick="checkForMiddleClick(this, event);"/>
+       <menuitem id="context-video-pictureinpicture"
+                 data-l10n-id="main-context-menu-media-watch-pip"
+                 type="checkbox"
+@@ -202,8 +203,9 @@
+                 data-l10n-id="main-context-menu-image-reload"
+                 oncommand="gContextMenu.reloadImage();"/>
+       <menuitem id="context-viewimage"
+-                data-l10n-id="main-context-menu-image-view-new-tab"
+-                oncommand="gContextMenu.viewMedia(event);"/>
++                data-l10n-id="main-context-menu-image-view"
++                oncommand="gContextMenu.viewMedia(event);"
++                onclick="checkForMiddleClick(this, event);"/>
+       <menuitem id="context-saveimage"
+                 data-l10n-id="main-context-menu-image-save-as"
+                 oncommand="gContextMenu.saveMedia();"/>
+diff -r 68e4c357d26c browser/base/content/browser.js
+--- a/browser/base/content/browser.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/base/content/browser.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -6750,6 +6750,7 @@
+   "new-window-button": "newWindowButton.tooltip",
+   "new-tab-button": "newTabButton.tooltip",
+   "tabs-newtab-button": "newTabButton.tooltip",
++  "tabs-newtab-button-custom-8740": "newTabButton.tooltip",
+   "reload-button": "reloadButton.tooltip",
+   "stop-button": "stopButton.tooltip",
+   "urlbar-zoom-button": "urlbar-zoom-button.tooltip",
+diff -r 68e4c357d26c browser/base/content/navigator-toolbox.inc.xhtml
+--- a/browser/base/content/navigator-toolbox.inc.xhtml	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/base/content/navigator-toolbox.inc.xhtml	Sun Oct 08 18:57:22 2023 -0400
+@@ -58,6 +58,11 @@
+                 tooltip="tabbrowser-tab-tooltip"
+                 stopwatchid="FX_TAB_CLICK_MS">
+             <hbox class="tab-drop-indicator" hidden="true"/>
++            <toolbarbutton id="tabs-newtab-button-custom-8740"
++                               class="toolbarbutton-1"
++                               command="cmd_newNavigatorTab"
++                               onclick="gBrowser.handleNewTabMiddleClick(this, event);"
++                               tooltip="dynamic-shortcut-tooltip"/>
+ # If the name (tabbrowser-arrowscrollbox) or structure of this changes
+ # significantly, there is an optimization in
+ # DisplayPortUtils::MaybeCreateDisplayPortInFirstScrollFrameEncountered based
+diff -r 68e4c357d26c browser/base/content/nsContextMenu.js
+--- a/browser/base/content/nsContextMenu.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/base/content/nsContextMenu.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -1650,9 +1650,8 @@
+   // Change current window to the URL of the image, video, or audio.
+   viewMedia(e) {
+     let where = whereToOpenLink(e, false, false);
+-    if (where == "current") {
+-      where = "tab";
+-    }
++    // modification: instead of setting "current" to "tab" for where location,
++    // just leave it alone
+     let referrerInfo = this.contentData.referrerInfo;
+     let systemPrincipal = Services.scriptSecurityManager.getSystemPrincipal();
+     if (this.onCanvas) {
+@@ -1669,7 +1668,7 @@
+         Ci.nsIScriptSecurityManager.DISALLOW_SCRIPT
+       );
+ 
+-      // Default to opening in a new tab.
++      // "where" will vary based on if middle-clicked, ctrl+clicked, etc.
+       openLinkIn(this.mediaURL, where, {
+         referrerInfo,
+         forceAllowDataURI: true,
+diff -r 68e4c357d26c browser/base/content/test/contextMenu/browser_view_image.js
+--- a/browser/base/content/test/contextMenu/browser_view_image.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/base/content/test/contextMenu/browser_view_image.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -55,34 +55,17 @@
+     tab_default: {
+       modifiers: {},
+       async loadedPromise() {
+-        return BrowserTestUtils.waitForNewTab(gBrowser, urlChecker, true).then(
+-          t => {
+-            is(t.selected, false, "Tab should not be selected.");
+-            return t.linkedBrowser;
+-          }
++        await BrowserTestUtils.browserLoaded(
++          gBrowser.selectedBrowser,
++          false,
++          url => url.startsWith("blob:")
+         );
++        return gBrowser.selectedBrowser;
+       },
+-      cleanup(browser) {
+-        is(gBrowser.tabs.length, 3, "number of tabs");
+-        BrowserTestUtils.removeTab(gBrowser.getTabForBrowser(browser));
+-      },
++      async cleanup() {},
+     },
+-    tab_default_flip_bg_pref: {
+-      prefs: [["browser.tabs.loadInBackground", false]],
+-      modifiers: {},
+-      async loadedPromise() {
+-        return BrowserTestUtils.waitForNewTab(gBrowser, urlChecker, true).then(
+-          t => {
+-            is(t.selected, true, "Tab should be selected with pref flipped.");
+-            return t.linkedBrowser;
+-          }
+-        );
+-      },
+-      cleanup(browser) {
+-        is(gBrowser.tabs.length, 3, "number of tabs");
+-        BrowserTestUtils.removeTab(gBrowser.getTabForBrowser(browser));
+-      },
+-    },
++    // NOTE: If we ever add more tests here, add them above and not below `self`, as it replaces
++    // the test document.
+   };
+   await BrowserTestUtils.withNewTab(mainURL, async browser => {
+     await SpecialPowers.spawn(browser, [], () => {
+diff -r 68e4c357d26c browser/base/content/test/general/browser_bug734076.js
+--- a/browser/base/content/test/general/browser_bug734076.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/base/content/test/general/browser_bug734076.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -21,7 +21,6 @@
+       name: "view image with background image",
+       url: "http://mochi.test:8888/",
+       element: "body",
+-      opensNewTab: true,
+       go() {
+         return SpecialPowers.spawn(
+           gBrowser.selectedBrowser,
+@@ -49,7 +48,6 @@
+       name: "view image",
+       url: "http://mochi.test:8888/",
+       element: "img",
+-      opensNewTab: true,
+       go() {
+         return SpecialPowers.spawn(
+           gBrowser.selectedBrowser,
+@@ -164,9 +162,9 @@
+     await popupShownPromise;
+     info("onImage: " + gContextMenu.onImage);
+ 
+-    let loadedAfterCommandPromise = test.opensNewTab
+-      ? BrowserTestUtils.waitForNewTab(gBrowser, null, true)
+-      : BrowserTestUtils.browserLoaded(gBrowser.selectedBrowser);
++    let loadedAfterCommandPromise = BrowserTestUtils.browserLoaded(
++      gBrowser.selectedBrowser
++    );
+     let popupHiddenPromise = BrowserTestUtils.waitForEvent(
+       contentAreaContextMenu,
+       "popuphidden"
+@@ -185,10 +183,6 @@
+     );
+ 
+     await popupHiddenPromise;
+-
+-    if (test.opensNewTab) {
+-      gBrowser.removeCurrentTab();
+-    }
+   }
+ 
+   gBrowser.removeCurrentTab();
+diff -r 68e4c357d26c browser/components/search/content/searchbar.js
+--- a/browser/components/search/content/searchbar.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/components/search/content/searchbar.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -450,15 +450,16 @@
+ 
+     /**
+      * Determines if we should select all the text in the searchbar based on the
+-     * searchbar state, and whether the selection is empty.
++     * clickSelectsAll pref, searchbar state, and whether the selection is empty.
+      */
+     _maybeSelectAll() {
+       if (
+         !this._preventClickSelectsAll &&
++        UrlbarPrefs.get("clickSelectsAll") &&
+         document.activeElement == this._textbox &&
+         this._textbox.selectionStart == this._textbox.selectionEnd
+       ) {
+-        this.select();
++        this._textbox.editor.selectAll();
+       }
+     }
+ 
+@@ -563,6 +564,11 @@
+           // is text in the textbox.
+           this.openSuggestionsPanel(true);
+         }
++
++        if (event.detail == 2 && UrlbarPrefs.get("doubleClickSelectsAll")) {
++          this._textbox.editor.selectAll();
++          event.preventDefault();
++        }
+       });
+     }
+ 
+diff -r 68e4c357d26c browser/components/urlbar/UrlbarInput.sys.mjs
+--- a/browser/components/urlbar/UrlbarInput.sys.mjs	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/components/urlbar/UrlbarInput.sys.mjs	Sun Oct 08 18:57:22 2023 -0400
+@@ -3193,16 +3193,19 @@
+ 
+   /**
+    * Determines if we should select all the text in the Urlbar based on the
+-   *  Urlbar state, and whether the selection is empty.
++   * clickSelectsAll pref, Urlbar state, and whether the selection is empty.
++   * @param {boolean} [ignoreClickSelectsAllPref]
++   *        If true, the browser.urlbar.clickSelectsAll pref will be ignored
+    */
+-  _maybeSelectAll() {
++  _maybeSelectAll(ignoreClickSelectsAllPref = false) {
+     if (
+       !this._preventClickSelectsAll &&
++      (ignoreClickSelectsAllPref || UrlbarPrefs.get("clickSelectsAll")) &&
+       this._compositionState != lazy.UrlbarUtils.COMPOSITION.COMPOSING &&
+       this.document.activeElement == this.inputField &&
+       this.inputField.selectionStart == this.inputField.selectionEnd
+     ) {
+-      this.select();
++      this.editor.selectAll();
+     }
+   }
+ 
+@@ -3334,7 +3337,9 @@
+       return;
+     }
+ 
+-    this._maybeSelectAll();
++    // If the user right clicks, we select all regardless of the value of
++    // the browser.urlbar.clickSelectsAll pref.
++    this._maybeSelectAll(/* ignoreClickSelectsAllPref */ event.button == 2);
+   }
+ 
+   _on_focus(event) {
+@@ -3382,7 +3387,7 @@
+     if (this.focusedViaMousedown) {
+       this.view.autoOpen({ event });
+     } else if (this.inputField.hasAttribute("refocused-by-panel")) {
+-      this._maybeSelectAll();
++      this._maybeSelectAll(true);
+     }
+ 
+     this._updateUrlTooltip();
+@@ -3443,7 +3448,10 @@
+           this.inputField.setSelectionRange(0, 0);
+         }
+ 
+-        if (event.target.id == SEARCH_BUTTON_ID) {
++        if (event.detail == 2 && UrlbarPrefs.get("doubleClickSelectsAll")) {
++          this.editor.selectAll();
++          event.preventDefault();
++        } else if (event.target.id == SEARCH_BUTTON_ID) {
+           this._preventClickSelectsAll = true;
+           this.search(lazy.UrlbarTokenizer.RESTRICT.SEARCH);
+         } else {
+diff -r 68e4c357d26c browser/components/urlbar/UrlbarPrefs.sys.mjs
+--- a/browser/components/urlbar/UrlbarPrefs.sys.mjs	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/components/urlbar/UrlbarPrefs.sys.mjs	Sun Oct 08 18:57:22 2023 -0400
+@@ -75,6 +75,11 @@
+   // active view if the the view utilizes OpenSearch.
+   ["contextualSearch.enabled", false],
+ 
++  // If true, this optimizes for replacing the full URL rather than editing
++  // part of it. This also copies the urlbar value to the selection clipboard
++  // on systems that support it.
++  ["clickSelectsAll", false],
++
+   // Whether using `ctrl` when hitting return/enter in the URL bar
+   // (or clicking 'go') should prefix 'www.' and suffix
+   // browser.fixup.alternate.suffix to the URL bar value prior to
+@@ -105,6 +110,11 @@
+   // 0 - never resolve; 1 - use heuristics (default); 2 - always resolve
+   ["dnsResolveSingleWordsAfterSearch", 0],
+ 
++  // If true, this optimizes for replacing the full URL rather than selecting a
++  // portion of it. This also copies the urlbar value to the selection
++  // clipboard on systems that support it.
++  ["doubleClickSelectsAll", false],
++
+   // Whether telemetry events should be recorded.
+   ["eventTelemetry.enabled", false],
+ 
+diff -r 68e4c357d26c browser/components/urlbar/tests/browser/browser.ini
+--- a/browser/components/urlbar/tests/browser/browser.ini	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/components/urlbar/tests/browser/browser.ini	Sun Oct 08 18:57:22 2023 -0400
+@@ -121,6 +121,7 @@
+ [browser_display_selectedAction_Extensions.js]
+ [browser_dns_first_for_single_words.js]
+ skip-if = verify && os == 'linux' # Bug 1581635
++[browser_doubleClickSelectsAll.js]
+ [browser_downArrowKeySearch.js]
+ https_first_disabled = true
+ [browser_dragdropURL.js]
+diff -r 68e4c357d26c browser/components/urlbar/tests/browser/browser_retainedResultsOnFocus.js
+--- a/browser/components/urlbar/tests/browser/browser_retainedResultsOnFocus.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/components/urlbar/tests/browser/browser_retainedResultsOnFocus.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -71,7 +71,10 @@
+ 
+ add_setup(async function () {
+   await SpecialPowers.pushPrefEnv({
+-    set: [["browser.urlbar.autoFill", true]],
++    set: [
++      ["browser.urlbar.autoFill", true],
++      ["browser.urlbar.clickSelectsAll", true],
++    ],
+   });
+   // Add some history for the empty panel and autofill.
+   await PlacesTestUtils.addVisits([
+diff -r 68e4c357d26c browser/components/urlbar/tests/browser/browser_urlbar_selection.js
+--- a/browser/components/urlbar/tests/browser/browser_urlbar_selection.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/components/urlbar/tests/browser/browser_urlbar_selection.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -62,33 +62,10 @@
+   return promise;
+ }
+ 
+-function resetPrimarySelection(val = "") {
+-  if (
+-    Services.clipboard.isClipboardTypeSupported(
+-      Services.clipboard.kSelectionClipboard
+-    )
+-  ) {
+-    // Reset the clipboard.
+-    clipboardHelper.copyStringToClipboard(
+-      val,
+-      Services.clipboard.kSelectionClipboard
+-    );
+-  }
+-}
+-
+-function checkPrimarySelection(expectedVal = "") {
+-  if (
+-    Services.clipboard.isClipboardTypeSupported(
+-      Services.clipboard.kSelectionClipboard
+-    )
+-  ) {
+-    let primaryAsText = SpecialPowers.getClipboardData(
+-      "text/plain",
+-      SpecialPowers.Ci.nsIClipboard.kSelectionClipboard
+-    );
+-    Assert.equal(primaryAsText, expectedVal);
+-  }
+-}
++add_task(async function setup() {
++  SpecialPowers.pushPrefEnv({
++    set: [["browser.urlbar.clickSelectsAll", true]],
++  });
+ 
+ add_setup(async function () {
+   // On macOS, we must "warm up" the Urlbar to get the first test to pass.
+@@ -98,7 +75,6 @@
+ });
+ 
+ add_task(async function leftClickSelectsAll() {
+-  resetPrimarySelection();
+   gURLBar.value = exampleSearch;
+   await click(gURLBar.inputField);
+   Assert.equal(
+@@ -112,11 +88,9 @@
+     "The entire search term should be selected."
+   );
+   gURLBar.blur();
+-  checkPrimarySelection();
+ });
+ 
+ add_task(async function leftClickSelectsUrl() {
+-  resetPrimarySelection();
+   gURLBar.value = exampleUrl;
+   await click(gURLBar.inputField);
+   Assert.equal(gURLBar.selectionStart, 0, "The entire url should be selected.");
+@@ -126,18 +100,41 @@
+     "The entire url should be selected."
+   );
+   gURLBar.blur();
+-  checkPrimarySelection();
++});
++
++// Test to ensure that the doubleClickSelectsAll pref does not interfere with
++// single click behaviour (Double CSA itself is tested in
++// urlbar/tests/browser_doubleClickSelectsAll.js).
++add_task(async function bothPrefsEnabled() {
++  Services.prefs.setBoolPref("browser.urlbar.doubleClickSelectsAll", true);
++  gURLBar.value = exampleSearch;
++  await click(gURLBar.inputField);
++  Assert.equal(
++    gURLBar.selectionStart,
++    0,
++    "The entire search term should be selected."
++  );
++  Assert.equal(
++    gURLBar.selectionEnd,
++    exampleSearch.length,
++    "The entire search term should be selected."
++  );
++  gURLBar.blur();
++  Services.prefs.clearUserPref("browser.urlbar.doubleClickSelectsAll");
+ });
+ 
+ add_task(async function rightClickSelectsAll() {
++  // The text should be selected even when the pref is disabled.
++  await SpecialPowers.pushPrefEnv({
++    set: [["browser.urlbar.clickSelectsAll", false]],
++  });
++
+   gURLBar.inputField.focus();
+   gURLBar.value = exampleUrl;
+ 
+   // Remove the selection so the focus() call above doesn't influence the test.
+   gURLBar.selectionStart = gURLBar.selectionEnd = 0;
+ 
+-  resetPrimarySelection();
+-
+   await openContextMenu(gURLBar.inputField);
+ 
+   Assert.equal(gURLBar.selectionStart, 0, "The entire URL should be selected.");
+@@ -147,8 +144,6 @@
+     "The entire URL should be selected."
+   );
+ 
+-  checkPrimarySelection();
+-
+   let contextMenu = gURLBar.querySelector("moz-input-box").menupopup;
+ 
+   // While the context menu is open, test the "Select All" button.
+@@ -186,7 +181,6 @@
+ 
+   gURLBar.querySelector("moz-input-box").menupopup.hidePopup();
+   gURLBar.blur();
+-  checkPrimarySelection(gURLBar.value);
+   await SpecialPowers.popPrefEnv();
+ });
+ 
+@@ -197,8 +191,6 @@
+   gURLBar.selectionStart = 3;
+   gURLBar.selectionEnd = 7;
+ 
+-  resetPrimarySelection();
+-
+   await openContextMenu(gURLBar.inputField);
+ 
+   Assert.equal(
+@@ -214,11 +206,9 @@
+ 
+   gURLBar.querySelector("moz-input-box").menupopup.hidePopup();
+   gURLBar.blur();
+-  checkPrimarySelection();
+ });
+ 
+ add_task(async function dragSelect() {
+-  resetPrimarySelection();
+   gURLBar.value = exampleSearch.repeat(10);
+   // Drags from an artibrary offset of 30 to test for bug 1562145: that the
+   // selection does not start at the beginning.
+@@ -229,12 +219,7 @@
+     "Selection should not start at the beginning of the string."
+   );
+ 
+-  let selectedVal = gURLBar.value.substring(
+-    gURLBar.selectionStart,
+-    gURLBar.selectionEnd
+-  );
+   gURLBar.blur();
+-  checkPrimarySelection(selectedVal);
+ });
+ 
+ /**
+@@ -242,7 +227,6 @@
+  * Urlbar is dragged following a selectsAll event then a blur.
+  */
+ add_task(async function dragAfterSelectAll() {
+-  resetPrimarySelection();
+   gURLBar.value = exampleSearch.repeat(10);
+   await click(gURLBar.inputField);
+   Assert.equal(
+@@ -257,7 +241,6 @@
+   );
+ 
+   gURLBar.blur();
+-  checkPrimarySelection();
+ 
+   // The offset of 30 is arbitrary.
+   await drag(gURLBar.inputField, 30, 0, 60, 0);
+@@ -272,10 +255,6 @@
+     exampleSearch.repeat(10).length,
+     "Only part of the search term should be selected."
+   );
+-
+-  checkPrimarySelection(
+-    gURLBar.value.substring(gURLBar.selectionStart, gURLBar.selectionEnd)
+-  );
+ });
+ 
+ /**
+diff -r 68e4c357d26c browser/locales/en-US/browser/browserContext.ftl
+--- a/browser/locales/en-US/browser/browserContext.ftl	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/locales/en-US/browser/browserContext.ftl	Sun Oct 08 18:57:22 2023 -0400
+@@ -265,12 +265,12 @@
+     .label = Reload Image
+     .accesskey = R
+ 
+-main-context-menu-image-view-new-tab =
+-    .label = Open Image in New Tab
++main-context-menu-image-view =
++    .label = View Image
+     .accesskey = I
+ 
+-main-context-menu-video-view-new-tab =
+-    .label = Open Video in New Tab
++main-context-menu-video-view =
++    .label = View Video
+     .accesskey = i
+ 
+ main-context-menu-image-copy =
+diff -r 68e4c357d26c browser/themes/shared/tabs.css
+--- a/browser/themes/shared/tabs.css	Wed Sep 27 23:12:23 2023 +0000
++++ b/browser/themes/shared/tabs.css	Sun Oct 08 18:57:22 2023 -0400
+@@ -645,7 +645,7 @@
+ 
+ /* New tab button */
+ 
+-#tabs-newtab-button,
++#tabs-newtab-button, #tabs-newtab-button-custom-8740,
+ #TabsToolbar #new-tab-button {
+   list-style-image: url(chrome://global/skin/icons/plus.svg);
+ }
+diff -r 68e4c357d26c dom/security/test/general/browser_test_view_image_data_navigation.js
+--- a/dom/security/test/general/browser_test_view_image_data_navigation.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/dom/security/test/general/browser_test_view_image_data_navigation.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -9,7 +9,11 @@
+     getRootDirectory(gTestPath) + "file_view_image_data_navigation.html";
+ 
+   await BrowserTestUtils.withNewTab(TEST_PAGE, async function (browser) {
+-    let loadPromise = BrowserTestUtils.waitForNewTab(gBrowser, null, true);
++    let loadPromise = BrowserTestUtils.browserLoaded(
++      gBrowser.selectedBrowser,
++      true
++    );
++ 
+ 
+     // simulate right-click->view-image
+     BrowserTestUtils.waitForEvent(document, "popupshown", false, event => {
+@@ -30,8 +34,6 @@
+       spec.startsWith("data:image/svg+xml;"),
+       "data:image/svg navigation allowed through right-click view-image"
+     );
+-
+-    gBrowser.removeTab(tab);
+   });
+ });
+ 
+@@ -44,7 +46,10 @@
+     getRootDirectory(gTestPath) + "file_view_bg_image_data_navigation.html";
+ 
+   await BrowserTestUtils.withNewTab(TEST_PAGE, async function (browser) {
+-    let loadPromise = BrowserTestUtils.waitForNewTab(gBrowser, null, true);
++    let loadPromise = BrowserTestUtils.browserLoaded(
++      gBrowser.selectedBrowser,
++      true
++    );
+ 
+     // simulate right-click->view-image
+     BrowserTestUtils.waitForEvent(document, "popupshown", false, event => {
+@@ -65,7 +70,5 @@
+       spec.startsWith("data:image/svg+xml;"),
+       "data:image/svg navigation allowed through right-click view-image with background image"
+     );
+-
+-    gBrowser.removeTab(tab);
+   });
+ });
+diff -r 68e4c357d26c modules/libpref/init/all.js
+--- a/modules/libpref/init/all.js	Wed Sep 27 23:12:23 2023 +0000
++++ b/modules/libpref/init/all.js	Sun Oct 08 18:57:22 2023 -0400
+@@ -1891,6 +1891,8 @@
+ pref("middlemouse.contentLoadURL", false);
+ pref("middlemouse.scrollbarPosition", false);
+ 
++pref("browser.urlbar.clickSelectsAll", false);
++
+ #if defined(XP_WIN) || defined(XP_MACOSX) || defined(MOZ_WIDGET_GTK)
+   // Setting false you can disable 4th button and/or 5th button of your mouse.
+   // 4th button is typically mapped to "Back" and 5th button is typically mapped
+@@ -2691,6 +2693,8 @@
+   pref("middlemouse.openNewWindow", true);
+   pref("middlemouse.scrollbarPosition", true);
+ 
++  pref("browser.urlbar.clickSelectsAll", false);
++
+   // Tab focus model bit field:
+   // 1 focuses text controls, 2 focuses other form elements, 4 adds links.
+   // Leave this at the default, 7, to match mozilla1.0-era user expectations.
+diff -r 68e4c357d26c toolkit/components/extensions/test/xpcshell/xpcshell-common.ini
+--- a/toolkit/components/extensions/test/xpcshell/xpcshell-common.ini	Wed Sep 27 23:12:23 2023 +0000
++++ b/toolkit/components/extensions/test/xpcshell/xpcshell-common.ini	Sun Oct 08 18:57:22 2023 -0400
+@@ -393,10 +393,6 @@
+ skip-if =
+   appname == "thunderbird"
+   os == "android" # Bug 1350559
+-[test_ext_permissions_api.js]
+-skip-if =
+-  appname == "thunderbird"
+-  os == "android" # Bug 1350559
+ [test_ext_permissions_migrate.js]
+ skip-if =
+   appname == "thunderbird"
+diff -r 68e4c357d26c toolkit/components/extensions/test/xpcshell/xpcshell-legacy-ep.ini
+--- a/toolkit/components/extensions/test/xpcshell/xpcshell-legacy-ep.ini	Wed Sep 27 23:12:23 2023 +0000
++++ b/toolkit/components/extensions/test/xpcshell/xpcshell-legacy-ep.ini	Sun Oct 08 18:57:22 2023 -0400
+@@ -15,7 +15,6 @@
+ # Bug 1646182: Test the legacy ExtensionPermission backend until we fully
+ # migrate to rkv
+ [test_ext_permissions.js]
+-[test_ext_permissions_api.js]
+ [test_ext_permissions_migrate.js]
+ [test_ext_permissions_uninstall.js]
+ [test_ext_proxy_config.js]

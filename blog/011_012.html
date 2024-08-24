@@ -33,7 +33,12 @@
         </span>
       </span>
     </div>
-    <h1>Blog</h1>
+    <h1>Wyatt's Blog</h1>
+    <div class="postarea tagline">
+      <h3 class="tagline">New domain: <a href="https://megatokyo.moe/">https://megatokyo.moe/</a>!</h3>
+      <div class="alert-heading">Gitlab and Github sites should both be redirecting here now.</div>
+      <div class="alert-heading">I will move back to self hosting as soon as search engines update to follow the redirects.</div>
+    </div>
     <!-- <h1 class="bgc">Blogglegum Crisis</h1> -->
     <div class="navbox">
       <span class="blerg_navleft">
@@ -53,7 +58,7 @@
     </div>
     <div class="postarea" id="pc9801-1">
       <h2>Lost in Translation:<br/>
-        An NEC PC-98 English Documentation Project
+        An NEC PC-98 Buying and English Documentation Project
       </h2>
       <h3 class="tagline">The Hidden World of Old Japanese Domestic Computers</h3>
       <hr/>
@@ -998,11 +1003,13 @@
         some combination of game software, potentially learning Japanese, and
         maybe running free operating systems like the BSD's or Linux distros.
         There is very little attractive about the machines for plain old
-        Windows use. In my case I keep a Gateway E-3200 (Pentium 3) around for
-        my old Windows software use. It runs US English Windows 98 and Japanese
-        Windows 2000, and packs a Voodoo3 GPU; this puts me in a good spot for
-        anything I might really want to play in the Windows world, since I'm
-        not really too interested in modern Windows games.
+        Windows use (aside from the same reasons people like using old western
+        versions of windows). In my case I keep a Gateway E-3200 (Pentium 3)
+        around for my old Windows software use. It runs US English Windows 98
+        and Japanese Windows 2000, and packs a Voodoo3 GPU; this puts me in a
+        good spot for anything I might really want to play in the Windows
+        world, since I'm not really too interested in modern Windows games
+        and the Voodoo3 is highly compatible with most of the older stuff.
       </p>
       <h4>You Have Selected: DOS</h4>
       <p>
@@ -1055,8 +1062,8 @@
         a "PC-9821" originally was supposed to signify that it was
         "Windows-ready" and better for multimedia, as far as I can tell.
         Some PC-9821's were still sold with just MS-DOS installed and
-        without hard drives, so 9821 does not necessarily mean "Windows"
-        in all cases.
+        I believe some were sold without hard drives, so 9821 does not
+        necessarily mean "Windows" in all cases.
       </p>
       <h4>9821:</h4>
       <p>
@@ -1078,6 +1085,10 @@
         drives.
       </p>
       <p>
+        This is not a steadfast rule though; some pre-9821 PC-98's had 3.5
+        inch diskettes.
+      </p>
+      <p>
         It should be noted that <i>on the PC-98</i>, it is possible to write
         any PC-98 5.25" floppy disk image to a 3.5" floppy disk and it will
         work (if the computer and drive both can handle the density/coercivity
@@ -1097,11 +1108,82 @@
         relatively poor, so that might be another argument for using a 9821.
       </p>
       <p>
+        The 9821Ce (and possibly some other SCSI-using 9821's) are locked to
+        only working with NEC-made hard disks through some sort of vendor
+        check. For this reason, it may be advisable to avoid them unless you
+        are sure you can fake an NEC drive with, say, some SCSI drive emulator.
+        To my knowledge the IDE ones never have this kind of check.
+      </p>
+      <p>
         As will be seen below, there is one major reason apart from CPU speed
         (and even more important than CPU speed, arguably) not to get most
-        9821 models: western graphics accelerator chipsets for Windows which
-        are not entirely compatible with DOS games written with the uPD7220
-        and its evolutions in mind. Some may work, some may not. Read on.
+        9821 models: some are not entirely compatible with the older DOS games
+        written with the uPD7220 and its evolutions in mind. Some may work,
+        some may not. the 40 column text modes, 640x200, and monochrome modes,
+        for instance, do not work right on many machines made after the
+        mid-1990's. Some color behaviour might also be a little wacky. There's
+        a nice writeup
+        <a href="https://radioc.web.fc2.com/column/pc98bas/pc98disphw_en.htm">here</a>
+        about this graphics problem on later 98 models, and the page also
+        shows you a way to test your machine for compatibility issues. If you
+        don't have N-88 BASIC in ROM, you may have to use "Disk BASIC" instead.
+      </p>
+      <p>
+        <b>Some PC-9821 models come with only one floppy disk drive,</b> which
+        can be a kiss of death for playing many older games. Western floppy
+        drives will not work without modifications, and some might not even be
+        modifiable to work. <b>try to get one that already has two drives, or
+        try to find an upgrade kit NEC sold for some models to add a second
+        drive</b>. The upgrade kits typically contain a faceplate with a
+        second floppy drive slot as well as a second drive. My friend found
+        one of them for her PC-9821Ce2 and Cs2 models; I know they made similar
+        kits for other models as well.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_c2_floppy_upgrade_kit">
+        <a href="pc9801_1/full/pc9821-c2-e01_drive_upgrade_kit.jpg">
+          <img src="pc9801_1/pc9821-c2-e01_drive_upgrade_kit.jpg"
+               alt="(A photo of a drive upgrade kit for a PC-9821 Ce2 or Cs2,
+                    containing a new front faceplate to go over the drives,
+                    an instruction manual, a drive, and mounting hardware
+                    (otherwise known as screws)."/>
+                    </a>
+        <div class="imgwrap caption imgcentercaption">
+          A PC-9821-C2-E01 drive upgrade kit; different PC-9821 models have
+          different kits due to<br/>
+          different faceplate sizes and shapes. This one's meant for
+          PC-9821Ce2 and Cs2 models.
+        </div>
+      </div>
+      <p>
+        One modification you need to make if you don't get a kit and want to
+        use western floppy drives is to get them to run at 360RPM for
+        compatibility with 1.2MB high density PC-98 floppy disks. Some floppy
+        drive integrated controller chips are capable of this, if you can
+        figure out what pin to mess with on them. It's most likely to work if
+        you can find a drive made by a Japanese company. Hobbyists use terms
+        like "three-mode capable" to describe these adaptable drives.
+      </p>
+      <p>
+        Some models of PC-9801 (I think only some of the ones with 5.25"
+        drives?) do not have a "VFO" circuit on their main boards, and instead
+        have this integrated circuit on the floppy drive itself. This
+        complicates using different floppy drives because most do not have a
+        VFO on them. You can make or buy a board that sits between the
+        drive and the cable that adds VFO circuitry to a different drive
+        (or to a gotek/HxC floppy drive emulator), if you can find the chips
+        or a seller. Some Japanese sellers peddle pre-made boards, and there
+        are schematics about the web for making your own. Just be careful of
+        where you get your integrated circuits from; I've seen reports from
+        Japanese users of fake chips from some less scrupulous international
+        sellers.
+      </p>
+      <p>
+        A second modification you might need to make is to change the drive ID
+        from ID1 to ID0, but note that if there's already a primary floppy
+        drive installed as ID0 then you can leave this alone. Most later
+        floppy drives for IBM compatibles are hard-wired as ID1 for
+        compatibility with the IBM PC's somewhat quirky "cable twist" trick on
+        its floppy drives.
       </p>
       <h4>9801:</h4>
       <p>
@@ -1111,6 +1193,125 @@
         less desirable than the early 9821's. Also, this is just something I
         have heard, but people say it's harder to open up the earlier 9801's
         (although later ones are probably pretty okay).
+      </p>
+      <p>
+        Personally, I think they have a nicer physical aesthetic than later
+        models, and they also are likely to come with nice mechanical keyboards
+        except for perhaps the 9801B* series.
+      </p>
+      <h4>About Graphics:</h4>
+      <p>
+        You may be tempted to believe you can just get a weaker PC-98 and
+        upgrade a graphics card or something to get it to do what later models
+        will. This is basically untrue unless you are in Windows.
+      </p>
+      <p>
+        The PC-9821 also supports higher color depths and some additional
+        graphics modes, like "PEGC" 256 color modes. There's a planar and
+        a packed pixel mode. "Planar" is where all the red subpixels are next to
+        each other in memory, followed by all the greens, followed by all the
+        blues. Or some re-ordering of those "bit planes." All pre-256-color
+        PC-98's, to my knowledge, used exclusively planar graphics. The
+        Commodore Amiga and a fair deal of other color computers also used
+        planar graphics in the 1980's.
+      </p>
+      <p>
+        An example of planar graphics with four pixels would be &lt;red, red,
+        red, red&gt;, &lt;green, green, green, green&gt;, &lt;blue, blue,
+        blue, blue&gt;.
+      </p>
+      <p>
+        Meanwhile a packed pixel mode is more like what modern computers use.
+        It stores the red, green, and blue values for each pixel next to each
+        other in memory. This means the "chunks" of data are individual pixels
+        rather than complete planes of multiple pixels.
+      </p>
+      <p>
+        An example of a packed pixel mode with four pixels would be arranged
+        as &lt;red, green, blue&gt;, &lt;red, green, blue&gt;, &lt;red, green,
+        blue&gt;, &lt;red, green, blue&gt;.
+      </p>
+      <p>
+        Only a few models of PC-9821 support planar 256 color graphics.
+        According to <a href="https://radioc.web.fc2.com/column/pc98bas/pc98disphw_en.htm">this site</a>,
+        the models are PC-9821Ap, Ap2, As, Ae, Af, An, Ce, Ce2, Cs2, Np, and
+        Ne. Later PC-9821's only support packed pixel 256 color modes.
+      </p>
+      <p>
+        All of these graphics differences are built into the chipsets of the
+        PC-9801 and 9821 models, in their µPD7220 derivatives. They are
+        integral to the overall design of the system and cannot be swapped out
+        easily (you can do this with many Amiga Enhanced Chipset parts in later
+        "Original Chipset" Amiga systems, so it's a point that maybe needs to
+        be made). For DOS games to use them, they usually have to be
+        programmed with that exact hardware in mind. A GPU C-Bus board that's
+        awesome in Windows 3.1 or 95 will usually be useless for a vast
+        majority of PC-98 DOS software unless it was specifically written for
+        the minority of people who would have the exact right graphics card.
+        There was no standard like "Direct3D" or "OpenGL" that worked across
+        vendors. So if anyone but NEC made the upgrade, it's unlikely that
+        you will have much fun.
+      </p>
+      <p>
+        Some exceptions do exist, however; I've heard tell that some games
+        published by Alice Soft support I-O Data's GA-1024A and GA-1280A
+        boards. I mention this because my PC-98 ended up coming with a GA-1024A
+        by complete random chance.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801-ga1024a-1">
+        <a href="pc9801_1/full/ga1024a_1.jpg">
+          <img src="pc9801_1/ga1024a_1.jpg"
+               alt="(An I-O DATA GA-1024A graphics board. It has a connector
+                    for 'CRT IN,' and two 'CRT OUT' connections. One CRT OUT
+                    is a VGA style connector, the other is the normal PC-9801
+                    15 pin DA15.)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          My I-O DATA GA-1024A graphics accelerator board. Allows for 16-bit color
+          (65536 distinct colors) in 640x400,<br/>
+          and 32-bit color in resolutions below that. In 16 colors, it can
+          even run at 1024x960.
+        </div>
+      </div>
+      <p>
+        Some official cards as well as unofficial ones use a technique to
+        "take over" from the internal µPD7220 graphics upon software request.
+        My GA-1024A seems to use a relay to switch between passing through the
+        normal output (for during boot-up and when using software that is not
+        GA-1024A aware) and for when it is in use by software. It clicks when
+        Windows 3.1 starts up after I've installed its driver. It needs a video
+        signal passed in; in the case of my GA-1024A the original cable
+        specification is a "straight through" shielded DA15 (often called DB15
+        by sellers) male to female cable, with continuity between the two
+        connector shells. My cable is 1.5 or 2 feet long (can't remember), but
+        the shorter the better. These cables are still made by a variety of
+        manufacturers, although prices may vary wildly from vendor to vendor.
+        I could have gotten shorter, but it would have cost over twice as much.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801-ga1024a-2">
+        <a href="pc9801_1/full/ga1024a_2.jpg">
+          <img src="pc9801_1/ga1024a_2.jpg"
+               alt="(The graphics card is plugged into the back of my PC-98;
+                    a short cable runs between the main system video output
+                    and a video input connection labelled 'CRT IN' on the
+                    board.)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          If you do decide to get a graphics accelerator, you may need a
+          special pass-through cable for it,<br/>
+          sort of like what the 3DFX Voodoo2 cards need.
+        </div>
+      </div>
+      <p>
+        All of that said, <b>there is very little reason to buy an accelerator
+        board</b>. You probably don't need more than 16 colours, but if you want
+        to ensure maximum compatibility you may want to pick between the
+        computer models above that are listed as supporting planar 256 colour
+        PEGC graphics. Even if it doesn't support this mode, though, it should
+        be fine if it does 16 colors - and has a decent CPU (some PC-9801VM
+        models and later support 16 colours, although the earliest might need
+        an extra VRAM board installed; for CPU's it really depends what you
+        want to run on it).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3>Yeah, But What Does All of That Mean?</h3>
@@ -1159,16 +1360,20 @@
         The ones that my friend got ended up not having barrel batteries, but
         I believe the PC-98DO has one and lots of others besides also do.
       </p>
-      <h4>Red Flag #2: Integrated window accelerator graphics chip</h4>
+      <h4>(Yellow) Flag #2: Integrated window accelerator graphics chip</h4>
       <p>
         Onboard window accelerator cards are for making Windows run with nice
         effects, like showing the contents of windows while dragging them
         around. Unfortunately, these machines force you to use that graphics
         chipset; there's no way to just "unplug" it and go back to using
-        the old µPD7220 derivatives. So my friend needed to rule out
-        <i>most</i> of the PC-9821 line. <b>But</b>, some of the early ones
-        still had either no GPU card built in, or else simply had an
-        accelerator card pre-installed that could easily be popped out.
+        the old ways. Apparently, this is correlated with but not the cause of
+        most PC-9821's having problems with 640x200 and monochrome graphics
+        modes. They simply got phased out about the same time the accelerators
+        came in. So my friend needed to rule out <i>most</i> of the PC-9821
+        line. <b>But</b>, some of the early ones still had either no GPU card
+        built in, such as the Ce2. The Cs2 has one built in that isn't
+        mentioned on most websites, hidden underneath the power supply. But
+        it seems to work just fine regardless.
       </p>
       <h4 id="pc9801_buying_wyatt_no_fm_sound">Red Flag #3: No FM sound</h4>
       <p>
@@ -1254,7 +1459,50 @@
         NEC's SCSI drives. For data (non-music playback), the third party
         driver works fine.
       </p>
-      <h4>Red Flag #5: There is no Red Flag #5</h4>
+      <h4>Red Flag #5: Leaking Surface Mount Electrolytic Capacitors</h4>
+      <p>
+        Early 1990's computer hardware, especially higher performance stuff,
+        tended to use surface mount electrolytic capacitors. Just like in the
+        Sega Game Gear, these early capacitors like to leak out and coat a board
+        in mildly acidic liquid that changes the composition of solder, making
+        it harder to melt, while also causing the capacitors themselves to
+        stop working. With the right tools and a lot of patience it is possible
+        to replace these capacitors, but getting new capacitors to replace all
+        the old ones costs money, not to mention all the time you will spend
+        trying to carefully remove the old capacitors while avoiding damaging
+        the acid-weakened circuit board solder pads.
+      </p>
+      <p>
+        The PC-9821Ap and other early A-MATE series computers tend to have
+        this problem, as does the PC-9801-86 sound board. I bought two of them
+        and one of them had NASTY capacitor leakage everywhere. The second had
+        already been recapped and cost a lot more. I've still not finished
+        recapping the one that needed everything removed, and I'm going to
+        need to repair a lot of traces somehow. Due to how the boards are
+        inserted into the computer, wrapping wires between sides of the board
+        isn't really easy to do since the boards slide in on plastic rails.
+      </p>
+      <p>
+        I think if you can manage to find a PC-9801-73 or one of the
+        third-party clones of the -73 or 86, you <i>might</i> be able to get
+        away without worrying about capacitors. The problem is that the 73 was
+        an expensive card when it came out and it never sold very well. So it's
+        not very common, and it probably commands a premium. But it does appear
+        to use more-normal through-hole capacitors. Make sure yours has both
+        the mainboard and daughterboard if you go for it. To my knowledge it's
+        just an -86 card but with even more features (a DSP).
+      </p>
+      <p>
+        The Ce2 and Cs2 do not use surface mount capacitors, nor does the
+        computer I ended up getting (see below). Although my 86 sound board
+        does. This no doubt contributes to the high prices for these boards
+        compared to the PC-9801-26K.
+      </p>
+      <p>
+        Oh yeah, also the capacitor juice smells like bad fish when you
+        desolder the old parts. It's <i>super</i> fun!
+      </p>
+      <h4>Red Flag #6: There is no Red Flag #6</h4>
       <p>
         If you avoid a window accelerator built into the motherboard, and your
         system has FM sound built in (especially a YM2608, for "86-Sound"),
@@ -1667,6 +1915,13 @@
         seeing what happens. I think 2-7 is only needed if your system has
         three internal floppy disk drives. Mine (regrettably) does not have the
         5.25" drive.
+      </p>
+      <p>
+        If you get a PC-98 and intend to put Gotek drive emulators in it,
+        you may end up having to make your own Gotek bracket if it was meant
+        for 5.25 inch drives; mine has bays that are slightly shorter than
+        "half height" and therefore western 5.25 to 3.5 inch brackets are too
+        tall to fit quite right.
       </p>
       <p>
         2-4 is the "FDD terminal mode" switch on my PC-486GR, as seen below.
@@ -2809,6 +3064,49 @@
         need to invest in a step-down power transformer.        
       </p>
       <p>
+        I use a secondhand Sanyo step-down transformer and a brand-new Nissyo one.
+      </p>
+      <div class="imgcontain imgwrap" id="stepdown-transformer-1">
+        <a href="pc9801_1/full/stepdown_transformer_1.jpg">
+          <img src="pc9801_1/stepdown_transformer_1.jpg"
+               alt="A Sanyo TSD-N11LU and Nissyo DN-103 transformer next to
+               each other."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          A Sanyo TSD-N11LU I bought on ebay, which inputs about 120 volts AC
+          and outputs about 100. It has a ground connection.<br/>
+          Next to it is a smaller Nissyo DN-103 which does the same thing but
+          has no ground and is much cheaper.
+        </div>
+      </div>
+      <p>
+        My friend got a different transformer than I did, as we couldn't find
+        another Sanyo at a nice price like i got mine at for sale. And Sanyo
+        (now owned by Matsushita/Panasonic, I believe) no longer seems to make
+        the transformer I have.
+      </p>
+      <p>
+        She bought a Nissyo NDF-1100U, which is rated for the same
+        current/draw as my Sanyo is. It has worked great for her, and
+        it seems to be groundable via the metal nuts holding the shell
+        together. It is well-built; I've used it in-person. It doesn't have
+        a power switch, though. And she had to move it further away from her
+        monitor or rotate it so that the magnetic field wouldn't influence the
+        electron beam deflection and make her screen sort of appear to
+        "wobble."
+      </p>
+      <div class="imgcontain imgwrap" id="stepdown-transformer-2">
+        <a href="pc9801_1/full/NDF-1100U-nissyo.jpg">
+          <img src="pc9801_1/NDF-1100U-nissyo.jpg"
+               alt="A Nissyo NDF-1100U transformer; a stock photo from the
+               company website. It is metal and has an in plug and an out plug.
+               it seems to be a skinny shell around the actual transformer."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Photo borrowed straight from <a href="https://www.nissyo-ind.co.jp/products/categorya/11.html">the company's website</a>.
+        </div>
+      </div>
+      <p>
         Japan's mains voltage is the lowest in the world, and it is the only
         country that uses this voltage. It just
         <b><i>might</i></b> be close enough to the US power grid's 110, 115,
@@ -3755,6 +4053,62 @@
         as well. Ultimately, it's subjective, and it's up to you to decide what
         you like in a joystick or gamepad.
       </p>
+      <p>
+        For now I'll say my favourite for reliability and all-around feel of
+        the <i>stick</i> is the Suncom TAC-2. The fire buttons leave a little
+        to be desired and don't work as reliably as they should, although by
+        modifying the buttons so that the washer under them is wired to the
+        signal pin and both side plates to ground, you can make these more
+        reliable. You'll know what I mean if you open one up. You will need to
+        modify this stick to use with separate fire buttons and probably
+        replace the cord.
+      </p>
+      <p>
+        The "Competition Pro" is another fabulous stick with much better fire
+        buttons. The stick part uses leaf switches in the earliest revision
+        (which is what I have), and tactile limit switches in later versions.
+        I know the tactile switch version is well regarded and I personally
+        find my leaf switch one enjoyable, too. But I'd say I find the TAC-2
+        a little bit nicer for most of the games I play. It's totally a
+        personal preference that might change over time though. one nice thing
+        about the leaf switch revision of Competition Pro is that you can
+        adjust the sensitivity of the stick very finely by carefully bending
+        the leaves. You will need to modify this stick to use with separate
+        fire buttons and probably replace the cord.
+      </p>
+      <p>
+        The Comrex Commander is my absolute favorite in every way except for
+        durability. The switches can be obtained still (they're still made by
+        Omron), and the stick is very nice and clicky and has a tight throw.
+        it uses a spring for centering instead of a rubber grommet like the
+        competition pro, which gives it a much more nimble feel. Unfortunately
+        the spring-over-tactile-pushbutton-switch assembly seems to result in
+        the very old springs eventually shearing, at least with mine, and they
+        are a tad annoying to repair. You need to remove the plastic heat
+        stakes holding the pcb in place and simply use the pressure of putting
+        the two case halves back together to reassemble it. The switches might
+        not work if they're dirty and corroded and may need replacing. Also,
+        this stick has a switch on the base which lets you make the fire
+        buttons operate independently of each other, but you will need to
+        rewire it for MSX pinout or else just make an adapter that moves pin 5
+        to pin 7.
+      </p>
+      <p>
+        You can also make an adapter and use a Sega Master System or Genesis
+        pad if that's more to your liking. I think some japanese sellers also
+        are selling pre-modified super famicom controllers that will work on
+        a PC-98.
+      </p>
+      <p>
+        Overall, my personal favourite is the Comrex Commander, but the TAC-2
+        is probably the best if you aren't okay with a lot of maintenance
+        work. If you can't make an adapter, just get a pre-modified super
+        famicom pad off yahoo auctions or find an original joystick. I think
+        Hudson made a "joy-card" model for the PC-98 and MSX; just don't
+        confuse it with the Famicom version which has a different connector,
+        or the Sega version (if that exists?) which has the same connector as
+        PC-98's but a different pinout.
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_monitor">Monitor</h3>
       <p>
@@ -4077,7 +4431,12 @@
       <h3 id="pc9801_buying_wyatt_hdd">Getting a Hard Drive</h3>
       <p>
         If your PC-98 or compatible doesn't come with a hard drive, then you
-        might need a SCSI controller.
+        might need a SCSI controller. Unless it has IDE connectors and just
+        no drive attached. Then you have the option of either getting a SCSI
+        controller or just finding an appropriately sized IDE drive or CF card.
+        It may be possible to trick a PC98 into using a larger IDE drive as if
+        it were a smaller one, I don't remember how at the moment but I may be
+        getting an IDE model soon so I will try to remember to update this.
       </p>
       <p>
         You might also need a parallel SCSI drive; these are getting tougher
@@ -4104,11 +4463,12 @@
         distributed on CD, you may need to get a drive if your PC-98 doesn't
         have one. Much like hard drives, your main options (depending on your
         model of computer) are IDE drives and SCSI drives, as far as CD's are
-        concerned. PC-9821's often (perhaps always ) came with IDE
-        controllers; 9801's and Epsons didn't (although I think some of the
-        last Epson 98's did; seemingly the models introduced in or after
-        September 1993 have an IDE interface built in, so the PC-486H* and
-        PC-486F* models; 486G* and 486S* models and earlier do not).
+        concerned. PC-9821 models mostly came with IDE controllers, except for
+        1992 and maybe some 1993 models. 9801's and Epsons didn't (although I
+        think some of the last Epson 98's did; seemingly the models introduced
+        in or after September 1993 have an IDE interface built in, so the
+        PC-486H* and PC-486F* models; 486G* and 486S* models and earlier do
+        not).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_ide">IDE Drives</h4>
@@ -4136,13 +4496,15 @@
         You might not be able to pick any old CD drive; they may look like
         "normal" IDE drives, but in the Ce2 and Cs2 at least, they <i>might</i>
         actually use some non-ATAPI command set. We (my friend and I) aren't
-        quite sure yet. I've seen one person suggest that the CDR-260 might be
-        one of the <i>earliest</i> ATAPI compatible drives, but I can't
-        guarantee anything. If it is truly an ATAPI drive, then I expect you
-        could put in some other standard IDE CD drive and have it function,
-        although you still might not be able to get one where the tray, LED,
-        and eject button line up with the holes in the case. I'd be interested
-        to know if anyone manages to finagle something into working!
+        quite sure yet. I've seen one person suggest that the CDR-260 that
+        they use might be one of the <i>earliest</i> ATAPI compatible drives,
+        but I can't guarantee anything. If it is truly an ATAPI drive, then I
+        expect you could put in some other standard IDE CD drive and have it
+        function, although you still might not be able to get one where the
+        tray, LED, and eject button line up with the holes in the case. I'd be
+        interested to know if anyone manages to finagle something into working!
+        It might be possible to simply change the software driver to a later
+        ATAPI one in that case.
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_scsi">SCSI Drives</h4>
@@ -4579,7 +4941,9 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         The key to writing floppies for a PC-98 in Linux is to use a program
         called "ufiformat." Especially if your PC-98 is not new enough to
         support 300 RPM 1.44MB disk reading/writing, it is absolutely
-        essential.
+        essential. It only works on "three mode" capable USB floppy drives.
+        There's a tool called "DITT" that <i>may</i> work for built in drives,
+        but I cannot guarantee that.
       </p>
       <p>
         I wrote a script for me and my friend that handles the details of
@@ -4604,6 +4968,8 @@ A bourne shell (any standard, non-<code>csh</code>-type Linux/Unix
       <p>
         It currently is only written to work for 1.2MB floppies, which in my
         experience constitutes a huge portion of the disks that you will use.
+        It should probably be possible to modify for smaller floppies by using
+        a different number with ufiformat than 1232 in the script, maybe.
       </p>
       <div class="codewrap">
         <pre class="block">
@@ -4665,6 +5031,10 @@ fi
         games - I extracted the disk image from it. So perhaps I need to
         try to find an original physical copy.
       </p>
+      <p>
+        It might also just be a problem with 486 machines, since now my friend
+        has a Pentium-era one that seemingly plays Ys just fine? Strange.
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_openbsd">Writing Floppy Disks (OpenBSD)</h3>
       <p>
@@ -4676,7 +5046,48 @@ fi
       </p>
       <div class="codewrap">
         <pre class="block">$ makefs -o floppy=1232 -t msdos</pre>
-      </div>      
+      </div>
+      <p>
+        Note that this might only work for three mode internal drives. To write
+        with a USB drive I believe you might have to craft and send the
+        appropriate SCSI commands to the device, which I believe to be
+        something like the following C-like pseudocode function:
+      </p>
+      <div class="codewrap">
+        <pre class="block">
+
+void format_pc98_disk() {
+  int num_tracks = 77;
+  int num_heads  = 2;
+  int track      = 0;
+  int head       = 0;
+  while(track &lt; num_tracks) {
+    head = 0;
+    while(head &lt; num_heads) {
+      /*
+       * scsi_command is an imaginary function,
+       * but its equivalent must exist in
+       * OpenBSD somewhere
+       */
+      scsi_command(
+        scsi_device,
+        /* command */
+        [ 0x04, 0x17, (uint8_t)track, 0x00,
+          0x00, 0x00,       0x00,     0x00,
+          0x0C, 0x00,       0x00,     0x00 ],
+        /* command data */
+        [ 0x00, (0xB0 || head), 0x00, 0x08,
+          0x00,      0x00,      0x04, 0xd0,
+          0x00,      0x00,      0x04, 0x00 ]
+      );
+      head++;
+    };
+    track++;
+  }
+}
+
+</pre>
+      </div>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_writing_floppies_windows">Writing Floppy Disks (Windows)</h3>
       <p>
@@ -4776,7 +5187,8 @@ fi
         cannot use. Anyone want them?&hellip;
       </p>
       <p>
-        The <b>good</b> news is that the brackets that come in the Epson are
+        The <b>good</b> news is that the brackets that come in the Epson (if
+        it is equipped with 3.5 inch drives rather than 5.25 inch ones) are
         able to mount a standard 3.5" floppy drive or Gotek just fine - with
         the caveat that you won't have a nice plastic bezel to cover up the
         gaps on the sides of the Gotek. That's why I have masking tape on the
@@ -4835,7 +5247,9 @@ fi
         An additional oddity is that the Epson uses laptop-style 26 pin floppy
         disk drives that connect via flat flex cable, attached to an adapter
         board that converts them to use full-sized 5.25" drive card edge
-        connectors and large 4-pin "molex" power connectors.
+        connectors and large 4-pin "molex" power connectors. I think this is
+        designed that way because some models shipped with 5.25" drives instead
+        of or in addition to 3.5" ones.
       </p>
       <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_486gr_orig_fdd">
         <a href="pc9801_1/full/486gr_original_fdd.jpg">
@@ -4850,14 +5264,14 @@ fi
         </div>
       </div>
       <p>
-        Since I don't want or need that adapter board anymore, I need to find
-        another way to deliver power to the Gotek and to make the ribbon cable
-        actually reach the drives' connectors, since the Goteks don't reach the
-        backs of the drive brackets. This means "Molex" to "Berg" power
-        adapters, as well as IDC to card edge floppy adapters, <i>plus</i> some
-        homemade extension boards to bridge the remaining distance from the IDC
-        connector to where the ribbon cable connects at the rears of the
-        brackets.
+        Since I don't want or need that adapter board anymore (for the
+        moment), I need to find another way to deliver power to the Gotek and
+        to make the ribbon cable actually reach the drives' connectors, since
+        the Goteks don't reach the backs of the drive brackets. This means
+        "Molex" to "Berg" power adapters, as well as IDC to card edge floppy
+        adapters, <i>plus</i> some homemade extension boards to bridge the
+        remaining distance from the IDC connector to where the ribbon cable
+        connects at the rears of the brackets.
       </p>
       <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_gotek_486gr_1">
         <a href="pc9801_1/full/gotek_bracket_486gr_extboard.jpg">
@@ -4934,12 +5348,13 @@ fi
       </div>
       <p>
         The board is about 5.5 centimeters long, and will be a little longer
-        with the right angle female IDC connector soldered on
-        (estimate: &le;6 cm). I think it <i>should</i> work; give it a shot.
-        Get it with hardened gold contacts on the edge connector if you can.
-        Better to make or buy one board than to both make one and buy another.
-        And even if it doesn't work, you can probably cajole it into working
-        with a knife and an iron.
+        with a right-angle female IDC connector soldered on (estimate: &le;6
+        cm). I think it <i>should</i> work; give it a shot. Get it with
+        hardened gold contacts on the edge connector if you can. Better to
+        make or buy one board than to both make one and buy another. And even
+        if it doesn't work, you can probably cajole it into working with a
+        knife and an iron. If there is one, The problem will be where the blue
+        traces are going between the first column of header pins.
       </p>
       <p>
         <b>Download: <a href="pc9801_1/dl/floppy_internal_extender.zip">floppy_internal_extender.zip</a></b> &ndash; 955 KiB
@@ -5773,6 +6188,23 @@ SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
         this).
       </p>
       <br/>
+      <h4>[J] <a href="http://hamlin.html.xdomain.jp/index.htm">HAMLIN's Page</a></h4>
+      <p>
+        <b>&emsp;Topics:</b> <i>NEC, Maintenance, Upgrades, PC-9821</i>
+      </p>
+      <p>
+        I almost labeled this site as a "must read." But it is a great website
+        containing lots of valuable information about mostly-PC-9821 related topics.
+      </p>
+      <p>
+        It purposefully tries to document stuff that is disappearing from
+        elsewhere on the web, which I consider to be a noble goal. It covers
+        some good topics, like which floppy drives are compatible with the
+        PC-98 computer series. It isn't going to have the answers to all
+        questions, but it is still quite interesting reading. Best of all,
+        though, it has a cute hamster in the top left corner of the homepage.
+      </p>
+      <br/>
       <h4>[J, EN] <a href="https://radioc.web.fc2.com/column/pc98bas/">Basic NEC PC-98 Information Archive (NEC PC-98 基本情報 書庫目録)</a></h4>
       <p>
         <b>&emsp;Topics:</b>
@@ -6096,14 +6528,21 @@ SHA-256: 0c6879c5aac25265ab332763e639409b003af0567ba7d4de483c88f09cd18634
         foo bar baz buzz
         </div>-->
     <div class="navbox">
-      <!--      <span class="blerg_navleft">
-                <a href="../blog/010.html">← Newer</a>
-      </span>-->
+      <span class="blerg_navleft">
+        <a href="../blog/013.html">← Newer</a>
+      </span>
       <span class="rightbox"> <!-- needed for dillo -->
         <span class="blerg_navright">
           <a href="../blog/009_010.html">Older →</a>
         </span>
       </span>
     </div>
+<!--    <div class="postarea" id="visit-count">
+      <p class="visit_counter">
+        Page hits since 8 August 2024:
+        <br/>
+      </p>
+      <img class="visit_counter" src="/counter/hit-count.php?page=blog/011_012" alt="visit counter. I'll make an accessibility link for an alternate textual way to see visits soon."/>
+    </div>--->
   </body>
 </html>

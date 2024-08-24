@@ -1,0 +1,573 @@
+@import "megabar_kill.css";
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */ 
+
+/* Works as of Firefox 88 (pre-Proton) and mostly in 89 (proton). */
+
+/*
+#urlbar-container, #search-container{
+  padding-block: 2px !important;
+}
+
+#urlbar-container, #urlbar-container[breakout], #searchbar-container, #searchbar-container[breakout]{
+  min-height: 24px !important;
+  --urlbar-container-height: 24.00px !important;
+}
+
+* {
+  font-family: "Tahoma NoAA",Tahoma,"Liberation Sans",Arial,Helvetica,sans-serif !important;
+  --urlbar-container-height: 24.00px !important;
+  */
+* {
+  font-family: "Tahoma NoAA",Tahoma,"Liberation Sans",Arial,Helvetica,sans-serif !important;
+}
+
+scrollbar * {
+  border: 4px black !important;
+}
+
+/* :root {
+  font: 8pt "Tahoma NoAA",Tahoma,"Liberation Sans",Arial,Helvetica,sans-serif !important;
+} */
+
+window, page, dialog, wizard, prefwindow {
+  font: 8pt "Tahoma NoAA",Tahoma,"Liberation Sans",Arial,Helvetica,sans-serif !important;
+}
+
+/* bar on top of selected/highlighted tab */
+/* #tabbrowser-tabs */
+
+/* FF <= 112 */
+.tab-close-button,.tab-close-button > .toolbarbutton-icon {
+   display: -moz-box !important;
+}
+
+/* FF 113+ */
+.tab-close-button[pinned], #tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]), .tab-icon-pending:not([pendingicon]), .tab-icon-pending[busy], .tab-icon-pending[pinned], .tab-icon-image:not([src], [pinned], [crashed], [pictureinpicture])[selected], .tab-icon-image:not([src], [pinned], [crashed], [sharing], [pictureinpicture]), .tab-icon-image[busy], .tab-throbber:not([busy]), .tab-sharing-icon-overlay, .tab-icon-overlay {
+  /* might be just 'flex' instead? */
+  display: inline-flex !important;
+}
+
+
+/* no stupid click-drag in menus moving the entire window */
+#navigator-toolbox {
+  -moz-window-dragging: no-drag !important;
+}
+
+/* Tab Bar on bottom */
+#navigator-toolbox toolbar:not(#nav-bar):not(#toolbar-menubar) {
+  -moz-box-ordinal-group: 10 !important;
+}
+
+/* info bar, currently just set to hover because I can't figure
+   out how to make it not mess up the tabs otherwise */
+.notificationbox-stack:not([inFullscreen="true"]) {
+  /* for alerts like pop-up blocked */
+  -moz-box-ordinal-group: 1500 !important;
+  display: block !important;
+  position: absolute !important;
+  top: calc(var(--tabbar-top) + 25px)  !important; 
+}
+
+.tab-background {
+  display: none !important;
+  border-bottom: 1px solid #797C88 !important;
+}
+
+.tabbrowser-tab {
+    /* no rounded corners */
+  --tab-border-radius: 0px !important;
+  border-top: 1px solid #DDDEE6 !important;
+  border-left: 1px solid #DDDEE6 !important;
+  border-bottom: 1px solid #797C88 !important;
+  /* firefox 113: new tab button on left requires setting these to a higher "order" number */
+  order: 2;
+  -moz-box-ordinal-group: 2; /* ff < 112 compat */
+}
+
+menu {
+  /* no rounded corners */
+  --tab-border-radius: 0px !important;
+  /* border-top: 1px solid #DDDEE6 !important;
+  border-bottom: 1px solid #797C88 !important; */
+}
+
+/* ff 113 rounded corners again, ugh. also wrong bg color in menus */
+menupopup, panel {
+  --panel-border-radius: 0px !important;
+  /* --panel-background: Menu; */
+  --panel-color: var(--toolbar-color) !important;
+  --panel-background: var(--toolbar-bgcolor) !important;
+}
+
+/* active tab fighting */
+
+.tabbrowser-tab:not([visuallyselected=true]){
+  /* appearance: none !important; */
+  /* border-right: 0px solid #797C88 !important;*/
+  /* 89+ needs a left border */
+  border-left: 0.5px solid #797C88 !important;
+  /* background-color: #CCD0DD !important;*/
+}
+
+.tab-background[selected="true"] {
+  background-image: none !important;
+}
+
+.tab-background {
+  box-shadow: none !important;
+}
+
+/* current tab background color */
+.tabbrowser-tab[visuallyselected=true]{
+  font-weight: bold !important;
+  /* background-color: #BBC0D1 !important; */
+  background-color: #C0C5D6 !important;
+}
+
+.tabbrowser-tab[visuallyselected=true] .tab-background {
+  border: 0px none transparent !important;
+  /* background-color: #BBC0D1 !important; */
+  background-color: #C0C5D6 !important;
+}
+
+.tab-icon-image[fadein], .tab-close-button[fadein], .tabbrowser-tab[fadein]::after, .tab-background[fadein]{
+  transition: none !important;
+}
+
+.tabbrowser-tab[visuallyselected=true] {
+  /* background-color: #EDF1FF !important; */
+  border-top: 1px solid #DDDEE6 !important;
+  border-right: 1px solid #DDDEE6 !important;
+  /* border-right: 0.5px solid #797C88 !important; */
+  /* 89+ needs a left border */
+  border-left: 0.5px solid #797C88 !important;
+  border-bottom: 0.5px solid #797C88 !important;
+ /* border: .5px solid #565964 !important;
+  border-top: transparent !important;*/
+}
+
+.tab-line {
+  background-color: #DDDEE6 !important;
+  height: 0px !important;
+  /* --tab-line-color: none !important;*/
+}
+
+/* Tabs on bottom */
+*|*:root {
+  --menubar-height: 36px;
+  --bookmarkbar-height: 30px;
+  /* ff 89+ */
+  --tabbar-top: calc(var(--menubar-height) + var(--bookmarkbar-height) + var(--tab-min-height) - 11px); /*89+*/
+  --tab-min-height: 25px !important;
+  --tab-max-height: 25px !important;
+  --urlbar-container-height: 24.00px !important;
+  --urlbar-toolbar-height: 24.00px !important;
+  /* ff 113 */
+  --toolbarbutton-border-radius: 0px !important;
+}
+
+#TabsToolbar:not([inFullscreen="true"]) {
+  --tab-min-height: 25px !important;
+  --tab-max-height: 25px !important;
+  -moz-box-ordinal-group: 1000 !important;
+  display: block !important;
+  position: absolute !important;
+/* bottom: 0 breaks on ff89 */
+/*  bottom: 0 !important; */
+  top: var(--tabbar-top) !important;
+/*  width: 100vw !important; */
+}
+.tab-background {
+  background-color: rgba(0,0,0,0) !important;
+  --proton-tab-block-margin: 0 !important;
+}
+
+
+
+/* end tabs on bottom */
+.tabbrowser-tab[visuallyselected=true]::after {
+  /* Shadow was too big on the left side of active tab otherwise */
+  border-left: none !important;
+}
+
+.tabbrowser-tab {
+  padding-inline: 0px !important;
+}
+
+.tabbrowser-tab::after, .tabbrowser-tab::before {
+  /* tab separator lines to full height */
+  margin-block-start: 100% !important;
+  margin-block-end: 100% !important;
+}
+
+*|*:root[tabsintitlebar]:not([inFullscreen="true"]):not([sizemode="maximized"])
+ #toolbar-menubar[autohide="true"] ~ #TabsToolbar{
+  bottom: var(--tab-min-height) !important;
+  padding-top: calc(var(--tab-min-height) - 22px) !important; /*adjust*/
+}
+
+#titlebar {
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+}
+
+#titlebar:-moz-window-active {
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+}
+
+#titlebar:-moz-window-inactive {
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+}
+
+#tabbrowser-tabs {
+  width: 100vw !important;
+}
+
+/* navigator-toolbox - padding */
+*|*:root:not([chromehidden*="toolbar"]) #navigator-toolbox {
+  padding-bottom: calc(var(--tab-min-height) + 1px) !important; /*adjust*/
+}
+
+/* TABS: height */
+*|*:root {
+  --tab-toolbar-navbar-overlap: 0px !important;
+  --tab-min-height: 25px !important; /* adjust */
+  --tab-min-width: 80px !important; /* adjust */
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
+
+#TabsToolbar {
+  height: var(--tab-min-height) !important;
+/*  margin-bottom: 1px !important;*/
+  box-shadow: ThreeDShadow 0 -1px inset, -moz-dialog 0 1px, ThreeDLightShadow 0 1px !important; /* omit */
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+}
+
+.tab-background[multiselected="true"], .tab-background[selected="true"] {
+  /*  border-top-color: var(--tabs-border-color);*/
+  border-top-color: none !important;
+}
+
+  /* tab-top color */
+/*#tabbrowser-tabs {
+  --tab-line-color: #666 !important;
+}*/
+
+/* indicators */
+*|*:root[privatebrowsingmode=temporary] .private-browsing-indicator {
+  position: absolute !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  width: 14px !important;
+  pointer-events: none !important; /* click-through */
+}
+
+/* makes everything in toolbars a little more compact */
+*|*:root {
+  --toolbarbutton-outer-padding: 0px !important; /* was 6px. 0px is super condensed. */
+  --urlbar-icon-padding: 1px !important;
+  /* ff 113+, compact theme seems to have been eliminated */
+  --urlbar-min-height: 24px !important;
+  --toolbarbutton-inner-padding: 3px !important;
+}
+
+/* ff 113 bookmark bar */
+#personal-toolbar-empty-description, toolbarbutton.bookmark-item:not(.subviewbutton) {
+  padding-top: 0px;
+}
+
+/*toolbarbutton.bookmark-item:not(.subviewbutton) {
+  
+}*/
+
+hbox#PlacesToolbar {
+  max-height: 26px !important;
+}
+
+
+/* ff 113 menubar too tall */
+menubar > menu {
+  padding-bottom: 1px !important;
+  padding-top: 1px !important;
+  border-bottom: 1px solid transparent !important;
+}
+
+menu:where([_moz-menuactive]:not([disabled="true"])),
+menuitem:where([_moz-menuactive]:not([disabled="true"])) {
+  color: -moz-menuhovertext !important;
+  background-color: -moz-menuhover !important;
+}
+
+/* Drag Space */
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"] {
+  width: 20px !important;
+}
+
+/* Override vertical shifts when moving a tab */
+#navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
+  padding-bottom: unset !important;
+}
+
+#navigator-toolbox[movingtab] #tabbrowser-tabs {
+  padding-bottom: unset !important;
+  margin-bottom: unset !important;
+}
+
+#navigator-toolbox[movingtab] > #nav-bar {
+  margin-top: unset !important;
+}
+
+/* indicators - HIDE */
+.private-browsing-indicator {display: none !important;}
+.accessibility-indicator    {display: none !important;}
+
+/* window-controls - HIDE */
+#TabsToolbar #window-controls {display: none !important;}
+
+/* caption buttons - HIDE */
+*|*:root[tabsintitlebar]:not([inFullscreen="true"])
+ #toolbar-menubar[autohide="true"] ~ #TabsToolbar
+ .titlebar-buttonbox-container {display: none !important;}
+
+/* find bar on top */
+.browserContainer > findbar {
+  order: -1;
+  -moz-box-ordinal-group: 0;
+  transition-duration: 0s, 0s, 0s !important;
+  transition-timing-function: unset !important;
+  transition-property: unset !important;
+  border-top-width: 0px !important;
+  /*  border-bottom: 1px solid var(--toolbox-border-bottom-color) !important;*/
+  border-bottom: 1px solid ThreeDShadow !important;
+}
+
+findbar {
+  padding-block: 0px !important;
+}
+
+.findbar-find-previous, .findbar-find-next{
+  padding: 3px !important;
+}
+
+.findbar-closebutton {
+  /* on left side */
+  -moz-box-ordinal-group: 0;
+  /* firefox 112: -moz-box-ordinal-group replaced with 'order': */
+  order: 1;
+  /* less padding */
+  padding: 0 2px !important; /* default '0 8px' */
+  margin: 2px !important; /* defaults to 8px in FF 88 */
+}
+
+#nav-bar-customization-target > :is(toolbarbutton, toolbaritem):first-child, #nav-bar-customization-target > toolbarpaletteitem:first-child > :is(toolbarbutton, toolbaritem){
+  padding-inline-start: 2px !important;
+}
+
+.findbar-highlight, .findbar-case-sensitive, .findbar-match-diacritics, .findbar-entire-word, .findbar-label{
+  margin: 0 3px !important; /* default '0 8px' */
+}
+
+.findbar-container {
+  margin-inline-start: 0px !important;
+  padding-inline-start: 0px !important;
+  /* to reduce vertical height we can also change 'padding-block' */
+  padding-block: 1px !important; /* defaults to 4px */
+  height: 24px !important;
+  /* firefox 112+: moz-ordinal-group replaced with 'order:' */
+  order: 2;
+}
+
+/* first tab left side border missing when new tab button moved over there */
+
+.tabbrowser-tab{
+  border-right: 0.5px solid #797C88 !important;
+}
+.tabbrowser-tab[last-visible-tab]{
+  border-right: 0.5px solid #797C88 !important;
+}
+
+/* Firefox 112 */
+#tabbrowser-arrowscrollbox tab {
+  border-right: 0.5px solid #DDDEE6 !important;
+}
+#tabbrowser-arrowscrollbox tab:last-of-type {
+  border-right: 0.5px solid #797C88 !important;
+}
+
+/* .tabbrowser-tab[first-visible-tab]:not([selected])::before{(*/
+.tabbrowser-tab[first-visible-tab][visuallyselected]::before
+{
+  content: "";
+  display: -moz-box;
+  /* border-left: 0.5px solid #797C88 !important;*/
+  /*border-left: 1px solid !important;*/
+/*  border-color: var(--tabs-border-color) !important;*/
+  margin: 0;
+  opacity: 1;
+}
+.tabbrowser-tab[first-visible-tab]:not([selected])::before
+{
+  content: "";
+  display: -moz-box;
+  /*border-left: 1px solid !important;*/
+/*  border-color: var(--tabs-border-color) !important;*/
+  margin: 0;
+  opacity: 1;
+}
+
+
+/*.tabbrowser-tab[first-visible-tab][selected]::before{
+  content: "";
+  display: -moz-box;
+  border-left: 1px solid !important;
+  margin: 0;
+  opacity: 0.3;
+}*/
+
+/*.tabbrowser-tab[first-visible-tab][visuallyselected]::before{
+  border-color: var(--tabs-border-color) !important;
+  border-left: 1px solid !important;
+  opacity: 1 !important;
+  display: -moz-box !important;
+}*/
+
+
+/*.tabbrowser-tab:not([selected])::after, .tabbrowser-tab:not([selected])::before {
+    border-left: 1px solid var(--lwt-background-tab-separator-color, currentColor) !important;
+    margin-block: 5px 4px !important;
+}*/
+
+/* .tabbrowser-tab::before, .tabbrowser-tab::after { */
+  /*    margin-inline-start: -1px !important;*/
+/*   margin-inline-start: 1px !important; */
+/* } */
+
+/* FF 97 */
+.tabbrowser-tab[visuallyselected]::before, #tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[beforeselected-visible]::after, #tabbrowser-tabs[movingtab] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[visuallyselected]::before, .tabbrowser-tab[visuallyselected]::after
+{
+  border-color: var(--tabs-border-color) !important;  
+}
+
+/* FF 113 */
+/* .tabbrowser-tab:not([visuallyselected="true"], [multiselected]), .tabbrowser-tab:-moz-lwtheme */
+/* tab:where([visuallyselected="true"]) */
+/* .tabbrowser-tab */
+/*{
+  
+}*/
+
+/* new tab button stays on left side of all tabs */
+#tabs-newtab-button, #TabsToolbar #new-tab-button, #tabbrowser-arrowscrollbox-periphery {
+  -moz-box-ordinal-group: 0 !important;
+  order: 1 !important;
+}
+
+#tabs-newtab-button {
+  /*
+     FF 116: Had to do this and add an extra 'new tab' button called
+     '#tabs-newtab-button-custom-8740' to make the new tab button appear to the far
+     left, even when i have enough tabs open to scroll off the side.
+     Could have done without so many XUL hacks... But oh well.
+   */
+  display: none !important;
+}
+
+toolbarbutton #new-tab-button {
+  order: 1 !important;
+}
+
+/*** Revert tab throbber - for Firefox 80 as of 8/28/2020 ***/
+.tab-throbber[busy] {
+  background-image: url("chrome://global/skin/icons/loading.png") !important;
+  animation: unset !important;
+}
+.tab-throbber[busy]:not([progress]) {
+  /* Grays the blue during "Connecting" state */
+  filter: grayscale(100%);
+}
+@media (min-resolution: 2dppx) {
+  .tab-throbber[busy] {
+    background-image: url("chrome://global/skin/icons/loading@2x.png") !important;
+  }
+}
+/* Suppress bouncing dots when ui.prefersReducedMotion = 0 */
+.tab-throbber[busy]::before {
+  background-image: none !important;
+  animation: unset !important;
+}
+@media (min-resolution: 2dppx) {
+  .tab-throbber[busy]::before {
+    background-image: none !important;
+  }
+}
+
+/* remove hamburger icon cancer */
+/*#PanelUI-menu-button {
+  display: none !important;
+}*/
+#PanelUI-menu-button {
+  /* other approach results in glitchiness when adding/removing addons. */
+  /* This works better, though! */
+  min-width: 0px !important;
+  max-width: 0px !important;
+  width: 0px !important;
+  height: 0px !important;
+  min-height: 0px !important;
+  list-style-image: none !important;
+}
+
+/* remove URL bar "reader view" and "page actions" buttons, so that a single
+   tab key press will get me to the search bar from the URL bar
+   ( ctrl+L, <tab> )*/
+#page-action-buttons {
+  display: none !important;
+}
+
+/* smaller gap */
+#urlbar-search-splitter {
+  min-width: 8px !important; /* default 12px */
+}
+
+/* disable "list all tabs" dropdown button that appears when lots of tabs are opened */
+#alltabs-button {
+  display: none !important;
+}
+
+#urlbar-background, #searchbar{
+  box-shadow: none !important;
+}
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background {
+  /* not an accurate color, I just picked something close enough out of laziness */
+  border: 1px solid #ffffff !important;
+}
+
+#urlbar-background, #searchbar {
+  border-radius: unset !important;
+}
+
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background, #searchbar:focus-within {
+  outline: 1px solid rgba(70, 70, 70, 0.75) !important;
+  /*outline: unset !important;*/
+  border: 2px solid rgba(0,0,0,0.37) !important;
+}
+
+/* icons at top of context menu (back, foward, bookmark, etc.) */
+#context-navigation, #context-sep-navigation {
+  display: none !important;
+}
+
+menupopup,
+.menupopup-arrowscrollbox{ border-radius: 0 !important; }
+:root{ --arrowpanel-border-radius:0px !important }
+

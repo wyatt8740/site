@@ -9,7 +9,7 @@
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
     <meta http-equiv="pragma" content="no-cache"/>
-    <title>Wyatt's Blog: 68K Macintosh Repair Log</title>
+    <title>Wyatt's Blog: The 68040 Macintosh Repair Log</title>
     <link rel="icon" type="image/x-icon" href="/site/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="../style_base.css"/>
     <link rel="stylesheet" type="text/css" href="../style.css"/>
@@ -34,6 +34,11 @@
       </span>
     </div>
     <h1>Blog</h1>
+    <div class="postarea tagline">
+      <h3 class="tagline">New domain: <a href="https://megatokyo.moe/">https://megatokyo.moe/</a>!</h3>
+      <div class="alert-heading">Gitlab and Github sites should both be redirecting here now.</div>
+      <div class="alert-heading">I will move back to self hosting as soon as search engines update to follow the redirects.</div>
+    </div>
     <div class="navbox">
       <span class="blerg_navleft">
         <!-- <a href="../blog/015.html">← Newer</a> -->
@@ -55,8 +60,9 @@
         Repairing a 68K Macintosh:<br/>
         The Resurrection of a Centris 650
       </h2>
-      <h3 class="tagline">Work Log</h3>
-      <div class="alert-heading"><b><u>This restoration is a work-in-progress!</u></b></div>
+      <h3 class="tagline">- Work Log -</h3>
+      <div class="alert-heading"><b><u>This restoration is a work-in-progress!<br/>
+            I'll be updating the log as I go.</u></b></div>
       <div class="alert-body">
         <p>
           This mac is being worked on in my own time, and is not yet revived.
@@ -72,5 +78,429 @@
         for it, and he told me I could have it for free and that it did not
         currently work.
       </p>
+      <p>
+        Knowing nothing about old macs, I thought "Well, it can't be TOO bad,
+        can it?" and decided to take it. The previous owner also told me that
+        he had some writing saved on it, and I offered to try to rescue it for
+        him; he agreed. So maybe, if the Quantum hard disk works when I get
+        to that point, he'll be getting his old files back.
+      </p>
+      <p>
+        The physical condition of the mac looked "not bad," as far as I was
+        concerned.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-first-picture">
+        <a href="centris_1/full/centris_first_picture_at_home.jpg">
+          <img src="centris_1/centris_first_picture_at_home.jpg"
+               alt="Photo: A Macintosh Centris 650 computer, Apple Keyboard II, a Macintosh ADB mouse, and 'Macintosh Color Display' (that's the actual name of it; the model family number is M1212)."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Macintosh Centris 650 computer, "Macintosh Color Display (M1212), Apple Desktop Bus mouse II, <br/>
+          Apple Keyboard II (SMK 'spring over membrane' key switches), and a big ol' box of floppy disks.<br/>
+          A little dirty, but not too bad!
+        </div>
+      </div>
+      <p>
+        &hellip;But sometimes, looks can be deceiving, as we will soon see!
+      </p>
+      <h2>Cleaning it Up</h2>
+      <p>
+        The first thing I always do when I get old electronics (or even
+        secondhand non-electronics) is to clean them up. I've had a case before
+        where the simple act of cleaning off the motherboard caused a seemingly
+        dead Nintendo 64 to start working, and it's also good for my health
+        to not be breathing in all that old garage dust.
+      </p>
+      <h3>Cleaning the Keyboard</h3>
+      <p>
+        I did the keyboard first, since if I got the mac working and still
+        have to clean the keyboard I might put off cleaning the keyboard
+        indefinitely. Taking it apart, the keyboard was no big deal. It was
+        held together mostly by screws; compared to a modern Apple product,
+        especially, it was quite straightforward. I popped the keycaps off,
+        scrubbed them, and put them back on. Meanwhile, I soaked the case
+        plastic in warm water to loosen the dirt stuck on it.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-keyboard-1">
+        <a href="centris_1/full/centris_keyboard_cleaned.jpg">
+          <img src="centris_1/centris_keyboard_cleaned.jpg"
+               alt="The Apple Keyboard II sitting on my desk, now cleaned."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          The legends on some keys are wearing off, but apart from that, the keyboard looks quite dashing.<br/>
+          It never ceases to amaze me what a difference just a simple scrubbing can make!
+        </div>
+      </div>
+      <p>
+        I then tested the keyboard out with an ADB to USB adapter, which I
+        already had lying around on account of the Apple Extended Keyboard that
+        I got back in 2018 or so. Everything works just like it should! The key
+        feel isn't anything fantastic&hellip; It bottoms out a little harder
+        than many regular rubber dome boards, but it still uses buckling rubber
+        sleeves for tactile feedback so some of the "rubber dome" feel is still
+        definitely present. One nice thing is that the key doesn't quite have
+        to bottom out to register&hellip; But my Apple Extended board from
+        1987 or so still feels better so I'll probably use that if I can get
+        the computer working.
+      </p>
+      <h3>Cleaning the Computer</h3>
+      <p>
+        I skipped the monitor and mouse for now; I've done the mouse but I
+        didn't take any pictures yet. I'll maybe come back to it later. The
+        monitor still needs cleaning as of this writing, but I'm fairly
+        confident that it will not be <i>too</i> bad.
+      </p>
+      <p>
+        I next took the case apart for the Centris itself. It was quite dusty
+        inside&hellip; who knows how long it sat in that garage.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-inside-case-1">
+        <a href="centris_1/full/centris_inside_case_1.jpg">
+          <img src="centris_1/centris_inside_case_1.jpg"
+               alt="A thick layer of dust over the entire motherboard, but very little around the hard drive."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          My initial view upon opening the case. Tons of dust!&ndash; The Motorola 68040 CPU is under the heat sink.
+        </div>
+      </div>
+      <p>
+        One good thing I noticed was a lack of aluminum electrolytic surface
+        mount capacitors; Apple seems to have used tantalum caps, which have
+        much better characteristics&hellip; except that when they fail they
+        like to catch fire. But at least they don't tend to leak out liquid
+        capacitor electrolyte (an acid) all over everything. So I've got that
+        going for me, which is nice.
+      </p>
+      <p>
+        There was a thick layer of dust on the motherboard, but that's not in
+        and of itself a deal breaker. It did get me hoping that <i>maybe</i>
+        I'd just have to give the board a good cleaning and it might clear
+        some short, letting the computer start working.
+      </p>
+      <p>
+        However, this notion was quickly abandoned, when I removed the hard
+        drive and floppy drive mounting plate&hellip; and found the stuff that
+        my nightmares are made of.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-battery-bombed-1">
+        <a href="centris_1/full/centris_battery_bombed_1.jpg">
+          <img src="centris_1/centris_battery_bombed_1.jpg"
+               alt="A channel of lithium battery acid leakage, mostly still in
+                    liquid form, running between the main system RAM chips, up
+                    to and along the entire length of the VRAM memory stick
+                    slot. There are also smaller splatters that hit the main
+                    RAM expansion stick slot area and various other parts,
+                    just to make things worse than they already were."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          "Abandon all hope, ye who enter here."
+        </div>
+      </div>
+      <p>
+        Yes, the real-time clock battery had exploded. Or leaked very, very
+        badly and somehow flung acid out so that it rained over part of the
+        board.
+      </p>
+      <p>
+        I'd been lucky so far; I'd only seen bad battery leakage once before
+        in my life, when it had ruined my Amiga 500's RAM expansion board.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_nicad_battery_horror">
+        <a href="pc9801_1/full/nicad_battery_horror.jpg">
+          <img src="pc9801_1/nicad_battery_horror.jpg"
+               alt="(Picture of a corroded Commodore Amiga A501 memory
+                    expansion board, destroyed by battery leakage)"/>
+                    </a>
+        <div class="imgwrap caption imgcentercaption">
+          My Commodore Amiga A501 memory expansion board - a victim of
+          clock NiCad battery leakage.
+        </div>
+      </div>
+      <p>
+        In that case, I was able to sidestep the issue, since the expansion
+        card was enclosed in sheet metal and the battery was not on the
+        motherboard itself. The Amiga also had some unused spots on the main
+        board that I was able to solder RAM into, totally obviating the need
+        for the expansion slot except for the real-time clock (which I can live
+        without or make my own modification for). Even the leakage in that,
+        though, was nothing compared to the carnage I was witnesing here.
+      </p>
+      <p>
+        The battery had left a soupy mixture of rust and lithium-based battery
+        acid that was destroying everything in its path. It wasn't a slow
+        trickle followed by creeping corrosion in the traces; it was a dam
+        bursting open and flooding the poor unsuspecting village below.
+      </p>
+      <p>
+        To many, this would be a complete and instant game-over. I still as of
+        writing this am not <i>certain</i> that I can save this computer. But
+        darn it, I got this for free! - So I <i>have</i> to try. If I can get
+        it going, I can both have a 68040-based mac and also run NetBSD on
+        it!&ndash; For much cheaper than any Amiga capable of doing the same.
+        And even if I end up giving up and just replacing a motherboard, it
+        will cost less than buying an A4000.
+      </p>
+      <h3>Rescuing a Battery-Bombed Macintosh</h3>
+      <p>
+        Since I was determined to save this thing, regardless of how much it
+        clearly wanted to be dead, I began by trying to clean up the flooded
+        "canals" of battery acid. The first step was removing the battery.
+        I then used dry cotton swabs to try to mop up the battery acid that was
+        still in liquid form. Then, i soaked the area in isopropyl alcohol.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-battery-cleanup-1">
+        <a href="centris_1/full/centris_battery_cleanup_01.jpg">
+          <img src="centris_1/centris_battery_cleanup_01.jpg"
+               alt="The circuit board after mopping up the liquid battery acid
+                    that I could reach with cotton swabs. There's still lots
+                    of little rust fragments on the board and some crusty
+                    dried deposits, but remarkably the silkscreen is still
+                    good on the board (meaning the chips' labels are still
+                    intact on the circuit board)"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Surprisingly, the silkscreen for the board seems fully intact despite
+          the massive flooding.
+        </div>
+      </div>
+      <p>
+        Now let's take a moment to assess what might be damaged.
+      </p>
+      <p>
+        The area immediately around the battery contains the real time
+        clock and PRAM, which are both inside the "VLSI" chip with pins on all
+        four sides. It also where Apple decided it'd be good to solder down
+        all of the system's built-in main RAM. All sixteen of those Motorola
+        "MCM44400N80" chips constitute the computer's main working memory. This
+        can be further extended by adding sticks in the black RAM slots to the
+        left of these chips. One of those slots was <i>also</i> splashed by
+        battery acid and Needs to be removed. The VRAM slots (an uncommon
+        68-pin SIMM variant) are also attacked by acid and need to be taken
+        out. As we will eventually see, this will be quite tricky due to
+        <i>the solder itself</i> being degraded by the battery acid.
+      </p>
+      <p>
+        In a way, this is actually a kind of the best part of the board to get
+        destroyed, because it means the only custom chip that I need to worry
+        about being destroyed is the PRAM/RTC hybrid chip. The rest is
+        commodity dynamic RAM (DRAM), which even though it's been out of
+        production for many years is still easy to obtain online. It's the
+        same kinds of chips that were used in many IBM PC compatibles and even
+        non-IBM compatibles used from that period. In fact, I think my Epson
+        PC-486GR uses the same or very similar chips, and I know for sure that
+        my friend's PC-9821Ce2 and Cs2 computers use them, too. So soldering
+        them all down without a hot air station will actually be a trickier
+        problem than getting the chips.
+      </p>
+      <p>
+        I saw an ebay listing for forty compatible RAM chips from Toshiba in
+        their original factory packaging for $25, for instance. Not too bad at
+        all, even on a shoestring budget. This is "Fast Page Mode" (FPM) DRAM;
+        do not get EDO DRAM or it will likely not work.
+      </p>
+      <p>
+        Miraculously, in addition to the silkscreen on the board remaining intact,
+        even the traces still look okay and are visible underneath the
+        solder-resist, which is the green film layer that protects the traces
+        during the soldering process. Often with battery leakage, corrosion
+        creeps down below the solder resist and wipes the traces out from
+        beneath.
+      </p>
+      <p>
+        The next step was using alcohol-drenched cotton swabs to clean up
+        whatever mess was still left.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-battery-cleanup-2">
+        <a href="centris_1/full/centris_battery_cleanup_02.jpg">
+          <img src="centris_1/centris_battery_cleanup_02.jpg"
+               alt="The board now looks wetter than before due to alcohol,
+                    but most of the rust particles are cleaned up and the
+                    traces are quite plainly visible. It actually looks...
+                    well, not horrible."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          It's looking much better now&hellip; <br/>
+          but battery acid still lurks underneath the RAM slots and the
+          sixteen DRAM chips themselves.
+        </div>
+      </div>
+      <p>
+        Since there was still battery acid underneath the chips, and the RAM
+        slots for that matter, I needed to figure out what to do about that. I
+        knew there was probably no way I could avoid desoldering the chips to
+        properly clean under them. This is quite problematic&ndash; primarily
+        because I have no hot air station (and surface mount desoldering with
+        an iron and wick is not fun at all). The other issue is that soldering
+        them back down without the correct iron tip is a challenge to say the
+        least, and I'm about to ruin my only "proper" iron tip doing something
+        else to this Macintosh (we will probably get to that soon).
+      </p>
+      <p>
+        But before I desoldered the chips, there were two last things I wanted
+        to try to clean up the board. One was removing the battery holder so I
+        could clean up under it; the other was something sort of unorthodox
+        but which I had a feeling could work decently.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-battery-holder-removed">
+        <a href="centris_1/full/centris_battery_holder_removed.jpg">
+          <img src="centris_1/centris_battery_holder_removed.jpg"
+               alt="Quite a lot of residue underneath where the battery
+                    holder was attached to the main board."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          There was quite a lot of battery residue hiding under the battery holder itself.<br/>
+          One of the pins on the holder had actually been eaten through!!
+        </div>
+      </div>
+      <p>
+        With that removed, I did a little scrubbing with cotton swabs again,
+        and then was ready to try my next trick&hellip; something I had never
+        done before.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-waterpik">
+        <a href="centris_1/full/centris_waterpik_1.jpg">
+          <img src="centris_1/centris_waterpik_1.jpg"
+               alt="A water flosser ('Waterpik' branded) sitting in a large
+                    plastic storage tub."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          A dental water flosser seemed like a good way to attack the smaller areas swabs can't reach.
+        </div>
+      </div>
+      <p>
+        Guess what? it worked great. I soaked it in alcohol again after using
+        the flosser on it, since the alcohol can help the water to evaporate
+        faster, and then let the board dry off with a fan blowing air on it
+        overnight. When I came back the next day, it looked <i>markedly</i>
+        better.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-post-flosser">
+        <a href="centris_1/full/centris_post_flosser.jpg">
+          <img src="centris_1/centris_post_flosser.jpg"
+               alt="A dried board after water flossing. There's almost no
+                    yellowish orange spots left on the board where the battery
+                    acid had been before. The corroded pins of some of the RAM
+                    chips are quite visibly different than their clean
+                    neighbors now as well."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          There's almost no visible acid residue left. The gaps between RAM pins also look better,<br/>
+          and most or all of the dust is gone, too! A great success. 10/10, highly recommended.
+        </div>
+      </div>
+      <p>
+        Next, I had to stop beating around the bush and try to remove all of
+        the chips. I have no hot air station (which just blows super hot air
+        on the board to melt the solder on all the pins of a chip at once to
+        allow removal), so I had to improvise.
+      </p>
+      <p>
+        This is the kind of job I had for a very long time said "I'll do it
+        later when I have the right tools." I have a SNES that I think I can
+        fix if I can obtain the correct ones, for instance. And an NEC
+        PC-9801-86 sound card (with a Yamaha YM2608 Frequency Modulated (FM)
+        synthesizer chip). But since tools were not forthcoming, I decided I
+        needed to bite the bullet on this one.
+      </p>
+      <p>
+        A friend of mine with similar interests living in France that I spoke
+        with on both IRC and Fediverse (mastodon <i>et al</i>) told me to try
+        flooding one side of the chip with solder and melting it all, then
+        bending that side of the chip up and doing the other.
+      </p>
+      <p>
+        It seemed as good an idea as any, although it's complicated by the fact
+        that there's a large gap between pins 5 and "9" (I'd call it "pin 6,"
+        but the datasheet and schematic both skip pins 6, 7, and 8). To avoid
+        this, I flooded each side independently and used my second soldering
+        iron to melt the second set of pins, prying up with both irons.
+      </p>
+      <p>
+        This is something you should try to avoid on boards that might already
+        have pads and traces weakened by battery acid, but because this is RAM
+        specifically it is separated out into "buses" that make it so the
+        nearby chips share a lot of wiring with each other and most signals
+        can easily be grabbed from them.
+      </p>
+      <p>
+        Actually, i also discovered that three of the chips had already had
+        <i>each and every pin and almost every pad on one side</i> eaten away
+        before I began, which made things a little easier for desoldering.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-corroded-pins-1">
+        <a href="centris_1/full/centris_corroded_pins_1.jpg">
+          <img src="centris_1/centris_corroded_pins_1.jpg"
+               alt="Three chips bent back like they were on hinges, revealing
+                    that all the legs on one side are damaged by corrosion and
+                    uncovering the battery acid residue lurking underneath."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Lots of battery acid under there, too! Good thing I'm taking these off to clean&hellip;
+        </div>
+      </div>
+      <p>
+        In any case, my technique basically worked. I think most or all of the
+        damaged pins were already gone due to battery acid; all of the five
+        chips that have all pads intact after removal are the ones that the
+        acid didn't land on or otherwise touch.
+      </p>
+      <p>
+        If anyone's wondering though, yes, this means just a water flosser is
+        unlikely to be able to get all the acid off!
+      </p>
+      <div class="imgcontain imgwrap" id="centris-corroded-pins-2">
+        <a href="centris_1/full/centris_corroded_pins_2.jpg">
+          <img src="centris_1/centris_corroded_pins_2.jpg"
+               alt="After scrubbing some of the acid off with alcohol swabs,
+                    with all three chips that were eaten away by acid lifted
+                    on one side."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          With three chips lifted up on one side, that's 30 pins I no longer
+          need to worry about further damaging. :\
+        </div>
+      </div>
+      <p>
+        After all of them are removed, it's time for a damage assessment. Five
+        chips' worth of pads are completely unscathed. Apple's Quadra 800 and
+        Centris 650 used the same motherboard, and the schematic for them
+        shows that some configurations of Centris 650 shipped with only eight
+        soldered-down RAM chips. All five of the undamaged chip pads are on
+        the correct side for a 4MB factory configuration, mercifully! - so I
+        might only solder eight chips back down to save myself some work and
+        at least verify that the system still can have a pulse.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-all-ram-removed-1">
+        <a href="centris_1/full/centris_all_ram_removed_1.jpg">
+          <img src="centris_1/centris_all_ram_removed_1.jpg"
+               alt="All sixteen chips are removed and the solder pads are
+                    visible. Unfortunately most chips have at least one
+                    damaged pin, but I was able to remove them without more
+                    major catastrophes and I cleaned under them."/>
+                    </a>
+        <div class="imgwrap caption imgcentercaption">
+          It looks much cleaner now, although it's going to be a headache
+          wiring it all back up. And the corroded SIMM slots still need
+          removed for cleaning.
+        </div>
+      </div>
+    </div> <!-- /postarea -->
+    <div class="navbox">
+<!--      <span class="blerg_navleft">
+        <a href="../blog/015.html">← Newer</a>
+      </span>-->
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/013.html">Older →</a>
+        </span>
+      </span>
+    </div>
+<!--    <div class="postarea" id="visit-count">
+      <p class="visit_counter">
+        Page hits since 8 August 2024:
+        <br/>
+      </p>
+      <img class="visit_counter" src="/counter/hit-count.php?page=blog/014" alt="visit counter. I'll make an accessibility link for an alternate textual way to see visits soon."/>
+    </div>-->
   </body>
 </html>
