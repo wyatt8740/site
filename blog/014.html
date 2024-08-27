@@ -497,7 +497,7 @@
       </p>
       <p>
         After doing one of those, i needed a break from plastic burning fumes,
-        so I worked a bit on installing RAM chips again.
+        so I worked a bit on reinstalling some of the DRAM chips.
       </p>
       <div class="imgcontain imgwrap" id="centris-soldering-new-ram-01">
         <a href="centris_1/full/centris_soldering_new_ram_01.jpg">
@@ -508,18 +508,88 @@
         </a>
         <div class="imgwrap caption imgcentercaption">
           Three or so of the bodge wires for the top chip haven't been soldered
-          down yet in this photo&hellip;<br/>
+          down yet in this photo.<br/>
           I discovered there might be a better place to grab some of the
           signals from, which I will show later.
+          
         </div>
       </div>
-      
+      <p>
+        In this process, schematics make a <b>world</b> of difference.
+        Thankfully, I was able to locate Quadra 800 schematics eventually; I am
+        not sure Apple cares anymore about the schematics for these being out
+        there, so I'll just say the filename I found was
+        <code>Q800_Schematic.pdf</code> and that i was able to find it on a
+        page with a bunch of files relating to "wombat" motherboards ("wombat"
+        is the apparent codename for this Mac motherboard. It was in the Quadra
+        800 and Quadra/Centris 650 at the very least). The schematics
+        annoyingly do not contain the values for any parts (resistors,
+        capacitors, and resonator crystals, for instance), nor are there good
+        descriptions of what most do, but they <i>do</i> contain a diagram of
+        the actual wiring of the parts, which is the most important thing for
+        me to have any hope of rescuing this Mac.
+      </p>
       <p>
         Both VRAM SIMM's and the first DRAM SIMM all came off eventually. The
         DRAM SIMM was nowhere near as badly corroded, though, so I was able to
         desolder most of it normally and just lift it out of the board as
         normal.
       </p>
+      <p>
+        Switching gears again for a minute, I decided I could test if the
+        keyboard I got worked. I used the
+        <a href="https://github.com/tmk/tmk_keyboard.git">tmk_keyboard</a>
+        firmware as an ADB to USB adapter; the mini USB port on the old
+        <a href="https://www.adafruit.com/product/296">Adafruit ATMega32U4
+          breakout board</a> (no longer in production) was faulty, so I had to
+        improvise a wee bit. Thankfully I have a USB A-to-A
+        (<b>non-standard!!</b>) cable already for my
+        <a href="../blog/005_006.html#unicomp-mini-1">Unicomp "Mini M" board</a>,
+        which I have talked about on this blog in-depth previously, and I had a
+        faulty laptop daughterboard for a Thinkpad X201 that had a USB A port on
+        it. If I'd had any available on-hand, I'd have suggest using a type B
+        port instead, though!
+      </p>
+      <div class="imgcontain imgwrap" id="centris-keyboard-adapter-1">
+        <a href="centris_1/full/centris_keyboard_adapter_1.jpg">
+          <img src="centris_1/centris_keyboard_adapter_1.jpg"
+               alt="Picture of an Adafruit ATMega32U4 breakout board soldered
+                    to a perforated prototyping board with a USB A port and
+                    4-pin Mini DIN going to and from it. The USB port has wires
+                    running directly to the tiny components on the breakout
+                    board itself to intercept them."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          It was a little tricky to solder the wires to the little surface
+          mount components to expose the USB signals.<br/>
+          But it worked in the end.
+        </div>
+      </div>
+      <p>
+        After constructing a LEGO housing for the adapter, I was able to test
+        the board with it, and it worked just fine! Feels a little less great
+        than my older Apple extended keyboard, but still not bad, either.
+      </p>
+      <div class="imgcontain imgwrap" id="centris-keyboard-adapter-2">
+        <a href="centris_1/full/centris_keyboard_adapter_2.jpg">
+          <img src="centris_1/centris_keyboard_adapter_2.jpg"
+               alt="Picture of LEGO housing for my ADB keyboard adapter.
+                    It's a bit bulky but very strong, and also sort of cute, I
+                    think!"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          A little bulky, but the keyboard adapter is also much more protected
+          inside this housing.
+        </div>
+      </div>
+      <p>
+        With that done, it was time to get back to the motherboard. After
+        removing the last VRAM SIMM slot and ordering replacement parts, I took
+        out my continuity tester and started probing all the traces that ran
+        underneath the VRAM slots, since I'd caused some scuffing while
+        removing the slots and cleaning underneath them.
+      </p>
+      <h4>(To be continued; check back later! "Same bat-time; same bat-channel!")</h4>
     </div> <!-- /postarea -->
     <div class="navbox">
 <!--      <span class="blerg_navleft">
