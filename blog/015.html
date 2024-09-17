@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- text encoding UTF-8 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Force reload each time page is visited (don't cache; the page is tiny anyway) -->
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <title>Wyatt's Blog: About Colorimetry</title>
+    <link rel="icon" type="image/x-icon" href="/site/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="../style_base.css"/>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="alternate" type="application/rss+xml" title="Wyatt's Blog (RSS)" href="/site/blog/rss.xml" />
+  </head>
+  <body>
+    <div class="navbox">
+      <span class="navbar menu_left">
+        <a href="../index.html">Home</a>
+        <a class="active" href="../blog/index.html">Blog</a>
+        <a href="../about/index.html">About</a>
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="menu_right">
+          <a href="/site/print/blog/014.html" class="printmode">[Print View]</a>
+          <a href="/site/light/blog/014.html" class="lightmode">[Light]</a>
+          <a href="/site/dark/blog/014.html" class="darkmode">[Dark]</a>
+          <a href="/site/velvet/blog/014.html" class="velvet">[Velvet]</a>
+          <a href="/site/rose/blog/014.html" class="rose">[Rose]</a>
+          <a href="/site/megatokyo/blog/014.html" class="megatokyo">[Megatokyo]</a>
+        </span>
+      </span>
+    </div>
+    <h1>Blog</h1>
+    <div class="postarea tagline">
+      <h3 class="tagline">New domain: <a href="https://megatokyo.moe/">https://megatokyo.moe/</a>!</h3>
+      <div class="alert-heading">Gitlab and Github sites should both be redirecting here now.</div>
+      <div class="alert-heading">I will move back to self hosting as soon as search engines update to follow the redirects.</div>
+    </div>
+    <div class="navbox">
+      <span class="blerg_navleft">
+        <!-- <a href="../blog/015.html">← Newer</a> -->
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/013.html">Older →</a>
+        </span>
+      </span>
+    </div>
+    <div class="postarea" id="toc">
+      <b>Posts on this page:</b>
+      <ul>
+        <li><a href="#mac68k-1"><b>All About Colorimetry (As I Understand It)</b></a></li>
+      </ul>
+    </div>
+    <div class="postarea" id="pc9801-1">
+      <h2>
+        All About Colorimetry
+      </h2>
+      <h3 class="tagline">(As I Understand It)</h3>
+      <p><span class="date-heading"><i>17 Sept 2024</i></span> [<a class="permalink" href="./015.html#colorimetry-1">Permanent link</a>]<br/>
+        For a few years now I've been gaining experience with colorimetry, and
+        boy, it sure is a lot to take in. Most things are pretty well
+        documented, but finding that documentation can be tricky, and the body
+        of research around it goes back a century or more.
+      </p>
+      <p>
+        My main focus in colorimetry has been related to calibration and
+        profiling of computer displays, to ensure that the original intent of
+        an artist or photographer is communicated in an objectively "right"
+        way. That is to say, if a photo is prepared or drawn or edited on one
+        computer monitor, in an ideal world the picture's colors would still
+        be close to the same on very different monitors.
+      </p>
+      <p>
+        In reality this is usually not the case, because color is highly
+        device specific and even a specific model of monitor with a specific
+        model of LCD panel might have variance from example to example. Plus,
+        most consumer devices are not calibrated or profiled from the factory,
+        and even those that are are often profiled in a cursory, hasty way in
+        order to keep the assembly line moving. But the computer needs to know
+        a lot about the display it is sending a picture to to be sure that the
+        image is being reproduced anywhere near correctly.
+      </p>
+      <p>
+        Since most monitors have not been profiled or calibrated with a
+        spectrophotometer (spectrometer) or colorimeter, it's sort of a wild
+        west out there.
+      </p>
+      <p>
+        Just to give you a really quick idea of how this can matter, have a
+        picture. This is the same game (Phantasy Star II) being shown on two
+        different screens; one's a Dell Latitude D610 laptop from 2005 or so.
+        The other is a Panasonic BT-H1390YN monitor displaying the game in RGB
+        from a Sega Mega Drive/Genesis console. Even right on top of each other
+        the before and after correction might be hard to spot, so here's links
+        for an animated version of that which alternates back and forth, in
+        both
+        <a href="colorimetry_1/full/d610_crt_colors_anim.png">APNG format</a>,
+        and if that isn't working in your browser here's the same thing in the
+        more compatible and much older
+        <a href="colorimetry_1/d610_crt_colors.gif">GIF format</a>.
+      </p>
+      <div class="imgcontain imgwrap" id="colorimetry-d610-crt-comparison">
+        <a href="colori_1/full/centris_first_picture_at_home.jpg">
+          <img src="centris_1/centris_first_picture_at_home.jpg"
+               alt="Photo: Two images of a Dell Latitude D610 laptop next to a
+                    Panasonic BT-H1390YN CRT. In the top half the image is not
+                    corrected and the whole thing has a slight blue tint to
+                    it; also the colour purple is more of an indigo. In the
+                    bottom image, they are extremely close to each other in
+                    terms of colour."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Top is before, bottom is after. Check the bluish indigo cast on the laptop.<br/>
+          It's especially visible in the darker parts of Nei's hair.
+        </div>
+      </div>
+      <p>
+        I also have the stationary images of both before and after in good
+        resolution. Here they are:
+        <a href="colorimetry_1/full/d610_crt_colors_uncorrected.jpg">uncorrected</a>,
+        <a href="colorimetry_1/full/d610_crt_colors_corrected.jpg">corrected</a>.
+      </p>
+      <p>
+        This isn't even the most extreme example by a long shot; that'd have
+        to be watching cartoons on my Thinkpad X201 with full color correction
+        applied. But it's an example photo I had on hand already.
+      </p>
+      <h3>Color Gamuts</h3>
+      <p>
+        A color gamut is a representation of the range of colors that a
+        display can show. This is represented as a three dimensional volume
+        within an imaginary graph (usually three dimensional) that plots
+        intensities of different colors of light and brightnesses against each
+        other. Basically, though, when a display is said to be "wide gamut" it
+        means that a given color value (like RGB 100%, 0%, 0%) would be more
+        saturated on that monitor than on a "standard" gamut one (usually sRGB
+        is considered "standard").
+      </p>
+      <p>
+        This has a lot of implications - primarily that if an image is edited
+        on a wide gamut monitor and precautions are not taken, that image will
+        look less saturated or punchy than expected on an sRGB display.
+        Likewise, an image prepared on an sRGB display would look <i>more</i>
+        saturated than intended on a wide gamut display, if no precautions have
+        been taken, because most any software either is not aware of colour
+        management, or else assumes sRGB by default and needs to be told about
+        wider gamut monitors explicitly.
+      </p>
+      <p>
+        So how does an engineer go about making colors consistent across
+        different displays - the answer lies in spectrophotometry, where one
+        can measure how a display responds to changes in the intensities of
+        reds, greens, and blues (or other primaries). By taking measurements
+        from the screen in a known state (with already-known brightness,
+        contrast, etc.), one can make a multiplication matrix that can be used
+        to model its behaviour and compare it to the expected behaviour of a
+        monitor meeting a certain standard (like sRGB, but Adobe RGB is
+        another common RGB color space). This usually takes the form of a
+        look-up table, where you feed it a colour value in a reference color
+        space and it can tell you which colour values will get you an
+        equivalent (or as close as possible to one) on your monitor.
+      </p>
+      <h3>Reference (Intermediary) Color Spaces</h3>
+      <p>
+        sRGB and others can be represented as a subset of all possible values
+        in the CIEXYZ (1931) or newer CIELAB (1976) color spaces, which
+        represent color in linear levels of light. Human vision is logarithmic
+        in nature, so a doubling of perceived brightness actually requires
+        exponentially more intensity in linear light (quantified as a count of
+        photons emitted in a certain frequency range over a span of time -
+        that's right; light can be measuredin discrete and objectively
+        countable quantities). Color spaces like sRGB are logarithmic since
+        this allowed for early computers to display a wider range of colors
+        with fewer bits, and also coincidentally happened to match up rather
+        nicely with the response curve of phosphors in a cathode ray picture
+        tube (CRT).
+      </p>
+      <p>
+        A color space like CIELAB or CIEXYZ can be used as an "intermediary"
+        color space, since they are capable of representing values in
+        basically any other color space (at least for the limitations of human
+        perception of color and light). By making a multiplication matrix that
+        converts from colors seen on a specific display to CIELAB or CIEXYZ, it
+        becomes possible to objectively specify the properties of that screen,
+        at least within the limits of our understanding of human vision.
+      </p>
+      <p>
+        A second table can be used to convert the colors
+        from the CIELAB space into an "output" color value that would make the
+        image prepared on that display look right on a standard screen.
+      </p>
+      <p>
+        In other words, if you are looking at a picture that was authored on a
+        wide gamut monitor, such as a Dell UltraSharp U2410, and that image
+        has the color profile of that Dell monitor embedded in its metadata,
+        a program like Mozilla Firefox can translate the RGB values from the
+        picture so that they display as close as possible on a different
+        computer's screen.
+      </p>
+      <h3>Problem 1: No One Knows About Colour Management</h3>
+      <p>
+        It's not strictly true that "no one" knows about it. But a lot of
+        people, especially amateur artists, might not. Whenever somebody says
+        "<a href="https://helmet.kafuka.org/ponycolors/#rainbowdash">Rainbow
+        Dash's</a> body colour is RGB #9EDBF8," it's objectively true in one
+        sense - in this case the RGB value was taken from an Adobe Flash game.
+        But in another sense it should be remembered that we are merely
+        <i>assuming</i> that this flash was intended to be viewed on a roughly
+        sRGB screen - and that the creators even were thinking about colour
+        spaces! sRGB is usually a safe assumption, but it bears mentioning!
+        Additionally, if using a TV screenshot, the colors likely went through
+        an RGB to
+        <a href="https://en.wikipedia.org/wiki/Y%E2%80%B2UV?useskin=monobook">YUV</a>
+        conversion to save storage space and transmission bandwidth. This is
+        not a lossless conversion!
+      </p>
+      <p>
+        The big take-away of this is that an RGB value with no other
+        information given is inherently meaningless as far as real world
+        colour goes - even if it still has a lot of merit for practical
+        purposes.
+      </p>
+      <h3>Problem 2: Programmers Don't Know About Colour Management</h3>
+      <p>
+        Again, this isn't strictly true; some definitely do know about it. But
+        many, many programs are not able to do true colour management (which
+        requires the use of a 3D lookup table, usually embedded in an ICC
+        colour profile). And I myself have faced an uphill battle trying to
+        explain why colour management is an important feature for things like
+        image viewers in the past.
+      </p>
+      <p>
+        Most movie players do not support colour management, either, for some
+        reason. "mpv" is one of the only free, libre, and open source ones
+        that does.
+      </p>
+      
+    </div> <!-- /postarea -->
+    <div class="navbox">
+<!--      <span class="blerg_navleft">
+        <a href="../blog/015.html">← Newer</a>
+      </span>-->
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="blerg_navright">
+          <a href="../blog/013.html">Older →</a>
+        </span>
+      </span>
+    </div>
+<!--    <div class="postarea" id="visit-count">
+      <p class="visit_counter">
+        Page hits since 8 August 2024:
+        <br/>
+      </p>
+      <img class="visit_counter" src="/counter/hit-count.php?page=blog/014" alt="visit counter. I'll make an accessibility link for an alternate textual way to see visits soon."/>
+    </div>-->
+  </body>
+</html>
