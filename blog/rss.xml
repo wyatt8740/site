@@ -4,71 +4,79 @@
  <title>Wyatt's Blog</title>
  <description>Wyatt's blog for ravings, rants, and ruminations.</description>
  <link>https://wyatt8740.gitlab.io/site/index.html</link>
- <copyright>2022 Wyatt Ward. Do what you'd like, but I'd appreciate attribution..</copyright>
- <lastBuildDate>Tue, 26 Apr 2022 12:00:00 +0000</lastBuildDate>
- <pubDate>Tue, 26 Apr 2022 12:00:00 +0000</pubDate>
+ <copyright>2024 Wyatt Ward. Do what you'd like, but I'd appreciate attribution..</copyright>
+ <lastBuildDate>Tue, 17 Sep 2024 12:00:00 +0000</lastBuildDate>
+ <pubDate>Tue, 17 Sep 2024 12:00:00 +0000</pubDate>
  <ttl>1800</ttl>
+ <item>
+   <title>All About Colour Management (As I Understand It)</title>
+   <description>A brief discussion about some topics in colour management and colourimetry - and the science of how to make different computers and displays show the same colours.</description>
+   <link>https://megatokyo.moe/blog/015.html</link>
+   <guid isPermaLink="true">https://megatokyo.moe/blog/015.html#colorimetry-1</guid>
+   <pubDate>Tue, 17 Sep 2024 12:00:00 +0000</pubDate>
+ </item>
+
  <item>
   <title>"Hug me Tight:" Reflections on Bubblegum Crisis, Episode 6: "Red Eyes" (1989)</title>
   <description>Bubblegum Crisis 6: Red Eyes is reviewed and analyzed. This one didn't just touch me - it ripped me apart. Spoilers inside!</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/007_008.html#bubblegum-review-2</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/007_008.html#bubblegum-review-2</guid>
+  <link>https://megatokyo.moe/blog/007_008.html#bubblegum-review-2</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/007_008.html#bubblegum-review-2</guid>
   <pubDate>Tue, 26 Apr 2022 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>"We Shouldn't be Born to be Sad:" Reflections on Bubblegum Crisis, Episode 5: "Moonlight Rambler" (1988)</title>
   <description>Bubblegum Crisis 5: Moonlight Rambler is reviewed. This episode touched me deeply. I do a thorough analysis and explain a lot of my personal philosophy. Spoilers inside!</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/007_008.html#bubblegum-review-2</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/007_008.html#bubblegum-review-2</guid>
+  <link>https://megatokyo.moe/blog/007_008.html#bubblegum-review-2</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/007_008.html#bubblegum-review-2</guid>
   <pubDate>Mon, 07 Mar 2022 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>Global Per-Keyboard Remapping: Inside and outside of X</title>
   <description>Just a short follow-up post on the Unicomp article where I talk about how to remap a keyboard everywhere on a linux box. Works outside of X as well as inside.</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/005_006.html#keyboard-remap-1</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/005_006.html#keyboard-remap-1</guid>
+  <link>https://megatokyo.moe/blog/005_006.html#keyboard-remap-1</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/005_006.html#keyboard-remap-1</guid>
   <pubDate>Sun, 19 Dec 2021 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>Unicomp Returns to Form: My Thoughts on the Unicomp Mini M Keyboard</title>
   <description>I bought a Unicomp "Mini M" buckling spring keyboard. First time I've bought a new tech product in quite a while (even if this is basically a remake of an old one).</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/005_006.html#unicomp-mini-1</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/005_006.html#unicomp-mini-1</guid>
+  <link>https://megatokyo.moe/blog/005_006.html#unicomp-mini-1</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/005_006.html#unicomp-mini-1</guid>
   <pubDate>Sun, 27 Jun 2021 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>The PowerBook G4 Story: Or: Squeezing Every Last Drop of Life out of Abandoned Hardware Platforms</title>
   <description></description>
-  <link>https://wyatt8740.gitlab.io/site/blog/003_004.html#powerbook-linux-1</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/003_004.html#powerbook-linux-1</guid>
+  <link>https://megatokyo.moe/blog/003_004.html#powerbook-linux-1</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/003_004.html#powerbook-linux-1</guid>
   <pubDate>Wed, 28 Apr 2021 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>Coercing RGB from Retro Video Game Consoles on the Cheap: Or: Modifying Game Consoles for Fun and Less Financial Damage</title>
   <description>The retro video game market is stupidly priced these days. Here's some things I've done to save some money that I had fun doing. Also, SCART is overrated and unnecessary for RGB.</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/003_004.html#psx-rgb-1</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/003_004.html#psx-rgb-1</guid>
+  <link>https://megatokyo.moe/blog/003_004.html#psx-rgb-1</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/003_004.html#psx-rgb-1</guid>
   <pubDate>Fri, 15 May 2020 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>CDemu: A Brief Tour: Or: How I played Quake with the music CD on a computer without a CD Drive</title>
   <description>Under Linux, CDEmu lets you do a lot of things - including CD music playback without having to have an analogue mixer in your sound card and output on your CD drive.</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/001_002.html#cdemu</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/001_002.html#cdemu</guid>
+  <link>https://megatokyo.moe/blog/001_002.html#cdemu</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/001_002.html#cdemu</guid>
   <pubDate>Mon, 03 Feb 2020 12:00:00 +0000</pubDate>
  </item>
 
  <item>
   <title>The POSIX Shell and You: Or: How You're Likely Misusing #!/bin/sh</title>
   <description>The 'shebang' in Unix, its history, and why you should likely be using '#!/usr/bin/env bash' instead (or changing how you write your scripts).</description>
-  <link>https://wyatt8740.gitlab.io/site/blog/001_002.html#posixshell</link>
-  <guid isPermaLink="true">https://wyatt8740.gitlab.io/site/blog/001_002.html#posixshell</guid>
+  <link>https://megatokyo.moe/blog/001_002.html#posixshell</link>
+  <guid isPermaLink="true">https://megatokyo.moe/blog/001_002.html#posixshell</guid>
   <pubDate>Sun, 14 Jul 2019 12:00:00 +0000</pubDate>
  </item>
 
