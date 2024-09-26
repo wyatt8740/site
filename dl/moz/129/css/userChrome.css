@@ -230,7 +230,7 @@ menupopup, panel {
 
 /* navigator-toolbox - padding */
 *|*:root:not([chromehidden*="toolbar"]) #navigator-toolbox {
-  padding-bottom: calc(var(--tab-min-height) + 1px) !important; /*adjust*/
+  padding-bottom: calc(var(--tab-min-height)) !important; /*adjust*/
 }
 
 /* TABS: height */
