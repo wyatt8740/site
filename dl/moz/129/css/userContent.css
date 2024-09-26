@@ -1,0 +1,17 @@
+@namespace url("http://www.w3.org/1999/xhtml");
+
+/* transparent background on image files with alpha channels */
+body > img.transparent {
+  background: transparent !important;
+}
+
+:root, html {
+    scrollbar-color: inherit !important;
+    scrollbar-width: auto !important;
+}
+
+/*html,body{
+  scrollbar-color: #AEB2C3 #797B87 !important;
+
+}*/
+/*  scrollbar-color: #DDDEE6 #9B9EAD !important; */

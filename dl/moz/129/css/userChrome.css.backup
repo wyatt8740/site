@@ -1,0 +1,94 @@
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */ 
+
+/* Tab Bar on bottom */
+#navigator-toolbox toolbar:not(#nav-bar):not(#toolbar-menubar) {
+  -moz-box-ordinal-group: 10 !important;
+}
+
+#TabsToolbar {
+  -moz-box-ordinal-group: 1000 !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 0 !important;
+/*  width: 100vw !important; */
+}
+
+*|*:root[tabsintitlebar]:not([inFullscreen="true"]):not([sizemode="maximized"])
+ #toolbar-menubar[autohide="true"] ~ #TabsToolbar{
+  bottom: var(--tab-min-height) !important;
+  padding-top: calc(var(--tab-min-height) - 22px) !important; /*adjust*/
+}
+
+#tabbrowser-tabs {
+  width: 100vw !important;
+}
+
+/* navigator-toolbox - padding */
+*|*:root:not([chromehidden*="toolbar"]) #navigator-toolbox {
+  padding-bottom: calc(var(--tab-min-height) + 1px) !important; /*adjust*/
+}
+
+/* TABS: height */
+*|*:root {
+  --tab-toolbar-navbar-overlap: 0px !important;
+  --tab-min-height: 25px !important; /* adjust */
+  --tab-min-width: 80px !important; /* adjust */
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
+
+#TabsToolbar {
+  height: var(--tab-min-height) !important;
+  margin-bottom: 1px !important;
+  box-shadow: ThreeDShadow 0 -1px inset, -moz-dialog 0 1px, ThreeDLightShadow 0 1px !important; /* omit */
+  background-color: var(--toolbar-bgcolor) !important;
+  color: var(--toolbar-color) !important;
+}
+
+/* indicators */
+*|*:root[privatebrowsingmode=temporary] .private-browsing-indicator {
+  position: absolute !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  width: 14px !important;
+  pointer-events: none !important; /* click-through */
+}
+
+/* Drag Space */
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"] {
+  width: 20px !important;
+}
+
+/* Override vertical shifts when moving a tab */
+#navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
+  padding-bottom: unset !important;
+}
+
+#navigator-toolbox[movingtab] #tabbrowser-tabs {
+  padding-bottom: unset !important;
+  margin-bottom: unset !important;
+}
+
+#navigator-toolbox[movingtab] > #nav-bar {
+  margin-top: unset !important;
+}
+
+/* indicators - HIDE */
+.private-browsing-indicator {display: none !important;}
+.accessibility-indicator    {display: none !important;}
+
+/* window-controls - HIDE */
+#TabsToolbar #window-controls {display: none !important;}
+
+/* caption buttons - HIDE */
+*|*:root[tabsintitlebar]:not([inFullscreen="true"])
+ #toolbar-menubar[autohide="true"] ~ #TabsToolbar
+ .titlebar-buttonbox-container {display: none !important;}
+
