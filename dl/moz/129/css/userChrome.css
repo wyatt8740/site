@@ -230,7 +230,7 @@ menupopup, panel {
 
 /* navigator-toolbox - padding */
 *|*:root:not([chromehidden*="toolbar"]) #navigator-toolbox {
-  padding-bottom: calc(var(--tab-min-height) + 1px) !important; /*adjust*/
+  padding-bottom: calc(var(--tab-min-height)) !important; /*adjust*/
 }
 
 /* TABS: height */
@@ -341,6 +341,18 @@ menuitem:where([_moz-menuactive]:not([disabled="true"])) {
 *|*:root[tabsintitlebar]:not([inFullscreen="true"])
  #toolbar-menubar[autohide="true"] ~ #TabsToolbar
  .titlebar-buttonbox-container {display: none !important;}
+
+/* ff 129: */
+/* stupid toolbar buttons for maximise and minimise in fullscreen */
+:root:is([inFullscreen="true"]) .titlebar-buttonbox {
+  display: none !important;
+}
+
+/* ff 129: active tab showing in fullscreen for some reason again */
+:root:is([inFullscreen="true"])
+        .tabbrowser-tab:is([visuallyselected], [multiselected]) {
+  display: none !important;
+}
 
 /* find bar on top */
 .browserContainer > findbar {
