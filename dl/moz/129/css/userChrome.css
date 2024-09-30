@@ -1,6 +1,11 @@
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* need the "html" namespace as well or the findbar input text box background color can't be set */
 @import "megabar_kill.css";
 
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */ 
+/*@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); */ /* only needed once */ 
+/* @namespace html url("http://www.w3.org/1999/xhtml");*/
 
 /* Works as of Firefox 88 (pre-Proton) and mostly in 89 (proton). */
 
@@ -180,6 +185,17 @@ menupopup, panel {
   top: var(--tabbar-top) !important;
 /*  width: 100vw !important; */
 }
+
+/* ff 129 */
+#TabsToolbar:is([inFullscreen="true"]) {
+  --tab-min-height: 25px !important;
+  --tab-max-height: 25px !important;
+  display: none !important;
+/* bottom: 0 breaks on ff89 */
+/*  bottom: 0 !important; */
+/*  width: 100vw !important; */
+}
+
 .tab-background {
   background-color: rgba(0,0,0,0) !important;
   --proton-tab-block-margin: 0 !important;
@@ -344,15 +360,19 @@ menuitem:where([_moz-menuactive]:not([disabled="true"])) {
 
 /* ff 129: */
 /* stupid toolbar buttons for maximise and minimise in fullscreen */
-:root:is([inFullscreen="true"]) .titlebar-buttonbox {
+:root:is([inFullscreen="true"]) .titlebar-buttonbox,
+:root[sizemode="fullscreen"] .titlebar-buttonbox,
+:root[sizemode="fullscreen"] .tabbrowser-tab
+{
   display: none !important;
 }
 
 /* ff 129: active tab showing in fullscreen for some reason again */
-:root:is([inFullscreen="true"])
-        .tabbrowser-tab:is([visuallyselected], [multiselected]) {
+*|*:root:is([inFullscreen="true"]) .tabbrowser-tab:is([visuallyselected], [multiselected]) {
   display: none !important;
 }
+
+
 
 /* find bar on top */
 .browserContainer > findbar {
@@ -402,6 +422,16 @@ findbar {
   order: 2;
 }
 
+/* ff 129 rule (also needs to be in html namespace to work, apparently?) */
+.findbar-textbox {
+  background-color: white !important;
+  border-radius: 0px !important;
+  border: border: 1px solid var(--input-border-color) !important;
+  outline: 1px solid rgba(70, 70, 70, 0.75) !important;
+  /* 1px left border's cut off without this by close button for find bar */
+  margin-left: 1px !important;
+}
+
 /* first tab left side border missing when new tab button moved over there */
 
 .tabbrowser-tab{
@@ -420,7 +450,14 @@ findbar {
 }
 
 /* .tabbrowser-tab[first-visible-tab]:not([selected])::before{(*/
-.tabbrowser-tab[first-visible-tab][visuallyselected]::before
+*|*:root:is([inFullscreen="true"]) .titlebar-buttonbox,
+*|*:root[sizemode="fullscreen"] .titlebar-buttonbox,
+*|*:root[sizemode="fullscreen"] .tabbrowser-tab
+{
+  display: none !important;
+}
+
+:root:not([inFullscreen="true"]) .tabbrowser-tab[first-visible-tab][visuallyselected]::before
 {
   content: "";
   display: -moz-box;
