@@ -3,36 +3,26 @@
   <head>
     <!-- text encoding UTF-8 -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>GKA-98AT Keyboard Converter Information</title>
+    <title>GKA-AT98 Keyboard Converter Information</title>
   </head>
   <body>
     <p>
-      This is a PC-98 to PS/2 keyboard converter based on a PIC16f84(a) or
-      16f648a microcontroller. I found this stuff on:<br/>
-      <a href="http://shinku.ddo.jp/wordpress/?page_id=4151">http://shinku.ddo.jp/wordpress/?page_id=4151</a>.
+      This is a PS/2 to PC-98 keyboard converter based on a PIC16f84(a) - or
+      perhaps with changes a 16f648a microcontroller. See the "GKA-98AT" page
+      for some references on how you might do that. I don't have pre-made
+      patches for this one...
     </p>
     <p>
-      That page is worth a visit if you can get through the language barrier
-      because it is a solid write-up and features a patch for a larger PIC
-      model (16f648).
-    </p>
-    <p>
-      The <a href="http://www.tsp.ne.jp/~sawada/mago/c_gka98at.htm">original
+      The <a href="http://www.tsp.ne.jp/~sawada/mago/c_gkaat98.htm">original
         site</a> was down, and the asm file from that site was not archived by
       the wayback machine. However, the webpage the file was hosted on
       <i>was</i> archived
-      (<a href="http://web.archive.org/web/20210128190529/http://www.tsp.ne.jp/~sawada/mago/c_gka98at.htm">wayback machine link</a>).
-    </p>
-    <p>
-      Hasu's <a href="https://github.com/tmk/tmk_keyboard/wiki/PC-9801-Keyboard">TMK
-      keyboard firmware documentation for its own PC98 to USB keyboard
-      converter implementation</a> references the original site, which is how I
-      discovered the converter existed to begin with.
+      (<a href="https://web.archive.org/web/20190421112944/http://www.tsp.ne.jp/~sawada/mago/c_gkaat98.htm">wayback machine link</a>).
     </p>
     <p>
       I have not tried to build this converter, but I expect it works. I'd like
-      to build one since I prefer PS/2 over USB keyboards anyway. But for now I
-      have made a TMK converter which works.
+      to build one eventually since no complicated USB host device is needed
+      for a PS/2 to 98 adapter.
     </p>
     <p>
       As of this writing, you can find PIC16F84(A)'s from:
@@ -75,6 +65,12 @@
       think from the PDF maybe these are actually getting clocked at 6.144MHz
       via crystal? - But that might be changable to 10MHz in the source code. I
       did not look closely at all.
+    </p>
+    <p>
+      You will have to edit the source code for your AT board's layout and
+      personal preferences and PIC clock speed. But there you have it. You can
+      find more info on
+      <a href="https://web.archive.org/web/20190421112956/http://www.tsp.ne.jp/~sawada/mago/nt_gat98.htm">this archived page</a>.
     </p>
   </body>
 </html>
