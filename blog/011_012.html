@@ -3802,6 +3802,86 @@
         mechanical keyboard is still quite rare in my experience. Just be aware
         if you run into problems that that might be the issue.
       </p>
+      <h4>More Minutiae about PC-98 Keyboards (Which Usually Don't Matter)</h4>
+      <p>
+        All PC-98 keyboards, to my knowledge, implement key-repeat
+        ("typematic") on the keyboard side. That's where someone holds down a
+        key and the computer registers it as rapid key presses. This is kind of
+        annoying because it means that to detect a held key, polling has to be
+        timed so that it is synced up with the keyboard - and unlike AT
+        keyboards, PC-98 boards send both "up" and "down" events for each
+        repetition. Some later PC-98 keyboard models can actually have this
+        key-repeat feature turned off by sending a special message to the board
+        - but earlier boards, like the PC-9801V, don't support this. In
+        practice, practically all PC-98 software that needs to worry about
+        checking if a key is held down will do so. For example, Touhou 3
+        through 5 check input twice per frame, about 0.6 milliseconds apart, to
+        determine if a key is actually being held, so that if it detects both a
+        key-up and key-down during that frame (or key-down, key-up &ndash; the
+        order does not matter, I think), it gets correctly interpreted as being
+        held.
+      </p>
+      <p>
+        The description above may be wrong, so if you want to see what actually
+        happens, check out the ReC98 project's
+        <a href="https://github.com/nmlgc/ReC98/blob/23fc9e7b0473f9b78df7ca437c741d46ac20dcb7/Research/HOLDKEY.C">HOLDKEY.C demo</a>
+        and its partially-decompiled Touhou 5
+        <a href="https://github.com/nmlgc/ReC98/blob/23fc9e7b0473f9b78df7ca437c741d46ac20dcb7/th05/hardware/inp_h_w.cpp">inp_h_w.cpp</a>
+        file. I linked to a specific git commit in case the files get moved
+        around in the future, but definitely check on the "main" or "master"
+        branch (the currently name is "master"), just in case the file has been
+        cleaned up or documented more since then.
+      </p>
+      <p>
+        Anyway, PC-9801V era keyboards and earlier keyboards &ndash; and
+        <i>possibly</i> some slightly later models, but I'm not sure about the
+        cut-off date &ndash; are incapable of turning off key repeat. My
+        rubber-dome Epson PCKB8 from 1992 or so <i>does</i> support turning off
+        typematic, and it's possible that PC-9801R and "PC-9800 series" boards
+        also do, if you'd like to find something mechanical. The only things
+        you'd lose (apart from the colours of older boards) are the latching
+        lock keys and the gap to the left of the navigation keys. I'd assume
+        NEC introduced the typematic disable feature first, and that Epson
+        copied it, so based on my 1992 board having it I'd assume that those
+        last mechanical ones will do what you want.
+      </p>
+      <p>
+        As I already said, this is usually unimportant for PC-9801 software,
+        since most of it cared about compatibility with older boards; I've
+        yet to see noticeable problems relating to typematic, and I am almost
+        exclusively using the 9801V keyboard. But if you decide you really like
+        the feel and want to use it on a western PC, it might become more of a
+        problem when you want to play games with it. I suppose a keyboard
+        protocol converter could be programmed to do what PC98 games do in
+        order to side-step this issue, but TMK firmware currently does not.
+      </p>
+      <h4>Using a PS/2 Keyboard on a PC-98</h4>
+      <p>
+        It is possible to use a PS/2 keyboard on a PC-98; I don't have
+        first-hand experience with this, but I know there are projects for it
+        and know someone who made one of them online.
+      </p>
+      <ul>
+        <li>
+          <a href="https://github.com/evv42/keyrisame.git">Keyrisame</a> - also
+          allows for joystick input (converted to keyboard key-presses);
+          it doesn't support typematic if I understand correctly. For AVR
+          microcontrollers.
+        </li>
+        <li>
+          <a href="pc9801_1/dl/gkaat98">GKA-AT98</a> - Almost lost to the mists
+          of time, but I found a copy of it. This is for PIC16 microcontrollers
+          (PIC16F84, more specifically). There's more information &ndash; and
+          links to the original site &ndash; in the linked directory. This one
+          appears to be highly regarded.
+        </li>
+        <li>
+          There are various other projects on github and around the web more
+          generally to do this, and I believe there are pre-built adapters
+          available new online to accomplish this as well, if you want to
+          import one from Japan.
+        </li>
+      </ul>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h3 id="pc9801_buying_wyatt_joystick">Joysticks/Gamepads</h3>
       <p>
