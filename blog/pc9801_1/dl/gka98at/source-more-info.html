@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- text encoding UTF-8 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>GKA-98AT Keyboard Converter Information</title>
+  </head>
+  <body>
+    <p>
+      This is a PC-98 to PS/2 keyboard converter based on a PIC16f84(a) or
+      16f648a microcontroller. I found this stuff on:<br/>
+      <a href="http://shinku.ddo.jp/wordpress/?page_id=4151">http://shinku.ddo.jp/wordpress/?page_id=4151</a>.
+    </p>
+    <p>
+      That page is worth a visit if you can get through the language barrier
+      because it is a solid write-up and features a patch for a larger PIC
+      model (16f648).
+    </p>
+    <p>
+      The <a href="http://www.tsp.ne.jp/~sawada/mago/c_gka98at.htm">original
+        site</a> was down, and the asm file from that site was not archived by
+      the wayback machine. However, the webpage the file was hosted on
+      <i>was</i> archived
+      (<a href="http://web.archive.org/web/20210128190529/http://www.tsp.ne.jp/~sawada/mago/c_gka98at.htm">wayback machine link</a>).
+    </p>
+    <p>
+      Hasu's <a href="https://github.com/tmk/tmk_keyboard/wiki/PC-9801-Keyboard">TMK
+      keyboard firmware documentation for its own PC98 to USB keyboard
+      converter implementation</a> references the original site, which is how I
+      discovered the converter existed to begin with.
+    </p>
+    <p>
+      I have not tried to build this converter, but I expect it works. I'd like
+      to build one since I prefer PS/2 over USB keyboards anyway. But for now I
+      have made a TMK converter which works.
+    </p>
+    <p>
+      As of this writing, you can find PIC16F84(A)'s from:
+      <ul>
+        <li>
+          Mouser:
+          <ul>
+            <li><a href="https://www.mouser.com/ProductDetail/Microchip-Technology/PIC16F84-10-P?qs=Yx6ahBY6%252BSCsgOmWEqyfDw%3D%3D">10MHz (PIC16F84)</a></li>
+            <li><a href="https://www.mouser.com/ProductDetail/Microchip-Technology/PIC16F84A-20-P?qs=%2FvIJ7rfmPzFtqHtMCXlNLA%3D%3D">20MHz (PIC16F84A)</a></li>
+          </ul>
+        </li>
+        <li>
+          Digi-Key:
+          <ul>
+            <li><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC16F84-10-P/243464">10MHz (PIC16F84)</a></li>
+            <li><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC16F84A-20-P/303537">20MHz (PIC16F84A)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </p>
+    <p>
+      You can find PIC16F648A's from:
+      <ul>
+        <li>
+          Mouser:
+          <ul>
+            <li><a href="https://www.mouser.com/ProductDetail/Microchip-Technology/PIC16F648A-I-P?qs=TQnwojwsYvg%2FrSZj1P4NgQ%3D%3D">20MHz</a></li>
+          </ul>
+        </li>
+        <li>
+          Digi-Key:
+          <ul>
+            <li><a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC16F648A-I-P/529770">20MHz</a></li>
+          </ul>
+        </li>
+      </ul>
+    </p>
+    <p>
+      They (either kind of microcontroller) must be rated at least 10MHz. I
+      think from the PDF maybe these are actually getting clocked at 6.144MHz
+      via crystal? - But that might be changable to 10MHz in the source code. I
+      did not look closely at all.
+    </p>
+  </body>
+</html>
