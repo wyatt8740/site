@@ -4211,7 +4211,20 @@
       <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_vga_adapter_img">
         <a href="pc9801_1/vga_adapter.png">
           <img src="pc9801_1/vga_adapter_300.png"
-               alt="(Picture of a Logitech PC-93-9MD mouse.)"/>
+               alt="PC-9821 joystick adapter to plug a joystick into the mouse port of any system with a YM2608 chip.
+Regardless of if the mouse connector is DE9 or mini-DIN, the signals associated with all pins are numbered the same way. So pin 1 on the DE9 maps to pin 1 on mini-DIN, pin 7 to pin 7, etc..
+
+From mouse pins to MSX pinout joystick pins, wire:
+1 to 5 (5 volts)
+2 to 1 (XA to Up)
+3 to 2 (XB to Down)
+4 to 3 (YA to Left)
+5 to 4 (YB to Right)
+6 to 6 (left mouse button to fire button 1)
+7 to 8 (middle mouse button, usually unpopulated, to 'out' pin on joystick)
+8 to 7 (right mouse button to fire button 2)
+9 to 9 (ground to ground)
+Finally, connect a pull-up resistor between 5 volts (joystick pin 5) and "out" (joystick pin 8). This switches the connector into 'joystick mode' if I understand correctly."/>
         </a>
         <div class="imgwrap caption imgcentercaption">
           This is drawn as if the two connectors' solder sides are facing each
@@ -4236,6 +4249,19 @@
         mess with it much. I followed the DA15 pinout from
         <a href="https://radioc.web.fc2.com/column/pc98bas/pc98dispout2_en.htm">here</a>.
       </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_vga_adapter_internals">
+        <a href="pc9801_1/full/vga_adapter_internals.jpg">
+          <img src="pc9801_1/vga_adapter_internals.jpg"
+               alt="VGA adapter physical wiring photograph."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          An Apple Macintosh DA15 to HD15 (VGA) adapter that's been gutted of
+          DIP switches and had all traces cut.
+          <br/>
+          The PCB remains to hold the connectors together. The connectors
+          themselves were also swapped for the correct gendered ones.
+        </div>
+      </div>
       <p>
         Of course, there's also a solid chance your monitor will not be able to
         sync to the PC-98's 24KHz mode. If yours is like this, but you happen to
@@ -5412,6 +5438,23 @@ void format_pc98_disk() {
         problem - although I assume that saturating a capacitor was involved.
         The drive lights come on to full brightness normally when the system
         actually tries to read something or write something.
+      </p>
+      <p>
+        Update: I think I know what is happening. I put the original drives
+        back in my 486GR recently, and I noticed that they actually have a
+        "head load" mechanism! That's where the magnetic heads get lifted away
+        from the disk surface when it's not being read to attempt to reduce
+        wear on the disk media (and the heads themselves). So I think the
+        logic the original drives use for the drive activity LED is AND'ing the
+        "drive select" (probably pin 10 for drive 0, or pin 12 for drive 1) and
+        head load signals together to determine activity. I think the gotek has
+        the LED wired straight to the drive select pin (10), so changing this
+        would require disconnecting the cathode of the LED and AND'ing pins 4
+        and 10 together with something like a 7408 logic gate IC, connecting
+        the LED cathode to the output. The PC-98 (and also Epson PC-486GR)
+        seems to use pin 4 for "head load." For extra credit there could be a
+        bypass switch as well so that it'd still work properly with IBM
+        compatible PC's if you take the Gotek out.
       </p>
       <p>
         Just because I feel like trying to be helpful, I'll share an adapter
