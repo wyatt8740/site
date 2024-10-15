@@ -1,0 +1,8 @@
+Only the files in 'jis/' are the original binaries; the rest were reconstructed
+from the source assembly - hopefully I did it correctly. I did manage to get
+the hex file to match for the JIS ones at least so I think these are all going
+to work correctly.
+
+Also, these are all built for the PIC16F84. To make them in GPASM (version
+1.5.x might be needed), run 'gpasm --dos filename.asm' and then remove the
+topmost line in the .hex output and it should do what you want (i hope?).
