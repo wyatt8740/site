@@ -4623,13 +4623,16 @@ Finally, connect a pull-up resistor between 5 volts (joystick pin 5) and "out" (
         It might be possible to simply change the software driver to a later
         ATAPI one in that case.
       </p>
+      <p id="pc9801_buying_wyatt_ide_cdrom_replacement">
+        <i><b>Replacing the Original CD-ROM drive:</b></i>
+      </p>
       <p>
-        <b>Update:</b> You <i>can</i> technically use an ATAPI CD-ROM drive
-        with a Ce2 or Cs2, although you may have a hard time getting the front
-        tray plate attached. Additionally, it will create a huge delay on
-        boot-up where the computer appears to hang. If you are okay with
-        waiting 1-3 minutes every time you boot or hit reset, however, you
-        <i>can</i> use an ATAPI drive on one. You will need to use the
+        You <i>can</i> technically use an ATAPI CD-ROM drive with a Ce2 or Cs2,
+        although you may have a hard time getting the front tray plate
+        attached. Additionally, it will create a huge delay on boot-up where
+        the computer appears to hang. If you are okay with waiting 1-3 minutes
+        every time you boot or hit reset, however, you <i>can</i> use an ATAPI
+        drive (most 1995 IDE drives and later) on one. You will need to use the
         <code>NECCDM.SYS</code> driver, which you can find
         <a href="#pc9801_buying_wyatt_odd_scsi_other_brand">here</a>.
         I was gifted one of my friend's 9821 Ce2 models recently, and I have
@@ -4639,6 +4642,18 @@ Finally, connect a pull-up resistor between 5 volts (joystick pin 5) and "out" (
         you might need to make an adapter cable to get CD audio playback
         working. The drive might also be quite noisy because many ATAPI drives
         run at pretty high speeds.
+      </p>
+      <p>
+        <a href="pc9801_1/cdrom_replacement_guide.html">I've prepared a
+          guide</a>
+        that explains how to retrofit an LG CRD-8483B CD-ROM drive into a
+        PC-9821 Ce2 or Cs2, which is perhaps also applicable to other
+        models that originally used a CDR-260 drive, if they exist. It also
+        could work (depending on if the CD tray size can fit through the hole
+        in the case) for any other PC-9821 with an IDE-based CD-ROM drive.
+        It requires some very basic soldering to relocate an eject button on
+        the drive to a different spot (where there are already holes for a
+        button to go).
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <h4 id="pc9801_buying_wyatt_odd_scsi">SCSI Drives</h4>
@@ -4870,7 +4885,7 @@ expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
         it should load them. In other words, because we need to tell DOS about
         our CD driver, it must have a <code>CONFIG.SYS</code> entry.
       </p>
-      <div class="imgcontain imgwrap" id="pc9801_buyying_wyatt_configsys">
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_configsys">
         <a href="pc9801_1/full/config_sys.png">
           <img src="pc9801_1/config_sys.png"
                alt="(Screenshot of me editing my config.sys file.)"/>

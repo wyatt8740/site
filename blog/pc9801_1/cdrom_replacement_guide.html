@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- text encoding UTF-8 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Force reload each time page is visited (don't cache; the page is tiny anyway) -->
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <title>Wyatt's Blog: NEC PC-98 Replacement IDE CD-ROM Drive Retrofitting</title>
+    <link rel="icon" type="image/x-icon" href="/site/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="../../style_base.css"/>
+    <link rel="stylesheet" type="text/css" href="../../style.css"/>
+    <link rel="alternate" type="application/rss+xml" title="Wyatt's Blog (RSS)" href="/site/blog/rss.xml" />
+  </head>
+  <body>
+    <div class="navbox">
+      <span class="navbar menu_left">
+        <a href="../../index.html">Home</a>
+        <a class="active" href="../../blog/index.html">Blog</a>
+        <a href="../../about/index.html">About</a>
+      </span>
+      <span class="rightbox"> <!-- needed for dillo -->
+        <span class="menu_right">
+          <a href="/site/print/blog/pc9801_1/cdrom_replacement_guide.html" class="printmode">[Print View]</a>
+          <a href="/site/light/blogpc9801_1/cdrom_replacement_guide.html" class="lightmode">[Light]</a>
+          <a href="/site/dark/blogpc9801_1/cdrom_replacement_guide.html" class="darkmode">[Dark]</a>
+          <a href="/site/velvet/blogpc9801_1/cdrom_replacement_guide.html" class="velvet">[Velvet]</a>
+          <a href="/site/rose/blogpc9801_1/cdrom_replacement_guide.html" class="rose">[Rose]</a>
+          <a href="/site/megatokyo/blogpc9801_1/cdrom_replacement_guide.html" class="megatokyo">[Megatokyo]</a>
+        </span>
+      </span>
+    </div>
+    <h1>Wyatt's Blog</h1>
+    <!-- <h1 class="bgc">Blogglegum Crisis</h1> -->
+    <div class="navbox">
+      <span class="blerg_navleft">
+        <a href="../011_012.html#pc9801_buying_wyatt_ide_cdrom_replacement">←Back to main post</a>
+      </span>
+    </div>
+    <div class="postarea" id="pc9801-1">
+      <h2>Replacing the CDR-260 Drive in a PC-9821 Ce2 or Cs2</h2>
+      <p>
+        It is relatively simple to modify certain CD-ROM drives to work in a
+        PC-9821 Ce2/Cs2, but there are a few caveats. Firstly, a standard ATAPI
+        CD-ROM drive will make the BIOS pause for about 60 seconds during boot
+        and appear to hang. If you wait it out it will in fact continue,
+        however. The drive also needs to be set to the "slave" position with
+        jumpers, since it is actually sharing the same bus as the hard drive
+        despite being plugged into a different motherboard connector. Not all
+        drives will <i>physically</i> work, either. The tray needs to be small
+        enough and positioned correctly to clear the hole in the front plate on
+        the computer. There has to be a way to position the eject
+        button such that it can be pressed, or else the front plate on the
+        computer must be modified. It may be necessary to trim some
+        plastic on the front plate so that it can clip in place, since the
+        metal housing of the drive can interfere with it. The CD audio cable
+        will need a new end spliced on, since the original drive doesn't use
+        the common CD audio out connector for sound card mixing. Finally, the
+        front "Compact Disc" logo plate might not be able to attach, so you
+        will just have to deal with that or else modify that as well.
+      </p>
+      <p>
+        This page doesn't currently cover splicing the audio cable or cutting
+        the case plastic, mostly due to laziness and also because I never
+        bothered splicing the audio cable before I fixed my CDR-260. The wiring
+        is indicated on the back of the CDR-260 drive (I believe the left and
+        right channels are on the left and right sides, and a single shared
+        ground is on the middle pin of its three pin connector).
+      </p>
+      <p>
+        Newer, higher-speed drives might also be quite loud compared to the
+        original, but that might just be something you have to deal with unless
+        you can find a PC-98 DOS specific program to send the "set CD speed"
+        ATAPI command to the drive.
+      </p>
+      <p>
+        My system does not currently have a replacement drive installed, since
+        I was able to fix the original CDR-260 drive. 
+      </p>
+      <p>
+        I had two IDE drives on hand, and only one of them has a tray that fits
+        physically through the hole. In my case, this is an LG CRD-8483B. The
+        following photos will help explain how I went about making the drive
+        work.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_01">
+        <a href="full/cdrom/atapi_drive_01.jpg">
+          <img src="cdrom/atapi_drive_01.jpg"
+               alt="Photo of an LG CRD-8483B CD-ROM drive. It looks much like any other."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Our victim ATAPI drive, LG CRD-8483B. Other models may also work.
+          <br/>
+          This is the only drive I have where the tray fits through the hole in
+          the case (with the front plate removed).
+        </div>
+      </div>
+      <p>
+        The CRD-8483B seems to be an OEM CD drive, and I've seen one on eBay
+        that has all faceplate I/O included. The ones that shipped with gateway
+        computers only have an eject button, but others additionally have a
+        "play" button, a volume potentiometer dial, and a headphone jack. It
+        just so happens that the "play" button on those drives is in the exact
+        right spot for the outer button mechanism in the PC-9821 Ce2 and Cs2 to
+        be able to press it, so the main job here is taking the casing and
+        front plates off of the drive and relocating the eject button to the
+        position of the "play" button. We then need to make sure the button is
+        still wired up to the eject signal on the circuit board, which requires
+        cutting one trace and running a very short wire.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_02">
+        <a href="full/cdrom/atapi_drive_02.jpg">
+          <img src="cdrom/atapi_drive_02.jpg"
+               alt="Face label of the drive, which identifies it as LG CRD-8483B, with Gateway part number 5501718 and ROM version 1.05. Manufactured in October of 2000."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Here's the label on the drive, in case it helps anyone out.
+        </div>
+      </div>
+      <p>
+        The first thing we need to do is to eject the drive tray. I just hooked
+        my drive up to an AT power supply and hit eject. You can use a working
+        ATX power supply as well, but in order to power those up you will need to
+        bridge the green wire pin and the neighboring black pin on the main
+        motherboard connector. I use a paperclip for those typically. AT PSU's
+        are entirely controlled by a user-operable switch, so they are quite
+        convenient. You can also manually use a paperclip inserted into the tiny
+        hole on the front plate of the drive to make it eject without powering it
+        up.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_03">
+        <a href="full/cdrom/atapi_drive_03.jpg">
+          <img src="cdrom/atapi_drive_03.jpg"
+               alt="Photo of the CD-ROM drive with the tray sticking out."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          The drive with the tray sticking out, ejected.
+          <br/>
+          This is probably necessary to remove the front plastic panel pieces.
+        </div>
+      </div>
+      <p>
+        Next, I flipped the drive upside down, and removed the four screws in
+        the bottom (the recessed ones; the non-recessed holes are drive
+        mounting holes).
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_04">
+        <a href="full/cdrom/atapi_drive_04.jpg">
+          <img src="cdrom/atapi_drive_04.jpg"
+               alt="Photo of the CD-ROM drive with the tray sticking out,
+                    flipped upside down with the screws removed. There's a
+                    plastic latch visibly holding the front panel on."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          This is probably necessary to remove the front plastic panel pieces.
+          <br/>
+          On this drive, the bottom plastic clip did not move when pressed.
+        </div>
+      </div>
+      <p>
+        Next, we need to flip the drive on its side and press in the locking
+        tab/clip pieces on the left and right that hold the front panel on. The
+        bottom one does not like moving which is why we removed the screws in
+        the bottom already.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_05">
+        <a href="full/cdrom/atapi_drive_05.jpg">
+          <img src="cdrom/atapi_drive_05.jpg"
+               alt="Photo of the CD-ROM drive on its side, with a flat head
+                    screwdriver visible, positioned to illustrate that it
+                    should be used to press down on the locking tabs/clips
+                    for the front plate."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          The side clips on this drive move freely, unlike the bottom one.
+          <br/>
+          That means we can begin to dislodge the faceplate by pressing these tabs down and pushing forward just a smidge.
+        </div>
+      </div>
+      <p>
+        Now, with the faceplate dislodged slightly, it's time to remove the
+        bottom plate, effectively freeing the front panel's last clip.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_06">
+        <a href="full/cdrom/atapi_drive_06.jpg">
+          <img src="cdrom/atapi_drive_06.jpg"
+               alt="Photo of the CD-ROM drive upside down; I am lifting up the
+                    metal bottom plate from the back which has freed the
+                    bottom clip of the front panel piece."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          By lifting from the back, we can dislodge the bottom clip, freeing
+          the front panel.
+        </div>
+      </div>
+      <p>
+        Note that this drive's bottom casing has no insulation plastic or paper
+        or anything on it, so when we are soldering later, be careful not to let
+        stuff stick down too far.
+      </p>
+      <p>
+        In any case, now the front panel is free and it's time to remove the
+        decorative plate that is clipped to the end of the CD drive tray.
+        One can see that on this particular drive, it was attached by sliding
+        down over the front and then anchored in place by some clips on the
+        underside to prevent accidental removal.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_07">
+        <a href="full/cdrom/atapi_drive_07.jpg">
+          <img src="cdrom/atapi_drive_07.jpg"
+               alt="Underside of the CD tray lip, showing how it is actually a
+                    separate and removable piece of plastic."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          This lip piece of plastic on the front of the tray needs to come off.
+          <br/>
+          Note how it was slid into place originally and has clip tabs holding
+          it there.
+        </div>
+      </div>
+      <p>
+        Now we need to pull the plastic lip out slightly in the center,
+        bending the plastic somewhat. Hopefully yours is not brittle and will
+        not be damaged by this. While it's pulled out, if the drive is still
+        flipped upside down, we push the plastic downwards so that it slides
+        off the tracks it was hooked in with.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_08">
+        <a href="full/cdrom/atapi_drive_08.jpg">
+          <img src="cdrom/atapi_drive_08.jpg"
+               alt="My thumb pulling the plastic lip piece out slightly in
+                    preparation for sliding off the drive tray rails."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Pull it out slightly so that these clips can clear the tray plastic
+          when you slide it off.
+        </div>
+      </div>
+      <p>
+        Now, we have the front panel loose and the front plastic "lip" on the
+        tray removed. It is now possible to slide the front plastic panel off,
+        unhindered by the tray lip.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_09">
+        <a href="full/cdrom/atapi_drive_09.jpg">
+          <img src="cdrom/atapi_drive_09.jpg"
+               alt="Photo of the dislodged plastic front panel and removed
+                    plastic tray lip."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Slide off the front panel and store both the plastic tray lip and
+          front panel somewhere safe.
+          <br/>
+          That way, you can reuse the drive with a "normal" PC again in the
+          future.
+        </div>
+      </div>
+      <p>
+        Now let's remove the bottom metal panel completely if we haven't
+        already, and then inspect the circuit board. You can see in the
+        following photo a switch labelled "SW704", and a few holes next to an
+        unpopulated spot labelled "SW703." Our goal now is to relocate SW704 to
+        the holes that were provided for SW703 (the "play" button).
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_10">
+        <a href="full/cdrom/atapi_drive_10.jpg">
+          <img src="cdrom/atapi_drive_10.jpg"
+               alt="Image of the PCB, showing the positions of the eject button
+                    and unpopulated play button."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          There are lots of unpopulated components that would likely be
+          included on a more "fully featured" drive.
+          <br/>
+          Thankfully, the unused "play" button is perfectly positioned for the
+          eject button lever thing on the faceplate of the PC-9821 Ce2/Cs2.
+        </div>
+      </div>
+      <p>
+        Now, let's look at the underside. I've already done this mod and undid
+        it and then re-did it again to take photos, so there's some brownish
+        black spots from burned flux residue and similar. A trace has also
+        already been cut in this photo that you will need to cut yourself.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_11">
+        <a href="full/cdrom/atapi_drive_11.jpg">
+          <img src="cdrom/atapi_drive_11.jpg"
+               alt="Underside of circuit board at the front of the CD-ROM
+                    drive. There's a second set of pads for a switch visible,
+                    as well as what looks like spots for a potentiometer dial
+                    and a headphone jack to be soldered on."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          The cut trace on the CD drive here near the left hand side can be
+          anywhere on that trace, if that makes you feel more comfortable.
+          <br/>
+          We will be remapping that wire to hook to the other button spot's
+          equivalent pin and transplanting the existing button itself.
+        </div>
+      </div>
+      <p>
+        Looking more closely at the board we can see where the traces lead; if
+        preferred, one can also just unsolder the wire lead connecting this
+        board to the other board for the play button. This way, no cutting of
+        traces is hopefully needed. Whatever method you use, use a continuity
+        tester when you think you are done to make sure the trace is actually
+        cut through - and also that its neighbours still work correctly.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_12">
+        <a href="full/cdrom/atapi_drive_12.jpg">
+          <img src="cdrom/atapi_drive_12.jpg"
+               alt="Closer view of just the button area of the board."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          I don't even know if the other button would work normally if no
+          action were taken, but I suspect it would.
+        </div>
+      </div>
+      <p>
+        We need to remove the solder from the holes for the eventual
+        destination of the button. This can be done with wick or a pump. I used
+        a spring loaded pump.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_13">
+        <a href="full/cdrom/atapi_drive_13.jpg">
+          <img src="cdrom/atapi_drive_13.jpg"
+               alt="Image of the PCB, with the solder pads cleared off so the
+                    holes are now visible"/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          You can also try to just melt the solder and stick the legs in one by
+          one later, but I do not recommend that.
+        </div>
+      </div>
+      <p>
+        We also need to remove the solder on the motor to be able to lift the
+        board up, I think. And release the black clip next to the motor
+        afterwards.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_15">
+        <a href="full/cdrom/atapi_drive_15.jpg">
+          <img src="cdrom/atapi_drive_15.jpg"
+               alt="Image of the PCB; the motor has been desoldered and the
+                    clip released that holds the circuit board in place."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Remember to release the black clip! It is easy to forget, at least
+          for me.
+        </div>
+      </div>
+      <p>
+        Now, we need to desolder the old button (I used a spring loaded pump
+        again), and move it to the new position. We then solder a small wire to
+        the pin we cut the trace for on one side and the original eject
+        button's spot on the other.
+      </p>
+      <div class="imgcontain imgwrap" id="pc9801_buying_wyatt_atapi_16">
+        <a href="full/cdrom/atapi_drive_16.jpg">
+          <img src="cdrom/atapi_drive_16.jpg"
+               alt="The button has been moved and a wire is running to the new
+                    pad to make it continue to act as eject instead of play."/>
+        </a>
+        <div class="imgwrap caption imgcentercaption">
+          Make sure it's slim, so the case will still close without shorting to
+          the wire!
+        </div>
+      </div>
+      <p>
+        Next we clip the circuit board back into place and re-solder the motor
+        pins, and then we're done. We can now re-assemble the drive. Other
+        things that might be a good idea include making a wire adapter for the
+        audio line output, since the PC-9821 Ce2/Cs2 models use a different
+        connector for it, and cutting notches into the front faceplate for the
+        Ce2 so that the drive shell doesn't stop it from clipping on properly.
+        These are not yet covered here.
+      </p>
+      <p>
+        Be sure not to put the drive's front faceplate or tray lip back on
+        unless you remove the modification to the button and revert it. It will
+        not fit in any way unless this is removed. If you want to keep the
+        original "Compact Disc" front lip that matches the Ce2 you will have to
+        modify it as well. I did not bother, since I was able to fix my
+        original drive eventually.
+      </p>
+      <p>
+        Also don't forget that this drive will cause the PC-98 to pause for
+        approximately 60 seconds during boot, probably waiting for some reply
+        that the CDR-260 would make that this drive is not making. After that,
+        the drive will work in DOS if the <code>NECCDM.SYS</code> driver is
+        loaded, as well as <code>MSCDEX</code>. You may want to just back up
+        <code>NECCD.SYS</code> and then copy <code>NECCDM.SYS</code> to
+        <code>NECCD.SYS</code> so that other badly written software will behave
+        properly.
+      </p>
+      <p>
+        Unfortunately, I have not yet been able to send the ATAPI CD speed
+        command to make the drive run quieter. It is possible, but I just lack
+        the knowledge to do it right now.
+      </p>
+    </div> <!-- postarea -->
+    <div class="navbox">
+      <span class="blerg_navleft">
+        <a href="../011_012.html#pc9801_buying_wyatt_ide_cdrom_replacement">←Back to main post</a>
+      </span>
+    </div>
+  </body>
+</html>
