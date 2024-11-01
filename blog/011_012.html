@@ -4909,14 +4909,12 @@ expand NECCDA.SY_ A:&yen;DOS&yen;NECCDA.SYS</pre>
         </div>
       </div>
       <p>
-        Unfortunately, as far as I can recall, you can't load a CD driver
-        without first loading some other drivers. I've provided my CONFIG.SYS
-        file, in case it helps you to figure things out. A lot of it is
-        irrelevant, but I think it depends on at least <code>HIMEM.SYS</code>
-        and <code>EMM386.EXE</code> to work properly. You will have to adjust
-        it to look in the right places, if your hard drive is organized
-        differently from mine. I think mine is pretty standard in this
-        instance, though.
+        I've provided my CONFIG.SYS file, in case it helps you to figure things
+        out. A lot of it is irrelevant. You will have to adjust it to look in
+        the right places, if your hard drive is organized differently from
+        mine. I think mine is pretty standard in this instance, though.
+        Notably, if you need to use a "DPMI" setup in DOS 6.20, you should put
+        the <code>/DPMI</code> argument on the line with EMM386.EXE as well.
       </p>
       <p>
         So here is my <code>CONFIG.SYS</code>:
