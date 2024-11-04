@@ -567,6 +567,15 @@ toolbarbutton #new-tab-button {
   }
 }
 
+/* for default favicon, make sure it hides when we want to show loading icon instead */
+.tab-icon-image {
+  &:not([src]), &:-moz-broken {
+    &[busy] {
+      display: none !important;
+    }
+  }
+}
+
 .tab-throbber-tabslist {
 
   /* stolen from chrome://browser/skin/tabbrowser/tabs.css
