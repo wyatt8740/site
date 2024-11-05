@@ -5088,6 +5088,33 @@ A:&yen;DOS&yen;MSCDEX.EXE /D:CD_102 /L:Q</pre>
         1994), you almost certainly need DD diskettes.
       </p>
       <p>
+        By the way, many PC-98's (all of them that supported high density disks
+        before around 1993/1994) used the same 3.5" disks physically as we did
+        here, but there the disks were formatted and used like miniature 5.25"
+        disks, so they only hold about 1.2MB when formatted for the PC-98
+        series. Some other Japanese computers from other manufacturers also did
+        this. A nice thing about that is that a vast majority of DOS software
+        can use the same floppy disk images for both 5.25" and 3.5" models; no
+        different disk images are necessary to support both kinds of drives.
+        To say that another way, "high density" disks on a PC-98 can mean 1.2MB
+        or 1.44MB. Usually when people say it without specifying 1.44, though,
+        you should just assume 1.2 is meant. It's almost always 1.2MB because
+        that maximizes compatibility. I also do not know whether any Epson
+        models ever supported 1.44MB disks or not.
+      </p>
+      <p>
+        Some later models, while still keeping the 1.2MB mode, also added
+        support for 1.44MB western style floppy disks. in DOS 6.2, the
+        <code>FORMAT</code> program can force-format disks into 1.44MB format
+        by using the <code>/4</code> flag. Likewise, to force an IBM-formatted
+        (or unformatted) disk into the 1.2MB format, use
+        <code>FORMAT (drive letter): /M</code>. If both flags are omitted it
+        will default to reformatting with the same capacity it is currently
+        using. The 9821 Ce2 and Cs2 support using 1.44MB disks, and I believe
+        all other 9821 models do as well. I'm not so certain about the last few
+        9801 models, though.
+      </p>
+      <p>
         It may also be a good idea to invest in a cleaning kit, or perhaps find
         a way to clean the drives without one. It only takes one bad disk to
         mess up a floppy drive and make it need a cleaning to avoid ruining
