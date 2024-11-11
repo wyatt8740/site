@@ -1,3 +1,4 @@
+/* gears library from https://github.com/chrisspen/gears.git */
 use <gears.scad>
 
 scale([0.5,0.5,0.5]) {
