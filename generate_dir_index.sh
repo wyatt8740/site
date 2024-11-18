@@ -7,20 +7,23 @@ cat << EOF
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Index of 
+  <head>
+    <title>Index of 
 EOF
 echo "$1"
 cat << EOF
-</title>
-</head>
-<body>
+    </title>
+  </head>
+  <body>
 EOF
 }
 
 htmlFoot()
 {
-  echo '</body>'
+  cat << EOF
+  </body>
+</html>
+EOF
 }
 
 # posix-ish null terminated sort, can substitute for 'sort -z' below
@@ -105,3 +108,6 @@ while [ "$#" -gt 0 ]; do
   fi
   shift
 done
+
+cat << EOF
+</html>
