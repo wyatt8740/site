@@ -8,9 +8,9 @@ cat << EOF
 <html>
 
   <head>
-    <title>Index of 
+    <title>
 EOF
-echo "$1"
+echo '      Index of '"$1"
 cat << EOF
     </title>
   </head>
@@ -68,7 +68,9 @@ buildPage()
   htmlFoot
   cd "$STARTDIR"
 }
-CONFIRM=''
+if [ ! "$CONFIRM" ]; then
+  CONFIRM=''
+fi
 while [ "$#" -gt 0 ]; do
   if [ -d "$1" ]; then
     if [ -f "$1"'/index.html' ]; then
