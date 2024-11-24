@@ -1,0 +1,38 @@
+#! /bin/sh
+# args: /path/to/cookies.sqlite domain-name.com
+PROFILE_DIR_NAME='actual_profile'
+#PROFILE_DIR_NAME='[profile folder name goes here]'
+#PROFILE_DIR_NAME='b6lpcgd6.Default User'
+case "$#" in
+  1)
+    # try to default to a hardcoded path that you supply, if no cookie file is specified.
+    COOKIEFILE="$HOME"'/.mozilla/firefox/'"$PROFILE_DIR_NAME"'/cookies.sqlite'
+    SEARCHDOMAIN="$1"
+    ;;
+  2)
+    # if two args provided, the first is the cookie file and the second is the search domain
+    COOKIEFILE="$1"
+    SEARCHDOMAIN="$2"
+    ;;
+  *)
+    # dump _ALL_ cookies from _ALL_ sites (without domain names in printout!)
+    COOKIEFILE="$HOME"'/.mozilla/firefox/'"$PROFILE_DIR_NAME"'/cookies.sqlite'
+    SEARCHDOMAIN=""
+    ;;
+esac
+LINENO=0
+ALL="$(echo '.mode tabs 
+select name, value from moz_cookies where host like "%'"$SEARCHDOMAIN"'%";' | \
+  sqlite3 'file://'"$COOKIEFILE"'?immutable=1' | \
+  sed 's/\t/" : "/;s/^/"/;s/$/"/')"
+LINETOTAL="$(echo "$ALL" | wc -l)"
+echo "$ALL" | \
+  while read -r line; do
+    LINENO="$(expr "$LINENO" '+' '1')";
+    echo -n "$line"
+    if [ "$LINENO" -lt "$LINETOTAL" ]; then
+      echo ','
+    else
+      echo
+    fi
+  done

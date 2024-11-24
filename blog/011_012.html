@@ -4735,6 +4735,10 @@ Finally, connect a pull-up resistor between 5 volts (joystick pin 5) and "out" (
         It may be possible that <i>some</i> other drives will also work with
         some of those drivers. I can't confirm this.
       </p>
+      <p>
+        For a collection of official (and some unofficial) driver files,
+        <a href="#pc9801_buying_wyatt_cdrom_driver_collection_dl">try this.</a>
+      </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
       <p>
         <span id="pc9801_buying_wyatt_odd_scsi_other_brand"><b>Other (Non-NEC SCSI) Drives</b></span><br/>
@@ -4784,10 +4788,22 @@ Finally, connect a pull-up resistor between 5 volts (joystick pin 5) and "out" (
         'additional notes' I mentioned above and following the directions
         there exactly, using the downloads from vector.jp and archived
         versions of the links for Microsoft assembler tools that used to be
-        hosted on the M$ website) <b>to make a version of CDSD.SYS. I just
-          have to try it out when I get back home with the physical SCSI CD
-          drive I got for Christmas.</b> I will host that file as well, if it
-        ends up working.
+        hosted on the M$ website) <b>to make a version of CDSD.SYS. It mostly
+        works, at least.</b>
+      </p>
+      <p>
+        For my build, there are tons of permutations of the driver for
+        different use cases, but you likely want either
+        <code>CDSD_STD/00_SCSI2/XA/CDSD.SYS</code> or
+        <code>CDSD_STD/00_SCSI2/PHOTO/CDSD.SYS</code>, if you are unsure. Try
+        "XA" first, and use "PHOTO" if you have strange problems to see if that
+        fixes anything. I'm sorry if something's broken. I still haven't tried
+        CD audio playback, but I can confirm that it does at least let me
+        browse and copy files off of a CD-ROM filesystem on my Epson PC with my
+        Plextor CD-ROM drive.
+      </p>
+      <p id="pc9801_buying_wyatt_cdrom_driver_cdsd_dl">
+        <b>Download: <a href="pc9801_1/dl/cdsd_std_wyatt_builds_pc9801.zip">cdsd_std_wyatt_builds_pc9801.zip</a></b> &ndash; 81 KiB
       </p>
       <p>
         Finally, I should note that
@@ -4806,9 +4822,12 @@ Finally, connect a pull-up resistor between 5 volts (joystick pin 5) and "out" (
         Of course, hopefully you won't need any of that, and the driver
         (or one of the others) in this zip file will do the job for you!!
         By the way, this also contains drivers for IDE ATAPI drives
-        (<code>NECCDM.SYS</code>) and other variants.
+        (<code>NECCDM.SYS</code>) and other variants. I don't know if
+        any of them will work for Epson machines with IDE CD-ROM drives,
+        if such machines exist. I suspect the last Epson PC-98 compatibles
+        might use IDE.
       </p>
-      <p>
+      <p id="pc9801_buying_wyatt_cdrom_driver_collection_dl">
         <b>Download: <a href="pc9801_1/dl/PC%2d9800%20Series%20CD%2dROM%20Driver%20Collection%20%28v1.1%29%20%5bFD%5d.zip">PC-9800 Series CD-ROM Driver Collection (v1.1) [FD].zip</a></b> &ndash; 137 KiB
       </p>
       <p><a href="#pc9801_buying_wyatt_toc">[Top]</a></p>
