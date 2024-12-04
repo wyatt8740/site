@@ -57,7 +57,10 @@
 body {
   /*	Sparing peoples' eyes. */
   /* color: #dfdfdf; */
-  color: #c7c7c7;
+  /* color: #c7c7c7; */
+  color: #adbdc1;
+  /* color: #c2d4d9; */
+  /* color: #dcdcdc; */
   background-color: #000021;
   background-image: url("/site/res/grid_blog_velvet.png");
 /*  border-left: 10px solid #3E1B30;
@@ -67,7 +70,9 @@ body {
 }
 
 h2,h3,h4,h5, .date-heading, .caption {
-  color: #fafafa;
+  /* color: #cfe2e8;*/
+  /* color: #C2BAC3; */
+  color: #DCD7E0;
 }
 
 .emphatic {
@@ -102,7 +107,7 @@ h1 {
   /*color: #B9070B;*/
   color: #D43336;
   border-color: #670f4d;
-  background-color: #350026;
+  background-color: #24001A;
   /* background-color: #575E75;*/
   /* background-color: #25322D;*/
   /* background-color: #350026;*/
@@ -122,7 +127,7 @@ h2.banner {
   /* border-color: #4A476D;*/
   /*border-color: #33434E;*/
   border-color: #670f4d;
-  background-color: #350026;
+  background-color: #24001A;
 }
 
 .postarea img {
@@ -133,7 +138,7 @@ h2.banner {
   /* border-color: #49476D;*/
 /*  border-color: #33434E;*/
   font-weight: normal;
-  background-color: #350026;
+  background-color: #24001A;
 }
 .navbar a, .navbar a:visited, .blerg_navleft a, .blerg_navright a, .blerg_navleft a:visited, .blerg_navright a:visited, .menu_left a, .menu_left a:visited, .menu_right > a, .menu_right > a:visited {
   color: #83B6DB;
