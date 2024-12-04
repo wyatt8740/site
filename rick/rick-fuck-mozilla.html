@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Wyatt's Homepage</title>
+    <style type="text/css" media="screen">
+
+/* marquee stuff, because webkit is dumb */
+.wrapper{
+    width: 640px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+/*    background-color: #FF0004; */
+}
+/* direction increment repetition style speed */
+.marquee{
+    overflow-x: -webkit-marquee;
+    white-space:nowrap;
+    -webkit-marquee: backwards large infinite alternate fast;
+    -webkit-marquee-increment: large;
+    overflow-x: -webkit-marquee;
+}
+@-moz-document url-prefix() {
+    .marquee {
+
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        text-align: left;
+        /* Apply animation to this element */	
+        -moz-animation: marquee 8s linear infinite alternate;
+        -webkit-animation: marquee 8s linear infinite alternate;
+        animation: marquee 8s linear infinite alternate;
+    }
+    /* Move it (define the animation) */
+    @-moz-keyframes marquee {
+        0%   { -moz-transform: translateX(70%); }
+        100% { -moz-transform: translateX(0%); }
+    }
+    @-webkit-keyframes marquee {
+        0%   { -webkit-transform: translateX(70%); }
+        100% { -webkit-transform: translateX(0%); }
+    }
+    @keyframes marquee {
+        0%   { 
+            -moz-transform: translateX(70%); /* Firefox bug fix */
+            -webkit-transform: translateX(70%); /* Firefox bug fix */
+            transform: translateX(70%); 		
+        }
+        100% { 
+            -moz-transform: translateX(0%); /* Firefox bug fix */
+            -webkit-transform: translateX(0%); /* Firefox bug fix */
+            transform: translateX(0%); 
+        }
+    }
+
+}
+
+/* end of marquee stuff */
+
+        body {
+                background-image: url('rick.gif');
+                background-repeat: repeat;
+                text-align: center;
+        }
+    .blink {
+      width:400px;
+      animation: blink 1s steps(5, start) infinite;
+      -webkit-animation: blink 1s steps(5, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+
+    @-ms-keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+
+
+    h1 {
+        color: Black;
+        display: inline;
+    }
+    mydiv1{
+        width: 400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+/* video {
+  width: 80%    !important;
+  height: auto   !important;
+}*/	
+
+
+    </style>
+</head>
+<script language="JavaScript">
+<!-- Begin hide from old browsers
+window.onerror = null
+var browserOK = (((navigator.appName == 'Netscape') &&
+                  (parseInt(navigator.appVersion) >= 3)) ||
+		 ((navigator.appName == 'Microsoft Internet Explorer') &&
+		  (parseInt(navigator.appVersion) >= 4)));
+
+
+if (browserOK)
+{
+  pos = -25;
+  Spaces = "                         ";  // 25 spaces
+}
+    
+function marquee()
+{
+  if (browserOK)
+  {
+    window.status = Spaces.substring(0, 25 - Math.abs(pos)) +
+      "RICK ROLL'D";
+    if (pos ++ > 24)
+      pos = -25;
+    if (pos < 26)
+      window.setTimeout('marquee()', 50);
+  }
+}
+
+window.setTimeout('marquee()', 100);
+// End hide -->
+</script>
+<body>
+<div class="wrapper">
+<span class="blink">
+    <div class="marquee">
+	<h1><span class="mydiv1"><marquee behavior="alternate" width="640px"><b><font color="Red">RI</font><font color=Orange>C</font><font color="Yellow">K</font> <font color="green">R</font><font color="Blue">OL</font><font color="Indigo">L</font><font color="Purple">'D</font></b></marquee></span></h1>
+    </div>
+</span>
+</div>
+        <video width="640" height="480" autoplay loop>
+            <source src="rick.webm" type="video/webm">
+            <source src="rick1.mp4" type="video/mp4">
+	    <object type="application/x-shockwave-flash" data="rick2.swf" width="640" height="480">
+                <param name="movie" value="rick2.swf"/>
+                Your browser can’t play HTML5 or flash video. Y U NO FIREFOX?!
+            </object>
+            <br/><b><font color="red">Your browser does not support the video tag.<br/>and if you're seeing this, the banner isn't blinking either, I bet.</font></b>
+        </video>
+<!-- original swf embed, before I added html5 <video> : --> 
+<!--        <object width="640" height="480">
+        <param name="movie" value="rick2.swf"/>
+        <embed id="embed" src="rick2.swf" width="640" height="480"></embed>
+        </object>-->
+</body>
+</html>
+
+
