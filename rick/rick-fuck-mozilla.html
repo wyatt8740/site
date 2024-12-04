@@ -21,6 +21,9 @@
     -webkit-marquee-increment: large;
     overflow-x: -webkit-marquee;
 }
+/*.marquee {
+  white-space: nowrap;
+}*/
 @-moz-document url-prefix() {
     .marquee {
 
@@ -29,9 +32,9 @@
         margin: 0;
         text-align: left;
         /* Apply animation to this element */	
-        -moz-animation: marquee 8s linear infinite alternate;
-        -webkit-animation: marquee 8s linear infinite alternate;
-        animation: marquee 8s linear infinite alternate;
+        -moz-animation: marquee 8s steps(64) infinite alternate;
+        -webkit-animation: marquee 8s steps(64) infinite alternate;
+        animation: marquee 8s steps(64) infinite alternate;
     }
     /* Move it (define the animation) */
     @-moz-keyframes marquee {
