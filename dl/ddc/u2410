@@ -1,0 +1,493 @@
+#! /bin/sh
+# override: use ddc bus number for speed. this will break if I move stuff
+# around (especially PCI(e) cards)! Run ddcutil detect to find the new number.
+export DDC_BUS=6
+# Model: U2412M
+# MCCS version: 2.1
+# Commands:
+#    Command: 01 (VCP Request)
+#    Command: 02 (VCP Response)
+#    Command: 03 (VCP Set)
+#    Command: 07 (Timing Request)
+#    Command: 0c (Save Settings)
+#    Command: e3 (Capabilities Reply)
+#    Command: f3 (Capabilities Request)
+# VCP Features:
+#    Feature: 02 (New control value)
+#    Feature: 04 (Restore factory defaults)
+#    Feature: 05 (Restore factory brightness/contrast defaults)
+#    Feature: 06 (Restore factory geometry defaults)
+#    Feature: 08 (Restore color defaults)
+#    Feature: 10 (Brightness)
+#    Feature: 12 (Contrast)
+#    Feature: 14 (Select color preset)
+#       Values:
+#          04: 5000 K
+#          05: 6500 K
+#          06: 7500 K
+#          08: 9300 K
+#          09: 10000 K
+#          0b: User 1
+#          0c: User 2
+#    Feature: 16 (Video gain: Red)
+#    Feature: 18 (Video gain: Green)
+#    Feature: 1A (Video gain: Blue)
+#    Feature: 52 (Active control)
+#    Feature: 60 (Input Source)
+#       Values:
+#          01: VGA-1
+#          03: DVI-1
+#          0f: DisplayPort-1
+#    Feature: AA (Screen Orientation)
+#       Values:
+#          01: 0 degrees
+#          02: 90 degrees
+#    Feature: AC (Horizontal frequency)
+#    Feature: AE (Vertical frequency)
+#    Feature: B2 (Flat panel sub-pixel layout)
+#    Feature: B6 (Display technology type)
+#    Feature: C6 (Application enable key)
+#    Feature: C8 (Display controller type)
+#    Feature: C9 (Display firmware level)
+#    Feature: D6 (Power mode)
+#       Values:
+#          01: DPM: On,  DPMS: Off
+#          04: DPM: Off, DPMS: Off
+#          05: Write only value to turn off display
+#    Feature: DC (Display Mode)
+#       Values:
+#          00: Standard/Default mode
+#          02: Mixed
+#          03: Movie
+#          05: Games
+#    Feature: DF (VCP Version)
+#    Feature: E0 (manufacturer specific feature)
+#    Feature: E1 (manufacturer specific feature)
+#    Feature: F0 (manufacturer specific feature)
+#    Feature: FD (manufacturer specific feature)
+
+# for making a shorthand referring to a specific monitor; prefer user specified
+# if given.
+if [ "$DDC_MODEL_NAME" ]; then
+  MODELNAME="$DDC_MODEL_NAME"
+else
+  MODELNAME='' # DELL U2412M
+fi
+export MODELNAME
+
+if [ "$DDC_SERIAL_NO" ]; then
+  SERIALNO="$DDC_SERIAL_NO"
+else
+  SERIALNO='' # C592M1AQ105L
+fi
+export SERIALNO
+
+if [ "$DDC_BUS" ]; then
+  BUSNO="$DDC_BUS"
+else
+  BUSNO=''
+fi
+
+if [ "$DDC_DISPLAY" ]; then
+  DISPLAYNO="$DDC_DISPLAY"
+else
+  DISPLAYNO='' # 1 (ddcutil says they start at 1. Ugh.)
+fi
+export DISPLAYNO
+
+if [ "$DDC_UTIL" ]; then
+  UTIL="$DDC_UTIL" # allow explicitly setting a path
+else
+  UTIL='ddcutil'
+fi
+export UTIL
+
+ddcutil_wrap()
+{
+  # specify monitor; if any have been set by user those try to take precedence.
+  # The order of precedence favors DDC_DISPLAY, then DDC_SERIAL_NO, and then
+  # DDC_MODEL_NAME (in that order), if more than one are specified.
+  #
+  # My rationale is that that's the order of increasing specificity, except
+  # that we should allow DISPLAYNO to be specified to override if the
+  # other environment variables have been set for instance in `.xsessionrc`.
+  if [ "$BUSNO" ]; then
+    "$UTIL" --bus "$BUSNO" "$@"
+  elif [ "$DISPLAYNO" ]; then
+    "$UTIL" --display "$DISPLAYNO" "$@"
+  elif [ "$MODELNAME" ]; then
+    "$UTIL" --model "$MODELNO" "$@"
+  elif [ "$SERIALNO" ]; then
+    "$UTIL" --sn "$SERIALNO" "$@"
+  else # fallback to my hardcoded monitor
+    "$UTIL" --sn 'YMYH14CJ096S' "$@"
+  fi
+}
+
+ddc_cmd()
+{
+  case "$1" in
+    'VCP Request')
+      echo 01
+      ;;
+    'VCP Response')
+      echo 02
+      ;;
+    'VCP Set')
+      echo 03
+      ;;
+    'Timing Request')
+      echo 07
+      ;;
+    'Save Settings')
+      echo 0C
+      ;;
+    'Capabilities Reply')
+      echo E3
+      ;;
+    'Capabilities Request')
+      echo F3
+      ;;
+    *)
+      1>&2 echo 'Error: bad command name given. Names are case sensitive. Exiting.'
+      exit 1
+      ;;
+  esac
+}
+
+ddc_feature()
+{
+  case "$1" in
+    'New control value')
+      echo 02
+      ;;
+    'Restore factory defaults')
+      echo 04
+      ;;
+    'Restore factory brightness/contrast defaults')
+      echo 05
+      ;;
+    'Restore factory geometry defaults')
+      echo 06
+      ;;
+    'Restore color defaults')
+      echo 08
+      ;;
+    'Brightness')
+      echo 10
+      ;;
+    'Contrast')
+      echo 12
+      ;;
+    'Select color preset')
+      echo 14
+      ;;
+    'Video gain: Red')
+      echo 16
+      ;;
+    'Video gain: Green')
+      echo 18
+      ;;
+    'Video gain: Blue')
+      echo 1A
+      ;;
+    'Active control')
+      echo 52
+      ;;
+    'Input Source')
+      echo 60
+      ;;
+    'Screen Orientation')
+      echo AA
+      ;;
+    'Horizontal frequency')
+      echo AC
+      ;;
+    'Vertical frequency')
+      echo AE
+      ;;
+    'Flat panel sub-pixel layout')
+      echo B2
+      ;;
+    'Display technology type')
+      echo B6
+      ;;
+    'Application enable key')
+      echo C6
+      ;;
+    'Display controller type')
+      echo C8
+      ;;
+    'Display firmware level')
+      echo C9
+      ;;
+    'Power Mode')
+      echo D6
+      ;;
+    'Display Mode')
+      echo DC
+      ;;
+    'VCP Version')
+      echo DF
+      ;;
+    *)
+      1>&2 echo 'Error: bad feature name given. Names are case sensitive. Exiting.'
+      exit 1
+    ;;
+  esac
+}
+
+ddc_get()
+{
+  ddcutil_wrap --terse getvcp "$(ddc_feature "$1")"
+}
+
+ddc_get_current()
+{
+  ddcutil_wrap --terse getvcp "$(ddc_feature "$1")" | awk '{ print $4 }'
+}
+
+ddc_get_max()
+{
+  ddcutil_wrap --terse getvcp "$(ddc_feature "$1")" | awk '{ print $5 }'
+}
+
+ddc_set()
+{
+  FEAT="$1"
+  shift
+  ddcutil_wrap setvcp "$(ddc_feature "$FEAT")" "$@"
+}
+
+ddc_get_rgb()
+{
+  RED="$(ddcutil_wrap --terse getvcp "$(ddc_feature 'Video gain: Red')" | awk '{ print $4 }')"
+  GREEN="$(ddcutil_wrap --terse getvcp "$(ddc_feature 'Video gain: Green')" | awk '{ print $4 }')"
+  BLUE="$(ddcutil_wrap --terse getvcp "$(ddc_feature 'Video gain: Blue')" | awk '{ print $4 }')"
+  echo "$RED" "$GREEN" "$BLUE"
+}
+
+ddc_set_rgb()
+{
+  if [ "$#" -eq 3 ]; then
+    ddcutil_wrap setvcp "$(ddc_feature 'Video gain: Red')" "$1"
+    ddcutil_wrap setvcp "$(ddc_feature 'Video gain: Green')" "$2"
+    ddcutil_wrap setvcp "$(ddc_feature 'Video gain: Blue')" "$3"
+  else
+    1>&2 echo 'Error: Wrong number of parameters given. Need RGB triplet (three args).'
+  fi
+}
+
+ddc_power_mode_code_to_str()
+{
+  case "$1" in
+    'DPM On') #DPMS Off
+      echo 01
+      ;;
+    'DPM Off') # DPMS Off
+      echo 04
+      ;;
+    'Power Off')
+      echo 05
+      ;;
+    *)
+      1>&2 echo 'Error: invalid power mode given. Exiting.'
+      exit 1
+      ;;
+  esac
+}
+
+ddc_power()
+{
+  #echo "$@"
+  POWERMODE="$(ddc_power_mode_code_to_str "$@")"
+  if [ "$POWERMODE" ]; then
+    ddcutil_wrap setvcp "$(ddc_feature 'Power Mode')" "$(ddc_power_mode_code_to_str "$@")"
+  fi
+}
+
+ddc_color_temp_code_to_str()
+{
+  case "$1" in
+    'x04')
+      echo '5000 K'
+      ;;
+    'x05')
+      echo '6500 K'
+      ;;
+    'x06')
+      echo '7500 K'
+      ;;
+    'x08') # there is no 07
+      echo '9300 K'
+      ;;
+    'x09')
+      echo '10000 K'
+      ;;
+    'x0b') # there is no 0a
+      echo 'User 1'
+      ;;
+    'x0c')
+      echo 'User 2'
+      ;;
+    *)
+      1>&2 echo "Error: ddc_get_color_temp_code_to_str: Bad color code."
+      exit 2
+      ;;
+  esac
+}
+
+ddc_color_temp_str_to_code()
+{
+  case "$1" in
+    '5000 K'|'5000'|'5000K'|'5000k')
+      echo 'x04'
+      ;;
+    '6500 K'|'6500'|'6500K'|'6500k')
+      echo 'x05'
+      ;;
+    '7500 K'|'7500'|'7500K'|'7500k')
+      echo 'x06'
+      ;;
+    '9300 K'|'9300'|'9300K'|'9300k') # there is no 07
+      echo 'x08'
+      ;;
+    '10000 K'|'10000'|'10000K'|'10000k')
+      echo 'x09'
+      ;;
+    'User 1'|'User1'|'user1'|'user 1') # there is no 0a
+      echo 'x0b'
+      ;;
+    'User 2'|'User2'|'user2'|'user 2')
+      echo 'x0c'
+      ;;
+    *)
+      1>&2 echo "Error: ddc_get_color_temp_str_to_code: Bad color preset name."
+      exit 2
+      ;;
+  esac
+}
+
+ddc_get_color_temp()
+{
+  TEMPCODE="$(ddcutil_wrap --terse getvcp "$(ddc_feature 'Select color preset')" | awk '{ print $4 }')"
+  ddc_color_temp_code_to_str "$TEMPCODE"
+}
+
+ddc_set_color_temp()
+{
+  if [ "$#" -gt 0 ]; then
+    TEMPCODE="$(ddc_color_temp_str_to_code "$1")"
+    ddcutil_wrap setvcp "$(ddc_feature 'Select color preset')" "$TEMPCODE"
+  else
+    2>&1 echo "Valid options are 6500K, 7500K, 9300K, 10000K, user1, and user2."
+    2>&1 echo "  The 'K' can be optionally omitted."
+    2>&1 echo "  user2 is the rgb colors as specified with setrgb."
+  fi
+}
+
+ddc_info()
+{
+  FEAT="$1"
+  shift
+  ddcutil_wrap vcpinfo "$(ddc_feature "$FEAT")" "$@"
+}
+
+ddc_input()
+{
+  case "$1" in
+    'VGA-1'|'VGA'|'vga-1'|'vga')
+      INPUT_ID='01'
+      ;;
+    'DVI-1'|'DVI'|'dvi-1'|'dvi'|'HDMI'|'hdmi') # hdmi doesn't exist on this, but pretend it does for my sake, ok? I use HDMI -> DVI adapters a lot.
+      INPUT_ID='03'
+      ;;
+    'DisplayPort-1'|'DisplayPort'|'displayport-1'|'displayport'|'DP-1'|'DP'|'dp')
+      INPUT_ID='0f'
+      ;;
+    *)
+      1>&2 echo 'Error: invalid input selection. Exiting.'
+      exit 1
+      ;;
+  esac
+  ddc_set 'Input Source' "$INPUT_ID"
+}
+
+ddc_help()
+{
+  echo 'Commands are:'
+  echo ' get / getvcp <name>:         Get the control value & maximum of name <name>.'
+  echo ' get-current <name>:          Get only the current value of control <name>.'
+  echo ' get-max <name>:              Get the maximum allowed value of control <name>.'
+  echo ' set / setvcp <name> <value>: Set the control with the name <name> to <value>.'
+  echo ' getrgb:                      Get the RGB level settings (for custom user mode).'
+  echo ' setrgb <r> <g> <b>:          Set RGB levels as RGB triplet, ranges 0-100 each.'
+  echo ' getcolortemp:                Get current color temperature setting.'
+  echo ' (set)colortemp <value>:      Set a color temperature. Run w/o args for more.'
+  echo ' info <name>:                 See more information about control of name <name>.'
+  echo ' powermode / power-mode:      Set power mode (DPM On, DPM Off, Power Off)'
+  echo ' off:                         Turn off monitor.'
+  echo ' input <value>:               Select an input (VGA-1, DVI-1, or DisplayPort-1).'
+}
+
+case "$1" in
+  'getvcp'|'get')
+    shift
+    printf "`ddc_get_current "$@"`"'/'"`ddc_get_max "$@"`\n"
+    ;;
+  'get-current')
+    shift
+    ddc_get_current "$@"
+    ;;
+  'get-max')
+    shift
+    ddc_get_max "$@"
+    ;;
+  'setvcp'|'set')
+    shift
+    ddc_set "$@"
+    ;;
+  'getrgb')
+    shift
+    ddc_get_rgb "$@"
+    ;;
+  'setrgb')
+    shift
+    ddc_set_color_temp 'User 2'
+    ddc_set_rgb "$@"
+    ;;
+  'getcolortemp')
+    shift
+    ddc_get_color_temp "$@"
+    ;;
+  'setcolortemp'|'colortemp')
+    shift
+    ddc_set_color_temp "$@"
+    ;;
+  'info')
+    shift
+    ddc_info "$@"
+    ;;
+  'input')
+    shift
+    ddc_input "$@"
+    ;;
+  'powermode'|'power-mode')
+    shift
+    ddc_power "$@"
+    ;;
+  'off'|'power-off'|'poweroff'|'power off'|'Power Off')
+    shift
+    ddc_power 'Power Off'
+    ;;
+  'help'|'-h'|'--help')
+    shift
+    ddc_help "$@"
+    ;;
+  *)
+    if [ "$#" -gt 0 ]; then
+      shift
+    fi
+    1>&2 ddc_help "$@"
+    ;;
+esac

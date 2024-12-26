@@ -1,25 +1,146 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>
-      Index of dl
-    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Wyatt's Homepage</title>
   </head>
   <body>
-[D] <a href="../index.html">../</a><br/>
-[D] <a href="./android/index.html">android/</a><br/>
-[D] <a href="./drivers/index.html">drivers/</a><br/>
-[D] <a href="./fc_palette/index.html">fc_palette/</a><br/>
-[D] <a href="./floppy_disk_stuff/index.html">floppy_disk_stuff/</a><br/>
-[D] <a href="./jxl-ppc/index.html">jxl-ppc/</a><br/>
-[D] <a href="./moz/index.html">moz/</a><br/>
-[D] <a href="./np2kai/index.html">np2kai/</a><br/>
-[D] <a href="./pc98/index.html">pc98/</a><br/>
-[D] <a href="./roland/index.html">roland/</a><br/>
-[D] <a href="./saves/index.html">saves/</a><br/>
-[D] <a href="./xquake/index.html">xquake/</a><br/>
-[F] <a href="./gdrive.txt">gdrive.txt</a><br/>
-[F] <a href="./phantasy_star_apng.png">phantasy_star_apng.png</a><br/>
+    <p>
+      Descriptions of some of the files here:
+    </p>
+    <p>
+      <a href="android">/android/</a>: contains some AOSP android 10 software
+      which I compiled for my pixel 4, as well as a handful of other programs
+      I built or modified for my own purposes. For example, "set orientation"
+      is useful for setting the rotation of a phone manually or overriding
+      programs that lock rotation. It used to be on the play store but has
+      been gone for a long time from there.
+    </p>
+    <p>
+      <a href="ddc">/ddc/</a>: Display Data Channel (DDC) communication wrapper
+      shell script that attempts to make it easier to interface with desktop
+      computer monitor settings (like brightness, contrast, white balance) than
+      the "ddcutil" program does on its own. Uses "ddcutil" under the hood to
+      accomplish this, but allows for commands like <code>cintiq set brightness
+        5</code> or <code>cintiq setrgb cintiq setrgb 203 213 255</code>, where
+      "cintiq" is the name of the script which has been edited to specifically
+      target a specific DDC bus number that a wacom display is residing on.
+      <br/>
+      Check DDC bus numbers with <code>ddcutil detect</code>.
+      <br/>
+      Nvidia proprietary driver users may need to add
+      <code>options nvidia NVreg_RegistryDwords=RMUseSwI2c=0x01;RMI2cSpeed=100</code>
+      to their modprobe settings for this to work.
+      <br/>
+      Also note that Cintiqs appear to swap the meaning of "brightness" and
+      "contrast" when compared to other LCD's that can be controlled via DDC,
+      so the cintiq script has been edited accordingly
+      (swapping VCP ID's 10 and 12).
+    </p>
+    <p>
+      <a href="drivers">/drivers/</a>: Archive of drivers for computer
+      hardware. This stuff might be backed up elsewhere, but I haven't checked
+      and these are from my own personal copies. Currently the only driver
+      diskette is for a first generation IBM ScrollPoint mouse. This is from an
+      untouched floppy disk that I got still in the shrinkwrap with a new old
+      stock ScrollPoint mouse (a mouse with a trackpoint on it for two
+      dimensional scrolling).
+    </p>
+    <p>
+      <a href="fc_palette">/fc_palette/</a>: My custom Famicom/NES colour
+      palettes, based on video captures. As of this writing they do not contain
+      the "emphasis bit" combinatorial colours, so those have to be calculated
+      by the emulator, but I am highly satisfied with how the basic colours
+      look and it is a very close match to what I see on my screens. Check them
+      out! :)
+    </p>
+    <p>
+      <a href="floppy_disk_stuff">/floppy_disk_stuff/</a>: Right now this is
+      just a 3D model made in OpenSCAD for a center hub for 3.5 inch (90 mm)
+      floppy disks. Both the original OpenSCAD sources and a rendered STL file
+      are included. For an ongoing project of mine. The measurements were taken
+      from an ECMA standard I forget the number of that defines the 90mm floppy
+      disk format and physical specifications.
+    </p>
+    <p>
+      <a href="gdrive.txt">/gdrive.txt</a>: A script for downloading files from
+      google drive links on the command line without opening them in a browser;
+      it also bypasses the antivirus scan warning page (which states that a
+      file was too big for scanning) for applicable files. It does not
+      currently work on drive folders, only on links to specific files.
+    </p>
+    <p>
+      <a href="jxl-ppc">/jxl-ppc/</a>: Jpeg XL reference implementation source
+      code patches for building the library on 32-bit PowerPC systems. Includes
+      patches for both <code>libjxl</code> and <code>libhwy</code>
+      (libhighway). The highway patch disables SIMD entirely and makes the
+      library operate in scalar fashion because AltiVec is not supported (at
+      least, not when I last checked). The jxl patch also disables emscripten,
+      since NodeJS has not worked on 32-bit PowerPC in many years and the build
+      system refuses to continue without it otherwise (and because NodeJS sucks
+      anyway).
+    </p>
+    <p>
+      <a href="moz">/moz/</a>: Patches for the fork of Firefox I maintain for
+      my own personal use in order to make it work the way I want it to, be
+      able to be styled with <code>userChrome.css</code> to my liking somewhat
+      more easily, and to roll back some changes I hate (like the removal of
+      the ability to view an image on a page in the current tab). Planning to
+      update this whenever I make a new build of Firefox. It's a real hassle to
+      do, so if you're depending on me, be prepared to wait several months at
+      least.
+      <br/>
+      There's also a script for extracting cookies from mozilla's cookies
+      SQLite file in a format that can be pasted into the website scraper
+      program <code>gallery-dl</code>.
+    </p>
+    <p>
+      <a href="np2kai">/np2kai/</a>: Patches for Neko Project II Kai, an NEC
+      PC-9801 series computer emulator. Currently the patches are mainly
+      targetting and tested for linux systems using <code>xnp21kai</code> with
+      the GTK2 frontend. The only patch right now simply adds a 3x
+      magnification mode so that it can fill the screen on a 1920x1200 monitor.
+      A windows patch is included but it is untested and it will likely remain
+      so.
+    </p>
+    <p>
+      <a href="pc98">/pc98/</a>: Source code and 3D models related to the NEC
+      PC-98 and Epson 98 clone machines. Currently there is a C program called
+      <code>DUMPVRAM</code>, which…dumps your VRAM to a file. There is also a
+      3D model of a gear for the eject mechanism of an NEC CDR-260 CD-ROM drive
+      which often breaks. I have not tested this, but I think it might work.
+      OpenSCAD sources are included for the gear as well as the gear library
+      that I used.
+    </p>
+    <p>
+      <a href="phantasy_star_apng.png">/phantasy_star_apng.png</a>: an animated
+      PNG in APNG format of crawling through a three dimensional maze in the
+      1987 game "Phantasy Star" for the Sega Master System (SMS). I've removed
+      all the battle interruptions so it's just a nice satisfying crawl.
+    </p>
+    <p>
+      <a href="roland">/roland/</a>: This one's only available if I'm
+      self-hosting the site, which I have not finished doing yet. It's got
+      owners' manuals for some Roland synthesizers, mostly grabbed from
+      Roland's websites for various countries (US and Japan primarily). For
+      things released in the US that aren't on Roland's US website (like the
+      MT-32), scanned PDF's are provided. My SC-55K never got a US release
+      so that's only available in Japanese, but the SC-55ST manual in English
+      is also included so that it can be compared, since they are similar to
+      each other as well as the 55 Mk. II.
+    </p>
+    <p>
+      <a href="saves">/saves/</a>: A GameCube memory card dump of mine from
+      2012 or so. Contains saves for Paper Mario: The Thousand Year Door and
+      Super Smash Bros. Melee, and I think also a couple others. There's also
+      some pre-made "GameShark" saves that were included on a pink Mad Catz
+      memory card when I bought it in an EB Games/GameStop(?) back in the day.
+    </p>
+    <p>
+      <a href="xquake">/xquake/</a>: Screenshots from my patched version of
+      XQuake which doubles the maximum possible screen resolution for a
+      software-rendered game (which is of course the only true way to play
+      Quake).
+    </p>
   </body>
 </html>
